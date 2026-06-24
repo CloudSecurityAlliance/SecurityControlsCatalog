@@ -9,9 +9,9 @@ The working surface for the CSA **Security Controls Catalog (CSA-CC)** working g
 WG leadership: Andy Ruth, Daniele Catteddu, Larry Hughes.
 Public WG page: https://cloudsecurityalliance.org/research/working-groups/security-controls-catalog
 
-## Status: pre-content
+## Repository state
 
-As of this writing the repo tracks only `LICENSE.txt`. There is no source code, build system, schema files, or instance data committed. Do not assume directory conventions — read the current tree before writing files, and propose layout to the maintainer rather than inventing one.
+This is a public CSA repository with its contribution infrastructure in place — `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, `.github/CODEOWNERS`, and the CLA-enforcement workflow (`.github/workflows/cla.yml`). Catalog content — STIX bundles and instance data — is still being prepared, so there are no committed schema or data directories yet. Do not assume directory conventions — read the current tree before writing files, and propose layout to the maintainer rather than inventing one.
 
 Schemas are **exploratory / research status** and explicitly provisional. Do not treat any schema sketch (including the one summarized below) as normative. Always consult the current source-of-truth document before editing or generating instance data.
 
@@ -50,7 +50,11 @@ When making design or mapping decisions, keep these in scope:
 
 This is a public CSA repository. External collaboration uses the standard fork + PR model. Do not push directly to `main`; create a branch and open a PR for any change.
 
-The `LICENSE.txt` reflects CSA's standard publication terms (no modification or redistribution of the *published* catalog). Repository-level collaboration via fork/PR is the accepted workflow regardless — treat the license as governing downstream consumption of releases, not the development process.
+**Contributions require a signed Contributor License Agreement (CLA).** See `CONTRIBUTING.md` for the contributor flow and what signing means. To sign, a contributor opens a PR adding a signature file — named for their numeric GitHub account ID and embedding the full CLA text — under `security-controls-catalog/signatures/` in the public `CloudSecurityAlliance/CLA-Ledger` repository; CSA accepts by merging. Coverage is **per project**: a contributor signs once for this project and signs other CSA projects' CLAs separately. The CLA check in `.github/workflows/cla.yml` verifies, on each PR, that every commit author has a signature for this project **at the CLA version the project currently requires** in the ledger (a material new version means re-signing; it reads the public ledger directly — no bot, no token). `main` is branch-protected: PRs require a passing CLA check, a review, and — for `LICENSE.txt` and `.github/` — a CODEOWNERS review.
+
+The rationale behind the CLA design — forward-looking scope, the commit-author check, reviewed signature PRs, `pull_request_target` safety, and more — is documented in the CLA-Ledger's [`DESIGN-NOTES.md`](https://github.com/CloudSecurityAlliance/CLA-Ledger/blob/main/DESIGN-NOTES.md). Consult it before treating a CLA design choice as an oversight.
+
+The `LICENSE.txt` reflects CSA's standard publication terms (no modification or redistribution of the *published* catalog). It governs downstream consumption of releases, not the development process; the **CLA**, not the license, governs what contributors grant CSA. Treat these as two distinct instruments.
 
 ## Build / lint / test
 

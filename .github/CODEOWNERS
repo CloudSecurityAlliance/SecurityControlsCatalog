@@ -1,0 +1,18 @@
+# CODEOWNERS — CSA Security Controls Catalog
+#
+# Intentionally MINIMAL: there is NO catch-all owner. Routine catalog and
+# mapping contributions are gated by normal branch-protection review (any
+# maintainer's approval counts). CODEOWNERS here protects only the small set
+# of files where a specific, named sign-off is required.
+#
+# Requires branch protection with "Require review from Code Owners" enabled.
+# Files NOT listed below have no code owner, so they need only a normal review
+# — keeping community contribution low-friction.
+
+# The license is immutable and CEO-approved; a change is a legal / corporate-
+# officer decision, not a routine maintainer call.
+/LICENSE.txt        @kurtseifried
+
+# CI workflows (including the CLA gate) and this CODEOWNERS file itself.
+# "Protect the guard": a change here could weaken or disable CLA enforcement.
+/.github/           @kurtseifried

@@ -1,0 +1,63 @@
+name: CLA check
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+# For each commit author on the PR, confirm the public CLA-Ledger holds a
+# signature for them — keyed by NUMERIC account id (rename-proof) — that is for
+# the CLA version this project currently requires. A contributor who signed an
+# older version must re-sign before contributing under the new one. Reads public
+# data only; no token to the ledger, no third-party action or bot, and no
+# checkout/execution of PR code.
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  cla:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check CLA signatures
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+          LEDGER_RAW: https://raw.githubusercontent.com/CloudSecurityAlliance/CLA-Ledger/main/security-controls-catalog/signatures
+          SIGN_DOC: https://github.com/CloudSecurityAlliance/CLA-Ledger/blob/main/security-controls-catalog/signatures/README.md
+          # The CLA version this project currently requires. Bump this when the
+          # project adopts a new CLA version; contributors then re-sign to match.
+          REQUIRED_CLA_VERSION: "v1.0"
+          # Bots / accounts exempt from signing (comma-separated logins):
+          ALLOWLIST: "dependabot[bot],github-actions[bot]"
+        run: |
+          set -euo pipefail
+          nl=$'\n'
+          # Distinct commit-author "id login" pairs on this PR (all-committers rule).
+          rows=$(gh api "repos/$REPO/pulls/$PR/commits" --paginate \
+            --jq '.[].author | if . == null then "NULL NULL" else "\(.id) \(.login)" end' | sort -u)
+          missing=""
+          while read -r id login; do
+            [ -z "$id" ] && continue
+            if [ "$id" = "NULL" ]; then
+              missing="${missing}${nl}- a commit is not linked to a GitHub account (set your commit author email to your GitHub account)"
+              continue
+            fi
+            case ",$ALLOWLIST," in *",$login,"*) continue ;; esac
+            resp=$(curl -s -w '\n%{http_code}' "$LEDGER_RAW/$id.md")
+            code=$(printf '%s' "$resp" | tail -n1)
+            if [ "$code" != "200" ]; then
+              missing="${missing}${nl}- @$login (id $id) has not signed"
+              continue
+            fi
+            # Which CLA version did they sign? Compare to the required version.
+            signed=$(printf '%s' "$resp" | grep -oE 'CLA version:[[:space:]]*v[0-9]+\.[0-9]+' | head -n1 | grep -oE 'v[0-9]+\.[0-9]+' || true)
+            if [ "$signed" != "$REQUIRED_CLA_VERSION" ]; then
+              missing="${missing}${nl}- @$login (id $id) signed ${signed:-an unrecognized version}, but $REQUIRED_CLA_VERSION is required — please re-sign"
+            fi
+          done <<< "$rows"
+          if [ -n "$missing" ]; then
+            gh pr comment "$PR" --repo "$REPO" --body "🔏 **CLA check failed.** The CLA-Ledger needs a current signature (version ${REQUIRED_CLA_VERSION}) for:${missing}${nl}${nl}Please sign or re-sign — see ${SIGN_DOC}. Re-run this check after your signature PR is merged."
+            printf 'Unsigned:%s\n' "$missing"
+            exit 1
+          fi
+          echo "All contributors have signed the CLA."
