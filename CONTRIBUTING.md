@@ -143,10 +143,14 @@ person then writes up and submits. That's fully supported, and in most cases
   of a contribution, each co-author signs the CLA — or you identify the portion
   that is not your original creation and submit it under the CLA's "submissions
   on behalf of others" provision.
-- **`Co-authored-by:` trailers.** Use these only for genuine co-authors who have
-  **also signed** the CLA. Don't add them to credit idea-only input: a credited
-  co-author who hasn't signed creates a coverage gap the automated check can't
-  see.
+- **`Co-authored-by:` trailers.** For a **human** co-author — someone who
+  co-wrote the *text* — each must also sign the CLA; a credited human co-author
+  who hasn't signed is a coverage gap the automated check can't see (it verifies
+  commit *authors*, not trailers). An **AI assistant** may be credited as a
+  co-author: it works at your direction, holds no rights, and cannot sign, so no
+  signature is required — by committing, you take responsibility for the
+  AI-assisted content, and your CLA and representations cover it as input you
+  incorporated.
 
 ## AI-assisted contributions
 
