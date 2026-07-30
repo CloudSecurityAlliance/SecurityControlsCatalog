@@ -2,7 +2,7 @@
 title: "CSA Security Controls Catalog — Design Rationale: STIX 2.1 Extensions"
 document-status: DRAFT
 date: 2026-05-07
-author: "Kurt Seifried + AI assistance"
+author: "CSA Security Controls Catalog working group, with AI assistance"
 status: "Provisional — open for discussion"
 type: "Design rationale"
 tags: [security-controls-catalog, stix, oscal, format, design-rationale]
@@ -24,12 +24,15 @@ The catalog's data model is exploratory and research-grade. Schemas described in
 
 ## 2. The format choice: STIX 2.1 with custom SDOs
 
-The proposed back-end representation for catalog content is **STIX 2.1**, with four custom STIX Domain Object types:
+The proposed back-end representation for catalog content is **STIX 2.1**, with five custom STIX Domain Object types, named to mirror the SecID type vocabulary:
 
-- **`x-control`** — canonical control definitions (domain, identifier, specification, ownership, lifecycle relevance, threat mitigation, mappings, implementation and audit guidance).
-- **`x-control-implementation`** — technical implementation units (configurations, infrastructure-as-code snippets, vendor-specific procedures).
-- **`x-regulatory-reference`** — external regulatory clauses, requirements, or controls from laws, regulations, and standards (ISO 27001, GDPR, NIST 800-53, EU AI Act, and others).
+- **`x-control`** — control definitions from any publisher (domain, identifier, specification, ownership, lifecycle relevance, implementation and audit guidance), including CSA's own catalog and the frameworks it harmonizes with.
+- **`x-regulation`** — clauses of legally binding law (GDPR, the EU AI Act, NIS2, HIPAA). Standards and control frameworks are `x-control`, not regulations.
+- **`x-control-implementation`** — technology-agnostic approaches to fulfilling a control, independent of any product or vendor.
+- **`x-capability`** — specific product or service security features, with their configuration, audit, and remediation detail.
 - **`x-control-assessment`** — outcomes of self-assessments, audits, or STAR/CAIQ-style evaluations of a specific control.
+
+Field-level definitions are in [`SCHEMA-STIX-OBJECT-EXTENSIONS.md`](SCHEMA-STIX-OBJECT-EXTENSIONS.md); the modeling rules that bind all of them are in [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md).
 
 These objects connect to each other and to the broader STIX object graph through standard STIX `relationship` SROs. They use standard STIX properties (`id`, `created`, `modified`, `created_by_ref`, `labels`, `external_references`, and others) and require no changes to the STIX wire format, versioning model, or transport.
 
@@ -109,7 +112,7 @@ Additional formats worth consideration in subsequent releases include CAIQ outpu
 
 ## 6. Status, scope, and what this document is not
 
-The catalog's data model is **exploratory and research-grade**. The four custom SDOs and the recommendations in this document are provisional. Implementation experience may inform revisions. Implementers who can satisfy their needs with standard STIX constructs alone are encouraged to do so and to treat the `x-*` SDOs as optional, research-grade extensions to be adopted selectively.
+The catalog's data model is **exploratory and research-grade**. The five custom SDOs and the recommendations in this document are provisional. Implementation experience may inform revisions. Implementers who can satisfy their needs with standard STIX constructs alone are encouraged to do so and to treat the `x-*` SDOs as optional, research-grade extensions to be adopted selectively.
 
 This document does not:
 
