@@ -167,14 +167,43 @@ A custom property that duplicates a standard one is a defect, not a convenience 
 it splits the same fact across two representations and consumers will disagree
 about which wins.
 
-## 5. No changes to the wire format
+## 5. New object types are declared with extension-definition
+
+New SDO types are declared using STIX 2.1's `extension-definition` mechanism, never
+as bare `x-`-prefixed custom objects. The bare-custom-object approach is a STIX 2.0
+convention that 2.1 discourages in favour of an explicit declaration, and the OASIS
+core schema expects a `type` value to be one of the types *defined by* a STIX
+Object.
+
+Each new type gets its own `extension-definition`, and every instance references it:
+
+```json
+"extensions": {
+  "extension-definition--<UUID>": { "extension_type": "new-sdo" }
+}
+```
+
+One definition per type, not one shared across several — an instance declares what
+it is by mapping a definition identifier to `new-sdo`, so a shared definition could
+not distinguish between the types it covered.
+
+Two consequences bind anything that publishes catalog content. **The
+extension-definition objects must travel with the instances**, because a consumer
+cannot interpret an object without its definition. And **the identifiers are
+permanent once published**: consumers key off them, so changing one is a breaking
+change rather than an edit.
+
+Standard STIX objects the catalog uses — `relationship`, `identity`,
+`marking-definition` — are not extended and carry no `extensions` property.
+
+## 6. No changes to the wire format
 
 Catalog objects are ordinary STIX 2.1 JSON. Nothing in this catalog changes the
 STIX wire format, versioning model, or transport. If a design would require a
 consumer to special-case the catalog before it can parse or route the data, the
 design is wrong.
 
-## 6. Lifecycle state and revocation are distinct
+## 7. Lifecycle state and revocation are distinct
 
 A custom property that duplicates a standard one is a defect (convention 4), but
 two properties recording *different facts* are not duplicates — and lifecycle
@@ -200,7 +229,7 @@ date and rationale, and the replaced object stays coherent without it. See
 `SCHEMA-STIX-OBJECT-EXTENSIONS.md` § "`status`, `revoked`, and supersession" for
 the applied case.
 
-## 7. Reproducing external text
+## 8. Reproducing external text
 
 Most of what the catalog does with external standards is referential: citing a
 clause by identifier, describing a requirement in original wording, asserting that

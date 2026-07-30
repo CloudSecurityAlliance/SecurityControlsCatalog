@@ -18,6 +18,11 @@ Controls Catalog (CSA-CC) in a machine-readable, graph-relational format. It als
 maps each object type to the relevant portions of the CSA-CC architecture and
 rationale.
 
+The types are declared using STIX 2.1's **extension-definition** mechanism rather
+than as bare custom objects — see
+[How these objects extend STIX 2.1](#how-these-objects-extend-stix-21). The `x-`
+prefix is retained for readability, though the mechanism no longer requires it.
+
 > **Scope and precedence.** Three documents divide the design, by the question
 > they answer:
 >
@@ -48,8 +53,8 @@ rationale.
   existing STIX/TAXII servers, CTI platforms, graph databases, and analysis
   pipelines.
 - The model avoids any changes to the STIX wire format, versioning model, or
-  transport, and relies on standard STIX mechanisms (custom SDOs, custom
-  properties, relationships, identities, markings).
+  transport, and relies on standard STIX mechanisms — the extension-definition
+  mechanism for declaring new SDOs, plus relationships, identities, and markings.
 
 **Exploratory / research status**
 
@@ -149,6 +154,84 @@ one object type: `cloudsecurityalliance.org/ccm@4.1` and
 `cloudsecurityalliance.org/scc` sit side by side, related by `maps-to`, and "the
 CCM view" is a property filter rather than a separate export.
 
+## How these objects extend STIX 2.1
+
+The five types are declared through STIX 2.1's **extension-definition** mechanism,
+not as bare custom objects.
+
+STIX 2.0 introduced new object types by simply using an `x-`-prefixed `type` value
+and relying on naming convention. STIX 2.1 replaced that with a first-class
+mechanism: an `extension-definition` SDO declares the extension, and each instance
+of the new type references it. The older custom-object approach is discouraged in
+favor of this one, and the difference is not cosmetic — the OASIS core schema says
+a `type` value must be one of the types *defined by* a STIX Object, and an
+extension-definition is how a new type gets defined.
+
+Three practical gains follow, and the third is the reason this matters most:
+
+- **Consumers can discover what the type means.** `extension-definition` requires a
+  `schema` property, so a platform encountering `x-control` can retrieve its
+  definition instead of guessing from the name.
+- **The catalog validates as STIX 2.1** rather than relying on a deprecated
+  convention while claiming maximum compatibility.
+- **Type names stop being ambiguous.** Two producers may both emit `x-control`, but
+  their instances reference different extension-definition identifiers, so a
+  consumer can tell them apart. The namespace lives in the identifier, where it
+  belongs, rather than in a lengthened type string.
+
+### One extension-definition per type
+
+Each of the five types has its own `extension-definition` object. They are not
+combined into one, because an instance declares its type by mapping a definition
+identifier to `extension_type: "new-sdo"` — a shared definition could not say
+*which* of five SDOs a given instance is. Separate definitions also let each type
+version independently, and let a consumer adopt a subset of the model.
+
+```json
+{
+  "type": "extension-definition",
+  "spec_version": "2.1",
+  "id": "extension-definition--<UUID-CONTROL>",
+  "created": "2026-01-15T00:00:00.000Z",
+  "modified": "2026-01-15T00:00:00.000Z",
+  "created_by_ref": "identity--<CSA_ID>",
+  "name": "CSA Security Controls Catalog — x-control",
+  "description": "A security control from any publisher, with its specification, guidance, lifecycle state, and source provenance.",
+  "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/SCHEMA-STIX-OBJECT-EXTENSIONS.md",
+  "version": "1.0",
+  "extension_types": ["new-sdo"]
+}
+```
+
+Every instance of an extended type then carries:
+
+```json
+"extensions": {
+  "extension-definition--<UUID-CONTROL>": {
+    "extension_type": "new-sdo"
+  }
+}
+```
+
+The `<UUID-…>` placeholders throughout this document stand for identifiers that
+have not been minted yet. **Once minted and published they are permanent** — a
+consumer that has ingested catalog content keys off them, so changing one is a
+breaking change, not an edit.
+
+`schema` currently points at this document, which is the normative definition of
+the fields. That is honest but coarse: a machine-readable JSON Schema per type
+would let consumers validate rather than read. See
+[Open questions](#open-questions).
+
+Standard STIX objects the catalog uses — `relationship`, `identity`,
+`marking-definition`, `attack-pattern` — are **not** extended and carry no
+`extensions` property. Only the five custom types do.
+
+Because a consumer cannot interpret an instance without its definition, **the
+extension-definition objects must travel with the content** in every published
+bundle. That constrains bundle composition, which is tracked as an open question in
+the conventions document.
+
 ## Maximum compatibility with existing and future data
 
 By modeling CSA-CC as first-class STIX 2.1 objects and relying on the standard
@@ -185,10 +268,10 @@ evidence or enforcement points for a control. This supports use-cases like:
   infrastructure in this environment?"
 
 **No custom wire format, and forward compatibility.** The CSA-CC objects are
-ordinary STIX SDOs with custom `type` values and standard STIX properties (`id`,
-`spec_version`, `created`, `modified`, `created_by_ref`, `labels`,
-`external_references`, and others). They participate in relationships exactly
-like any other SDO.
+ordinary STIX SDOs declared through the standard extension-definition mechanism,
+using standard STIX properties (`id`, `spec_version`, `created`, `modified`,
+`created_by_ref`, `labels`, `external_references`, `extensions`, and others). They
+participate in relationships exactly like any other SDO.
 
 - If a future STIX version adds new SDOs or SCOs, the CSA objects can relate to
   them immediately via the same `relationship` SRO.
@@ -333,6 +416,11 @@ A CSA control, carrying CSA's own specification text:
   "id": "x-control--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "extensions": {
+    "extension-definition--<UUID-CONTROL>": {
+      "extension_type": "new-sdo"
+    }
+  },
   "created_by_ref": "identity--<CSA_ID>",
   "name": "Data Encryption",
   "framework_namespace": "cloudsecurityalliance.org",
@@ -369,6 +457,11 @@ clause is identified precisely, and `description` is CSA's own wording;
   "id": "x-control--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "extensions": {
+    "extension-definition--<UUID-CONTROL>": {
+      "extension_type": "new-sdo"
+    }
+  },
   "created_by_ref": "identity--<CSA_ID>",
   "name": "Use of cryptography",
   "framework_namespace": "iso.org",
@@ -389,7 +482,7 @@ clause is identified precisely, and `description` is CSA's own wording;
 > **`specification` holds reproduced text and is therefore license-constrained.**
 > Populate it for CSA's own controls, and for third-party controls only where the
 > source permits reproduction. Otherwise omit it and use `description` for
-> original wording. See [conventions § 7](CONVENTIONS-STIX-MODELING.md).
+> original wording. See [conventions § 8](CONVENTIONS-STIX-MODELING.md).
 
 ### `status`, `revoked`, and supersession
 
@@ -459,6 +552,11 @@ discriminator.
   "id": "x-regulation--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "extensions": {
+    "extension-definition--<UUID-REGULATION>": {
+      "extension_type": "new-sdo"
+    }
+  },
   "created_by_ref": "identity--<CSA_ID>",
   "name": "Security of processing — pseudonymisation and encryption",
   "regulation_namespace": "europa.eu",
@@ -484,7 +582,7 @@ discriminator.
 `text_excerpt` is populated here because GDPR's text is published under CC-BY-4.0
 and may be reproduced with attribution. Where a source's license does not permit
 reproduction, omit `text_excerpt` and describe the requirement in original
-wording. See [conventions § 7](CONVENTIONS-STIX-MODELING.md).
+wording. See [conventions § 8](CONVENTIONS-STIX-MODELING.md).
 
 ### CSA-CC alignment
 
@@ -519,6 +617,11 @@ that implement it.
   "id": "x-control-implementation--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "extensions": {
+    "extension-definition--<UUID-IMPLEMENTATION>": {
+      "extension_type": "new-sdo"
+    }
+  },
   "created_by_ref": "identity--<CSA_ID>",
   "name": "Enforce encryption at rest for object storage",
   "description": "Require that object storage enforces server-side encryption with customer-managed keys, and that unencrypted writes are rejected rather than silently accepted.",
@@ -563,6 +666,11 @@ product detail that changes weekly.
   "id": "x-capability--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "extensions": {
+    "extension-definition--<UUID-CAPABILITY>": {
+      "extension_type": "new-sdo"
+    }
+  },
   "created_by_ref": "identity--<CSA_ID>",
   "name": "Amazon S3 server-side encryption with AWS KMS keys (SSE-KMS)",
   "description": "S3 encrypts objects at rest using a KMS-managed key; bucket policy can reject requests that do not specify SSE-KMS.",
@@ -615,6 +723,11 @@ so both are constitutive properties, following the STIX `sighting` pattern. See
   "id": "x-control-assessment--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "extensions": {
+    "extension-definition--<UUID-ASSESSMENT>": {
+      "extension_type": "new-sdo"
+    }
+  },
   "assessed_control_ref": "x-control--<UUID>",
   "entity_ref": "identity--<UUID>",
   "assessment_status": "implemented",
@@ -650,35 +763,46 @@ so both are constitutive properties, following the STIX `sighting` pattern. See
 Unsettled as of this revision. Contributions that depend on any of these should
 raise an issue rather than assume an answer.
 
-1. **Definitions for the custom relationship types.** `mitigates` is standard, but
+1. **A machine-readable schema per type.** The `schema` property of each
+   extension-definition points at this document. It is the normative definition,
+   but prose is not validatable — a JSON Schema per type, published at a stable
+   raw URL, would let consumers check instance data mechanically. The raw-content
+   URL currently tracks `main`, which is right for a draft and wrong for published
+   content: a released bundle should reference a tagged, immutable URL so the
+   definition cannot shift under objects already ingested.
+2. **Minting the five extension-definition identifiers.** They are placeholders
+   today. Minting them is a one-time act with permanent consequences, since
+   consumers key off them, so it should happen deliberately alongside the first
+   published bundle rather than incidentally.
+3. **Definitions for the custom relationship types.** `mitigates` is standard, but
    `maps-to`, `implements`, `supports`, and `superseded-by` are custom coinages
    needing definition or replacement from `relationship-type-ov`. A mapping edge
    may also need a finer-grained vocabulary than a single `maps-to` — the
    set-theoretic relations in NIST IR 8477 (subset, superset, intersects, equal)
    are a public candidate for expressing *how* two requirements correspond rather
    than merely that they do.
-2. **Whether `supports` needs both targets.** A capability can point at an
+4. **Whether `supports` needs both targets.** A capability can point at an
    implementation approach or directly at a control. Allowing both is convenient
    and permits two paths to the same conclusion; requiring the implementation hop
    is stricter but forces an approach object to exist even when nobody has written
    one.
-3. **How the annual *Top Threats to Cloud Computing* list is referenced.** Whether
+5. **How the annual *Top Threats to Cloud Computing* list is referenced.** Whether
    each threat becomes an `attack-pattern`, a `grouping`, or another object type,
    and how a given report year is identified.
-4. **Vocabularies are not enumerated.** `status`, `ownership`, `applicability`,
+6. **Vocabularies are not enumerated.** `status`, `ownership`, `applicability`,
    `stack_components`, `lifecycle_relevance`, `implementation_type`,
    `capability_type`, `assessment_status`, and `assessment_type` show example
    values but have no defined open or closed vocabulary.
-5. **Cardinality and optionality are unspecified**, beyond the STIX-required
+7. **Cardinality and optionality are unspecified**, beyond the STIX-required
    common properties (`type`, `spec_version`, `id`, `created`, `modified`).
-6. **`score` semantics.** The range, scale, and meaning of
+8. **`score` semantics.** The range, scale, and meaning of
    `x-control-assessment.score` are undefined.
-7. **`Control Type` is absent.** The charter's Control Data Model lists Control
+9. **`Control Type` is absent.** The charter's Control Data Model lists Control
    Type among a control's structured attributes; `x-control` has no equivalent
    property and the intended vocabulary is undefined. Charter terminology
    generally — it calls the field-level model the **Control Data Model (CDM)** — is
    not yet reconciled with the naming used here.
-8. **Whether an SCC control and its source-framework controls are one object or
+10. **Whether an SCC control and its source-framework controls are one object or
    two.** A unified catalog control harmonizing CCM CEK-03 and an AICM equivalent
    could be a distinct `x-control` in the `scc` namespace related by `maps-to`, or
    the CCM object could simply gain SCC properties. The first keeps provenance

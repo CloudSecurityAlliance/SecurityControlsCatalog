@@ -46,7 +46,9 @@ The reasons STIX 2.1 fits the catalog's needs:
 
 **Standards-body grounding.** STIX 2.1 has been an approved OASIS Standard since June 2021. The grammar, type system, and relationship model have years of deployment and refinement behind them. Replicating this from scratch is a multi-year cost for no net benefit.
 
-**First-class extension mechanism.** Custom SDOs (`x-` prefixed types) and custom properties are explicit, supported features of STIX 2.1 — not workarounds. The same design pattern is used by OpenAPI's `x-*` fields and by STIX itself for `custom_properties`. The core schema delivers interoperability; extension objects deliver expressiveness without breaking the contract.
+**First-class extension mechanism.** STIX 2.1 provides an explicit, supported way to declare new object types: an `extension-definition` object declares the extension, and each instance references it through its `extensions` property with `extension_type: "new-sdo"`. This is not a workaround but a designed extension point — the core schema delivers interoperability while extension definitions deliver expressiveness without altering the contract.
+
+The catalog uses that mechanism rather than the STIX 2.0-era practice of inventing an `x-`-prefixed `type` and relying on naming convention, which 2.1 discourages. The difference is practical: because `extension-definition` requires a `schema` property, a consumer encountering an unfamiliar type can retrieve its definition instead of inferring meaning from the name, and two producers that happen to choose the same type name remain distinguishable by the definition identifier their instances reference.
 
 **Native graph model via SROs.** The catalog is fundamentally a graph: controls connect to regulations, to implementations, to assessments, to attack patterns, to vulnerabilities, to threat actors. STIX `relationship` and `sighting` SROs already typed-link any SDO to any other SDO. Expressing "this control mitigates this attack pattern" requires zero new schema work.
 
