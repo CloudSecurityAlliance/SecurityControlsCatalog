@@ -126,21 +126,21 @@ CCM view" is a property filter rather than a separate export.
 The five types are declared through STIX 2.1's **extension-definition** mechanism,
 not as bare custom objects.
 
-STIX 2.0 introduced new object types by simply using an `x-`-prefixed `type` value
-and relying on naming convention. STIX 2.1 replaced that with a first-class
-mechanism: an `extension-definition` SDO declares the extension, and each instance
-of the new type references it. The older custom-object approach is discouraged in
-favor of this one, and the difference is not cosmetic — the OASIS core schema says
-a `type` value must be one of the types *defined by* a STIX Object, and an
-extension-definition is how a new type gets defined.
+STIX 2.0 introduced new object types by using an `x-`-prefixed `type` value and
+relying on naming convention. STIX 2.1 adds an explicit mechanism instead: an
+`extension-definition` SDO declares the extension, and each instance of the new
+type references it. The specification titles its custom-object section "Custom
+Objects (Deprecated)" — producers may still use that approach, but extension
+definitions are the preferred standardized path, and the catalog takes the
+preferred one.
 
 Three practical gains follow, and the third is the reason this matters most:
 
 - **Consumers can discover what the type means.** `extension-definition` requires a
   `schema` property, so a platform encountering `x-control` can retrieve its
   definition instead of guessing from the name.
-- **The catalog validates as STIX 2.1** rather than relying on a deprecated
-  convention while claiming maximum compatibility.
+- **The catalog uses the current mechanism**, rather than a deprecated one, which is
+  hard to reconcile with a stated principle of maximum compatibility.
 - **Type names stop being ambiguous.** Two producers may both emit `x-control`, but
   their instances reference different extension-definition identifiers, so a
   consumer can tell them apart. The namespace lives in the identifier, where it
@@ -148,11 +148,30 @@ Three practical gains follow, and the third is the reason this matters most:
 
 ### One extension-definition per type
 
-Each of the five types has its own `extension-definition` object. They are not
-combined into one, because an instance declares its type by mapping a definition
-identifier to `extension_type: "new-sdo"` — a shared definition could not say
-*which* of five SDOs a given instance is. Separate definitions also let each type
-version independently, and let a consumer adopt a subset of the model.
+Each of the five types has its own `extension-definition` object rather than
+sharing one. Nothing in STIX requires this — an instance carries its own `type`
+property, so a single shared definition would still leave consumers able to tell
+the types apart. The reason is **change isolation**.
+
+Definition identifiers are permanent once published, and this model is explicitly
+research-grade and expected to change. Suppose implementation experience shows
+`x-control-implementation` should be absorbed into `x-capability`:
+
+- With separate definitions, that one definition is retired with a migration note.
+  The other four are untouched, and their consumers are unaffected.
+- With a shared definition, the choice is to bump `version` on a definition
+  covering four types that did not change — misinforming those consumers about what
+  moved — or to mint a replacement and invalidate the references on every object of
+  all five types.
+
+A shared definition couples the stability of unrelated types together. Per-type
+definitions also give targeted discovery, since `name`, `description`, and `schema`
+describe one type rather than an omnibus, and let each type carry its own
+`version`.
+
+The commonly cited benefit of *partial adoption* is weak here and worth
+discounting: the types are interdependent, and `x-capability` is not meaningful
+without `x-control-implementation` and `x-control`.
 
 ```json
 {

@@ -171,9 +171,10 @@ about which wins.
 
 New SDO types are declared using STIX 2.1's `extension-definition` mechanism, never
 as bare `x-`-prefixed custom objects. The bare-custom-object approach is a STIX 2.0
-convention that 2.1 discourages in favour of an explicit declaration, and the OASIS
-core schema expects a `type` value to be one of the types *defined by* a STIX
-Object.
+convention that 2.1 deprecates — its custom-object section is titled "Custom
+Objects (Deprecated)". Producers may still use it; the catalog does not, because
+extension definitions are the preferred standardized path and give consumers a
+retrievable definition rather than a name to guess from.
 
 Each new type gets its own `extension-definition`, and every instance references it:
 
@@ -183,9 +184,14 @@ Each new type gets its own `extension-definition`, and every instance references
 }
 ```
 
-One definition per type, not one shared across several — an instance declares what
-it is by mapping a definition identifier to `new-sdo`, so a shared definition could
-not distinguish between the types it covered.
+**One definition per type, not one shared across several.** Nothing in STIX
+requires this — an instance carries its own `type`, so a shared definition would
+still leave the types distinguishable. The reason is change isolation: definition
+identifiers are permanent once published, so a shared definition couples the
+stability of unrelated types together. Retiring or redefining one type should not
+force a version bump on definitions for types that did not change, nor invalidate
+references on objects of every other type. Per-type definitions also let each carry
+its own `version` and a `schema` describing one type rather than an omnibus.
 
 Two consequences bind anything that publishes catalog content. **The
 extension-definition objects must travel with the instances**, because a consumer

@@ -110,11 +110,10 @@ audience already works in. See the design rationale for the reasoning.
 The repository is the distribution channel — clone it, or consume tagged
 releases.
 
-Catalog objects are **intended** to carry a
-[SecID](https://secid.cloudsecurityalliance.org/) so they can be resolved through
-SecID's public resolver. Note that this is design intent, not yet implemented:
-where the SecID sits on an object is still an open question in the conventions
-document, and no catalog content has been published against it.
+Catalog objects carry a [SecID](https://secid.cloudsecurityalliance.org/) in their
+`external_references`, so they can be resolved through SecID's public resolver.
+This is design intent rather than shipped fact — no catalog content has been
+published yet — but the placement is settled, and the schema examples follow it.
 
 ## Contributing
 
