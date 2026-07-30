@@ -684,10 +684,8 @@ raise an issue rather than assume an answer.
    the CCM object could simply gain SCC properties. The first keeps provenance
    clean; the second halves the object count.
 
-Conventions that bind all objects — SecID placement, data markings, the canonical
-CSA `identity`, `confidence` scales, `external_references` usage, bundle
-composition, and object versioning — are tracked in
-[`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md#open-questions).
+Unsettled conventions that bind all objects rather than a single type are tracked
+in [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md#open-questions).
 
 ---
 

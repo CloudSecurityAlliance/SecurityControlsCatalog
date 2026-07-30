@@ -32,7 +32,7 @@ and governance of control content, so that automation and interoperability are
 possible across CSA frameworks and external standards.
 
 Concretely, the catalog aims to let an organization define a control **once** and
-have it carry its own mappings, implementation guidance, audit guidance, and
+have it linked to its mappings, implementation guidance, audit guidance, and
 threat relevance — so evidence gathered once can answer many frameworks, and
 assessment can move from static and periodic toward continuous.
 

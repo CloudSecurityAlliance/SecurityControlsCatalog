@@ -24,7 +24,7 @@ It is the middle of three documents, and the division is deliberate:
 | **What** properties each object carries | [`SCHEMA-STIX-OBJECT-EXTENSIONS.md`](SCHEMA-STIX-OBJECT-EXTENSIONS.md) |
 
 The rationale answers a question that was settled once. The schema answers a
-question about four specific types. This document answers the question that
+question about five specific types. This document answers the question that
 recurs every time someone models something new — and that otherwise gets
 re-litigated in each pull request.
 
@@ -97,10 +97,12 @@ typo to every downstream consumer.
 The STIX `id` property is `<type>--<UUIDv4>`, as the specification requires. No
 alternative identifier scheme goes in `id`.
 
-Catalog objects also carry a [SecID](https://secid.cloudsecurityalliance.org/)
-so they resolve through SecID's public resolver. A `secid:` URI in `id` would be
-invalid STIX and would break the maximum-compatibility principle, so it is carried
-elsewhere on the object — see [Open questions](#open-questions) for where.
+Catalog objects also carry a [SecID](https://secid.cloudsecurityalliance.org/) so
+they resolve through SecID's public resolver. A `secid:` URI in `id` would be
+invalid STIX and would break the maximum-compatibility principle, so **the SecID
+goes in `external_references` with `source_name: "secid"` and the SecID string as
+`external_id`.** That is the standard STIX place for an identifier assigned by
+another system, so it needs no custom property — convention 4 stops at step 1.
 
 **Object types follow SecID's type vocabulary** where a SecID type exists for the
 concept, so the same distinctions hold in both systems — SecID classifies by what
@@ -236,10 +238,9 @@ Referencing a clause by identifier is always available and is the default. See
 Unsettled conventions. Raise an issue rather than deciding any of these in
 instance data.
 
-1. **SecID placement.** A SecID cannot live in `id`, but where it does live is
-   undecided — `external_references` with a defined `source_name`, or a dedicated
-   custom property. Also unsettled: relationship SROs are catalog content too, so
-   whether a mapping claim itself warrants a SecID is open.
+1. **Whether relationship SROs carry their own SecID.** A mapping claim is catalog
+   content too, so it may warrant an identifier of its own. Object placement is
+   settled (see convention 3); this is only about the SROs.
 2. **Data markings.** No convention exists for `object_marking_refs` or for a
    catalog `marking-definition` object. This matters because `LICENSE.txt`
    restricts what consumers may do with the published catalog, and a bundle
