@@ -12,5 +12,9 @@ labels: question
 
 **Context**
 
-<!-- What you're trying to do, what you've already checked
-     (README, DESIGN-RATIONALE-STIX-EXTENSIONS.md). -->
+<!-- What you're trying to do, and what you've already checked. The design is
+     split across three documents: DESIGN-RATIONALE-STIX-EXTENSIONS.md (why
+     STIX), CONVENTIONS-STIX-MODELING.md (how we use it), and
+     SCHEMA-STIX-OBJECT-EXTENSIONS.md (what each object carries). The last two
+     each end with an Open questions section — your question may already be
+     recorded there as undecided. -->
