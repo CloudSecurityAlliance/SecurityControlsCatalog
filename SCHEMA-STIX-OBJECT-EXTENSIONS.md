@@ -39,49 +39,16 @@ prefix is retained for readability, though the mechanism no longer requires it.
 
 ## Design principles
 
-**Minimal invention**
+The principles this schema answers to — minimal invention, alignment over
+replacement, maximum compatibility with existing tools, graph-first, forward
+compatibility, SecID co-evolution, and exploratory / research status — are defined
+once in
+[`DESIGN-RATIONALE-STIX-EXTENSIONS.md` § Design principles](DESIGN-RATIONALE-STIX-EXTENSIONS.md#design-principles).
 
-- New `x-*` SDO types and properties are introduced only where CSA-CC concepts
-  cannot be expressed reasonably with existing STIX 2.1 objects, relationships,
-  or vocabularies.
-- Where standard STIX fields or patterns are sufficient, they are preferred over
-  bespoke structures, even at the cost of some CSA-specific convenience.
-
-**Maximum compatibility with existing tools**
-
-- All objects are valid STIX 2.1 JSON and are intended to flow unchanged through
-  existing STIX/TAXII servers, CTI platforms, graph databases, and analysis
-  pipelines.
-- The model avoids any changes to the STIX wire format, versioning model, or
-  transport, and relies on standard STIX mechanisms — the extension-definition
-  mechanism for declaring new SDOs, plus relationships, identities, and markings.
-
-**Exploratory / research status**
-
-- The object types and fields in this document should be treated as provisional
-  and subject to change based on implementation feedback and alignment with
-  CSA-CC evolution.
-- The goal is to learn which patterns work well in practice for representing
-  controls, implementations, mappings, and assessments — not to define a final,
-  normative control-modeling standard.
-
-**Alignment over replacement**
-
-- This work is not intended to replace existing control modeling efforts (e.g.
-  OSCAL) or to define a universal GRC schema. Instead, it focuses narrowly on
-  making CSA-CC data interoperable with STIX-based threat, risk, and asset
-  models.
-- Wherever practical, fields and object boundaries are chosen to mirror CSA-CC's
-  own structure and to align conceptually with OSCAL and common
-  regulatory/control frameworks.
-
-**Graph-first, not platform-specific**
-
-- The design optimizes for expressing CSA-CC as a graph of controls, regulations,
-  implementations, capabilities, and assessments that can be joined with existing
-  STIX content (threats, vulnerabilities, identities, assets).
-- No assumptions are made about specific storage engines, query languages, or UI
-  conventions beyond what typical STIX-aware platforms already provide.
+They are not restated here. Two of them bear directly on reading this document:
+fields and object boundaries mirror the catalog's own structure and align
+conceptually with OSCAL rather than competing with it, and every type and property
+below is provisional.
 
 ## The object model at a glance
 

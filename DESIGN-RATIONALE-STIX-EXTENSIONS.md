@@ -20,7 +20,21 @@ This document outlines the technical rationale behind the format and distributio
 
 The arguments here are technical. Specific deliverables, sequencing, and governance are out of scope.
 
-The catalog's data model is exploratory and research-grade. Schemas described in this document are provisional and may evolve as implementation experience accumulates. Two principles recur throughout the reasoning that follows: **Minimal invention** — introduce custom types and properties only where standard STIX 2.1 cannot reasonably express the concept — and **Alignment over replacement** — interoperate with adjacent ecosystems rather than compete with them.
+The catalog's data model is exploratory and research-grade. Schemas described in this document are provisional and may evolve as implementation experience accumulates.
+
+### Design principles
+
+These are the principles the catalog's design answers to, and that contributions must respect — violating one is a category error rather than a style nit. **This section is the single home for them**; the other design documents and the repository's context files point here rather than restating them.
+
+- **Minimal invention.** Introduce new object types or properties only where CSA-CC concepts cannot reasonably be expressed with existing STIX 2.1 objects, vocabularies, or relationships. Standard STIX is preferred over bespoke structures, even at the cost of some CSA-specific convenience.
+- **Alignment over replacement.** This work does not replace existing control-modeling efforts — OSCAL in particular — and is not a universal GRC schema. It is an interoperability layer. Do not propose designs that compete with OSCAL; propose ones that interoperate with it.
+- **Maximum compatibility with existing tools.** Catalog objects are valid STIX 2.1 and are intended to flow unchanged through existing STIX/TAXII servers, CTI platforms, graph databases, and analysis pipelines. Nothing changes the STIX wire format, versioning model, or transport. If a design would require a consumer to special-case the catalog before it can parse or route the data, the design is wrong.
+- **Graph-first, not platform-specific.** The model optimizes for expressing the catalog as a graph that can be joined with existing STIX content — threats, vulnerabilities, identities, assets. It assumes nothing about storage engines, query languages, or UI conventions beyond what STIX-aware platforms already provide.
+- **Forward compatibility.** When future STIX versions add SDOs or SCOs, catalog objects relate to them through the same standard `relationship` SRO with no catalog schema changes. The extension layer is forward-compatible by design.
+- **Compatibility with SecID, as co-evolving peers.** [SecID](https://secid.cloudsecurityalliance.org/) and this catalog work the same problem space — controls, regulations, mappings, and the identifiers that make them referenceable — and neither is subordinate to the other. The catalog shares SecID's type vocabulary and provenance structure, and uses its dataset metadata for source licensing, because answering the same questions twice in incompatible ways helps nobody. Compatibility is the goal rather than conformance: each project covers ground the other does not, and alignment may move in either direction. SecID's registry is the current source for its own vocabulary.
+- **Exploratory / research status.** The object types and fields are provisional and expected to change as implementation experience accumulates. The goal is to learn which patterns work in practice, not to publish a normative control-modeling standard. Implementers who can meet their needs with standard STIX constructs alone are encouraged to do so and to treat the custom types as optional research-grade extensions.
+
+The *modeling rules* that follow from these principles — how relationships are expressed, how new types are declared, how identifiers work — are conventions rather than principles, and live in [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md).
 
 ## 2. The format choice: STIX 2.1 with custom SDOs
 
@@ -85,7 +99,7 @@ A custom format would offer total flexibility — and discard every advantage th
 - No existing community, training material, or LLM training data, making both human and AI-agent consumption harder.
 - No interoperability with adjacent ecosystems (CTI, GRC, ATT&CK, ATLAS, OSCAL).
 
-The *Minimal invention* principle rules this out. Custom types and properties should be introduced only where existing STIX 2.1 constructs cannot reasonably express the concept. Where standard STIX SDOs, SROs, vocabularies, or extension mechanisms suffice, they are preferred — even at the cost of some catalog-specific convenience.
+The *Minimal invention* principle (§1) rules this out: where standard STIX SDOs, SROs, vocabularies, or extension mechanisms suffice, they are preferred.
 
 Other formats that have been considered and not adopted as the back-end representation:
 

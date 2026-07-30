@@ -54,7 +54,8 @@ the catalog is intended to be an upgrade path, not a cutover.
 
 The Security Controls Catalog expresses security controls — and their relationships to regulations,
 implementations, capabilities, assessments, threats, and attack patterns — as a
-graph, using **STIX 2.1** with a small set of custom STIX Domain Objects:
+graph, using **STIX 2.1** with a small set of custom STIX Domain Objects, declared
+through STIX's standard `extension-definition` mechanism:
 
 | Object | Role |
 |---|---|
