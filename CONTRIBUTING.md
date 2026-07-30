@@ -171,6 +171,13 @@ clean and lawful:
   ISO/IEC standard text in particular must not be reproduced.
 - **Declare your sources.** In the pull request, list the sources behind any
   mapping or claim so reviewers can verify provenance.
+- **Identify sources by SecID where one exists.** Catalog content references
+  external frameworks, regulations, and product capabilities through
+  [SecID](https://secid.cloudsecurityalliance.org/) —
+  `secid:control/iso.org/27001@2022#A.8.24` names a clause precisely without
+  reproducing a word of it, which is what makes "reference, don't reproduce"
+  workable in practice. SecID's resolver will tell you whether an identifier
+  already exists for the source you are citing.
 - **Original or authorized.** Confirm your contribution is your own wording,
   or that you have the right to submit any third-party material and have
   identified it as such. (This is part of what you affirm in the CLA.)

@@ -109,6 +109,20 @@ modeled as objects: `reference` and `methodology` are cited through
 `external_references`, since a citation is what that property is for. Recording
 the methodology a mapping was derived under belongs on the mapping relationship.
 
+**SecID's registry is the current source for its own vocabulary.** Type tables in
+this repository map catalog objects onto SecID types; they are not a maintained
+copy of SecID's type list. Where the two disagree about what SecID contains, check
+the resolver or its MCP server rather than trusting a table here.
+
+**The two projects co-evolve, so divergence is not automatically a defect.** SecID
+and this catalog work the same problem space from different angles, and neither is
+subordinate to the other. `x-control-implementation` and `x-control-assessment`
+have no SecID counterpart at present, while SecID covers ground the catalog does
+not — those are places to learn from each other, and alignment may end up moving in
+either direction. Where closer alignment is worth having, it is a deliberate change
+carrying a migration path for anyone consuming published content, never an
+automatic or pre-emptive rename.
+
 **Third-party provenance is decomposed, not stored as one string.** An object
 representing another publisher's content carries the components of its SecID as
 separate queryable properties — namespace, name, version, and local identifier —

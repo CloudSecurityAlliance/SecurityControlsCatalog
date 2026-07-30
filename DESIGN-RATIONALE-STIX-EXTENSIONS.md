@@ -34,6 +34,12 @@ The proposed back-end representation for catalog content is **STIX 2.1**, with f
 
 Field-level definitions are in [`SCHEMA-STIX-OBJECT-EXTENSIONS.md`](SCHEMA-STIX-OBJECT-EXTENSIONS.md); the modeling rules that bind all of them are in [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md).
 
+**Why share SecID's type vocabulary.** [SecID](https://secid.cloudsecurityalliance.org/) is CSA's identifier layer for security knowledge. It and this catalog are co-evolving efforts working the same problem space — controls, regulations, mappings, and the identifiers that make them referenceable — and neither is subordinate to the other. Answering the same taxonomy question twice, in incompatible ways, would help nobody, so the catalog adopts SecID's distinctions: it classifies by what an artifact *is* rather than who published it, which is why another framework's controls are controls and only legally binding requirements are regulations.
+
+Three practical benefits follow. Identity is resolvable — a catalog object cites `secid:control/iso.org/27001@2022#A.8.24` and any SecID-aware consumer can dereference it. Provenance is queryable, because a SecID's components decompose into properties that answer questions like "show me every CCM 4.1 control". And source licensing becomes a lookup rather than a per-contribution judgment, since the SecID datasets record redistribution and derivative permissions per source.
+
+Compatibility is the goal rather than conformance. Each project covers ground the other does not — the catalog models implementations and assessments that SecID has no type for — and the expectation is that the two stay legible to each other and learn from each other as both evolve, not that either follows the other.
+
 These objects connect to each other and to the broader STIX object graph through standard STIX `relationship` SROs. They use standard STIX properties (`id`, `created`, `modified`, `created_by_ref`, `labels`, `external_references`, and others) and require no changes to the STIX wire format, versioning model, or transport.
 
 The reasons STIX 2.1 fits the catalog's needs:
@@ -106,7 +112,7 @@ Additional formats worth consideration in subsequent releases include CAIQ outpu
 
 **GitHub repository** at `https://github.com/CloudSecurityAlliance/SecurityControlsCatalog` is the primary distribution channel. All published formats — STIX bundles, OSCAL component definitions and catalogs, JSON, YAML, Excel workbooks, and CSV exports — are versioned in git, available via clone, GitHub raw URL, or GitHub Releases for tagged cuts. The repository is the distribution channel; no additional infrastructure is required to consume the catalog. **Use of the published catalog in any of these formats is governed by the repository's [`LICENSE.txt`](LICENSE.txt).**
 
-**SecID MCP server** at `https://secid.cloudsecurityalliance.org/mcp` is the live AI-agent channel. Catalog objects registered as SecIDs (for example, `secid:control/cloudsecurityalliance.org/scc/...`) resolve through SecID's existing MCP infrastructure. Any AI session connected to the SecID MCP server can resolve, look up, and describe catalog content directly without bespoke integration.
+**SecID MCP server** at `https://secid.cloudsecurityalliance.org/mcp` is the live AI-agent channel. Catalog objects registered as SecIDs (for example, `secid:control/cloudsecurityalliance.org/ccm@4.1#CEK-03`) resolve through SecID's existing MCP infrastructure. Any AI session connected to the SecID MCP server can resolve, look up, and describe catalog content directly without bespoke integration.
 
 **CSA MCP server** at `https://cloudsecurityalliance.org/mcp` is planned as a complementary AI-agent channel for direct catalog queries. Until it ships, the SecID MCP server is the AI-agent path.
 

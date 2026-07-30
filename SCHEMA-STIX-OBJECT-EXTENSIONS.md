@@ -102,8 +102,9 @@ architecture, and a capability changes whenever a vendor ships.
 
 ### Type alignment with SecID
 
-Object types deliberately mirror the [SecID](https://secid.cloudsecurityalliance.org/)
-type vocabulary, so the same conceptual distinctions hold across both systems:
+The catalog and [SecID](https://secid.cloudsecurityalliance.org/) are co-evolving
+projects in the same problem space, so object types share SecID's type vocabulary
+and the same conceptual distinctions hold across both:
 
 | STIX type | SecID type | Notes |
 |---|---|---|
@@ -113,8 +114,13 @@ type vocabulary, so the same conceptual distinctions hold across both systems:
 | `x-control-implementation` | — | No SecID counterpart at present |
 | `x-control-assessment` | — | No SecID counterpart at present |
 
+The two rows without a counterpart are ground the catalog covers and SecID does
+not; SecID likewise covers ground the catalog does not. Neither is a deficit, and
+alignment may move in either direction as both projects evolve — see
+[conventions § 3](CONVENTIONS-STIX-MODELING.md).
+
 SecID classifies by what an artifact *is*, not by who published it, and the
-catalog follows that. One consequence worth stating plainly: **another
+catalog adopts that distinction. One consequence worth stating plainly: **another
 framework's controls are `x-control` objects, not regulations.** ISO 27001 A.8.24
 is a control; GDPR Article 32 is a regulation. SecID's registry puts it as
 "regulations are what you must comply with, controls are how you comply."
