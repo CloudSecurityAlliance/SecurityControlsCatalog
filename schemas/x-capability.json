@@ -10,7 +10,7 @@
     "spec_version": { "const": "2.1" },
     "id": {
       "type": "string",
-      "pattern": "^x-capability--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+      "pattern": "^x-capability--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
     "extensions": { "$ref": "#/$defs/newSdoExtension" },
 
@@ -30,6 +30,14 @@
     "config_snippet": {
       "type": "string",
       "description": "How the capability is enabled. Keep thin and prefer pointing at the vendor's own documentation via external_references, since product detail changes on the vendor's release cadence."
+    },
+    "audit_guidance": {
+      "type": "string",
+      "description": "How to verify the capability is in effect — what a reviewer or pipeline checks."
+    },
+    "remediation_guidance": {
+      "type": "string",
+      "description": "How to bring the capability into effect where it is absent or misconfigured."
     }
   },
   "$defs": {
@@ -38,7 +46,7 @@
       "description": "Declares the object as a new SDO defined by a CSA extension-definition. The definition object must travel with the instance in any published bundle.",
       "minProperties": 1,
       "patternProperties": {
-        "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
+        "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
           "type": "object",
           "required": ["extension_type"],
           "properties": { "extension_type": { "const": "new-sdo" } }

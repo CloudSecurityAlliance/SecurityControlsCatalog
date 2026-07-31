@@ -28,7 +28,8 @@ python3 tools/validate.py path/to/bundle.json
 Full STIX 2.1 conformance plus these schemas, using the OASIS validator:
 
 ```sh
-pip install stix2-validator
+git clone --recursive https://github.com/oasis-open/cti-stix-validator.git
+pip install -e cti-stix-validator
 stix2_validator --schemas ./schemas/ --enforce-refs path/to/bundle.json
 ```
 
@@ -51,7 +52,8 @@ is that typos pass. Worth tightening once the model stabilises.
 
 **Vocabularies are mostly unconstrained.** `status` is an enum because its values are
 settled. `ownership`, `applicability`, `stack_components`, `implementation_type`,
-`capability_type`, `assessment_status`, and `assessment_type` are open string arrays
+and `capability_type` are open string arrays, while `assessment_status` and
+`assessment_type` are open strings,
 pending a vocabulary decision.
 
 **One boundary is enforced structurally.** `x-control-implementation` rejects

@@ -440,9 +440,12 @@ checked against the published matrix rather than taken on trust:
 }
 ```
 
-A third-party control whose license does not permit reproducing its text. The
-clause is identified precisely, and `description` is CSA's own wording;
-`specification` is **omitted** rather than filled with the publisher's text:
+A third-party control whose licence does not permit reproducing its text. The
+object is a **pure citation**: the standard number and the clause identifier, and no
+prose at all — no title, no excerpt, no paraphrase. `name` holds a citation the
+catalog constructs from the provenance fields, so the object renders legibly in
+generic STIX tools without carrying any of the publisher's text. This is the same
+minimum CCM and AICM use when citing these sources:
 
 ```json
 {
@@ -457,13 +460,12 @@ clause is identified precisely, and `description` is CSA's own wording;
     }
   },
   "created_by_ref": "identity--<CSA_ID>",
-  "name": "Use of cryptography",
+  "name": "ISO/IEC 27001:2022 A.8.24",
   "framework_namespace": "iso.org",
   "framework": "27001",
   "framework_version": "2022",
   "control_identifier": "A.8.24",
   "status": "live",
-  "description": "Requires rules for the effective use of cryptography, including key management, to be defined and implemented.",
   "external_references": [
     {
       "source_name": "secid",
@@ -473,10 +475,12 @@ clause is identified precisely, and `description` is CSA's own wording;
 }
 ```
 
-> **`specification` holds reproduced text and is therefore license-constrained.**
+> **`specification` holds reproduced text and is therefore licence-constrained.**
 > Populate it for CSA's own controls, and for third-party controls only where the
-> source permits reproduction. Otherwise omit it and use `description` for
-> original wording. See [conventions § 8](CONVENTIONS-STIX-MODELING.md).
+> source permits reproduction. Where it does not, the object carries citation
+> metadata only — the schema enforces this for `iso.org` and `iec.ch` by rejecting
+> `specification`, `description`, `implementation_guidance`, and `audit_guidance`
+> on those objects. See [conventions § 8](CONVENTIONS-STIX-MODELING.md).
 
 ### `status`, `revoked`, and supersession
 
