@@ -59,7 +59,7 @@ through STIX's standard `extension-definition` mechanism:
 
 | Object | Role |
 |---|---|
-| `x-control` | A security control, from any publisher — CSA's own, CCM, AICM, ISO 27001, NIST 800-53, PCI DSS |
+| `x-control` | A security control, from any publisher — CSA's own, CCM, AICM, ISO 27001, NIST 800-53, PCI DSS. CAIQ questions are controls too, in a `*-caiq` framework |
 | `x-regulation` | A clause of binding law (GDPR, the EU AI Act, HIPAA) |
 | `x-control-implementation` | A technology-agnostic way of fulfilling a control |
 | `x-capability` | A specific product or service feature that provides an implementation |

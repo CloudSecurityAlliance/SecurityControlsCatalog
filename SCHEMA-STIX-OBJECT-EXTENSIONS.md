@@ -341,11 +341,17 @@ which edges exist.
 
 ### Canonical edges
 
-**One relationship type is defined: `csa-gap-mapping`.**
+**Two relationship types are defined.**
 
 | Assertion | `relationship_type` | Source | Target |
 |---|---|---|---|
 | How much of the source's requirement the target covers | `csa-gap-mapping` | `x-control` or `x-regulation` | `x-control` or `x-regulation` |
+| A CAIQ question is derived from the control it assesses | `derived-from` | `x-control` (a CAIQ question) | `x-control` |
+
+`derived-from` comes from the STIX `relationship-type-ov` vocabulary, so it needs no
+coinage and no extension declaration — it adds no custom properties. Its schema exists
+only to catch mistargeted references in catalog data and makes no claim about how
+`derived-from` may be used elsewhere.
 
 Read left to right, as CIS does: `source_ref` is what is mapped **from**. A→B and
 B→A are two separate objects, each with its own verdict, because coverage is not
@@ -529,6 +535,60 @@ minimum CCM and AICM use when citing these sources:
 > metadata only — the schema enforces this for `iso.org` and `iec.ch` by rejecting
 > `specification`, `description`, `implementation_guidance`, and `audit_guidance`
 > on those objects. See [conventions § 9](CONVENTIONS-STIX-MODELING.md).
+
+### CAIQ questions are controls
+
+A CAIQ question is an `x-control` in a questionnaire framework — `aicm-caiq` or
+`ccm-caiq` — not a separate object type. This follows SecID, which already registers
+them that way (`secid:control/cloudsecurityalliance.org/aicm-caiq@1.0.3#A&A-01.1`), and
+it needs no new type.
+
+Two things make it work rather than merely convenient. `framework` separates them, so
+"every AICM control" and "every AICM CAIQ question" are both property filters over one
+type. And because a question *is* an `x-control`, `x-control-assessment` can assess one
+with no schema change — which is what makes a STAR entry representable, since a STAR
+submission answers questions rather than controls.
+
+Each question is linked to the control it assesses by a `derived-from` relationship.
+
+```json
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--<UUID>",
+  "created": "2026-01-15T00:00:00.000Z",
+  "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "AICM-CAIQ 1.0.3 A&A-01.1",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm-caiq",
+  "framework_version": "1.0.3",
+  "control_identifier": "A&A-01.1",
+  "status": "live",
+  "specification": "Are audit and assurance policies, procedures, and standards established, documented, approved, communicated, applied, evaluated, and maintained?",
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm-caiq@1.0.3#A&A-01.1"
+    }
+  ]
+}
+```
+
+**`name` when the publisher gives no title.** A CAIQ question has an identifier and a
+question, but no title. `specification` carries the question text — it is the
+substantive requirement, and it is CSA's own words — while `name` carries a citation
+the catalog constructs from the provenance fields. That is the same fallback used for
+citation-only sources: **use the publisher's title where one exists, and construct a
+citation where none does.**
 
 ### `status`, `revoked`, and supersession
 
