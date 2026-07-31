@@ -202,6 +202,22 @@ change rather than an edit.
 Standard STIX objects the catalog uses — `relationship`, `identity`,
 `marking-definition` — are not extended and carry no `extensions` property.
 
+The five definitions are minted and committed under
+[`objects/extension-definition/`](objects/extension-definition/). Instance data
+references those real identifiers; do not mint new ones.
+
+### The publisher identity is fixed too
+
+`created_by_ref` on CSA-authored objects points at the single committed CSA
+`identity` in [`objects/identity/`](objects/identity/). Its identifier is permanent
+for the same reason the definition identifiers are — consumers key off it — so it is
+referenced, never re-created.
+
+Its `name` is the full organisation name, `Cloud Security Alliance`. STIX `identity`
+has no short-code property, so abbreviations have nowhere to live in the object;
+where a short identifier is genuinely useful, such as CSA's CVE Numbering Authority
+short name `CSAI`, it belongs in `external_references` alongside the SecID.
+
 ## 6. No changes to the wire format
 
 Catalog objects are ordinary STIX 2.1 JSON. Nothing in this catalog changes the
@@ -309,21 +325,17 @@ instance data.
    statement markings are the standard mechanism for conveying terms alongside
    data. Whether the catalog defines a CSA marking and applies it to every
    published object is a decision for the working group.
-3. **A canonical CSA `identity` object.** `created_by_ref` points at
-   `identity--<CSA_ID>` in the schema examples, but no canonical CSA identity
-   object is defined, so its UUID, `identity_class`, and `sectors` are unfixed.
-   Every object in the catalog will reference it.
-4. **`confidence` semantics.** STIX defines `confidence` as 0–100 and its
+3. **`confidence` semantics.** STIX defines `confidence` as 0–100 and its
    appendix maps that range onto named scales. Catalog mapping SROs use
    `confidence`, but no scale has been adopted, so a value of 85 currently has no
    defined meaning. Note this is distinct from `x-control-assessment.score`,
    whose range and meaning are also undefined.
-5. **`external_references` usage.** No convention for which `source_name` values
+4. **`external_references` usage.** No convention for which `source_name` values
    are expected, or how framework citations, SecIDs, and documentation URLs are
    distinguished within the array.
-6. **Bundle composition.** Whether the catalog publishes one bundle, a bundle per
+5. **Bundle composition.** Whether the catalog publishes one bundle, a bundle per
    domain, or a bundle per object type; whether relationship SROs travel with
    their source objects; and how a tagged release maps onto bundle files.
-7. **Object versioning in practice.** When a change bumps `modified` on an
+6. **Object versioning in practice.** When a change bumps `modified` on an
    existing object versus creating a new object, and how consumers are expected
    to detect and reconcile catalog updates.

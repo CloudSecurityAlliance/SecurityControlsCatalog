@@ -5,6 +5,7 @@ on:
     paths:
       - "schemas/**"
       - "tools/**"
+      - "objects/**"
       - "**.json"
       - ".github/workflows/validate.yml"
   push:
@@ -54,11 +55,31 @@ jobs:
           sys.exit(subprocess.call([sys.executable, "tools/validate.py", path]))
           PY
 
+      - name: Extension-definition ids match the schema document
+        # The minted identifiers are permanent. If the committed objects and the
+        # documented examples ever disagree, instance data would reference an id no
+        # consumer has a definition for.
+        run: |
+          python3 - <<'PY'
+          import glob, json, sys
+          doc = open("SCHEMA-STIX-OBJECT-EXTENSIONS.md").read()
+          bad = []
+          for path in sorted(glob.glob("objects/extension-definition/*.json")):
+              obj = json.load(open(path))
+              if obj["id"] not in doc:
+                  bad.append(f"{path}: {obj['id']} not referenced in the schema document")
+          ident = json.load(open("objects/identity/cloud-security-alliance.json"))
+          if ident["id"] not in doc:
+              bad.append(f"identity {ident['id']} not referenced in the schema document")
+          print("\n".join(bad) if bad else "all minted ids appear in the schema document")
+          sys.exit(1 if bad else 0)
+          PY
+
       - name: Validate any committed catalog objects
         run: |
-          files=$(find catalog bundles -type f -name '*.json' 2>/dev/null | sort)
+          files=$(find objects catalog bundles -type f -name '*.json' 2>/dev/null | sort)
           if [ -z "$files" ]; then
-            echo "no committed catalog objects yet — skipping"
+            echo "no committed objects yet — skipping"
             exit 0
           fi
           echo "$files" | xargs python3 tools/validate.py
@@ -99,10 +120,14 @@ jobs:
 
       - name: Validate committed catalog objects for STIX conformance
         run: |
-          files=$(find catalog bundles -type f -name '*.json' 2>/dev/null | sort)
+          files=$(find objects catalog bundles -type f -name '*.json' 2>/dev/null | sort)
           if [ -z "$files" ]; then
-            echo "no committed catalog objects yet — skipping"
+            echo "no committed objects yet — skipping"
             exit 0
           fi
+          # 302 warns that an external reference has a URL but no hash. Catalog
+          # references are web pages and registry identifiers, not files, so a hash is
+          # meaningless there and the check would fire on every object without ever
+          # being actionable. No other check is disabled.
           echo "$files" | xargs python3 -m stix2validator.scripts.stix2_validator \
-            --schemas ./schemas/ --enforce-refs
+            --schemas ./schemas/ --enforce-refs --disable 302

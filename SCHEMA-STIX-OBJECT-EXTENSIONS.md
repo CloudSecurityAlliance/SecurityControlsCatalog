@@ -174,10 +174,10 @@ without `x-control-implementation` and `x-control`.
 {
   "type": "extension-definition",
   "spec_version": "2.1",
-  "id": "extension-definition--<UUID-CONTROL>",
+  "id": "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
-  "created_by_ref": "identity--<CSA_ID>",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "name": "CSA Security Controls Catalog — x-control",
   "description": "A security control from any publisher, with its specification, guidance, lifecycle state, and source provenance.",
   "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/x-control.json",
@@ -190,16 +190,20 @@ Every instance of an extended type then carries:
 
 ```json
 "extensions": {
-  "extension-definition--<UUID-CONTROL>": {
+  "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
     "extension_type": "new-sdo"
   }
 }
 ```
 
-The `<UUID-…>` placeholders throughout this document stand for identifiers that
-have not been minted yet. **Once minted and published they are permanent** — a
+**The five definition identifiers are minted and are now permanent.** They live as
+committed objects in [`objects/extension-definition/`](objects/extension-definition/),
+and instance data must reference the real values shown in the examples below — a
 consumer that has ingested catalog content keys off them, so changing one is a
-breaking change, not an edit.
+breaking change rather than an edit.
+
+Remaining `<UUID>` placeholders stand for per-object identifiers, which are minted
+when an object is created and then fixed by being committed to a file.
 
 `schema` points at the machine-readable JSON Schema for the type, in
 [`schemas/`](schemas/). Those schemas validate what is settled and stay silent about
@@ -363,7 +367,7 @@ A mapping SRO, showing what an embedded identifier array could not express:
   "target_ref": "x-regulation--<UUID>",
   "description": "The control requires encryption of sensitive data at rest and in transit; the target clause requires encryption of personal data. Partial overlap — the control's scope is broader than personal data.",
   "confidence": 85,
-  "created_by_ref": "identity--<CSA_ID>",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "external_references": [
     {
       "source_name": "secid",
@@ -411,11 +415,11 @@ checked against the published matrix rather than taken on trust:
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
   "extensions": {
-    "extension-definition--<UUID-CONTROL>": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
       "extension_type": "new-sdo"
     }
   },
-  "created_by_ref": "identity--<CSA_ID>",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "name": "Data Protection",
   "framework_namespace": "cloudsecurityalliance.org",
   "framework": "ccm",
@@ -455,11 +459,11 @@ minimum CCM and AICM use when citing these sources:
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
   "extensions": {
-    "extension-definition--<UUID-CONTROL>": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
       "extension_type": "new-sdo"
     }
   },
-  "created_by_ref": "identity--<CSA_ID>",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "name": "ISO/IEC 27001:2022 A.8.24",
   "framework_namespace": "iso.org",
   "framework": "27001",
@@ -551,11 +555,11 @@ discriminator.
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
   "extensions": {
-    "extension-definition--<UUID-REGULATION>": {
+    "extension-definition--a72496a3-08f8-43fb-88c9-479bb94e5e02": {
       "extension_type": "new-sdo"
     }
   },
-  "created_by_ref": "identity--<CSA_ID>",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "name": "Security of processing — pseudonymisation and encryption",
   "regulation_namespace": "europa.eu",
   "regulation": "gdpr",
@@ -618,11 +622,11 @@ that implement it.
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
   "extensions": {
-    "extension-definition--<UUID-IMPLEMENTATION>": {
+    "extension-definition--1690104a-d3f2-4716-a334-252356f338dc": {
       "extension_type": "new-sdo"
     }
   },
-  "created_by_ref": "identity--<CSA_ID>",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "name": "Enforce encryption at rest for object storage",
   "description": "Require that object storage enforces server-side encryption with customer-managed keys, and that unencrypted writes are rejected rather than silently accepted.",
   "implementation_type": ["configuration", "policy-enforcement"],
@@ -667,11 +671,11 @@ product detail that changes weekly.
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
   "extensions": {
-    "extension-definition--<UUID-CAPABILITY>": {
+    "extension-definition--43f8f73f-45e2-4d06-bdc0-46bdd5cb3e81": {
       "extension_type": "new-sdo"
     }
   },
-  "created_by_ref": "identity--<CSA_ID>",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "name": "Amazon S3 server-side encryption with AWS KMS keys (SSE-KMS)",
   "description": "S3 encrypts objects at rest using a KMS-managed key; bucket policy can reject requests that do not specify SSE-KMS.",
   "vendor_namespace": "amazon.com",
@@ -724,7 +728,7 @@ so both are constitutive properties, following the STIX `sighting` pattern. See
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
   "extensions": {
-    "extension-definition--<UUID-ASSESSMENT>": {
+    "extension-definition--c2b74dc8-5ea7-4d9c-ade0-85474e5f70b4": {
       "extension_type": "new-sdo"
     }
   },
@@ -769,39 +773,35 @@ raise an issue rather than assume an answer.
    reference a tagged URL. Two further tightenings wait on the model settling:
    `additionalProperties` is unrestricted, so typos pass, and most vocabularies are
    open string arrays.
-2. **Minting the five extension-definition identifiers.** They are placeholders
-   today. Minting them is a one-time act with permanent consequences, since
-   consumers key off them, so it should happen deliberately alongside the first
-   published bundle rather than incidentally.
-3. **Definitions for the custom relationship types.** `mitigates` is standard, but
+2. **Definitions for the custom relationship types.** `mitigates` is standard, but
    `maps-to`, `implements`, `supports`, and `superseded-by` are custom coinages
    needing definition or replacement from `relationship-type-ov`. A mapping edge
    may also need a finer-grained vocabulary than a single `maps-to` — the
    set-theoretic relations in NIST IR 8477 (subset, superset, intersects, equal)
    are a public candidate for expressing *how* two requirements correspond rather
    than merely that they do.
-4. **Whether `supports` needs both targets.** A capability can point at an
+3. **Whether `supports` needs both targets.** A capability can point at an
    implementation approach or directly at a control. Allowing both is convenient
    and permits two paths to the same conclusion; requiring the implementation hop
    is stricter but forces an approach object to exist even when nobody has written
    one.
-5. **How the annual *Top Threats to Cloud Computing* list is referenced.** Whether
+4. **How the annual *Top Threats to Cloud Computing* list is referenced.** Whether
    each threat becomes an `attack-pattern`, a `grouping`, or another object type,
    and how a given report year is identified.
-6. **Vocabularies are not enumerated.** `status`, `ownership`, `applicability`,
+5. **Vocabularies are not enumerated.** `status`, `ownership`, `applicability`,
    `stack_components`, `lifecycle_relevance`, `implementation_type`,
    `capability_type`, `assessment_status`, and `assessment_type` show example
    values but have no defined open or closed vocabulary.
-7. **Cardinality and optionality are unspecified**, beyond the STIX-required
+6. **Cardinality and optionality are unspecified**, beyond the STIX-required
    common properties (`type`, `spec_version`, `id`, `created`, `modified`).
-8. **`score` semantics.** The range, scale, and meaning of
+7. **`score` semantics.** The range, scale, and meaning of
    `x-control-assessment.score` are undefined.
-9. **`Control Type` is absent.** The charter's Control Data Model lists Control
+8. **`Control Type` is absent.** The charter's Control Data Model lists Control
    Type among a control's structured attributes; `x-control` has no equivalent
    property and the intended vocabulary is undefined. Charter terminology
    generally — it calls the field-level model the **Control Data Model (CDM)** — is
    not yet reconciled with the naming used here.
-10. **Whether an SCC control and its source-framework controls are one object or
+9. **Whether an SCC control and its source-framework controls are one object or
    two.** A unified catalog control harmonizing CCM CEK-03 and an AICM equivalent
    could be a distinct `x-control` in the `scc` namespace related by `maps-to`, or
    the CCM object could simply gain SCC properties. The first keeps provenance
