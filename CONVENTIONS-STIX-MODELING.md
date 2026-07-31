@@ -340,8 +340,8 @@ is what the rest of the field does.
 **ISO/IEC text is not reproduced at any length.** ISO standards are not
 redistributable, and CSA maintains a working relationship with ISO that this catalog
 will not put at risk. The schemas enforce this for the `iso.org` and `iec.ch`
-namespaces by rejecting `specification`, `description`, `implementation_guidance`,
-and `audit_guidance` outright, so the rule cannot be broken by an oversight in
+namespaces by rejecting `specification`, `description`, `implementation_guidelines`,
+and `auditing_guidelines` outright, so the rule cannot be broken by an oversight in
 generation. That enforcement is a backstop for the case that is absolute, not a
 substitute for checking a source's licence record — which remains the test for every
 other publisher.

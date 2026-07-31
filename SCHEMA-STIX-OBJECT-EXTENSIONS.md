@@ -475,12 +475,24 @@ checked against the published matrix rather than taken on trust:
   "domain": "Cryptography, Encryption & Key Management",
   "status": "live",
   "specification": "Data protection at rest, in transit, and where applicable in use is provided using cryptographic libraries certified to approved standards.",
-  "ownership": ["CSP", "CSC"],
-  "applicability": ["IaaS", "PaaS", "SaaS"],
+  "control_type": "Cloud & AI Related",
+  "threat_category": ["sensitive_data_disclosure"],
+  "typical_control_applicability_and_ownership": {
+    "model": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)"
+  },
   "stack_components": ["network", "storage", "data"],
-  "lifecycle_relevance": ["deployment", "retirement"],
-  "implementation_guidance": "...",
-  "audit_guidance": "...",
+  "lifecycle_relevance": {
+    "deployment": "Resource provisioning",
+    "service_retirement": null
+  },
+  "implementation_guidelines": {
+    "csp": "Maintain a secure CKMS meeting or exceeding FIPS validation...",
+    "csc": "Ensure data in storage and in transit is encrypted...",
+    "shared": "..."
+  },
+  "auditing_guidelines": {
+    "shared": "Identify data flows that are in transit; identify data storages at rest..."
+  },
   "labels": ["cloud", "compliance"],
   "external_references": [
     {
@@ -533,7 +545,7 @@ minimum CCM and AICM use when citing these sources:
 > Populate it for CSA's own controls, and for third-party controls only where the
 > source permits reproduction. Where it does not, the object carries citation
 > metadata only — the schema enforces this for `iso.org` and `iec.ch` by rejecting
-> `specification`, `description`, `implementation_guidance`, and `audit_guidance`
+> `specification`, `description`, `implementation_guidelines`, and `auditing_guidelines`
 > on those objects. See [conventions § 9](CONVENTIONS-STIX-MODELING.md).
 
 ### CAIQ questions are controls
@@ -621,8 +633,14 @@ controls — see
 
 ### CSA-CC alignment
 
-- **Control data model** — captures domain, identifier, ownership, lifecycle
-  relevance, and architectural relevance.
+- **Control data model** — captures domain, identifier, control type, threat
+  categories, layer ownership, lifecycle relevance, and architectural relevance.
+  Property names and shapes follow the published source data rather than being
+  restated: guidance is keyed by responsible role because that is how the frameworks
+  express shared responsibility, and flattening it to one string would discard most
+  of its value. Role, layer, and phase vocabularies are left open, since AICM uses six
+  roles including `model_provider` and `ai_customer` while CCM uses `csp`, `csc`, and
+  `shared`.
 - **Mapping / gap analysis** — links to other frameworks' controls and to binding
   law via `csa-gap-mapping` SROs, each carrying its own coverage verdict.
 - **Specification, implementation, and auditing guidelines** — represented
@@ -905,20 +923,21 @@ raise an issue rather than assume an answer.
 3. **How the annual *Top Threats to Cloud Computing* list is referenced.** Whether
    each threat becomes an `attack-pattern`, a `grouping`, or another object type,
    and how a given report year is identified.
-4. **Vocabularies are not enumerated.** `status`, `ownership`, `applicability`,
-   `stack_components`, `lifecycle_relevance`, `implementation_type`,
-   `capability_type`, `assessment_status`, and `assessment_type` show example
-   values but have no defined open or closed vocabulary.
+4. **Vocabularies are deliberately not enumerated.** `status` is an enum because its
+   values are settled. `control_type`, `threat_category`, `stack_components`, the role
+   keys in the guidance objects, the layer keys in
+   `typical_control_applicability_and_ownership`, the phase keys in
+   `lifecycle_relevance`, `implementation_type`, `capability_type`,
+   `assessment_status`, and `assessment_type` are open, because the frameworks
+   disagree: AICM uses six responsibility roles where CCM uses three, and their threat
+   taxonomies differ. Enumerating any of them would lock the property to one framework.
+   Whether the catalog should define a unifying vocabulary and map the frameworks onto
+   it, or keep each framework's own terms, is unsettled.
 5. **Cardinality and optionality are unspecified**, beyond the STIX-required
    common properties (`type`, `spec_version`, `id`, `created`, `modified`).
 6. **`score` semantics.** The range, scale, and meaning of
    `x-control-assessment.score` are undefined.
-7. **`Control Type` is absent.** The charter's Control Data Model lists Control
-   Type among a control's structured attributes; `x-control` has no equivalent
-   property and the intended vocabulary is undefined. Charter terminology
-   generally — it calls the field-level model the **Control Data Model (CDM)** — is
-   not yet reconciled with the naming used here.
-8. **Whether an SCC control and its source-framework controls are one object or
+7. **Whether an SCC control and its source-framework controls are one object or
    two.** A unified catalog control harmonizing CCM CEK-03 and an AICM equivalent
    could be a distinct `x-control` in the `scc` namespace related by `csa-gap-mapping`, or
    the CCM object could simply gain SCC properties. The first keeps provenance

@@ -52,11 +52,21 @@ document. A schema that guessed would silently settle it.
 permits custom properties, so an unknown property is not an error yet. The trade-off
 is that typos pass. Worth tightening once the model stabilises.
 
-**Vocabularies are mostly unconstrained.** `status` is an enum because its values are
-settled. `ownership`, `applicability`, `stack_components`, `implementation_type`,
-and `capability_type` are open string arrays, while `assessment_status` and
-`assessment_type` are open strings,
-pending a vocabulary decision.
+**Vocabularies are mostly unconstrained, on purpose.** `status` and `gap_level` are
+enums because their values are settled. Everything else is open — `control_type`,
+`threat_category`, `stack_components`, `implementation_type`, `capability_type`,
+`assessment_status`, `assessment_type`, and the role, layer, and phase keys inside the
+guidance and applicability objects — because the frameworks disagree: AICM uses six
+responsibility roles where CCM uses three, and their threat taxonomies differ.
+Enumerating any of them would lock the property to a single framework.
+
+**Property names and shapes follow the published source data.** Guidance is an object
+keyed by responsible role rather than a string, because that is how the frameworks
+express shared responsibility. `typical_control_applicability_and_ownership` is one
+object rather than separate applicability and ownership properties, because ownership
+varies by architectural layer and the pairing is the information. Boolean maps in the
+source become arrays of the keys that apply, which is lossless and easier to filter;
+non-boolean maps stay objects, because flattening them would lose the pairing.
 
 **One boundary is enforced structurally.** `x-control-implementation` rejects
 `platform`, `product`, `vendor_namespace`, and `config_snippet`. Those belong to
