@@ -39,16 +39,13 @@ prefix is retained for readability, though the mechanism no longer requires it.
 
 ## Design principles
 
-The principles this schema answers to — minimal invention, alignment over
-replacement, maximum compatibility with existing tools, graph-first, forward
-compatibility, SecID co-evolution, and exploratory / research status — are defined
-once in
-[`DESIGN-RATIONALE-STIX-EXTENSIONS.md` § Design principles](DESIGN-RATIONALE-STIX-EXTENSIONS.md#design-principles).
+The principles this schema answers to are defined once in
+[`DESIGN-RATIONALE-STIX-EXTENSIONS.md` § Design principles](DESIGN-RATIONALE-STIX-EXTENSIONS.md#design-principles),
+and are neither restated nor listed here.
 
-They are not restated here. Two of them bear directly on reading this document:
-fields and object boundaries mirror the catalog's own structure and align
-conceptually with OSCAL rather than competing with it, and every type and property
-below is provisional.
+Two of them bear directly on reading this document: fields and object boundaries
+mirror the catalog's own structure and align conceptually with OSCAL rather than
+competing with it, and every type and property below is provisional.
 
 ## The object model at a glance
 
@@ -288,10 +285,13 @@ Domain Objects** and **Cyber-observable Objects**, including at least:
 
 **STIX Relationship Objects (SROs):**
 
-- `relationship` — links any SDO/SCO pair with a typed semantic such as
-  *mitigates*, *uses*, or *indicates*.
-- `sighting` — observations of SDOs/SCOs in the wild, which can in turn be
-  related to controls and assessments.
+- `relationship` — links any pair of objects, SDO or SCO, with a typed semantic
+  such as *mitigates*, *uses*, or *indicates*. This is the general edge type and
+  the one the catalog uses.
+- `sighting` — records that a particular SDO was seen, optionally backed by
+  `observed-data` objects carrying the raw evidence. Narrower than `relationship`:
+  its required `sighting_of_ref` names the SDO that was sighted, not an arbitrary
+  object, so it is not a general-purpose link.
 
 **Representative STIX Cyber-observable Objects (SCOs):** `artifact`,
 `autonomous-system`, `directory`, `domain-name`, `email-addr`, `email-message`,

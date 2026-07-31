@@ -71,7 +71,7 @@ The reasons STIX 2.1 fits the catalog's needs:
 
 The catalog uses that mechanism rather than the STIX 2.0-era practice of inventing an `x-`-prefixed `type` and relying on naming convention, which 2.1 discourages. The difference is practical: because `extension-definition` requires a `schema` property, a consumer encountering an unfamiliar type can retrieve its definition instead of inferring meaning from the name, and two producers that happen to choose the same type name remain distinguishable by the definition identifier their instances reference.
 
-**Native graph model via SROs.** The catalog is fundamentally a graph: controls connect to regulations, to implementations, to assessments, to attack patterns, to vulnerabilities, to threat actors. STIX `relationship` and `sighting` SROs already typed-link any SDO to any other SDO. Expressing "this control mitigates this attack pattern" requires zero new schema work.
+**Native graph model via SROs.** The catalog is fundamentally a graph: controls connect to regulations, to implementations, to assessments, to attack patterns, to vulnerabilities, to threat actors. STIX's generic `relationship` SRO already typed-links any pair of objects, SDO or SCO, so expressing "this control mitigates this attack pattern" requires zero new schema work. The other SRO, `sighting`, is narrower and not a general edge: it records that a particular SDO was seen, optionally backed by `observed-data` objects carrying the raw evidence.
 
 **Deployed tooling ecosystem.** STIX and TAXII servers, the OpenCTI platform, MISP, several commercial CTI platforms, and graph databases that already understand STIX all consume the format natively. Catalog content flows into existing infrastructure on day one without translation.
 
