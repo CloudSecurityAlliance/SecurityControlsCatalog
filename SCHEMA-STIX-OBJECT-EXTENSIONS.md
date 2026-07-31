@@ -796,7 +796,9 @@ raise an issue rather than assume an answer.
    two.** A unified catalog control harmonizing CCM CEK-03 and an AICM equivalent
    could be a distinct `x-control` in the `scc` namespace related by `maps-to`, or
    the CCM object could simply gain SCC properties. The first keeps provenance
-   clean; the second halves the object count.
+   clean; the second halves the object count. Note that carrying multiple framework
+   versions weighs against the second: with CCM 4.0 and 4.1 both present as
+   objects, "the CCM object gains SCC properties" has no single referent.
 
 Unsettled conventions that bind all objects rather than a single type are tracked
 in [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md#open-questions).

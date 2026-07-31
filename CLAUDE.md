@@ -44,6 +44,8 @@ The catalog is being designed as a graph of five custom STIX 2.1 SDO types, rela
 | `x-capability` | `capability` | A specific product/service feature providing an implementation (S3 SSE-KMS, Bedrock Guardrails) |
 | `x-control-assessment` | — | Outcome of a self-assessment, audit, or STAR/CAIQ evaluation |
 
+**Superseded framework versions are carried, not deprecated.** CCM 4.0 and 4.1 coexist as `x-control` objects distinguished by `framework_version`, related by `maps-to`. Organizations stay certified against earlier editions for years and much existing mapping work targets them, so dropping a version because a newer one exists would remove coverage people depend on. See the version-coverage principle in the rationale.
+
 The layers change on different timescales — controls are stable for years, implementation approaches change with architecture, capabilities change whenever a vendor ships — which is why they are separate objects. SecID's `reference` and `methodology` types are **not** modeled as objects; they are cited via `external_references`.
 
 **This repository is authoritative and self-contained.** There is no external design document to consult and none to ask for access to. Three in-repo documents divide the design by the question they answer:
