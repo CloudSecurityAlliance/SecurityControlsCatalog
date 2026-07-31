@@ -299,6 +299,70 @@ thing.
 Nothing is deleted. Both objects stay in the repository and both travel in a bundle,
 so the record of what the catalog asserted, and when, survives being copied out of it.
 
+### A new framework version means new objects
+
+When a framework releases a new version — AICM 1.0 to 1.1, CCM 4.0 to 4.1 — the
+catalog mints a **new object for every control in the new version**, including controls
+whose text did not change, and new mapping and `derived-from` relationships to go with
+them.
+
+The reason is identity, not bookkeeping. `secid:control/…/aicm@1.0#CEK-01` and
+`@1.1#CEK-01` are different identifiers, and catalog objects mirror SecID identity, so
+they are different objects. One object claiming to be both versions could carry only
+one SecID, and it would break the moment a later version changed that control: the
+object identity consumers already hold would have to be split retroactively.
+
+**What regenerates, and what does not:**
+
+| | |
+|---|---|
+| Regenerates per version | the framework's own controls, its CAIQ questions, and every mapping and `derived-from` edge involving them |
+| Minted once, shared across versions | the mapping *targets* — ISO, BSI, NIST, EU clause objects. They do not change because AICM did. |
+
+**What happens to the outgoing version.** Each superseded object gets
+`status: "retired"`, a `valid_until` of the new version's publication date, and a
+`superseded-by` relationship to its counterpart. **It does not get `revoked`.** AICM 1.0
+was not wrong when 1.1 replaced it, and STAR entries assessed against it stand for their
+term — revoking it would tell every consumer those assessments rested on something
+invalid.
+
+A control **dropped** in the new version gets `status: "retired"` and `valid_until` with
+**no** `superseded-by`, because nothing replaced it. It is still not revoked. The absence
+of a successor is itself the information.
+
+`revoked` remains reserved for the case it means: content that should never have been
+published. That is orthogonal to versioning and can happen within a version.
+
+**Annotating the outgoing version is a refinement, not a correction.** Adding
+`status`, `valid_until`, and the supersession edge does not change what those objects
+*assert* — the specification and mappings stay exactly as published. So the lifecycle
+properties are set in place with a bumped `modified`, while the `superseded-by`
+relationship is a new object.
+
+### Why the resulting growth is acceptable
+
+Measured against AICM 1.0.3 — 243 controls, 311 CAIQ questions, 972 mappings — a release
+is roughly **1,800 objects and 6 MB**, or about **4,300 objects and 8 MB** if mappings
+are recorded per target clause rather than per target framework. Ten releases is on the
+order of twenty to forty thousand files and under a hundred megabytes: an unremarkable
+git repository, and well inside what GitHub handles comfortably.
+
+Keeping the data in git is deliberate — the pull-request and contribution-licensing
+mechanics are worth more than the storage costs. If browsing ever becomes awkward, the
+remedies are operational rather than structural: publish tagged bundles as release
+artifacts so consumers need not clone history, and use sparse checkouts for anyone
+working on a single framework.
+
+**A rejected alternative,** recorded so it is not revisited on instinct: minting new
+objects *only* for controls that changed, and letting the new version inherit the rest,
+would roughly halve the growth. It also requires inventing a "version X includes control
+Y from version Z" statement, breaks SecID identity, and turns "give me AICM 1.1" from a
+property filter into a graph traversal. At these sizes the saving does not pay for that.
+
+The underlying point: this is an append-only record of what CSA asserted and when, not a
+database of current state. Two nearly identical control objects a year apart are two
+dated claims, not redundancy.
+
 ## 8. No changes to the wire format
 
 Catalog objects are ordinary STIX 2.1 JSON. Nothing in this catalog changes the

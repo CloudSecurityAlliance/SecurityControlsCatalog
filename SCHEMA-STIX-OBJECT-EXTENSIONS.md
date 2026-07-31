@@ -636,7 +636,11 @@ authorship, and because the retired control remains coherent without it.
 `valid_until` records the date it stopped being current, so historical questions stay
 answerable. Note that `superseded-by` on its own does **not** mean the old control was
 wrong — an ISO edition replaced by a newer one remains valid and in use for years.
-`revoked: true` is what says the content should never have been relied on. See
+`revoked: true` is what says the content should never have been relied on.
+
+A new framework version mints new objects for every control in it, including unchanged
+ones, because SecID identity differs per version. What regenerates, what is shared
+across versions, and why the resulting growth is acceptable are all in
 [conventions § 7](CONVENTIONS-STIX-MODELING.md).
 
 ### CSA-CC alignment
