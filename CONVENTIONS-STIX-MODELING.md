@@ -258,14 +258,55 @@ the presence of a marking.
 Additional markings may accompany it; the schemas require that TLP:WHITE be present,
 not that it be alone. A `marking-definition` object does not mark itself.
 
-## 7. No changes to the wire format
+## 7. Published claims are not rewritten in place
+
+Anything the catalog has published may already be relied on. A mapping verdict, a
+control's wording, a framework version — someone has cited it. So replacing content
+means **adding**, never silently overwriting: a consumer who holds one object must be
+able to work out its standing from the data alone, without access to this repository's
+git history. A file quietly overwritten fails that test completely.
+
+Three signals carry the whole story, and they are independent:
+
+| Signal | Says |
+|---|---|
+| `superseded-by` relationship | a newer object replaces this one |
+| `valid_until` | the date this stopped being current |
+| `revoked` | this should never have been relied on |
+
+**`superseded-by` alone means the old object is still good.** ISO 27001:2013 was not
+wrong when 2022 replaced it, and organisations remain certified against it for years.
+The same holds for AICM 1.0 when 1.1 arrives, and for a mapping that was accurate when
+published. New work should use the successor; existing work does not become invalid.
+
+**Adding `revoked: true` is what says the old claim was wrong.** A gap level that
+should have read `Partial Gap` and read `No Gap` was not superseded, it was mistaken,
+and anyone relying on it was relying on something untrue. `revoked` is also the more
+widely honoured of the two mechanisms in practice, which is why the safety-critical
+case uses it.
+
+**`valid_until` makes history computable.** It answers "what was current as of this
+date," which is the question an audit asks. It is deliberately not `modified`:
+`modified` records when this *record* changed, while `valid_until` records when the
+*thing described* stopped being current — an object minted today may describe a
+standard valid from 2013 to 2022. It may also sit in the future, for an announced
+transition, in which case the object is still current until then. `valid_from` gives
+the other end of the window.
+
+The property names are STIX's own, borrowed from `indicator`, where they mean the same
+thing.
+
+Nothing is deleted. Both objects stay in the repository and both travel in a bundle,
+so the record of what the catalog asserted, and when, survives being copied out of it.
+
+## 8. No changes to the wire format
 
 Catalog objects are ordinary STIX 2.1 JSON. Nothing in this catalog changes the
 STIX wire format, versioning model, or transport. If a design would require a
 consumer to special-case the catalog before it can parse or route the data, the
 design is wrong.
 
-## 8. Lifecycle state and revocation are distinct
+## 9. Lifecycle state and revocation are distinct
 
 A custom property that duplicates a standard one is a defect (convention 4), but
 two properties recording *different facts* are not duplicates — and lifecycle
@@ -291,7 +332,7 @@ date and rationale, and the replaced object stays coherent without it. See
 `SCHEMA-STIX-OBJECT-EXTENSIONS.md` § "`status`, `revoked`, and supersession" for
 the applied case.
 
-## 9. Reproducing external text
+## 10. Reproducing external text
 
 Most of what the catalog does with external standards is referential: citing a
 clause by identifier, describing a requirement in original wording, asserting that
