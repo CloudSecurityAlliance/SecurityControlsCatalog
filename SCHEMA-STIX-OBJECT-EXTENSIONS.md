@@ -565,10 +565,12 @@ discriminator.
 }
 ```
 
-`text_excerpt` is populated here because GDPR's text is published under CC-BY-4.0
-and may be reproduced with attribution. Where a source's license does not permit
-reproduction, omit `text_excerpt` and describe the requirement in original
-wording. See [conventions § 8](CONVENTIONS-STIX-MODELING.md).
+`text_excerpt` is populated here because the source's record permits reproduction
+with attribution — EU legislative text is reusable. Check the source record for the
+specific terms rather than relying on a value quoted in this document. Where a
+source does not permit reproduction, omit `text_excerpt` and describe the
+requirement in original wording. See
+[conventions § 8](CONVENTIONS-STIX-MODELING.md).
 
 ### CSA-CC alignment
 

@@ -103,10 +103,10 @@ The *Minimal invention* principle (§1) rules this out: where standard STIX SDOs
 
 Other formats that have been considered and not adopted as the back-end representation:
 
-- **CSAF 2.0** — purpose-built for vulnerability advisories, not control catalogs. Adoption is also narrow (approximately 19 publishers worldwide as of mid-2026), which makes it ineffective as a wire format for content that needs to flow unchanged through existing infrastructure.
-- **OSV 1.3** — optimized for open-source-package vulnerability metadata. Wrong domain.
-- **CVE JSON 5.2.0** — the canonical CVE record format. Universal, but a vulnerability-record format, not a control-catalog format.
-- **CVRF 1.2** — largely supplanted by CSAF; same domain mismatch.
+- **CSAF** — purpose-built for vulnerability advisories, not control catalogs. Its deployed publisher base is also far narrower than STIX's, which matters for content that needs to flow unchanged through existing infrastructure.
+- **OSV** — optimized for open-source-package vulnerability metadata. Wrong domain.
+- **CVE JSON** — the canonical CVE record format. Universal, but a vulnerability-record format, not a control-catalog format.
+- **CVRF** — largely supplanted by CSAF; same domain mismatch.
 - **RDF, JSON-LD, OWL, and related semantic-web formats** — powerful but heavy. The SecID identifier system already provides graph identity; STIX SROs handle relationships. RDF would be duplicate-purpose for the catalog's needs without commensurate benefit.
 
 ## 5. Recommended publication formats and channels

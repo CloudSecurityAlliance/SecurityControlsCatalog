@@ -252,11 +252,18 @@ Two axes govern it, and they are independent:
 - **Derivatives** — may it be modified, restructured, or paraphrased in place?
 
 Both are recorded per source in the SecID datasets, alongside an SPDX identifier,
-so this is a lookup rather than a judgment call. GDPR is CC-BY-4.0 and reproducible
-with attribution. PCI DSS permits reproduction for study but prohibits
-modification — reproducible verbatim, not paraphrasable in place. Consult the
-source's metadata rather than reasoning from how short or well-attributed an
-excerpt is.
+so this is a lookup rather than a judgment call. Consult the source's record rather
+than reasoning from how short or well-attributed an excerpt is, and rather than
+relying on a value quoted here — licence metadata belongs to the source record and
+is corrected there.
+
+Two cautions on using those records. Much of the licence metadata is
+**bulk-generated**, and some records say so in their own notes; treat it as triage
+rather than as permission, and verify before relying on it to authorise quoting a
+source verbatim. And note the asymmetry in how the errors cost: a permissive source
+mislabelled restrictive loses a citation, while a restrictive source mislabelled
+permissive is a takedown. Only the second needs guarding, so where the record and
+the publisher's own terms disagree, take the more restrictive reading.
 
 **ISO/IEC text is not reproduced, at any length.** ISO standards are not
 redistributable, and CSA maintains a working relationship with ISO that this

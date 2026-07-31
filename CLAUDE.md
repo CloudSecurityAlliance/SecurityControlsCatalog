@@ -72,7 +72,7 @@ The distinction is worth keeping straight: principles are *why* the design is sh
 Decided in the design rationale; reopen only with a new technical argument:
 
 - **STIX 2.1 is the back-end representation.** OSCAL is a *publication* format, not the back end — domain fit, no general typed-relationship primitive equivalent to a STIX SRO, and no overlap with the CTI ecosystem the catalog must join.
-- **Rejected as back-end formats:** CSAF 2.0, OSV 1.3, CVE JSON 5.2.0, and CVRF 1.2 (all wrong domain — advisories and vulnerability records, not control catalogs), plus RDF, JSON-LD, and OWL (duplicate-purpose given SecID identity and STIX SROs).
+- **Rejected as back-end formats:** CSAF, OSV, CVE JSON, and CVRF (all wrong domain — advisories and vulnerability records, not control catalogs), plus RDF, JSON-LD, and OWL (duplicate-purpose given SecID identity and STIX SROs).
 - **Publication formats:** STIX 2.1 (primary), OSCAL, plain JSON, YAML, Excel, CSV. Excel is a first-class deliverable — the CCM customer base has consumed spreadsheet exports for over a decade.
 - **Distribution channels:** this git repository (clone, raw URL, tagged releases) is primary; the SecID MCP server (`https://secid.cloudsecurityalliance.org/mcp`) is the AI-agent path until the CSA MCP server ships.
 
