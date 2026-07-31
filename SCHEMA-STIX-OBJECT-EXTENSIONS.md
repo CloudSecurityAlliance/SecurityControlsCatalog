@@ -54,16 +54,21 @@ assessment:
 
 ```
 x-regulation                 GDPR Art. 32(1)(a)          what the law requires
-     ↑ maps-to
+     ↑ csa-gap-mapping
 x-control                    "sensitive data is encrypted at rest"
-     ↑ maps-to               ← also to other frameworks' x-control objects
-     ↑ implements
+     ↑ csa-gap-mapping       ← also to other frameworks' x-control objects
+     ↑ (relationship not yet defined)
 x-control-implementation     "enforce encryption at rest for object storage"
-     ↑ supports
+     ↑ (relationship not yet defined)
 x-capability                 Amazon S3 SSE-KMS           what a product provides
 
-x-control-assessment  →  evaluates an x-control for a specific entity
+x-control-assessment  →  evaluates an x-control, via embedded constitutive refs
 ```
+
+Only the mapping relationship is defined today. The edges into
+`x-control-implementation` and `x-capability` are deliberately left undefined until
+instance data needs them — see
+[Relationship types deliberately not yet defined](#relationship-types-deliberately-not-yet-defined).
 
 Each layer changes on a different timescale, which is why they are separate
 objects: a control is stable for years, an implementation approach changes with
@@ -115,7 +120,7 @@ For `x-control` the properties are `framework_namespace`, `framework`,
 
 This is what lets CSA's own catalog and the frameworks it harmonizes coexist in
 one object type: `cloudsecurityalliance.org/ccm@4.1` and
-`cloudsecurityalliance.org/scc` sit side by side, related by `maps-to`, and "the
+`cloudsecurityalliance.org/scc` sit side by side, related by `csa-gap-mapping`, and "the
 CCM view" is a property filter rather than a separate export.
 
 ## How these objects extend STIX 2.1
@@ -333,27 +338,48 @@ which edges exist.
 
 ### Canonical edges
 
+**One relationship type is defined: `csa-gap-mapping`.**
+
 | Assertion | `relationship_type` | Source | Target |
 |---|---|---|---|
-| Control corresponds to a clause of binding law | `maps-to` | `x-control` | `x-regulation` |
-| Control corresponds to another framework's control | `maps-to` | `x-control` | `x-control` |
-| Implementation fulfills a control | `implements` | `x-control-implementation` | `x-control` |
-| Capability provides an implementation | `supports` | `x-capability` | `x-control-implementation` |
-| Capability supports a control directly | `supports` | `x-capability` | `x-control` |
-| Control counters adversary behavior | `mitigates` | `x-control` | `attack-pattern` |
-| Control is replaced by a newer control | `superseded-by` | `x-control` (retired) | `x-control` (live) |
+| How much of the source's requirement the target covers | `csa-gap-mapping` | `x-control` or `x-regulation` | `x-control` or `x-regulation` |
 
-`mitigates` comes from the STIX `relationship-type-ov` vocabulary. `maps-to`,
-`implements`, `supports`, and `superseded-by` do not — they are custom values,
-which STIX permits, but per *minimal invention* they need explicit definition
-rather than casual coinage. See [Open questions](#open-questions).
+Read left to right, as CIS does: `source_ref` is what is mapped **from**. A→B and
+B→A are two separate objects, each with its own verdict, because coverage is not
+symmetric — B may fully cover A while A covers only part of B. Where the relation
+*is* symmetric, `bidirectional: true` says so explicitly, since STIX relationships
+are directional by construction.
 
-`superseded-by` is deliberately not ATT&CK's `revoked-by`, and deliberately not
-the standard `derived-from`. Supersession is not revocation — a superseded control
-was valid, and historical assessments against it remain true — and `derived-from`
-states only that one object came from another, not that it replaces it.
+The custom properties `gap_level` and `bidirectional` are declared by a
+**`toplevel-property-extension`** rather than added bare. `relationship` is a
+standard STIX type, so an undeclared custom property on it could collide with
+another producer's property of the same name; the extension scopes them. This is the
+same mechanism the five SDOs use, with a different `extension_type`.
 
-A mapping SRO, showing what an embedded identifier array could not express:
+`relationship_type` carries the methodology, so no separate field does. A future
+`nist-ir-8477-mapping` would be a sibling type with its own properties rather than
+this one overloaded with a second vocabulary.
+
+### Relationship types deliberately not yet defined
+
+`implements`, `supports`, and `superseded-by` were sketched in earlier revisions and
+are **withdrawn until something needs them** — a custom relationship type is a public
+commitment, and none of the three has instance data behind it yet. `mitigates` is
+standard and available whenever a control is related to an `attack-pattern`; the
+catalog simply does not assert it yet, and MITRE's Mappings Explorer already owns
+that space.
+
+When replacement does need expressing, the reasoning recorded earlier still applies:
+not ATT&CK's `revoked-by`, since supersession is not revocation and historical
+assessments against a superseded control remain true, and not the standard
+`derived-from`, which says only that one object came from another. Note also that
+CCM's own published mappings include a CCM 3.0.1 target, so version succession may
+turn out to be expressible as an ordinary mapping.
+
+### A worked mapping
+
+Showing what an embedded identifier array could not express — the verdict, the
+rationale, and the authorship of the claim:
 
 ```json
 {
@@ -362,12 +388,18 @@ A mapping SRO, showing what an embedded identifier array could not express:
   "id": "relationship--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
-  "relationship_type": "maps-to",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "relationship_type": "csa-gap-mapping",
   "source_ref": "x-control--<UUID>",
   "target_ref": "x-regulation--<UUID>",
-  "description": "The control requires encryption of sensitive data at rest and in transit; the target clause requires encryption of personal data. Partial overlap — the control's scope is broader than personal data.",
-  "confidence": 85,
-  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "extensions": {
+    "extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903": {
+      "extension_type": "toplevel-property-extension"
+    }
+  },
+  "gap_level": "Partial Gap",
+  "bidirectional": false,
+  "description": "The control requires encryption of sensitive data at rest and in transit; the target clause requires encryption of personal data. Partial coverage — the control's scope is broader than personal data.",
   "external_references": [
     {
       "source_name": "secid",
@@ -397,8 +429,8 @@ this type — CSA's own catalog, CCM, AICM, ISO 27001, NIST 800-53 and CSF, CIS
 Benchmarks, PCI DSS, SOC 2 — distinguished by their source provenance properties
 rather than by object type.
 
-Threat mitigation and mappings to other frameworks are **not** properties of the
-control; they are `mitigates` and `maps-to` relationship SROs. See
+Mappings to other frameworks are **not** properties of the control; they are
+`csa-gap-mapping` relationship SROs. See
 [Relationships use SROs, not embedded references](#relationships-use-sros-not-embedded-references).
 
 ### Schema
@@ -507,22 +539,24 @@ invalidate the catalog's own assessment history: an audit performed in 2024
 against a control retired in 2026 is still a true statement about 2024. Retirement
 must therefore not be expressed with `revoked`.
 
-Replacement is neither a `status` value nor a property. A control replaced by a
-newer one gets `status: "retired"` plus a `superseded-by` relationship to its
-replacement, because the replacement is an assertion about two objects that
-carries its own date, rationale, and authorship — and because the retired control
-remains coherent without it.
+Replacement is not a `status` value. A control replaced by a newer one gets
+`status: "retired"`, and the replacement is expressed as a relationship rather than a
+property, because it is an assertion about two objects carrying its own date,
+rationale, and authorship, and because the retired control remains coherent without
+it. The relationship type for that is not yet defined — no content has retired
+controls — see
+[Relationship types deliberately not yet defined](#relationship-types-deliberately-not-yet-defined).
 
 ### CSA-CC alignment
 
 - **Control data model** — captures domain, identifier, ownership, lifecycle
   relevance, and architectural relevance.
 - **Mapping / gap analysis** — links to other frameworks' controls and to binding
-  law via `maps-to` SROs, and to `attack-pattern` objects via `mitigates`.
+  law via `csa-gap-mapping` SROs, each carrying its own coverage verdict.
 - **Specification, implementation, and auditing guidelines** — represented
   directly.
 - **Status and governance** — supports control lifecycle via `status`. Replacement
-  is a `superseded-by` relationship rather than a status value, and the standard
+  is a relationship rather than a status value, and the standard
   STIX `revoked` property remains available for the distinct case of a control
   withdrawn as invalid.
 
@@ -637,12 +671,12 @@ that implement it.
 
 ### CSA-CC alignment
 
-- **Implementation guidelines** — reflects how to fulfill a control. Which
-  controls it fulfills is expressed with `implements` SROs, which can also record
-  partial fulfillment in `description` and `confidence`.
+- **Implementation guidelines** — reflects how to fulfill a control. The
+  relationship linking an implementation to the controls it fulfills is not yet
+  defined; see
+  [Relationship types deliberately not yet defined](#relationship-types-deliberately-not-yet-defined).
 - **Stack component applicability** — for example network, app, storage.
-- **Ownership and responsibility** — encoded through labels and the `implements`
-  relationship.
+- **Ownership and responsibility** — encoded through labels.
 
 ---
 
@@ -773,37 +807,36 @@ raise an issue rather than assume an answer.
    reference a tagged URL. Two further tightenings wait on the model settling:
    `additionalProperties` is unrestricted, so typos pass, and most vocabularies are
    open string arrays.
-2. **Definitions for the custom relationship types.** `mitigates` is standard, but
-   `maps-to`, `implements`, `supports`, and `superseded-by` are custom coinages
-   needing definition or replacement from `relationship-type-ov`. A mapping edge
-   may also need a finer-grained vocabulary than a single `maps-to` — the
-   set-theoretic relations in NIST IR 8477 (subset, superset, intersects, equal)
-   are a public candidate for expressing *how* two requirements correspond rather
-   than merely that they do.
-3. **Whether `supports` needs both targets.** A capability can point at an
-   implementation approach or directly at a control. Allowing both is convenient
-   and permits two paths to the same conclusion; requiring the implementation hop
-   is stricter but forces an approach object to exist even when nobody has written
-   one.
-4. **How the annual *Top Threats to Cloud Computing* list is referenced.** Whether
+2. **A set-theory relation alongside `gap_level`, for interoperability.** CSA's gap
+   vocabulary is coverage-directional and is what the catalog uses. It is also the
+   outlier: NIST OLIR (IR 8278A), NIST IR 8477, the Secure Controls Framework's STRM,
+   CIS's mappings, and — since March 2026 — the OSCAL Mapping Model all express
+   mappings as set-theory relations (`subset-of`, `superset-of`, `intersects-with`,
+   `equal-to`, `no-relationship`). The gap vocabulary does not map onto those
+   losslessly: `No Gap` does not distinguish `subset-of` from `equal-to`. Since OSCAL
+   is a first-class publication format and alignment with it is a stated principle,
+   carrying a set-theory relation as an additional property is probably needed before
+   OSCAL output is meaningful. Deferred deliberately — CSA's own vocabulary comes
+   first.
+3. **How the annual *Top Threats to Cloud Computing* list is referenced.** Whether
    each threat becomes an `attack-pattern`, a `grouping`, or another object type,
    and how a given report year is identified.
-5. **Vocabularies are not enumerated.** `status`, `ownership`, `applicability`,
+4. **Vocabularies are not enumerated.** `status`, `ownership`, `applicability`,
    `stack_components`, `lifecycle_relevance`, `implementation_type`,
    `capability_type`, `assessment_status`, and `assessment_type` show example
    values but have no defined open or closed vocabulary.
-6. **Cardinality and optionality are unspecified**, beyond the STIX-required
+5. **Cardinality and optionality are unspecified**, beyond the STIX-required
    common properties (`type`, `spec_version`, `id`, `created`, `modified`).
-7. **`score` semantics.** The range, scale, and meaning of
+6. **`score` semantics.** The range, scale, and meaning of
    `x-control-assessment.score` are undefined.
-8. **`Control Type` is absent.** The charter's Control Data Model lists Control
+7. **`Control Type` is absent.** The charter's Control Data Model lists Control
    Type among a control's structured attributes; `x-control` has no equivalent
    property and the intended vocabulary is undefined. Charter terminology
    generally — it calls the field-level model the **Control Data Model (CDM)** — is
    not yet reconciled with the naming used here.
-9. **Whether an SCC control and its source-framework controls are one object or
+8. **Whether an SCC control and its source-framework controls are one object or
    two.** A unified catalog control harmonizing CCM CEK-03 and an AICM equivalent
-   could be a distinct `x-control` in the `scc` namespace related by `maps-to`, or
+   could be a distinct `x-control` in the `scc` namespace related by `csa-gap-mapping`, or
    the CCM object could simply gain SCC properties. The first keeps provenance
    clean; the second halves the object count. Note that carrying multiple framework
    versions weighs against the second: with CCM 4.0 and 4.1 both present as

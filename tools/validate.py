@@ -52,12 +52,26 @@ def objects_in(doc):
             yield doc
 
 
+def schema_key(obj):
+    """Which schema applies to this object.
+
+    Custom SDOs are keyed by `type`. A `relationship` is a standard STIX type, so it
+    is keyed by `relationship_type` instead: the catalog defines properties on some
+    relationships (csa-gap-mapping) and not others (a plain `mitigates` edge is
+    standard and owned by the OASIS validator).
+    """
+    stix_type = obj.get("type")
+    if stix_type == "relationship":
+        return obj.get("relationship_type")
+    return stix_type
+
+
 def validate_objects(objs, schemas, label):
     checked = skipped = 0
     failures = []
     for obj in objs:
-        stix_type = obj.get("type")
-        schema = schemas.get(stix_type)
+        key = schema_key(obj)
+        schema = schemas.get(key)
         if schema is None:
             skipped += 1
             continue
@@ -65,14 +79,41 @@ def validate_objects(objs, schemas, label):
         for err in sorted(Draft202012Validator(schema).iter_errors(obj),
                           key=lambda e: list(e.path)):
             where = "/".join(str(p) for p in err.path) or "(object)"
-            failures.append(f"{label}: {stix_type} {obj.get('id', '?')}\n"
+            failures.append(f"{label}: {key} {obj.get('id', '?')}\n"
                             f"    {where}: {err.message}")
     return checked, skipped, failures
 
 
+def mapping_extension_id(schemas):
+    """The extension-definition id the mapping schema requires, read from the schema.
+
+    Taken from the schema rather than hardcoded here, so the self-test cannot pass
+    against an id the schema does not actually accept.
+    """
+    required = schemas["csa-gap-mapping"]["properties"]["extensions"]["required"]
+    return required[0]
+
+
 def self_test(schemas):
     """Confirm the schemas accept valid objects and reject known-bad ones."""
+    MAPPING_EXT = mapping_extension_id(schemas)
+
     def base(t):
+        if t == "csa-gap-mapping":
+            return {
+                "type": "relationship",
+                "spec_version": "2.1",
+                "id": f"relationship--{uuid.uuid4()}",
+                "created": "2026-01-15T00:00:00.000Z",
+                "modified": "2026-01-15T00:00:00.000Z",
+                "relationship_type": "csa-gap-mapping",
+                "source_ref": f"x-control--{uuid.uuid4()}",
+                "target_ref": f"x-control--{uuid.uuid4()}",
+                "extensions": {
+                    MAPPING_EXT: {"extension_type": "toplevel-property-extension"}
+                },
+                "gap_level": "No Gap",
+            }
         return {
             "type": t,
             "spec_version": "2.1",
@@ -149,6 +190,36 @@ def self_test(schemas):
         ("valid implementation", "x-control-implementation",
          lambda o: o.update(implementation_type=["configuration"]), False),
         ("valid assessment", "x-control-assessment", with_refs, False),
+
+        # csa-gap-mapping
+        ("mapping with an invented gap level", "csa-gap-mapping",
+         lambda o: o.update(gap_level="Some Gap"), True),
+        ("mapping with a lowercase gap level", "csa-gap-mapping",
+         lambda o: o.update(gap_level="no gap"), True),
+        ("mapping missing gap_level entirely", "csa-gap-mapping",
+         lambda o: o.pop("gap_level"), True),
+        ("mapping with the wrong relationship_type", "csa-gap-mapping",
+         lambda o: o.update(relationship_type="maps-to"), True),
+        ("mapping referencing a foreign extension id", "csa-gap-mapping",
+         lambda o: o.update(extensions={
+             f"extension-definition--{uuid.uuid4()}":
+                 {"extension_type": "toplevel-property-extension"}}), True),
+        ("mapping declared as new-sdo rather than a property extension",
+         "csa-gap-mapping",
+         lambda o: o.update(extensions={
+             MAPPING_EXT: {"extension_type": "new-sdo"}}), True),
+        ("mapping targeting a capability", "csa-gap-mapping",
+         lambda o: o.update(target_ref=f"x-capability--{uuid.uuid4()}"), True),
+        ("mapping with a non-boolean bidirectional", "csa-gap-mapping",
+         lambda o: o.update(bidirectional="yes"), True),
+        ("valid mapping, control to control", "csa-gap-mapping",
+         lambda o: o.update(gap_level="Partial Gap",
+                            description="Scope differs: the target is narrower."), False),
+        ("valid mapping to a regulation clause", "csa-gap-mapping",
+         lambda o: o.update(target_ref=f"x-regulation--{uuid.uuid4()}",
+                            gap_level="Full Gap"), False),
+        ("valid bidirectional mapping", "csa-gap-mapping",
+         lambda o: o.update(bidirectional=True), False),
     ]
 
     bad = 0

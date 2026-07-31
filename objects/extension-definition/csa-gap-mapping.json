@@ -1,0 +1,15 @@
+{
+  "type": "extension-definition",
+  "spec_version": "2.1",
+  "id": "extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903",
+  "created": "2026-07-31T00:00:00.000Z",
+  "modified": "2026-07-31T00:00:00.000Z",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "CSA Security Controls Catalog: csa-gap-mapping",
+  "description": "Adds top-level properties to the standard STIX relationship object for CSA gap mappings: gap_level, carrying CSA's coverage verdict, and bidirectional, marking a mapping whose relation is symmetric. Used with relationship_type csa-gap-mapping.",
+  "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/csa-gap-mapping.json",
+  "version": "1.0",
+  "extension_types": [
+    "toplevel-property-extension"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/csa-gap-mapping.json",
+  "title": "csa-gap-mapping",
+  "description": "A CSA gap mapping: a standard STIX relationship asserting how much of the source's requirement the target covers, using CSA's gap vocabulary. Read left to right — source_ref is what is mapped FROM. The custom properties are declared by a toplevel-property-extension so they are scoped rather than colliding with other producers' properties on the standard relationship type.",
+  "type": "object",
+  "required": [
+    "type", "spec_version", "id", "created", "modified",
+    "relationship_type", "source_ref", "target_ref",
+    "extensions", "gap_level"
+  ],
+  "$comment": "gap_level is required because a gap mapping without a verdict asserts nothing — it is the substance of the claim, not an annotation on it.",
+  "properties": {
+    "type": { "const": "relationship" },
+    "spec_version": { "const": "2.1" },
+    "id": { "type": "string", "pattern": "^relationship--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$" },
+    "relationship_type": { "const": "csa-gap-mapping" },
+
+    "source_ref": {
+      "type": "string",
+      "description": "What is mapped FROM. A catalog control or regulation clause.",
+      "pattern": "^(x-control|x-regulation)--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    },
+    "target_ref": {
+      "type": "string",
+      "description": "What is mapped TO. A→B and B→A are two separate objects.",
+      "pattern": "^(x-control|x-regulation)--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    },
+
+    "gap_level": {
+      "enum": ["No Gap", "Partial Gap", "Full Gap"],
+      "description": "CSA's coverage verdict for this direction. No Gap: the target covers the source's requirement. Partial Gap: partial coverage. Full Gap: the target does not cover it. These are the three values used across CSA's published mappings."
+    },
+    "bidirectional": {
+      "type": "boolean",
+      "description": "True when the relation is symmetric, so the same verdict holds in both directions. STIX relationships are inherently directional, so this is an explicit assertion; a consumer that ignores it still reads the object correctly as source to target, just incompletely."
+    },
+    "description": {
+      "type": "string",
+      "description": "Rationale for the mapping — the addendum text in CSA's published mappings, which carries scope qualification and caveats."
+    },
+
+    "extensions": {
+      "type": "object",
+      "required": ["extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903"],
+      "properties": {
+        "extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903": {
+          "type": "object",
+          "required": ["extension_type"],
+          "properties": { "extension_type": { "const": "toplevel-property-extension" } }
+        }
+      }
+    }
+  }
+}
