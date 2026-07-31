@@ -66,26 +66,6 @@
       "type": "string",
       "description": "The control requirement. Holds reproduced text and is therefore licence-constrained: populate only where the source permits reproduction. See CONVENTIONS-STIX-MODELING.md section 8."
     },
-    "implementation_guidance": {
-      "type": "string"
-    },
-    "audit_guidance": {
-      "type": "string"
-    },
-    "ownership": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "minItems": 1
-    },
-    "applicability": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "minItems": 1
-    },
     "stack_components": {
       "type": "array",
       "items": {
@@ -94,12 +74,19 @@
       "minItems": 1
     },
     "lifecycle_relevance": {
-      "type": "array",
-      "items": {
-        "type": "string"
+      "type": "object",
+      "description": "Lifecycle phases in which the control applies, each mapped to the sub-phases that apply within it. A phase with no sub-phases may be null. Phase names are the publisher's.",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+$"
       },
-      "minItems": 1,
-      "description": "System lifecycle phases in which the control applies. Distinct from status, which is the catalog's own lifecycle."
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
     },
     "object_marking_refs": {
       "type": "array",
@@ -110,6 +97,63 @@
       "minItems": 1,
       "contains": {
         "const": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      }
+    },
+    "control_type": {
+      "type": "string",
+      "description": "The publisher's classification of the control. AICM 1.0.3 uses 'Cloud & AI Related', 'AI-Specific', and 'Cloud-Specific'. Not enumerated here: other frameworks classify differently, and the charter's Control Data Model leaves the vocabulary open."
+    },
+    "threat_category": {
+      "type": "array",
+      "description": "Threat categories the control addresses, from the publisher's own threat taxonomy. Carried as the categories that apply rather than a map of every category to true or false, which is lossless and filterable. These are a taxonomy applied to the control, not objects in the catalog, so they are a property rather than relationships — if threats become first-class objects, mitigates relationships would complement this.",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "typical_control_applicability_and_ownership": {
+      "type": "object",
+      "description": "Which architectural layer the control applies to, mapped to who owns it there — for example 'Owned by the Model Provider (MP)' or 'Shared CSP-MP'. One field rather than separate applicability and ownership properties, because ownership varies by layer and the pairing is the information.",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+$"
+      },
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "implementation_guidelines": {
+      "type": "object",
+      "description": "How to fulfill the control, keyed by responsible role. Role sets are framework-specific — AICM uses six including model_provider and ai_customer, CCM uses csp, csc, and shared — so the keys are open. Use 'shared' for guidance that is not role-specific. Holds reproduced text and is therefore licence-constrained.",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+$"
+      },
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "auditing_guidelines": {
+      "type": "object",
+      "description": "How to audit the control, keyed by responsible role, on the same basis as implementation_guidelines. Holds reproduced text and is therefore licence-constrained.",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z0-9_]+$"
+      },
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
       }
     }
   },
@@ -144,12 +188,12 @@
             },
             {
               "required": [
-                "implementation_guidance"
+                "implementation_guidelines"
               ]
             },
             {
               "required": [
-                "audit_guidance"
+                "auditing_guidelines"
               ]
             }
           ]
