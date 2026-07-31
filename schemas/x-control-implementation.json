@@ -4,28 +4,84 @@
   "title": "x-control-implementation",
   "description": "A technology-agnostic approach to fulfilling a control, stated independently of any product or vendor. Vendor, product, and configuration detail belong to x-capability. Defined by the CSA Security Controls Catalog.",
   "type": "object",
-  "required": ["type", "spec_version", "id", "created", "modified", "extensions"],
+  "required": [
+    "type",
+    "spec_version",
+    "id",
+    "created",
+    "modified",
+    "extensions",
+    "object_marking_refs"
+  ],
   "properties": {
-    "type": { "const": "x-control-implementation" },
-    "spec_version": { "const": "2.1" },
+    "type": {
+      "const": "x-control-implementation"
+    },
+    "spec_version": {
+      "const": "2.1"
+    },
     "id": {
       "type": "string",
       "pattern": "^x-control-implementation--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
-    "extensions": { "$ref": "#/$defs/newSdoExtension" },
-
-    "name": { "type": "string", "minLength": 1 },
-    "description": { "type": "string" },
-
-    "implementation_type": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-    "stack_components": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+    "extensions": {
+      "$ref": "#/$defs/newSdoExtension"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "implementation_type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "stack_components": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "object_marking_refs": {
+      "type": "array",
+      "description": "Data markings applying to the whole object. Every catalog object carries TLP:WHITE, since the catalog is public. TLP:WHITE is the STIX 2.1 spelling of what TLP 2.0 renamed TLP:CLEAR; the identifier is assigned by the specification, and STIX forbids producers from defining their own tlp markings. Additional markings may be present.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "contains": {
+        "const": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      }
+    }
   },
   "not": {
     "anyOf": [
-      { "required": ["platform"] },
-      { "required": ["product"] },
-      { "required": ["vendor_namespace"] },
-      { "required": ["config_snippet"] }
+      {
+        "required": [
+          "platform"
+        ]
+      },
+      {
+        "required": [
+          "product"
+        ]
+      },
+      {
+        "required": [
+          "vendor_namespace"
+        ]
+      },
+      {
+        "required": [
+          "config_snippet"
+        ]
+      }
     ]
   },
   "$comment": "The `not` clause enforces the implementation/capability boundary: vendor, product, and configuration detail belong on x-capability, and an implementation approach that carries them has drifted into being a capability.",
@@ -37,8 +93,14 @@
       "patternProperties": {
         "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
           "type": "object",
-          "required": ["extension_type"],
-          "properties": { "extension_type": { "const": "new-sdo" } }
+          "required": [
+            "extension_type"
+          ],
+          "properties": {
+            "extension_type": {
+              "const": "new-sdo"
+            }
+          }
         }
       },
       "additionalProperties": false

@@ -5,17 +5,33 @@
   "description": "A CSA gap mapping: a standard STIX relationship asserting how much of the source's requirement the target covers, using CSA's gap vocabulary. Read left to right — source_ref is what is mapped FROM. The custom properties are declared by a toplevel-property-extension so they are scoped rather than colliding with other producers' properties on the standard relationship type.",
   "type": "object",
   "required": [
-    "type", "spec_version", "id", "created", "modified",
-    "relationship_type", "source_ref", "target_ref",
-    "extensions", "gap_level"
+    "type",
+    "spec_version",
+    "id",
+    "created",
+    "modified",
+    "relationship_type",
+    "source_ref",
+    "target_ref",
+    "extensions",
+    "gap_level",
+    "object_marking_refs"
   ],
   "$comment": "gap_level is required because a gap mapping without a verdict asserts nothing — it is the substance of the claim, not an annotation on it.",
   "properties": {
-    "type": { "const": "relationship" },
-    "spec_version": { "const": "2.1" },
-    "id": { "type": "string", "pattern": "^relationship--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$" },
-    "relationship_type": { "const": "csa-gap-mapping" },
-
+    "type": {
+      "const": "relationship"
+    },
+    "spec_version": {
+      "const": "2.1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^relationship--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    },
+    "relationship_type": {
+      "const": "csa-gap-mapping"
+    },
     "source_ref": {
       "type": "string",
       "description": "What is mapped FROM. A catalog control or regulation clause.",
@@ -26,9 +42,12 @@
       "description": "What is mapped TO. A→B and B→A are two separate objects.",
       "pattern": "^(x-control|x-regulation)--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
-
     "gap_level": {
-      "enum": ["No Gap", "Partial Gap", "Full Gap"],
+      "enum": [
+        "No Gap",
+        "Partial Gap",
+        "Full Gap"
+      ],
       "description": "CSA's coverage verdict for this direction. No Gap: the target covers the source's requirement. Partial Gap: partial coverage. Full Gap: the target does not cover it. These are the three values used across CSA's published mappings."
     },
     "bidirectional": {
@@ -39,16 +58,34 @@
       "type": "string",
       "description": "Rationale for the mapping — the addendum text in CSA's published mappings, which carries scope qualification and caveats."
     },
-
     "extensions": {
       "type": "object",
-      "required": ["extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903"],
+      "required": [
+        "extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903"
+      ],
       "properties": {
         "extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903": {
           "type": "object",
-          "required": ["extension_type"],
-          "properties": { "extension_type": { "const": "toplevel-property-extension" } }
+          "required": [
+            "extension_type"
+          ],
+          "properties": {
+            "extension_type": {
+              "const": "toplevel-property-extension"
+            }
+          }
         }
+      }
+    },
+    "object_marking_refs": {
+      "type": "array",
+      "description": "Data markings applying to the whole object. Every catalog object carries TLP:WHITE, since the catalog is public. TLP:WHITE is the STIX 2.1 spelling of what TLP 2.0 renamed TLP:CLEAR; the identifier is assigned by the specification, and STIX forbids producers from defining their own tlp markings. Additional markings may be present.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "contains": {
+        "const": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
       }
     }
   }

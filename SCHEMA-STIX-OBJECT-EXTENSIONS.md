@@ -182,6 +182,9 @@ without `x-control-implementation` and `x-control`.
   "id": "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
   "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "name": "CSA Security Controls Catalog — x-control",
   "description": "A security control from any publisher, with its specification, guidance, lifecycle state, and source provenance.",
@@ -388,6 +391,9 @@ rationale, and the authorship of the claim:
   "id": "relationship--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
   "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "relationship_type": "csa-gap-mapping",
   "source_ref": "x-control--<UUID>",
@@ -446,6 +452,9 @@ checked against the published matrix rather than taken on trust:
   "id": "x-control--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
   "extensions": {
     "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
       "extension_type": "new-sdo"
@@ -490,6 +499,9 @@ minimum CCM and AICM use when citing these sources:
   "id": "x-control--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
   "extensions": {
     "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
       "extension_type": "new-sdo"
@@ -516,7 +528,7 @@ minimum CCM and AICM use when citing these sources:
 > source permits reproduction. Where it does not, the object carries citation
 > metadata only — the schema enforces this for `iso.org` and `iec.ch` by rejecting
 > `specification`, `description`, `implementation_guidance`, and `audit_guidance`
-> on those objects. See [conventions § 8](CONVENTIONS-STIX-MODELING.md).
+> on those objects. See [conventions § 9](CONVENTIONS-STIX-MODELING.md).
 
 ### `status`, `revoked`, and supersession
 
@@ -588,6 +600,9 @@ discriminator.
   "id": "x-regulation--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
   "extensions": {
     "extension-definition--a72496a3-08f8-43fb-88c9-479bb94e5e02": {
       "extension_type": "new-sdo"
@@ -620,7 +635,7 @@ with attribution — EU legislative text is reusable. Check the source record fo
 specific terms rather than relying on a value quoted in this document. Where a
 source does not permit reproduction, omit `text_excerpt` and describe the
 requirement in original wording. See
-[conventions § 8](CONVENTIONS-STIX-MODELING.md).
+[conventions § 9](CONVENTIONS-STIX-MODELING.md).
 
 ### CSA-CC alignment
 
@@ -655,6 +670,9 @@ that implement it.
   "id": "x-control-implementation--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
   "extensions": {
     "extension-definition--1690104a-d3f2-4716-a334-252356f338dc": {
       "extension_type": "new-sdo"
@@ -704,6 +722,9 @@ product detail that changes weekly.
   "id": "x-capability--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
   "extensions": {
     "extension-definition--43f8f73f-45e2-4d06-bdc0-46bdd5cb3e81": {
       "extension_type": "new-sdo"
@@ -761,6 +782,9 @@ so both are constitutive properties, following the STIX `sighting` pattern. See
   "id": "x-control-assessment--<UUID>",
   "created": "2026-01-15T00:00:00.000Z",
   "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
   "extensions": {
     "extension-definition--c2b74dc8-5ea7-4d9c-ade0-85474e5f70b4": {
       "extension_type": "new-sdo"

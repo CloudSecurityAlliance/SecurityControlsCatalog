@@ -4,19 +4,36 @@
   "title": "x-control",
   "description": "A security control from any publisher, with its specification, guidance, lifecycle state, and source provenance. Defined by the CSA Security Controls Catalog. See SCHEMA-STIX-OBJECT-EXTENSIONS.md for narrative definitions.",
   "type": "object",
-  "required": ["type", "spec_version", "id", "created", "modified", "extensions"],
+  "required": [
+    "type",
+    "spec_version",
+    "id",
+    "created",
+    "modified",
+    "extensions",
+    "object_marking_refs"
+  ],
   "properties": {
-    "type": { "const": "x-control" },
-    "spec_version": { "const": "2.1" },
+    "type": {
+      "const": "x-control"
+    },
+    "spec_version": {
+      "const": "2.1"
+    },
     "id": {
       "type": "string",
       "pattern": "^x-control--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
-    "extensions": { "$ref": "#/$defs/newSdoExtension" },
-
-    "name": { "type": "string", "minLength": 1 },
-    "description": { "type": "string" },
-
+    "extensions": {
+      "$ref": "#/$defs/newSdoExtension"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
     "framework_namespace": {
       "type": "string",
       "description": "Publisher namespace, mirroring the SecID namespace component (e.g. cloudsecurityalliance.org, iso.org, nist.gov).",
@@ -34,43 +51,107 @@
       "type": "string",
       "description": "The publisher's own identifier for the control, mirroring the SecID subpath (e.g. CEK-03, A.8.24, AC-1)."
     },
-
-    "domain": { "type": "string" },
+    "domain": {
+      "type": "string"
+    },
     "status": {
-      "enum": ["draft", "live", "retired"],
+      "enum": [
+        "draft",
+        "live",
+        "retired"
+      ],
       "description": "Catalog lifecycle. Orthogonal to the standard STIX revoked property, which means withdrawn as invalid. Never express retirement with revoked."
     },
     "specification": {
       "type": "string",
       "description": "The control requirement. Holds reproduced text and is therefore licence-constrained: populate only where the source permits reproduction. See CONVENTIONS-STIX-MODELING.md section 8."
     },
-    "implementation_guidance": { "type": "string" },
-    "audit_guidance": { "type": "string" },
-
-    "ownership": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-    "applicability": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-    "stack_components": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "implementation_guidance": {
+      "type": "string"
+    },
+    "audit_guidance": {
+      "type": "string"
+    },
+    "ownership": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "applicability": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "stack_components": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
     "lifecycle_relevance": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "minItems": 1,
       "description": "System lifecycle phases in which the control applies. Distinct from status, which is the catalog's own lifecycle."
+    },
+    "object_marking_refs": {
+      "type": "array",
+      "description": "Data markings applying to the whole object. Every catalog object carries TLP:WHITE, since the catalog is public. TLP:WHITE is the STIX 2.1 spelling of what TLP 2.0 renamed TLP:CLEAR; the identifier is assigned by the specification, and STIX forbids producers from defining their own tlp markings. Additional markings may be present.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "contains": {
+        "const": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      }
     }
   },
   "allOf": [
     {
       "$comment": "Citation-only sources. Where a publisher's terms do not permit reproduction, the object carries the standard number and the clause identifier and no prose at all — no title, no excerpt, no paraphrase. This is the same minimum CCM and AICM use when citing these sources. ISO/IEC is the named absolute case and is enforced here; the authoritative test for any other source is its SecID licence record, which this check does not replace. See CONVENTIONS-STIX-MODELING.md section 8.",
       "if": {
-        "required": ["framework_namespace"],
-        "properties": { "framework_namespace": { "enum": ["iso.org", "iec.ch"] } }
+        "required": [
+          "framework_namespace"
+        ],
+        "properties": {
+          "framework_namespace": {
+            "enum": [
+              "iso.org",
+              "iec.ch"
+            ]
+          }
+        }
       },
       "then": {
         "not": {
           "anyOf": [
-            { "required": ["specification"] },
-            { "required": ["description"] },
-            { "required": ["implementation_guidance"] },
-            { "required": ["audit_guidance"] }
+            {
+              "required": [
+                "specification"
+              ]
+            },
+            {
+              "required": [
+                "description"
+              ]
+            },
+            {
+              "required": [
+                "implementation_guidance"
+              ]
+            },
+            {
+              "required": [
+                "audit_guidance"
+              ]
+            }
           ]
         }
       }
@@ -84,8 +165,14 @@
       "patternProperties": {
         "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
           "type": "object",
-          "required": ["extension_type"],
-          "properties": { "extension_type": { "const": "new-sdo" } }
+          "required": [
+            "extension_type"
+          ],
+          "properties": {
+            "extension_type": {
+              "const": "new-sdo"
+            }
+          }
         }
       },
       "additionalProperties": false

@@ -107,6 +107,18 @@ The definition objects and the CSA publisher identity live in
 [`objects/`](objects/); their schemas are in [`schemas/`](schemas/), and
 [`tools/validate.py`](tools/) checks objects against them.
 
+## Data markings
+
+Everything in this repository is **TLP:CLEAR** — it is a public repository and the
+catalog is published for open consumption.
+
+In the data itself that is expressed as **TLP:WHITE**, which is the STIX 2.1 spelling
+of the same thing: STIX 2.1 predefines four TLP markings and forbids producers from
+minting their own, and TLP 2.0's rename to CLEAR postdates it. Every object carries
+it in `object_marking_refs`, because STIX has no bundle-level or repository-level
+marking — a statement here documents intent, but only a property on the object
+travels with it.
+
 ## Design documentation
 
 Three documents describe the data model, divided by the question each answers:
