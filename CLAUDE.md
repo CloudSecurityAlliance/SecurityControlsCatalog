@@ -62,10 +62,10 @@ Objects carry a [SecID](https://secid.cloudsecurityalliance.org/) (for example `
 
 ## Load-bearing design principles and conventions
 
-**Read these before proposing or generating anything about the data model.** Violating one is a category error, not a style nit — and they are deliberately not restated here, because a second copy drifts:
+**Read these before proposing or generating anything about the data model.** Violating one is a category error, not a style nit. They are deliberately **not** listed or summarized here — a list of what those documents contain goes stale the moment one is added, renamed, or settled, which has already happened once:
 
-- **Design principles** — minimal invention, alignment over replacement, maximum tool compatibility, graph-first, forward compatibility, SecID co-evolution, research status: [`DESIGN-RATIONALE-STIX-EXTENSIONS.md` § Design principles](DESIGN-RATIONALE-STIX-EXTENSIONS.md#design-principles). That section is their single home.
-- **Modeling conventions** — relationships as SROs and the constitutive-reference test, `extension-definition` for new types, identifiers and SecID placement, standard-properties-first, lifecycle vs. `revoked`, reproducing external text: [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md).
+- **Design principles** — [`DESIGN-RATIONALE-STIX-EXTENSIONS.md` § Design principles](DESIGN-RATIONALE-STIX-EXTENSIONS.md#design-principles), their single home.
+- **Modeling conventions** — [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md), numbered sections plus an `Open questions` list.
 
 The distinction is worth keeping straight: principles are *why* the design is shaped as it is and change rarely; conventions are *how* to model something and are where the operative rules live.
 

@@ -20,9 +20,10 @@
       the CLA check on this PR will confirm it.
 - [ ] My contribution is my own work (or I have the right to submit it) per
       the CLA.
-- [ ] Any co-authors of the **text** have each signed the CLA (group discussion
-      or ideas alone don't require signing); any `Co-authored-by:` trailers name
-      only signed co-authors.
+- [ ] Any **human** co-authors of the text have each signed the CLA (group
+      discussion or ideas alone don't require signing). An **AI assistant** may be
+      acknowledged in a `Co-authored-by:` trailer without signing — it is not a CLA
+      co-author, and you take responsibility for AI-assisted content.
 - [ ] If this changes the **schema or data model**, I have updated the affected
       design document (or noted why not): `DESIGN-RATIONALE-STIX-EXTENSIONS.md`
       for format, publication, or distribution; `CONVENTIONS-STIX-MODELING.md`
