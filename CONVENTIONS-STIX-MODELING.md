@@ -265,12 +265,30 @@ mislabelled restrictive loses a citation, while a restrictive source mislabelled
 permissive is a takedown. Only the second needs guarding, so where the record and
 the publisher's own terms disagree, take the more restrictive reading.
 
-**ISO/IEC text is not reproduced, at any length.** ISO standards are not
-redistributable, and CSA maintains a working relationship with ISO that this
-catalog will not put at risk. Identify ISO clauses by `framework`,
-`framework_version`, and `control_identifier`, give them an original
-`description`, and omit `specification` entirely. The same applies to any other
-publisher whose terms do not permit reproduction.
+### Citation-only sources
+
+Where a publisher's terms do not permit reproduction, the object carries **only the
+citation**: the standard number, and the clause identifier including its annex
+prefix where the source has one. **No other text** — no title, no excerpt, no
+paraphrase, no original description of what the clause says.
+
+For ISO/IEC that means, for example, standard `42001`, version `2023`, identifier
+`A.6.1.2`, and nothing else. `name` may hold a citation the catalog constructs from
+those parts (`ISO/IEC 42001:2023 A.6.1.2`) so the object renders legibly in generic
+STIX tools, since a citation is not the publisher's prose.
+
+This is deliberately the same minimum that CCM and AICM already use when citing
+these sources: it is the least data the catalog needs to express a mapping, and it
+is what the rest of the field does.
+
+**ISO/IEC text is not reproduced at any length.** ISO standards are not
+redistributable, and CSA maintains a working relationship with ISO that this catalog
+will not put at risk. The schemas enforce this for the `iso.org` and `iec.ch`
+namespaces by rejecting `specification`, `description`, `implementation_guidance`,
+and `audit_guidance` outright, so the rule cannot be broken by an oversight in
+generation. That enforcement is a backstop for the case that is absolute, not a
+substitute for checking a source's licence record — which remains the test for every
+other publisher.
 
 Referencing a clause by identifier is always available and is the default. See
 `CONTRIBUTING.md` § "Sources and third-party content".

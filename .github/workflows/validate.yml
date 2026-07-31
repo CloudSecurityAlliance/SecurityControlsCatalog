@@ -1,0 +1,108 @@
+name: Validate
+
+on:
+  pull_request:
+    paths:
+      - "schemas/**"
+      - "tools/**"
+      - "**.json"
+      - ".github/workflows/validate.yml"
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  schemas:
+    name: Schemas and catalog objects
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install jsonschema
+        run: pip install --quiet jsonschema
+
+      - name: Schema self-test
+        run: python3 tools/validate.py --self-test
+
+      - name: Validate the schema document's own examples
+        # Keeps SCHEMA-STIX-OBJECT-EXTENSIONS.md and schemas/ from drifting apart:
+        # the documented examples must satisfy the schemas that describe them.
+        run: |
+          python3 - <<'PY'
+          import json, re, uuid, subprocess, sys, tempfile
+          src = open("SCHEMA-STIX-OBJECT-EXTENSIONS.md").read()
+          seen = {}
+          def rep(m):
+              seen.setdefault(m.group(0), str(uuid.uuid4()))
+              return seen[m.group(0)]
+          objs = [json.loads(re.sub(r"<UUID[^>]*>|<CSA_ID>", rep, b))
+                  for b in re.findall(r"```json\n(.*?)```", src, re.S)
+                  if b.lstrip().startswith("{")]
+          if not objs:
+              sys.exit("no JSON examples found in the schema document")
+          with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as fh:
+              json.dump({"type": "bundle", "id": f"bundle--{uuid.uuid4()}",
+                         "objects": objs}, fh)
+              path = fh.name
+          print(f"extracted {len(objs)} example objects")
+          sys.exit(subprocess.call([sys.executable, "tools/validate.py", path]))
+          PY
+
+      - name: Validate any committed catalog objects
+        run: |
+          files=$(find catalog bundles -type f -name '*.json' 2>/dev/null | sort)
+          if [ -z "$files" ]; then
+            echo "no committed catalog objects yet — skipping"
+            exit 0
+          fi
+          echo "$files" | xargs python3 tools/validate.py
+
+  stix-conformance:
+    name: STIX 2.1 conformance (OASIS validator)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the OASIS validator from source
+        # NOT from PyPI: the published wheel omits its bundled JSON schemas, and the
+        # tool then fails on every object including standard ones. The schemas are a
+        # git submodule, so a recursive clone is required.
+        run: |
+          git clone --quiet --recursive --depth 1 \
+            https://github.com/oasis-open/cti-stix-validator.git /tmp/cti-stix-validator
+          test -d /tmp/cti-stix-validator/stix2validator/schemas-2.1/schemas \
+            || { echo "bundled schemas missing — the submodule did not check out"; exit 1; }
+          pip install --quiet -e /tmp/cti-stix-validator
+
+      - name: Confirm the validator works at all
+        # Guards against a silent pass: a broken validator would otherwise report
+        # nothing to check and look green.
+        run: |
+          cat > /tmp/plain.json <<'EOF'
+          {"type":"bundle","id":"bundle--0e5b6f0e-6f0e-4e5b-8f0e-6f0e4e5b8f0e","objects":[
+           {"type":"identity","spec_version":"2.1",
+            "id":"identity--1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+            "created":"2026-01-15T00:00:00.000Z","modified":"2026-01-15T00:00:00.000Z",
+            "name":"Cloud Security Alliance","identity_class":"organization"}]}
+          EOF
+          python3 -m stix2validator.scripts.stix2_validator /tmp/plain.json
+
+      - name: Validate committed catalog objects for STIX conformance
+        run: |
+          files=$(find catalog bundles -type f -name '*.json' 2>/dev/null | sort)
+          if [ -z "$files" ]; then
+            echo "no committed catalog objects yet — skipping"
+            exit 0
+          fi
+          echo "$files" | xargs python3 -m stix2validator.scripts.stix2_validator \
+            --schemas ./schemas/ --enforce-refs

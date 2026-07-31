@@ -17,7 +17,7 @@ Reference:
 
 ## Repository state
 
-This is a public CSA repository with its contribution infrastructure in place — `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, `.github/CODEOWNERS`, and the CLA-enforcement workflow (`.github/workflows/cla.yml`). Catalog content — STIX bundles and instance data — is still being prepared, so there are no committed schema or data directories yet. Do not assume directory conventions — read the current tree before writing files, and propose layout to the maintainer rather than inventing one.
+This is a public CSA repository with its contribution infrastructure in place — `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, `.github/CODEOWNERS`, and the CLA-enforcement workflow (`.github/workflows/cla.yml`). `schemas/` holds the JSON Schemas for the five custom types and `tools/` the validator. Catalog content — STIX bundles and instance data — is still being prepared, so there is no committed instance data yet, and the layout for it is not settled. Do not assume directory conventions — read the current tree before writing files, and propose layout to the maintainer rather than inventing one.
 
 Schemas are **exploratory / research status** and explicitly provisional. Do not treat any schema sketch (including the one summarized below) as normative. Always consult the in-repo design documentation (see below) before editing or generating instance data.
 
@@ -107,7 +107,7 @@ The `LICENSE.txt` reflects CSA's standard publication terms (no modification or 
 Validation exists; there is still no package manager or build step.
 
 ```sh
-python3 tools/validate.py --self-test        # check the schemas themselves (17 cases)
+python3 tools/validate.py --self-test        # check the schemas themselves
 python3 tools/validate.py bundle.json        # check catalog objects against schemas/
 ```
 
@@ -115,13 +115,19 @@ Needs `jsonschema`. `tools/validate.py` checks **only** the five custom types �
 not a STIX conformance checker. For that, layer the OASIS validator on top:
 
 ```sh
-pip install stix2-validator
+git clone --recursive https://github.com/oasis-open/cti-stix-validator.git
+pip install -e cti-stix-validator
 stix2_validator --schemas ./schemas/ --enforce-refs bundle.json
 ```
 
-`--schemas` applies `schemas/` *in addition to* the bundled STIX schemas, so core
-STIX rules and catalog field rules are both enforced. Note `--strict-types` is an
-opt-in warning about non-spec `type` values, so `x-*` objects pass without it.
+**Install it from a recursive clone, not PyPI** — the published wheel omits its
+bundled JSON schemas and then fails on every object, including standard ones. Once
+installed correctly, `--schemas` applies `schemas/` *in addition to* the bundled STIX
+schemas, so core STIX rules and catalog field rules are both enforced. `--strict-types`
+is an opt-in warning about non-spec `type` values, so `x-*` objects pass without it.
+
+Both layers matter: without `--schemas`, the validator accepts unknown types against
+the core schema alone, so catalog field rules go unchecked.
 
 Not yet covered, because JSON Schema sees one object at a time: that an
 `extension-definition` travels with the instances referencing it, that

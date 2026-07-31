@@ -20,19 +20,19 @@
     "spec_version": { "const": "2.1" },
     "id": {
       "type": "string",
-      "pattern": "^x-control-assessment--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+      "pattern": "^x-control-assessment--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
     "extensions": { "$ref": "#/$defs/newSdoExtension" },
 
     "assessed_control_ref": {
       "type": "string",
       "description": "The control that was assessed.",
-      "pattern": "^x-control--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+      "pattern": "^x-control--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
     "entity_ref": {
       "type": "string",
       "description": "The entity the assessment is about, as a standard STIX identity.",
-      "pattern": "^identity--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+      "pattern": "^identity--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
 
     "assessment_status": { "type": "string" },
@@ -54,7 +54,7 @@
       "description": "Declares the object as a new SDO defined by a CSA extension-definition. The definition object must travel with the instance in any published bundle.",
       "minProperties": 1,
       "patternProperties": {
-        "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
+        "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
           "type": "object",
           "required": ["extension_type"],
           "properties": { "extension_type": { "const": "new-sdo" } }

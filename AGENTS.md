@@ -38,7 +38,7 @@ infrastructure; catalog content is being prepared. The root contains:
 
 `.claude/` is gitignored local working context — never quote it in a pull request, commit message, or issue.
 
-There are no committed source, schema, or instance-data directories yet. Before adding structure, inspect the tree (`git ls-files`) and keep proposals explicit in the pull request. Do not invent conventions for schemas, generated bundles, or instance data without maintainer agreement.
+`schemas/` and `tools/` are committed; there is no instance-data directory yet and its layout is not settled. Before adding structure, inspect the tree (`git ls-files`) and keep proposals explicit in the pull request. Do not invent conventions for generated bundles or instance data without maintainer agreement.
 
 ## Build, Test, and Development Commands
 
@@ -46,7 +46,7 @@ No build system or package manager. Validation exists (needs `jsonschema`):
 
 - `python3 tools/validate.py --self-test`: check the schemas in `schemas/` themselves.
 - `python3 tools/validate.py bundle.json`: check catalog objects against those schemas.
-- `stix2_validator --schemas ./schemas/ --enforce-refs bundle.json`: full STIX 2.1 conformance plus catalog field rules, via the OASIS validator (`pip install stix2-validator`).
+- `stix2_validator --schemas ./schemas/ --enforce-refs bundle.json`: full STIX 2.1 conformance plus catalog field rules, via the OASIS validator. Install it from a **recursive clone**, not PyPI — the published wheel omits its bundled JSON schemas and fails on every object, including standard ones.
 
 `tools/validate.py` covers only the five custom types, not STIX conformance — run both. Bundle-level rules are not yet checked: that an `extension-definition` travels with the instances referencing it, that licence-constrained fields match the source's recorded terms, and that `revoked` was not used to mean retired.
 
@@ -84,7 +84,7 @@ Decided in [`DESIGN-RATIONALE-STIX-EXTENSIONS.md`](DESIGN-RATIONALE-STIX-EXTENSI
 
 ## Testing Guidelines
 
-There are no tests yet. For documentation-only changes, verify Markdown renders cleanly and that links, dates, and terminology match source documents. Future schema or catalog contributions should include validator output or reproducible test commands in the PR.
+`python3 tools/validate.py --self-test` covers the schemas. For documentation-only changes, verify Markdown renders cleanly and that links, dates, and terminology match source documents. Future schema or catalog contributions should include validator output or reproducible test commands in the PR.
 
 ## Commit & Pull Request Guidelines
 

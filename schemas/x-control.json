@@ -10,7 +10,7 @@
     "spec_version": { "const": "2.1" },
     "id": {
       "type": "string",
-      "pattern": "^x-control--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+      "pattern": "^x-control--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
     "extensions": { "$ref": "#/$defs/newSdoExtension" },
 
@@ -57,13 +57,32 @@
       "description": "System lifecycle phases in which the control applies. Distinct from status, which is the catalog's own lifecycle."
     }
   },
+  "allOf": [
+    {
+      "$comment": "Citation-only sources. Where a publisher's terms do not permit reproduction, the object carries the standard number and the clause identifier and no prose at all — no title, no excerpt, no paraphrase. This is the same minimum CCM and AICM use when citing these sources. ISO/IEC is the named absolute case and is enforced here; the authoritative test for any other source is its SecID licence record, which this check does not replace. See CONVENTIONS-STIX-MODELING.md section 8.",
+      "if": {
+        "required": ["framework_namespace"],
+        "properties": { "framework_namespace": { "enum": ["iso.org", "iec.ch"] } }
+      },
+      "then": {
+        "not": {
+          "anyOf": [
+            { "required": ["specification"] },
+            { "required": ["description"] },
+            { "required": ["implementation_guidance"] },
+            { "required": ["audit_guidance"] }
+          ]
+        }
+      }
+    }
+  ],
   "$defs": {
     "newSdoExtension": {
       "type": "object",
       "description": "Declares the object as a new SDO defined by a CSA extension-definition. The definition object must travel with the instance in any published bundle.",
       "minProperties": 1,
       "patternProperties": {
-        "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
+        "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
           "type": "object",
           "required": ["extension_type"],
           "properties": { "extension_type": { "const": "new-sdo" } }
