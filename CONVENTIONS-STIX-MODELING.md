@@ -218,14 +218,47 @@ has no short-code property, so abbreviations have nowhere to live in the object;
 where a short identifier is genuinely useful, such as CSA's CVE Numbering Authority
 short name `CSAI`, it belongs in `external_references` alongside the SecID.
 
-## 6. No changes to the wire format
+## 6. Every object carries TLP:WHITE
+
+The catalog is public, so every published object carries the TLP:WHITE marking in
+`object_marking_refs`:
+
+```json
+"object_marking_refs": ["marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"]
+```
+
+**TLP:WHITE is the STIX 2.1 spelling of what TLP 2.0 renamed TLP:CLEAR.** STIX 2.1
+predefines exactly four TLP markings — WHITE, GREEN, AMBER, RED — with
+specification-assigned identifiers, and forbids producers from defining their own
+`tlp` markings. So there is no conformant `TLP:CLEAR` to use, and the identifier
+above is a constant reproduced from the specification rather than one this project
+minted. The marking object is committed at
+[`objects/marking-definition/tlp-white.json`](objects/marking-definition/tlp-white.json)
+verbatim, including its specification-fixed `created` timestamp.
+
+**It has to be per object, because STIX offers nowhere else to put it.**
+`object_marking_refs` is an object property, and a `bundle` is deliberately a
+container with no semantics — there is no bundle-level or repository-level marking.
+A statement in a README documents intent for humans but does not travel: an object
+ingested into a CTI platform arrives carrying whatever is on the object and nothing
+more.
+
+Marking every object is therefore repetitive by necessity rather than by choice. It
+is also cheap, since it is generated, and it removes a real ambiguity — an unmarked
+object is not TLP:WHITE, it is *unspecified*, and some pipelines route or filter on
+the presence of a marking.
+
+Additional markings may accompany it; the schemas require that TLP:WHITE be present,
+not that it be alone. A `marking-definition` object does not mark itself.
+
+## 7. No changes to the wire format
 
 Catalog objects are ordinary STIX 2.1 JSON. Nothing in this catalog changes the
 STIX wire format, versioning model, or transport. If a design would require a
 consumer to special-case the catalog before it can parse or route the data, the
 design is wrong.
 
-## 7. Lifecycle state and revocation are distinct
+## 8. Lifecycle state and revocation are distinct
 
 A custom property that duplicates a standard one is a defect (convention 4), but
 two properties recording *different facts* are not duplicates — and lifecycle
@@ -251,7 +284,7 @@ date and rationale, and the replaced object stays coherent without it. See
 `SCHEMA-STIX-OBJECT-EXTENSIONS.md` § "`status`, `revoked`, and supersession" for
 the applied case.
 
-## 8. Reproducing external text
+## 9. Reproducing external text
 
 Most of what the catalog does with external standards is referential: citing a
 clause by identifier, describing a requirement in original wording, asserting that

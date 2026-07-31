@@ -70,6 +70,10 @@ Its custom properties are declared by a `toplevel-property-extension`, since
 `relationship` is a standard STIX type and an undeclared property on it could collide
 with another producer's.
 
+**Every object must carry TLP:WHITE.** `object_marking_refs` is required and must
+contain the specification-assigned TLP:WHITE identifier. Additional markings are
+allowed; the requirement is that it be present, not that it be alone.
+
 **Cross-object rules are out of reach.** JSON Schema validates one object at a time,
 so it cannot check that an `extension-definition` travels with the instances
 referencing it, that a licence-constrained field matches the source's recorded

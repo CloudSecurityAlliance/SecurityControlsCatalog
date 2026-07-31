@@ -11,5 +11,8 @@
   "version": "1.0",
   "extension_types": [
     "toplevel-property-extension"
+  ],
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
   ]
 }

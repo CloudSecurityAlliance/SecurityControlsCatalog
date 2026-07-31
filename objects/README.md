@@ -56,6 +56,17 @@ One further definition adds properties to a **standard** type rather than declar
 |---|---|
 | `csa-gap-mapping` (`toplevel-property-extension` on `relationship`) | `extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903` |
 
+### `marking-definition/`
+
+`tlp-white.json` — TLP:WHITE, reproduced verbatim from STIX 2.1 including its
+specification-fixed `created` timestamp. STIX predefines exactly four TLP markings
+and forbids producers from defining their own, so this identifier is a constant, not
+something this project minted. It is the STIX 2.1 spelling of what TLP 2.0 renamed
+TLP:CLEAR.
+
+Every other object carries it in `object_marking_refs`. A marking does not mark
+itself.
+
 ### `identity/`
 
 The publisher identity, `identity--51f9d480-d80b-4415-93c7-507cde4d1e85`. CSA-authored

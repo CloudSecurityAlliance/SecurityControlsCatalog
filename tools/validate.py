@@ -25,6 +25,8 @@ try:
 except ImportError:
     sys.exit("needs jsonschema: pip install jsonschema")
 
+TLP_WHITE = "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCHEMA_DIR = os.path.join(ROOT, "schemas")
 
@@ -113,6 +115,7 @@ def self_test(schemas):
                     MAPPING_EXT: {"extension_type": "toplevel-property-extension"}
                 },
                 "gap_level": "No Gap",
+                "object_marking_refs": [TLP_WHITE],
             }
         return {
             "type": t,
@@ -123,6 +126,7 @@ def self_test(schemas):
             "extensions": {
                 f"extension-definition--{uuid.uuid4()}": {"extension_type": "new-sdo"}
             },
+            "object_marking_refs": [TLP_WHITE],
         }
 
     def with_refs(o):
@@ -220,6 +224,20 @@ def self_test(schemas):
                             gap_level="Full Gap"), False),
         ("valid bidirectional mapping", "csa-gap-mapping",
          lambda o: o.update(bidirectional=True), False),
+
+        # data markings
+        ("control with no object_marking_refs", "x-control",
+         lambda o: o.pop("object_marking_refs"), True),
+        ("control with an empty marking list", "x-control",
+         lambda o: o.update(object_marking_refs=[]), True),
+        ("control marked TLP:AMBER instead", "x-control",
+         lambda o: o.update(object_marking_refs=[
+             "marking-definition--f88d31f6-486f-44da-b317-01333bde0b82"]), True),
+        ("mapping with no object_marking_refs", "csa-gap-mapping",
+         lambda o: o.pop("object_marking_refs"), True),
+        ("control with TLP:WHITE plus another marking", "x-control",
+         lambda o: o.update(object_marking_refs=[
+             TLP_WHITE, f"marking-definition--{uuid.uuid4()}"]), False),
     ]
 
     bad = 0

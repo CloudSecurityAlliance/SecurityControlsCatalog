@@ -12,18 +12,24 @@
     "modified",
     "extensions",
     "assessed_control_ref",
-    "entity_ref"
+    "entity_ref",
+    "object_marking_refs"
   ],
   "$comment": "assessed_control_ref and entity_ref are required because they are constitutive: an assessment with no assessed control and no assessed entity is not an assessment. This follows the STIX sighting pattern, where sighting_of_ref is likewise required. See CONVENTIONS-STIX-MODELING.md, Constitutive references stay embedded.",
   "properties": {
-    "type": { "const": "x-control-assessment" },
-    "spec_version": { "const": "2.1" },
+    "type": {
+      "const": "x-control-assessment"
+    },
+    "spec_version": {
+      "const": "2.1"
+    },
     "id": {
       "type": "string",
       "pattern": "^x-control-assessment--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
-    "extensions": { "$ref": "#/$defs/newSdoExtension" },
-
+    "extensions": {
+      "$ref": "#/$defs/newSdoExtension"
+    },
     "assessed_control_ref": {
       "type": "string",
       "description": "The control that was assessed.",
@@ -34,18 +40,34 @@
       "description": "The entity the assessment is about, as a standard STIX identity.",
       "pattern": "^identity--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
     },
-
-    "assessment_status": { "type": "string" },
-    "assessment_type": { "type": "string" },
+    "assessment_status": {
+      "type": "string"
+    },
+    "assessment_type": {
+      "type": "string"
+    },
     "assessment_date": {
       "type": "string",
       "description": "When the assessment was performed. Distinct from created/modified, which describe the object.",
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
     },
-    "evidence_description": { "type": "string" },
+    "evidence_description": {
+      "type": "string"
+    },
     "score": {
       "type": "number",
       "description": "Range, scale, and meaning are undefined pending a working-group decision, so no bounds are asserted here. Distinct from the standard STIX confidence property."
+    },
+    "object_marking_refs": {
+      "type": "array",
+      "description": "Data markings applying to the whole object. Every catalog object carries TLP:WHITE, since the catalog is public. TLP:WHITE is the STIX 2.1 spelling of what TLP 2.0 renamed TLP:CLEAR; the identifier is assigned by the specification, and STIX forbids producers from defining their own tlp markings. Additional markings may be present.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "contains": {
+        "const": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+      }
     }
   },
   "$defs": {
@@ -56,8 +78,14 @@
       "patternProperties": {
         "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
           "type": "object",
-          "required": ["extension_type"],
-          "properties": { "extension_type": { "const": "new-sdo" } }
+          "required": [
+            "extension_type"
+          ],
+          "properties": {
+            "extension_type": {
+              "const": "new-sdo"
+            }
+          }
         }
       },
       "additionalProperties": false
