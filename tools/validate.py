@@ -1,0 +1,174 @@
+#!/usr/bin/env python3
+"""Validate CSA-CC objects against the JSON Schemas in schemas/.
+
+Checks the catalog's own custom types. It is not a STIX conformance checker — for
+that, run the OASIS validator alongside it:
+
+    stix2_validator --schemas ./schemas/ --enforce-refs bundle.json
+
+Usage:
+    tools/validate.py bundle.json [more.json ...]   validate objects in files
+    tools/validate.py --self-test                   check the schemas themselves
+
+Accepts a STIX bundle, a bare object, or a list of objects. Objects whose `type`
+has no schema here (relationship, identity, extension-definition) are skipped:
+they are standard STIX and the OASIS validator owns them.
+"""
+import glob
+import json
+import os
+import sys
+import uuid
+
+try:
+    from jsonschema import Draft202012Validator
+except ImportError:
+    sys.exit("needs jsonschema: pip install jsonschema")
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SCHEMA_DIR = os.path.join(ROOT, "schemas")
+
+
+def load_schemas():
+    out = {}
+    for path in sorted(glob.glob(os.path.join(SCHEMA_DIR, "*.json"))):
+        schema = json.load(open(path))
+        Draft202012Validator.check_schema(schema)
+        out[schema["title"]] = schema
+    if not out:
+        sys.exit(f"no schemas found in {SCHEMA_DIR}")
+    return out
+
+
+def objects_in(doc):
+    """Yield STIX objects from a bundle, a list, or a single object."""
+    if isinstance(doc, list):
+        for item in doc:
+            yield from objects_in(item)
+    elif isinstance(doc, dict):
+        if doc.get("type") == "bundle" and "objects" in doc:
+            yield from objects_in(doc["objects"])
+        elif "type" in doc:
+            yield doc
+
+
+def validate_objects(objs, schemas, label):
+    checked = skipped = 0
+    failures = []
+    for obj in objs:
+        stix_type = obj.get("type")
+        schema = schemas.get(stix_type)
+        if schema is None:
+            skipped += 1
+            continue
+        checked += 1
+        for err in sorted(Draft202012Validator(schema).iter_errors(obj),
+                          key=lambda e: list(e.path)):
+            where = "/".join(str(p) for p in err.path) or "(object)"
+            failures.append(f"{label}: {stix_type} {obj.get('id', '?')}\n"
+                            f"    {where}: {err.message}")
+    return checked, skipped, failures
+
+
+def self_test(schemas):
+    """Confirm the schemas accept valid objects and reject known-bad ones."""
+    def base(t):
+        return {
+            "type": t,
+            "spec_version": "2.1",
+            "id": f"{t}--{uuid.uuid4()}",
+            "created": "2026-01-15T00:00:00.000Z",
+            "modified": "2026-01-15T00:00:00.000Z",
+            "extensions": {
+                f"extension-definition--{uuid.uuid4()}": {"extension_type": "new-sdo"}
+            },
+        }
+
+    def with_refs(o):
+        o.update(assessed_control_ref=f"x-control--{uuid.uuid4()}",
+                 entity_ref=f"identity--{uuid.uuid4()}")
+        return o
+
+    cases = [
+        # (label, type, mutation, should_be_rejected)
+        ("status value that was removed", "x-control",
+         lambda o: o.update(status="replaced"), True),
+        ("spec_version 2.0", "x-control",
+         lambda o: o.update(spec_version="2.0"), True),
+        ("missing extensions block", "x-control",
+         lambda o: o.pop("extensions"), True),
+        ("extension_type not new-sdo", "x-control",
+         lambda o: o.update(extensions={
+             f"extension-definition--{uuid.uuid4()}":
+                 {"extension_type": "property-extension"}}), True),
+        ("extensions keyed by a non-definition id", "x-control",
+         lambda o: o.update(extensions={"x-foo--bar": {"extension_type": "new-sdo"}}), True),
+        ("id prefix not matching type", "x-control",
+         lambda o: o.update(id=f"x-regulation--{uuid.uuid4()}"), True),
+        ("framework_namespace not lowercase", "x-control",
+         lambda o: o.update(framework_namespace="ISO.org"), True),
+        ("implementation carrying config_snippet", "x-control-implementation",
+         lambda o: o.update(config_snippet="resource {}"), True),
+        ("implementation carrying vendor_namespace", "x-control-implementation",
+         lambda o: o.update(vendor_namespace="amazon.com"), True),
+        ("assessment missing assessed_control_ref", "x-control-assessment",
+         lambda o: o.update(entity_ref=f"identity--{uuid.uuid4()}"), True),
+        ("assessment entity_ref pointing at a control", "x-control-assessment",
+         lambda o: with_refs(o).update(entity_ref=f"x-control--{uuid.uuid4()}"), True),
+        ("assessment_date not a timestamp", "x-control-assessment",
+         lambda o: with_refs(o).update(assessment_date="2026-01-15"), True),
+        ("minimal valid control", "x-control", lambda o: None, False),
+        ("valid regulation", "x-regulation",
+         lambda o: o.update(name="Security of processing", regulation="gdpr",
+                            regulation_namespace="europa.eu"), False),
+        ("valid capability", "x-capability",
+         lambda o: o.update(vendor_namespace="amazon.com", product="aws/s3"), False),
+        ("valid implementation", "x-control-implementation",
+         lambda o: o.update(implementation_type=["configuration"]), False),
+        ("valid assessment", "x-control-assessment", with_refs, False),
+    ]
+
+    bad = 0
+    for label, stix_type, mutate, expect_reject in cases:
+        obj = base(stix_type)
+        mutate(obj)
+        rejected = bool(list(Draft202012Validator(schemas[stix_type]).iter_errors(obj)))
+        ok = rejected == expect_reject
+        bad += not ok
+        print(f"  {'ok  ' if ok else 'FAIL'} {label} "
+              f"({'rejected' if rejected else 'accepted'})")
+    print(f"\n{len(cases) - bad}/{len(cases)} self-tests passed")
+    return 1 if bad else 0
+
+
+def main(argv):
+    schemas = load_schemas()
+    if not argv or argv[0] in ("-h", "--help"):
+        print(__doc__)
+        return 0
+    if argv[0] == "--self-test":
+        print(f"{len(schemas)} schemas loaded: {', '.join(sorted(schemas))}\n")
+        return self_test(schemas)
+
+    total_checked = total_skipped = 0
+    all_failures = []
+    for path in argv:
+        try:
+            doc = json.load(open(path))
+        except (OSError, json.JSONDecodeError) as exc:
+            all_failures.append(f"{path}: unreadable — {exc}")
+            continue
+        checked, skipped, failures = validate_objects(objects_in(doc), schemas, path)
+        total_checked += checked
+        total_skipped += skipped
+        all_failures += failures
+
+    for failure in all_failures:
+        print(failure)
+    print(f"\n{total_checked} object(s) checked, {total_skipped} skipped "
+          f"(standard STIX types), {len(all_failures)} problem(s)")
+    return 1 if all_failures else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

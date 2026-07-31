@@ -104,7 +104,31 @@ The `LICENSE.txt` reflects CSA's standard publication terms (no modification or 
 
 ## Build / lint / test
 
-None yet — no package manager, linter, or test runner. Orientation commands:
+Validation exists; there is still no package manager or build step.
+
+```sh
+python3 tools/validate.py --self-test        # check the schemas themselves (17 cases)
+python3 tools/validate.py bundle.json        # check catalog objects against schemas/
+```
+
+Needs `jsonschema`. `tools/validate.py` checks **only** the five custom types — it is
+not a STIX conformance checker. For that, layer the OASIS validator on top:
+
+```sh
+pip install stix2-validator
+stix2_validator --schemas ./schemas/ --enforce-refs bundle.json
+```
+
+`--schemas` applies `schemas/` *in addition to* the bundled STIX schemas, so core
+STIX rules and catalog field rules are both enforced. Note `--strict-types` is an
+opt-in warning about non-spec `type` values, so `x-*` objects pass without it.
+
+Not yet covered, because JSON Schema sees one object at a time: that an
+`extension-definition` travels with the instances referencing it, that
+licence-constrained fields match the source's recorded terms, and that `revoked` was
+not used to mean retired. Those need bundle-level checks.
+
+Orientation commands:
 
 ```sh
 git ls-files          # full tracked tree (do not assume directory conventions)

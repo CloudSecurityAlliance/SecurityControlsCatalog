@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/x-capability.json",
+  "title": "x-capability",
+  "description": "A specific security feature of a specific product or service, with how it is configured, audited, and remediated. Supports one or more implementation approaches. Defined by the CSA Security Controls Catalog.",
+  "type": "object",
+  "required": ["type", "spec_version", "id", "created", "modified", "extensions"],
+  "properties": {
+    "type": { "const": "x-capability" },
+    "spec_version": { "const": "2.1" },
+    "id": {
+      "type": "string",
+      "pattern": "^x-capability--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    },
+    "extensions": { "$ref": "#/$defs/newSdoExtension" },
+
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+
+    "vendor_namespace": {
+      "type": "string",
+      "description": "Vendor namespace, mirroring the SecID namespace component (e.g. amazon.com, microsoft.com).",
+      "pattern": "^[a-z0-9.-]+$"
+    },
+    "product": {
+      "type": "string",
+      "description": "Product or service path, mirroring the SecID name component (e.g. aws/s3, azure/ai-content-safety)."
+    },
+    "capability_type": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "config_snippet": {
+      "type": "string",
+      "description": "How the capability is enabled. Keep thin and prefer pointing at the vendor's own documentation via external_references, since product detail changes on the vendor's release cadence."
+    }
+  },
+  "$defs": {
+    "newSdoExtension": {
+      "type": "object",
+      "description": "Declares the object as a new SDO defined by a CSA extension-definition. The definition object must travel with the instance in any published bundle.",
+      "minProperties": 1,
+      "patternProperties": {
+        "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
+          "type": "object",
+          "required": ["extension_type"],
+          "properties": { "extension_type": { "const": "new-sdo" } }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
