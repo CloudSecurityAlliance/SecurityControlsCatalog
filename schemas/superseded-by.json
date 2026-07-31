@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/superseded-by.json",
+  "title": "superseded-by",
+  "description": "Asserts that a newer object replaces an older one. Read left to right — source_ref is the older object. Says nothing about whether the old object is still usable: on its own it means a newer version exists and the old one remains valid, which is the ISO 27001:2013 to 2022 case. Adding revoked to the superseded object is what says the old one should not be relied on. Carries no custom properties, so it needs no extension declaration; superseded-by is a custom relationship_type value, which STIX permits.",
+  "type": "object",
+  "required": [
+    "type", "spec_version", "id", "created", "modified",
+    "relationship_type", "source_ref", "target_ref", "object_marking_refs"
+  ],
+  "properties": {
+    "type": { "const": "relationship" },
+    "spec_version": { "const": "2.1" },
+    "id": { "type": "string", "pattern": "^relationship--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$" },
+    "relationship_type": { "const": "superseded-by" },
+    "source_ref": {
+      "type": "string",
+      "description": "The older object being replaced.",
+      "pattern": "^(x-control|x-regulation|relationship)--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    },
+    "target_ref": {
+      "type": "string",
+      "description": "The newer object replacing it.",
+      "pattern": "^(x-control|x-regulation|relationship)--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    },
+    "object_marking_refs": {
+      "type": "array", "items": { "type": "string" },
+      "minItems": 1, "contains": { "const": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9" }
+    },
+    "description": { "type": "string" }
+  }
+}

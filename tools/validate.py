@@ -101,6 +101,18 @@ def self_test(schemas):
     MAPPING_EXT = mapping_extension_id(schemas)
 
     def base(t):
+        if t == "superseded-by":
+            return {
+                "type": "relationship",
+                "spec_version": "2.1",
+                "id": f"relationship--{uuid.uuid4()}",
+                "created": "2026-01-15T00:00:00.000Z",
+                "modified": "2026-01-15T00:00:00.000Z",
+                "relationship_type": "superseded-by",
+                "source_ref": f"x-control--{uuid.uuid4()}",
+                "target_ref": f"x-control--{uuid.uuid4()}",
+                "object_marking_refs": [TLP_WHITE],
+            }
         if t == "derived-from":
             return {
                 "type": "relationship",
@@ -298,6 +310,31 @@ def self_test(schemas):
                                         "model_provider": "Trusted code sources.",
                                         "ai_customer": None},
              auditing_guidelines={"cloud_service_provider": "Review logs."}), False),
+        # supersession and validity
+        ("superseded-by with the wrong relationship_type", "superseded-by",
+         lambda o: o.update(relationship_type="replaced-by"), True),
+        ("superseded-by pointing at a capability", "superseded-by",
+         lambda o: o.update(target_ref=f"x-capability--{uuid.uuid4()}"), True),
+        ("valid_until that is not a timestamp", "x-control",
+         lambda o: o.update(valid_until="2022-10-25"), True),
+        ("valid_from that is not a timestamp", "x-regulation",
+         lambda o: o.update(valid_from="2016"), True),
+        ("valid superseded-by, old control to new", "superseded-by",
+         lambda o: None, False),
+        ("superseded-by between two mappings", "superseded-by",
+         lambda o: o.update(source_ref=f"relationship--{uuid.uuid4()}",
+                            target_ref=f"relationship--{uuid.uuid4()}"), False),
+        ("superseded control, still valid until a date", "x-control",
+         lambda o: o.update(framework="27001", framework_namespace="iso.org",
+                            framework_version="2013",
+                            valid_from="2013-10-01T00:00:00.000Z",
+                            valid_until="2022-10-25T00:00:00.000Z"), False),
+        ("superseded and revoked, the claim was wrong", "csa-gap-mapping",
+         lambda o: o.update(revoked=True,
+                            valid_until="2026-03-01T00:00:00.000Z"), False),
+        ("control with a future valid_until, still current", "x-control",
+         lambda o: o.update(status="live",
+                            valid_until="2027-10-31T00:00:00.000Z"), False),
         ("CCM-shaped control with its own role keys", "x-control",
          lambda o: o.update(
              framework="ccm", framework_version="4.1", control_identifier="CEK-03",

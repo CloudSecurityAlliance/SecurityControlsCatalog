@@ -347,6 +347,7 @@ which edges exist.
 |---|---|---|---|
 | How much of the source's requirement the target covers | `csa-gap-mapping` | `x-control` or `x-regulation` | `x-control` or `x-regulation` |
 | A CAIQ question is derived from the control it assesses | `derived-from` | `x-control` (a CAIQ question) | `x-control` |
+| A newer object replaces an older one | `superseded-by` | `x-control`, `x-regulation`, or a mapping | the same, newer |
 
 `derived-from` comes from the STIX `relationship-type-ov` vocabulary, so it needs no
 coinage and no extension declaration — it adds no custom properties. Its schema exists
@@ -371,19 +372,23 @@ this one overloaded with a second vocabulary.
 
 ### Relationship types deliberately not yet defined
 
-`implements`, `supports`, and `superseded-by` were sketched in earlier revisions and
-are **withdrawn until something needs them** — a custom relationship type is a public
-commitment, and none of the three has instance data behind it yet. `mitigates` is
+`implements` and `supports` were sketched in earlier revisions and are **withdrawn
+until something needs them** — a custom relationship type is a public commitment, and
+neither has instance data behind it yet. (`superseded-by` was withdrawn on the same
+grounds and is now defined, because framework versions, control revisions, and mapping
+corrections all need it.) `mitigates` is
 standard and available whenever a control is related to an `attack-pattern`; the
 catalog simply does not assert it yet, and MITRE's Mappings Explorer already owns
 that space.
 
-When replacement does need expressing, the reasoning recorded earlier still applies:
-not ATT&CK's `revoked-by`, since supersession is not revocation and historical
-assessments against a superseded control remain true, and not the standard
-`derived-from`, which says only that one object came from another. Note also that
-CCM's own published mappings include a CCM 3.0.1 target, so version succession may
-turn out to be expressible as an ordinary mapping.
+`superseded-by` is deliberately not ATT&CK's `revoked-by`, since supersession is not
+revocation and historical assessments against a superseded control remain true, and not
+the standard `derived-from`, which says only that one object came from another.
+
+Note that CCM's published mappings already include a CCM 3.0.1 target, so version
+succession is expressed **both** ways and both are meaningful: `superseded-by` says 4.1
+replaces 4.0, while gap mappings say how 4.0's controls correspond to 4.1's. Those are
+different assertions and neither substitutes for the other.
 
 ### A worked mapping
 
@@ -546,7 +551,7 @@ minimum CCM and AICM use when citing these sources:
 > source permits reproduction. Where it does not, the object carries citation
 > metadata only — the schema enforces this for `iso.org` and `iec.ch` by rejecting
 > `specification`, `description`, `implementation_guidelines`, and `auditing_guidelines`
-> on those objects. See [conventions § 9](CONVENTIONS-STIX-MODELING.md).
+> on those objects. See [conventions § 10](CONVENTIONS-STIX-MODELING.md).
 
 ### CAIQ questions are controls
 
@@ -624,12 +629,15 @@ against a control retired in 2026 is still a true statement about 2024. Retireme
 must therefore not be expressed with `revoked`.
 
 Replacement is not a `status` value. A control replaced by a newer one gets
-`status: "retired"`, and the replacement is expressed as a relationship rather than a
-property, because it is an assertion about two objects carrying its own date,
-rationale, and authorship, and because the retired control remains coherent without
-it. The relationship type for that is not yet defined — no content has retired
-controls — see
-[Relationship types deliberately not yet defined](#relationship-types-deliberately-not-yet-defined).
+`status: "retired"` plus a `superseded-by` relationship to its replacement, because
+replacement is an assertion about two objects carrying its own date, rationale, and
+authorship, and because the retired control remains coherent without it.
+
+`valid_until` records the date it stopped being current, so historical questions stay
+answerable. Note that `superseded-by` on its own does **not** mean the old control was
+wrong — an ISO edition replaced by a newer one remains valid and in use for years.
+`revoked: true` is what says the content should never have been relied on. See
+[conventions § 7](CONVENTIONS-STIX-MODELING.md).
 
 ### CSA-CC alignment
 
@@ -713,7 +721,7 @@ with attribution — EU legislative text is reusable. Check the source record fo
 specific terms rather than relying on a value quoted in this document. Where a
 source does not permit reproduction, omit `text_excerpt` and describe the
 requirement in original wording. See
-[conventions § 9](CONVENTIONS-STIX-MODELING.md).
+[conventions § 10](CONVENTIONS-STIX-MODELING.md).
 
 ### CSA-CC alignment
 
