@@ -50,6 +50,12 @@ definition through `extensions`.
 | `x-capability` | `extension-definition--43f8f73f-45e2-4d06-bdc0-46bdd5cb3e81` |
 | `x-control-assessment` | `extension-definition--c2b74dc8-5ea7-4d9c-ade0-85474e5f70b4` |
 
+One further definition adds properties to a **standard** type rather than declaring a new one:
+
+| Extension | Definition identifier |
+|---|---|
+| `csa-gap-mapping` (`toplevel-property-extension` on `relationship`) | `extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903` |
+
 ### `identity/`
 
 The publisher identity, `identity--51f9d480-d80b-4415-93c7-507cde4d1e85`. CSA-authored

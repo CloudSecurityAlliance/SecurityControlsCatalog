@@ -245,7 +245,7 @@ about the date they were made.
 **Never express end-of-life with `revoked`.** Reserve `revoked` for content
 published in error, and carry end-of-life in the lifecycle vocabulary.
 
-Where one object replaces another, that is a relationship (`superseded-by`), not a
+Where one object replaces another, that is a relationship, not a
 status value or a property — it is an assertion about two objects carrying its own
 date and rationale, and the replaced object stays coherent without it. See
 `SCHEMA-STIX-OBJECT-EXTENSIONS.md` § "`status`, `revoked`, and supersession" for

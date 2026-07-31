@@ -16,6 +16,7 @@ Where the two disagree, that document is authoritative and this directory has a 
 | `x-control-implementation.json` | A technology-agnostic implementation approach |
 | `x-capability.json` | A specific product or service security feature |
 | `x-control-assessment.json` | An assessment outcome |
+| `csa-gap-mapping.json` | A CSA gap mapping — a `relationship` with CSA's coverage verdict |
 
 ## Validating
 
@@ -60,6 +61,14 @@ pending a vocabulary decision.
 `platform`, `product`, `vendor_namespace`, and `config_snippet`. Those belong to
 `x-capability`, and an implementation approach carrying them has drifted into being
 a capability — the conflation the two types exist to prevent.
+
+**One schema covers a standard type.** `csa-gap-mapping.json` validates
+`relationship` objects whose `relationship_type` is `csa-gap-mapping`.
+`tools/validate.py` dispatches on `relationship_type` for relationships, so a plain
+`mitigates` edge is left to the OASIS validator while a CSA mapping is checked here.
+Its custom properties are declared by a `toplevel-property-extension`, since
+`relationship` is a standard STIX type and an undeclared property on it could collide
+with another producer's.
 
 **Cross-object rules are out of reach.** JSON Schema validates one object at a time,
 so it cannot check that an `extension-definition` travels with the instances
