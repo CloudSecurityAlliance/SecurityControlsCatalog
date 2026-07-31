@@ -101,6 +101,18 @@ def self_test(schemas):
     MAPPING_EXT = mapping_extension_id(schemas)
 
     def base(t):
+        if t == "derived-from":
+            return {
+                "type": "relationship",
+                "spec_version": "2.1",
+                "id": f"relationship--{uuid.uuid4()}",
+                "created": "2026-01-15T00:00:00.000Z",
+                "modified": "2026-01-15T00:00:00.000Z",
+                "relationship_type": "derived-from",
+                "source_ref": f"x-control--{uuid.uuid4()}",
+                "target_ref": f"x-control--{uuid.uuid4()}",
+                "object_marking_refs": [TLP_WHITE],
+            }
         if t == "csa-gap-mapping":
             return {
                 "type": "relationship",
@@ -238,6 +250,23 @@ def self_test(schemas):
         ("control with TLP:WHITE plus another marking", "x-control",
          lambda o: o.update(object_marking_refs=[
              TLP_WHITE, f"marking-definition--{uuid.uuid4()}"]), False),
+
+        # CAIQ questions are x-control objects in a questionnaire framework
+        ("CAIQ question as a control", "x-control",
+         lambda o: o.update(name="AICM-CAIQ 1.0.3 A&A-01.1",
+                            framework_namespace="cloudsecurityalliance.org",
+                            framework="aicm-caiq", framework_version="1.0.3",
+                            control_identifier="A&A-01.1",
+                            specification="Are audit and assurance policies established?"),
+         False),
+        ("derived-from with the wrong relationship_type", "derived-from",
+         lambda o: o.update(relationship_type="assesses"), True),
+        ("derived-from pointing at a capability", "derived-from",
+         lambda o: o.update(target_ref=f"x-capability--{uuid.uuid4()}"), True),
+        ("derived-from with no marking", "derived-from",
+         lambda o: o.pop("object_marking_refs"), True),
+        ("valid derived-from, question to control", "derived-from",
+         lambda o: None, False),
     ]
 
     bad = 0

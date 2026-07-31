@@ -125,6 +125,13 @@ either direction. Where closer alignment is worth having, it is a deliberate cha
 carrying a migration path for anyone consuming published content, never an
 automatic or pre-emptive rename.
 
+**A questionnaire is a framework, not a new object type.** CAIQ questions are
+`x-control` objects in a `*-caiq` framework, following SecID's own registration. The
+`framework` property separates them from the controls they assess, so one object type
+serves both and an `x-control-assessment` can assess a question without a schema
+change — which is what makes a STAR submission, whose answers are per question,
+representable at all.
+
 **Third-party provenance is decomposed, not stored as one string.** An object
 representing another publisher's content carries the components of its SecID as
 separate queryable properties — namespace, name, version, and local identifier —

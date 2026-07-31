@@ -17,6 +17,7 @@ Where the two disagree, that document is authoritative and this directory has a 
 | `x-capability.json` | A specific product or service security feature |
 | `x-control-assessment.json` | An assessment outcome |
 | `csa-gap-mapping.json` | A CSA gap mapping — a `relationship` with CSA's coverage verdict |
+| `derived-from.json` | A standard `derived-from` relationship, as used for CAIQ question to control |
 
 ## Validating
 
