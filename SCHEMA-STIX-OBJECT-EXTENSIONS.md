@@ -180,7 +180,7 @@ without `x-control-implementation` and `x-control`.
   "created_by_ref": "identity--<CSA_ID>",
   "name": "CSA Security Controls Catalog — x-control",
   "description": "A security control from any publisher, with its specification, guidance, lifecycle state, and source provenance.",
-  "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/SCHEMA-STIX-OBJECT-EXTENSIONS.md",
+  "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/x-control.json",
   "version": "1.0",
   "extension_types": ["new-sdo"]
 }
@@ -201,10 +201,16 @@ have not been minted yet. **Once minted and published they are permanent** — a
 consumer that has ingested catalog content keys off them, so changing one is a
 breaking change, not an edit.
 
-`schema` currently points at this document, which is the normative definition of
-the fields. That is honest but coarse: a machine-readable JSON Schema per type
-would let consumers validate rather than read. See
-[Open questions](#open-questions).
+`schema` points at the machine-readable JSON Schema for the type, in
+[`schemas/`](schemas/). Those schemas validate what is settled and stay silent about
+what is not — see [`schemas/README.md`](schemas/README.md) for what they
+deliberately do not check. This document remains the normative definition of what
+each property *means*; where the two disagree, this document wins and the schema has
+a bug.
+
+The URL currently tracks `main`, which suits a draft but not published content: a
+released bundle should reference a tagged, immutable URL so the definition cannot
+shift under objects already ingested. See [Open questions](#open-questions).
 
 Standard STIX objects the catalog uses — `relationship`, `identity`,
 `marking-definition`, `attack-pattern` — are **not** extended and carry no
@@ -753,13 +759,12 @@ so both are constitutive properties, following the STIX `sighting` pattern. See
 Unsettled as of this revision. Contributions that depend on any of these should
 raise an issue rather than assume an answer.
 
-1. **A machine-readable schema per type.** The `schema` property of each
-   extension-definition points at this document. It is the normative definition,
-   but prose is not validatable — a JSON Schema per type, published at a stable
-   raw URL, would let consumers check instance data mechanically. The raw-content
-   URL currently tracks `main`, which is right for a draft and wrong for published
-   content: a released bundle should reference a tagged, immutable URL so the
-   definition cannot shift under objects already ingested.
+1. **A tagged, immutable schema URL for release.** The schemas exist in
+   [`schemas/`](schemas/), but each `schema` property points at `main`, so the
+   definition can change under objects already ingested. A released bundle should
+   reference a tagged URL. Two further tightenings wait on the model settling:
+   `additionalProperties` is unrestricted, so typos pass, and most vocabularies are
+   open string arrays.
 2. **Minting the five extension-definition identifiers.** They are placeholders
    today. Minting them is a one-time act with permanent consequences, since
    consumers key off them, so it should happen deliberately alongside the first

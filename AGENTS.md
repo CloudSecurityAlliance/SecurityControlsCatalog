@@ -32,6 +32,8 @@ infrastructure; catalog content is being prepared. The root contains:
 - `SCHEMA-STIX-OBJECT-EXTENSIONS.md`: *what* each object carries — field-level schemas for the five custom SDOs.
 - `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`: contributor docs.
 - `LICENSE.txt`: CSA publication terms for the published catalog.
+- `schemas/`: JSON Schemas for the five custom types — the `schema` targets referenced by each `extension-definition`.
+- `tools/`: `validate.py`, which checks catalog objects against those schemas.
 - `.github/`: CLA workflow, CODEOWNERS, PR and issue templates.
 
 `.claude/` is gitignored local working context — never quote it in a pull request, commit message, or issue.
@@ -40,13 +42,19 @@ There are no committed source, schema, or instance-data directories yet. Before 
 
 ## Build, Test, and Development Commands
 
-No build system, package manager, lint task, or automated test runner is present today.
+No build system or package manager. Validation exists (needs `jsonschema`):
+
+- `python3 tools/validate.py --self-test`: check the schemas in `schemas/` themselves.
+- `python3 tools/validate.py bundle.json`: check catalog objects against those schemas.
+- `stix2_validator --schemas ./schemas/ --enforce-refs bundle.json`: full STIX 2.1 conformance plus catalog field rules, via the OASIS validator (`pip install stix2-validator`).
+
+`tools/validate.py` covers only the five custom types, not STIX conformance — run both. Bundle-level rules are not yet checked: that an `extension-definition` travels with the instances referencing it, that licence-constrained fields match the source's recorded terms, and that `revoked` was not used to mean retired.
 
 - `git ls-files`: list tracked files quickly.
 - `git status --short`: check local changes before editing or committing.
 - `git log --oneline -8`: review recent commit style.
 
-When validation tooling is introduced for STIX, OSCAL, JSON, YAML, Excel, or CSV outputs, document the exact commands here, in `CLAUDE.md`, and in any related PR.
+When further tooling is introduced for OSCAL, YAML, Excel, or CSV outputs, document the exact commands here, in `CLAUDE.md`, and in any related PR.
 
 ## Coding Style & Naming Conventions
 

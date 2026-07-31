@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/x-regulation.json",
+  "title": "x-regulation",
+  "description": "A clause of legally binding law — a clause, article, or section of a law, regulation, or directive. Standards and control frameworks are x-control, not x-regulation. Defined by the CSA Security Controls Catalog.",
+  "type": "object",
+  "required": ["type", "spec_version", "id", "created", "modified", "extensions"],
+  "properties": {
+    "type": { "const": "x-regulation" },
+    "spec_version": { "const": "2.1" },
+    "id": {
+      "type": "string",
+      "pattern": "^x-regulation--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    },
+    "extensions": { "$ref": "#/$defs/newSdoExtension" },
+
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+
+    "regulation_namespace": {
+      "type": "string",
+      "description": "Publishing jurisdiction namespace, mirroring the SecID namespace component (e.g. europa.eu, govinfo.gov, ca.gov).",
+      "pattern": "^[a-z0-9.-]+$"
+    },
+    "regulation": {
+      "type": "string",
+      "description": "Instrument name, mirroring the SecID name component (e.g. gdpr, ai-act, nis2, hipaa)."
+    },
+    "regulation_version": {
+      "type": "string",
+      "description": "Optional, and often absent: many regulations are identified by publication reference rather than a version number. Where an instrument is amended, the date an amendment took effect is the practical discriminator."
+    },
+    "clause_identifier": {
+      "type": "string",
+      "description": "The clause, article, or section, mirroring the SecID subpath (e.g. art-32/1/a)."
+    },
+    "publication_id": {
+      "type": "string",
+      "description": "The instrument's formal citation (e.g. Regulation (EU) 2016/679)."
+    },
+
+    "text_excerpt": {
+      "type": "string",
+      "description": "Verbatim text of the clause. Licence-constrained: populate only where the source record permits reproduction, and omit it otherwise in favour of an original description. See CONVENTIONS-STIX-MODELING.md section 8."
+    },
+    "jurisdiction": { "type": "string" }
+  },
+  "$defs": {
+    "newSdoExtension": {
+      "type": "object",
+      "description": "Declares the object as a new SDO defined by a CSA extension-definition. The definition object must travel with the instance in any published bundle.",
+      "minProperties": 1,
+      "patternProperties": {
+        "^extension-definition--[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$": {
+          "type": "object",
+          "required": ["extension_type"],
+          "properties": { "extension_type": { "const": "new-sdo" } }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
