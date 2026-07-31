@@ -23,8 +23,11 @@
 - [ ] Any co-authors of the **text** have each signed the CLA (group discussion
       or ideas alone don't require signing); any `Co-authored-by:` trailers name
       only signed co-authors.
-- [ ] If this changes the **schema or data model**, I have updated
-      `DESIGN-RATIONALE-STIX-EXTENSIONS.md` (or noted why not).
+- [ ] If this changes the **schema or data model**, I have updated the affected
+      design document (or noted why not): `DESIGN-RATIONALE-STIX-EXTENSIONS.md`
+      for format, publication, or distribution; `CONVENTIONS-STIX-MODELING.md`
+      for modeling rules that bind all objects;
+      `SCHEMA-STIX-OBJECT-EXTENSIONS.md` for field-level changes.
 - [ ] I have not pasted substantive catalog content into an issue — it's here
       as a PR so the CLA covers it.
 - [ ] External standards/regulations are **referenced by ID, not reproduced** —
