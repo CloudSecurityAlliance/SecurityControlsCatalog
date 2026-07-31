@@ -1,0 +1,28 @@
+{
+  "type": "identity",
+  "spec_version": "2.1",
+  "id": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "created": "2026-07-31T00:00:00.000Z",
+  "modified": "2026-07-31T00:00:00.000Z",
+  "name": "Cloud Security Alliance",
+  "description": "Publisher of the Security Controls Catalog. Every catalog object created by CSA references this identity in created_by_ref.",
+  "identity_class": "organization",
+  "sectors": [
+    "technology"
+  ],
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:entity/cloudsecurityalliance.org"
+    },
+    {
+      "source_name": "cve-cna",
+      "external_id": "CSAI",
+      "description": "CSA's CVE Numbering Authority short name. CSA was already taken by the Cyber Security Agency of Singapore."
+    },
+    {
+      "source_name": "Cloud Security Alliance",
+      "url": "https://cloudsecurityalliance.org"
+    }
+  ]
+}

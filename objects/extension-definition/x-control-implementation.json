@@ -1,0 +1,15 @@
+{
+  "type": "extension-definition",
+  "spec_version": "2.1",
+  "id": "extension-definition--1690104a-d3f2-4716-a334-252356f338dc",
+  "created": "2026-07-31T00:00:00.000Z",
+  "modified": "2026-07-31T00:00:00.000Z",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "CSA Security Controls Catalog: x-control-implementation",
+  "description": "A technology-agnostic approach to fulfilling a control, independent of any product or vendor.",
+  "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/x-control-implementation.json",
+  "version": "1.0",
+  "extension_types": [
+    "new-sdo"
+  ]
+}

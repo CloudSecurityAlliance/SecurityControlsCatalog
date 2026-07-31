@@ -1,0 +1,15 @@
+{
+  "type": "extension-definition",
+  "spec_version": "2.1",
+  "id": "extension-definition--c2b74dc8-5ea7-4d9c-ade0-85474e5f70b4",
+  "created": "2026-07-31T00:00:00.000Z",
+  "modified": "2026-07-31T00:00:00.000Z",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "CSA Security Controls Catalog: x-control-assessment",
+  "description": "The outcome of a self-assessment, audit, or STAR questionnaire evaluating a control for a specific entity.",
+  "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/x-control-assessment.json",
+  "version": "1.0",
+  "extension_types": [
+    "new-sdo"
+  ]
+}

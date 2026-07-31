@@ -1,0 +1,15 @@
+{
+  "type": "extension-definition",
+  "spec_version": "2.1",
+  "id": "extension-definition--43f8f73f-45e2-4d06-bdc0-46bdd5cb3e81",
+  "created": "2026-07-31T00:00:00.000Z",
+  "modified": "2026-07-31T00:00:00.000Z",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "CSA Security Controls Catalog: x-capability",
+  "description": "A specific security feature of a specific product or service, with its configuration, audit, and remediation detail.",
+  "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/x-capability.json",
+  "version": "1.0",
+  "extension_types": [
+    "new-sdo"
+  ]
+}
