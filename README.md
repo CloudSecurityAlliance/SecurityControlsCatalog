@@ -78,6 +78,34 @@ The catalog is designed to **interoperate with — not replace — OSCAL**, and 
 align with CSA's wider control and assurance work, including STAR/CAIQ and IoT
 security.
 
+## How the custom types are declared
+
+The five types are declared through STIX 2.1's standard `extension-definition`
+mechanism, not by convention on the `type` string. Each has a published definition
+object pointing at a machine-readable JSON Schema, and every instance references its
+definition. Two things follow that matter if you consume the catalog:
+
+**These identifiers are stable and you can rely on them.** They are minted once and
+permanent — changing one would be a breaking change requiring a migration path, not
+an edit.
+
+| Type | Definition identifier |
+|---|---|
+| `x-control` | `extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea` |
+| `x-regulation` | `extension-definition--a72496a3-08f8-43fb-88c9-479bb94e5e02` |
+| `x-control-implementation` | `extension-definition--1690104a-d3f2-4716-a334-252356f338dc` |
+| `x-capability` | `extension-definition--43f8f73f-45e2-4d06-bdc0-46bdd5cb3e81` |
+| `x-control-assessment` | `extension-definition--c2b74dc8-5ea7-4d9c-ade0-85474e5f70b4` |
+
+**A published bundle carries its own definitions.** They travel with the content, so
+an unfamiliar consumer can retrieve what `x-control` means from the `schema` property
+rather than guessing from the name — and two producers who both happen to emit
+`x-control` stay distinguishable by the definition their objects reference.
+
+The definition objects and the CSA publisher identity live in
+[`objects/`](objects/); their schemas are in [`schemas/`](schemas/), and
+[`tools/validate.py`](tools/) checks objects against them.
+
 ## Design documentation
 
 Three documents describe the data model, divided by the question each answers:

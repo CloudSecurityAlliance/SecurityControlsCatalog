@@ -32,6 +32,7 @@ infrastructure; catalog content is being prepared. The root contains:
 - `SCHEMA-STIX-OBJECT-EXTENSIONS.md`: *what* each object carries — field-level schemas for the five custom SDOs.
 - `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`: contributor docs.
 - `LICENSE.txt`: CSA publication terms for the published catalog.
+- `objects/`: STIX objects committed as data — the extension definitions and the CSA publisher identity, with permanent identifiers. See `objects/README.md`.
 - `schemas/`: JSON Schemas for the five custom types — the `schema` targets referenced by each `extension-definition`.
 - `tools/`: `validate.py`, which checks catalog objects against those schemas.
 - `.github/`: CLA workflow, CODEOWNERS, PR and issue templates.
