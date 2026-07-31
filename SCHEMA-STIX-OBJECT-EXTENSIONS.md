@@ -393,7 +393,9 @@ control; they are `mitigates` and `maps-to` relationship SROs. See
 
 ### Schema
 
-A CSA control, carrying CSA's own specification text:
+A CSA control, carrying CSA's own specification text. This example is a real
+control — CCM 4.1 CEK-03 — so its identifiers, domain, and applicability can be
+checked against the published matrix rather than taken on trust:
 
 ```json
 {
@@ -408,17 +410,17 @@ A CSA control, carrying CSA's own specification text:
     }
   },
   "created_by_ref": "identity--<CSA_ID>",
-  "name": "Data Encryption",
+  "name": "Data Protection",
   "framework_namespace": "cloudsecurityalliance.org",
   "framework": "ccm",
   "framework_version": "4.1",
   "control_identifier": "CEK-03",
-  "domain": "Cryptography, Encryption and Key Management",
+  "domain": "Cryptography, Encryption & Key Management",
   "status": "live",
-  "specification": "Ensure all sensitive data is encrypted at rest and in transit using industry-accepted cryptographic algorithms and protocols.",
-  "ownership": ["CSP"],
-  "applicability": ["Cloud", "GenAI"],
-  "stack_components": ["storage", "network"],
+  "specification": "Data protection at rest, in transit, and where applicable in use is provided using cryptographic libraries certified to approved standards.",
+  "ownership": ["CSP", "CSC"],
+  "applicability": ["IaaS", "PaaS", "SaaS"],
+  "stack_components": ["network", "storage", "data"],
   "lifecycle_relevance": ["deployment", "retirement"],
   "implementation_guidance": "...",
   "audit_guidance": "...",
