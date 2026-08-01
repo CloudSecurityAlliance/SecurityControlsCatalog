@@ -17,7 +17,7 @@ Reference:
 
 ## Repository state
 
-This is a public CSA repository with its contribution infrastructure in place — `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, `.github/CODEOWNERS`, and the CLA-enforcement workflow (`.github/workflows/cla.yml`). `objects/` holds STIX objects committed as data — the extension definitions and the CSA publisher identity, whose identifiers are **permanent** and referenced rather than re-minted. `schemas/` holds the JSON Schemas for the custom types and `tools/` the validator. Catalog content — STIX bundles and instance data — is still being prepared, so there is no committed instance data yet, and the layout for it is not settled. Do not assume directory conventions — read the current tree before writing files, and propose layout to the maintainer rather than inventing one.
+This is a public CSA repository with its contribution infrastructure in place — `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, `.github/CODEOWNERS`, and the CLA-enforcement workflow (`.github/workflows/cla.yml`). `objects/` holds STIX objects committed as data — the extension definitions and the CSA publisher identity, whose identifiers are **permanent** and referenced rather than re-minted. `schemas/` holds the JSON Schemas for the custom types and `tools/` the validator and generators. Catalog content lives under `objects/<stix-type>/<secid-path>.json`; AICM 1.1.0 controls are committed, and its mappings and CAIQ questions are not yet. Read the current tree before writing files rather than assuming the layout extends the way you expect.
 
 Schemas are **exploratory / research status** and explicitly provisional. Do not treat any schema sketch (including the one summarized below) as normative. Always consult the in-repo design documentation (see below) before editing or generating instance data.
 
@@ -110,7 +110,13 @@ Validation exists; there is still no package manager or build step.
 ```sh
 python3 tools/validate.py --self-test        # check the schemas themselves
 python3 tools/validate.py bundle.json        # check catalog objects against schemas/
+python3 tools/generate_aicm_controls.py <aicm.json>   # regenerate AICM controls
 ```
+
+The generator is idempotent: it reads back committed objects, preserves their
+identifiers and `created` timestamps, and rewrites nothing when the source has not
+changed. An identifier is minted once and then permanent — never re-mint one a
+committed file already holds.
 
 Needs `jsonschema`. `tools/validate.py` checks **only** the custom types — it is
 not a STIX conformance checker. For that, layer the OASIS validator on top:

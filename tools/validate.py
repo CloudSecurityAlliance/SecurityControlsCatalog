@@ -343,6 +343,23 @@ def self_test(schemas):
         ("control with a future valid_until, still current", "x-control",
          lambda o: o.update(status="live",
                             valid_until="2027-10-31T00:00:00.000Z"), False),
+        # A taxonomy with nothing in it is omitted, not emptied. STIX prohibits
+        # empty lists and empty dictionaries, so on the wire an empty value and an
+        # absent property are the same thing; rejecting the empty form here catches
+        # it before the OASIS validator does, and stops it being written as though
+        # it meant "assessed, and none applied". AICM has real controls in each of
+        # these shapes — 15 Human Resources controls apply to no stack layer.
+        ("control with no applicable stack layer, emptied rather than omitted", "x-control",
+         lambda o: o.update(control_identifier="HRS-01", domain="Human Resources",
+                            stack_components=[]), True),
+        ("control with no applicable lifecycle phase, emptied rather than omitted", "x-control",
+         lambda o: o.update(control_identifier="UEM-06", lifecycle_relevance={}), True),
+        ("control with no applicable threat category, emptied rather than omitted", "x-control",
+         lambda o: o.update(control_identifier="BCR-11", threat_category=[]), True),
+        ("control with no applicable stack layer, omitted", "x-control",
+         lambda o: o.update(control_identifier="HRS-01", domain="Human Resources"), False),
+        ("stack_components with duplicates", "x-control",
+         lambda o: o.update(stack_components=["compute", "compute"]), True),
         ("CCM-shaped control with its own role keys", "x-control",
          lambda o: o.update(
              framework="ccm", framework_version="4.1", control_identifier="CEK-03",

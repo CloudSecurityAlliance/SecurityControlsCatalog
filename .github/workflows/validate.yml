@@ -131,6 +131,42 @@ jobs:
           sys.exit(1 if bad else 0)
           PY
 
+      - name: Objects agree with their path, identifier, and SecID
+        # The schemas check one object at a time and cannot see that a file sits
+        # in the wrong directory, that its SecID contradicts its own provenance
+        # properties, or that a regenerated object reused another's identifier.
+        # Those are exactly the ways a generator goes wrong at scale.
+        run: |
+          python3 - <<'PY'
+          import glob, json, pathlib, sys
+          bad, ids = [], {}
+          for path in sorted(glob.glob("objects/**/*.json", recursive=True)):
+              obj = json.load(open(path))
+              p = pathlib.Path(path)
+              if obj["id"] in ids:
+                  bad.append(f"{path}: id already used by {ids[obj['id']]}")
+              ids[obj["id"]] = path
+              if not obj["id"].startswith(obj["type"] + "--"):
+                  bad.append(f"{path}: id does not start with its own type")
+              if p.parts[1] != obj["type"]:
+                  bad.append(f"{path}: sits under {p.parts[1]}, but is a {obj['type']}")
+              if obj["type"] != "x-control":
+                  continue
+              want = (obj["framework_namespace"], obj["framework"],
+                      obj["framework_version"], obj["control_identifier"])
+              got = (*p.parts[2:5], p.stem)
+              if got != want:
+                  bad.append(f"{path}: path says {got}, properties say {want}")
+              secids = [r["external_id"] for r in obj.get("external_references", [])
+                        if r.get("source_name") == "secid"]
+              expected = "secid:control/{}/{}@{}#{}".format(*want)
+              if secids != [expected]:
+                  bad.append(f"{path}: SecID is {secids}, expected [{expected!r}]")
+          print("\n".join(bad) if bad
+                else f"{len(ids)} objects agree with their path, identifier, and SecID")
+          sys.exit(1 if bad else 0)
+          PY
+
       - name: Validate any committed catalog objects
         run: |
           files=$(find objects catalog bundles -type f -name '*.json' 2>/dev/null | sort)

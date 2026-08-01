@@ -9,8 +9,9 @@ working group.
 > **Status: early-stage / research-grade.** The data model and schemas in
 > this repository are **exploratory and provisional** and may change as
 > implementation experience accumulates. Treat the custom STIX extensions as
-> research-status, not a stable specification. Initial content is being
-> prepared.
+> research-status, not a stable specification. The first content — the 247 AICM
+> 1.1.0 controls — is committed under [`objects/`](objects/); its mappings and
+> CAIQ questions are not there yet.
 
 ## Why this exists
 
