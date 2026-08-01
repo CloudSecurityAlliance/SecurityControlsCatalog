@@ -1,0 +1,31 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--c600e75f-ffb4-42b1-bda4-1f1a2ed2f1ce",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--70ded58d-564b-4dfe-a630-13302636f3cf",
+  "target_refs": [
+    "x-control--7a9b2d66-b919-4134-8b99-9262ce35ffc0",
+    "x-control--2d587a77-f1bf-444d-855f-04afc5c08cd8",
+    "x-control--9f15447f-2cba-4f7d-b4ff-e042aab870de",
+    "x-control--824b07f2-6f12-40db-8d81-9d0778440d36",
+    "x-control--4a97dd0f-1a1b-462e-8a98-2da1258d5929",
+    "x-control--fe9a1305-1ea4-4138-b9aa-41635033c3ef",
+    "x-control--6335df2e-510f-4dad-89b2-28b2a185dbd5",
+    "x-control--982b2ad1-d056-4a4a-860c-5fe415a8838d",
+    "x-control--10d9ccd8-8dfd-4d66-ac83-e2e40a09e016"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Explicitly incorporate standardized \ndeployment process elements, separation \nof environments, record‑keeping for \ncompliance, and encouragement of \nautomation.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

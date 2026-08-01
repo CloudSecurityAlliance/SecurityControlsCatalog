@@ -159,10 +159,17 @@ jobs:
               if p.parts[1] != obj["type"]:
                   bad.append(f"{path}: sits under {p.parts[1]}, but is a {obj['type']}")
               if obj["type"] == "x-control":
-                  want = (obj["framework_namespace"], obj["framework"],
-                          obj["framework_version"], obj["control_identifier"])
-                  got = (*p.parts[2:5], p.stem)
-                  expected = "secid:control/{}/{}@{}#{}".format(*want)
+                  # framework_version is optional: some publishers do not version
+                  # their catalogues, and those objects carry no version segment in
+                  # the path and no @version in the SecID either.
+                  version = obj.get("framework_version")
+                  want = tuple(x for x in (obj["framework_namespace"], obj["framework"],
+                                           version, obj["control_identifier"])
+                               if x is not None)
+                  got = (*p.parts[2:-1], p.stem)
+                  expected = "secid:control/{}/{}{}#{}".format(
+                      obj["framework_namespace"], obj["framework"],
+                      f"@{version}" if version else "", obj["control_identifier"])
               elif obj["type"] == "x-regulation":
                   want = (obj["regulation_namespace"], obj["regulation"],
                           obj["clause_identifier"])

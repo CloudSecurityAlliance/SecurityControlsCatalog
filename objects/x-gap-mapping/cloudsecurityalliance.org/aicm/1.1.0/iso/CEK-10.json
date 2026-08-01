@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--151bb5ab-a5ab-4bdf-b0cd-2ec12e0950fe",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--e4e5c705-0c25-454e-8a5f-a6d7c50381c3",
+  "target_refs": [
+    "x-control--e1b1e609-f2b0-4675-ad3f-d5cb737729f1",
+    "x-control--b9a5345a-1f64-4346-8b83-446a4ef643bb"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "ISO 42001 lacks this specific mandate for key generation practices in AI systems. Add a control requiring AI systems to generate cryptographic keys using industry-accepted cryptographic libraries, explicitly specifying algorithm strength and the random number generator used, addressing the gap in ISO 42001:2023’s lack of detailed key generation requirements. Include implementation guidance referencing standards (e.g., NIST SP 800-57), enhancing ISO 27001 (A.8.24) and ISO 27002 (8.24) for AI-specific cryptographic precision.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

@@ -1,0 +1,30 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f98767f5-6750-47c0-8707-507a189de593",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--fe356b5a-e1a2-4505-afa8-5883bd6100d1",
+  "target_refs": [
+    "x-control--35c3b457-d8d8-4c48-a939-8027c6bfe5b6",
+    "x-control--944b63a7-a6b4-412d-9910-a552c93b361a",
+    "x-control--83d54176-0c31-4fcd-813a-9ffdfebae3d7",
+    "x-control--fef4a685-cac4-41a8-ae00-413c238c77dd",
+    "x-control--1ffb4ecb-0190-4ea7-8876-65cdc98aad06",
+    "x-control--95bf6313-0f98-4fb1-9a91-4e25a70739a0",
+    "x-control--85c6a80b-1817-4687-b8f9-7e302bba1a36",
+    "x-control--38993cd4-a94c-4a72-8a1f-082885bc2cb5"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "ISO 42001 should cover 'ensuring \ndata is not recoverable' the \nprovision of the DSP-02 control.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

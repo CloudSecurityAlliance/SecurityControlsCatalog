@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--c2068799-f686-4264-bb36-4ea561a67373",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--0b27fc05-b398-4bc4-9bac-5003320cda3e",
+  "target_refs": [
+    "x-control--be4d05e6-f91e-4612-b9f6-447b8ac1e6a0",
+    "x-control--aa3ff5a9-6297-4bff-a7ed-a46ca07b23c4"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Include processes to enforce controls for endpoints",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

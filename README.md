@@ -10,9 +10,10 @@ working group.
 > this repository are **exploratory and provisional** and may change as
 > implementation experience accumulates. Treat the custom STIX extensions as
 > research-status, not a stable specification. The AICM 1.1.0 controls, the
-> AI-CAIQ 1.1.0 questions, and AICM's mappings to the EU AI Act are committed
-> under [`objects/`](objects/); the BSI AI C4 and ISO/IEC 42001 mappings are not
-> there yet.
+> AI-CAIQ 1.1.0 questions, and AICM's mappings to the EU AI Act, BSI, and ISO are
+> committed under [`objects/`](objects/). Mapping coverage is partial: what could
+> not be resolved from the source is recorded in [`quarantine/`](quarantine/)
+> rather than guessed at.
 
 ## Why this exists
 

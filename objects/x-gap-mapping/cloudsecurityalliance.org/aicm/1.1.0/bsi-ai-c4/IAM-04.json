@@ -1,0 +1,25 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f480f565-28b7-46c2-94a8-ec73ec0d37ad",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--f7a9cd0a-520d-459d-a5d7-1902a8fbd6f4",
+  "target_refs": [
+    "x-control--3b67c4be-fa70-49ac-81d2-a12d67d496d2",
+    "x-control--90e60e8c-ae83-4909-9872-dfda8ed6e41c",
+    "x-control--78fdcc88-3724-4b3e-aa40-7cdba3737aeb",
+    "x-control--fe52e4b7-81ba-4100-81ec-1c8eb535f2d6"
+  ],
+  "gap_level": "No Gap",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

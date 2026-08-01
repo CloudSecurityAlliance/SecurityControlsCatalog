@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--602c3ba9-3e52-4f2e-8192-917be33ac228",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--7edb3252-5509-46a1-be97-e207d6d7f28e",
+  "target_refs": [
+    "x-control--4d74762e-44dd-419e-8e6a-e9bf9946c7f5"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "No ISO 42001 covers the topics of MDS-02, however ISO 27002 does support with  8.8 Management of technical vulnerabilities",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

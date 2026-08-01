@@ -1,0 +1,26 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--6f0d8da1-f39d-4043-b22a-262823773d71",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--010220d2-6ad8-4160-92cd-3984c5a526e6",
+  "target_refs": [
+    "x-control--2f7f58e0-33cc-43d0-b8a2-a5dd6d3322ec",
+    "x-control--b1e31c27-1a01-4f73-9d73-0c64d0f35dec",
+    "x-control--06cb116a-d084-4431-b280-d8809040199a",
+    "x-control--4a97dd0f-1a1b-462e-8a98-2da1258d5929"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "However, ISO 42001 does not mention specifically the MDS-12 topic of open weight models (\"weights\" are publicly accessible).",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

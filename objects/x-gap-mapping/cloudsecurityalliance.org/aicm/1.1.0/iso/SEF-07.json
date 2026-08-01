@@ -1,0 +1,28 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--650536a9-12ba-475e-bdca-7e06ab7b4e4a",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--db11a569-f9ba-40eb-9d6e-448930bc4107",
+  "target_refs": [
+    "x-control--6e06dad0-0203-45ec-927c-0f1dccf8a168",
+    "x-control--ff724750-205d-4d65-a567-63c2a86a0cea",
+    "x-control--e0ef3639-6938-4400-967f-01746d0553f4",
+    "x-control--b75a8048-01af-4bc3-852a-58448a918ceb",
+    "x-control--837bed08-2d69-411e-a03b-2d96d031c9d9",
+    "x-control--8a63ff51-90a5-43d8-99e3-e15b4dafb832"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "ISO 42001 defines types of incidents that must be communicated, not incident categories and severity levels as AICM.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

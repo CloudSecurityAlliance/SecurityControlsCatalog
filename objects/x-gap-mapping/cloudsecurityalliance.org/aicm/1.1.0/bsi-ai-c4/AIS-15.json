@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--108c68ee-79ce-4868-a5c4-c618e279c1ed",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--95effcc1-c888-4399-a32b-e9530de8960c",
+  "target_refs": [
+    "x-control--063eb9d5-c397-4d88-b324-771027d48ebd"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "No C4 control speaks specifically to the AIS-15 topic of distinguishing between user and system prompts.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

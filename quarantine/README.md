@@ -50,6 +50,13 @@ carry several unreadable references.
 | File | Source column | Held |
 |---|---|---|
 | `aicm-1.1.0-ai-act.json` | AICM 1.1.0 `scope_applicability_mappings.eu_ai_act` | 40 of 163 controls |
+| `aicm-1.1.0-bsi-ai-c4.json` | AICM 1.1.0 `scope_applicability_mappings.bsi_ai_c4` | 125 of 244 controls |
+| `aicm-1.1.0-iso.json` | AICM 1.1.0 `scope_applicability_mappings.iso_iec_42001_2023` | 67 of 244 controls |
+
+The BSI column is the worst of the three, and for a different reason than the others.
+It is not formatting: 288 of its 692 lines carry a bare control code with no standard
+attached, in a column whose two standards number their controls in overlapping ways.
+Nothing in those rows says which standard is meant.
 
 Filed with the publisher as
 [issue #18](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/18).

@@ -41,6 +41,19 @@ object carrying it.
 | AICM 1.1.0 controls | 247 `x-control` | [`tools/generate_aicm_controls.py`](../tools/generate_aicm_controls.py) |
 | AI-CAIQ 1.1.0 questions | 320 `x-control` in the `aicm-caiq` framework, plus 320 `derived-from` relationships to the controls they assess | [`tools/generate_aicm_caiq.py`](../tools/generate_aicm_caiq.py) |
 | AICM 1.1.0 → EU AI Act | 106 `x-regulation` provisions, plus 123 `x-gap-mapping` verdicts | [`tools/generate_aicm_eu_mappings.py`](../tools/generate_aicm_eu_mappings.py) |
+| AICM 1.1.0 → BSI and ISO | 416 citation-only `x-control` targets, plus 296 `x-gap-mapping` verdicts | [`tools/generate_aicm_standard_mappings.py`](../tools/generate_aicm_standard_mappings.py) |
+
+Another publisher's controls are `x-control` objects, so BSI AIC4, BSI C5, ISO/IEC
+42001, 27001, and 27002 all sit alongside AICM's own controls and are told apart by
+their provenance properties rather than by type. They are **citation-only**: a
+standard, an edition where the publisher versions its work, a clause identifier, and
+a citation the catalog constructs. No title and no text — for `iso.org` the schema
+rejects prose outright.
+
+Both source columns cite more than the standard they are named for, and the targets
+are minted under whichever standard they actually name. A gap verdict covers the set
+as a whole, so publishing it over only the targets matching the column's title would
+assert a narrower claim than was assessed.
 
 The EU AI Act is `x-regulation` rather than `x-control`: it is binding law, and the
 catalog files standards and control frameworks separately from what they help you
@@ -67,8 +80,9 @@ content. The generator reads the committed objects back, preserves their `id` an
 against an unchanged source writes nothing, and re-running it against a corrected
 source produces a diff of exactly what the correction touched.
 
-AICM's BSI AI C4 and ISO/IEC 42001 mappings are not here yet. Their targets have
-unresolved source-data questions —
+Coverage is partial and deliberately so: what could not be resolved is in
+[`../quarantine/`](../quarantine/) rather than guessed at. The open source-data
+questions are —
 see issues [#16](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/16),
 [#17](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/17),
 and [#18](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/18).

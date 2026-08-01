@@ -1,0 +1,30 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--725c36e6-fdbe-4051-9470-95590e2635bd",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--99ff9a93-b6f7-4260-bf48-a1fe8d5b1b60",
+  "target_refs": [
+    "x-control--b87b6cc7-8ff5-44d4-a533-89057e8fd133",
+    "x-control--e39af1f6-dda0-4fc3-bcb0-d3d0bce4a8a3",
+    "x-control--61d99b45-9089-4a92-84cb-4af93b204a2d",
+    "x-control--b80a65a4-a0a0-48b5-9969-8416d21e3297",
+    "x-control--2e2a51c4-14d6-4ed2-829e-d58fb2bf0e59",
+    "x-control--7190a16d-3a3b-40d4-8f78-2203556801d5",
+    "x-control--e1b1e609-f2b0-4675-ad3f-d5cb737729f1",
+    "x-control--aa3ff5a9-6297-4bff-a7ed-a46ca07b23c4"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Add a dedicated API security control, ideally linked to AI-specific risks and integration points.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

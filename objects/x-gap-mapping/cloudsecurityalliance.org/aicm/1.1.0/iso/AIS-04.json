@@ -1,0 +1,32 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f012d7f2-b8d6-47dc-b9a0-d48f6eb810d1",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--33e1712a-6291-4936-8992-0dcf696f3b15",
+  "target_refs": [
+    "x-control--d2dfc655-5246-40ac-9954-541ca13f9056",
+    "x-control--55f315d9-acc2-4249-a582-54505a514988",
+    "x-control--0f1ca994-af7c-4a5f-9f8d-d30c6eef7344",
+    "x-control--34b290d2-b0ac-42b3-81d5-21e8279250c2",
+    "x-control--06cb116a-d084-4431-b280-d8809040199a",
+    "x-control--f1c9d738-29d5-4afc-84cf-5b8c71db2c28",
+    "x-control--b5e09d3b-445d-443f-92d0-9c959b6da6a5",
+    "x-control--0f8405af-ab6d-4a72-9f88-f470bab6719c",
+    "x-control--a13fbb58-619c-4762-a8ff-cc148ede71dc",
+    "x-control--863bcfa3-7e76-44d2-9cac-aa5100778be7"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Mandate a documented SDLC \nprocess.\nNeed secure coding and security \ntesting requirements as part of that \nprocess.\nNeed an explicit linkage to organizational \nsecurity and risk objectives.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

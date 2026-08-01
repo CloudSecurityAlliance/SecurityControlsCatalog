@@ -1,0 +1,33 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--4392eaaf-63d7-44b6-a435-9eb08be8c01e",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--2e728622-ef6f-4ad2-b012-b3ffdf7c2076",
+  "target_refs": [
+    "x-control--944b63a7-a6b4-412d-9910-a552c93b361a",
+    "x-control--30aaa78c-cf48-43d9-a9b4-29921b1d8ef4",
+    "x-control--10c5cd3e-e89a-4a2d-aa1f-96516a9a40dd",
+    "x-control--25b688e7-b8c8-4792-8851-0433640e53bd",
+    "x-control--83cd6e18-a635-4a19-aba5-b8e7606e75a9",
+    "x-control--cc8b7dab-7ebe-4a6b-bf92-33c82dab071c",
+    "x-control--fbbd275c-7b2e-4204-8da8-768d37eac730",
+    "x-control--1eb50b2d-9708-44b9-b719-663909cc4287",
+    "x-control--62c6b585-c434-43cc-b8de-cf9161046822",
+    "x-control--6c743e7e-2478-47fe-8665-037347bcb172",
+    "x-control--0c14e27e-728a-40d3-ae16-ca7a55021a1f",
+    "x-control--f7c44482-94a7-4f13-8b8f-9c62741cbe7b"
+  ],
+  "gap_level": "No Gap",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

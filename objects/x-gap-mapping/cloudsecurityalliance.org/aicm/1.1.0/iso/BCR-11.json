@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--0f076efc-1d3b-4431-af70-16f8744951b3",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--99215917-cbcb-4804-baa4-19ec922926b6",
+  "target_refs": [
+    "x-control--dcf6d626-c094-45a4-b8d1-9635dbc17ea6"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "There is no control in ISO 42001 that covers AICM BCR-11 topic of business-critical equipment to be reasonably at a minimum distance for redundancy. However, it is fully covered by ISO 27001: A.8.14 Redundancy of information processing facilities, where processing facility shall implement that which makes them redundant to include minimum distance of critical systems.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

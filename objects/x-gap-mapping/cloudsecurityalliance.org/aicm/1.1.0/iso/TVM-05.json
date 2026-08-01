@@ -1,0 +1,28 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--0b05951c-9508-4400-8ee5-17eeac0b6816",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--136c1cc3-0e53-4485-b914-2d68fa3ddf6f",
+  "target_refs": [
+    "x-control--06cb116a-d084-4431-b280-d8809040199a",
+    "x-control--494a41f9-77d5-48aa-8100-b165f2e4a5dc",
+    "x-control--fc000aaa-3c56-4fec-9a82-085012390e87",
+    "x-control--de65830f-80bc-4ebd-9e19-2651f480070e",
+    "x-control--f30ecb4f-d088-4a29-8f06-98057e541a29",
+    "x-control--4e9a36be-fd9e-4edd-8b99-be7af8c72bfa"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Define tools, scope, update frequency\nEnsure feeds are current and relevant\nExpand A.6.2.6 to include cyber telemetry\nEstablish metrics and validation checks",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

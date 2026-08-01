@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--53e293c8-632c-46d8-89b1-2cc042ecab19",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--89fc4457-d06a-4051-b0eb-0f602cc4f8d2",
+  "target_refs": [
+    "x-control--df328cca-437f-463f-a8ae-8963254d5e43",
+    "x-control--7fe8246a-502d-4e4a-a6f9-4669e4134a33"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "No C4 control speaks to MDS-09 topic of encryption for when models changes hands, only speaks to 'in storage', and loosely of ownership.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

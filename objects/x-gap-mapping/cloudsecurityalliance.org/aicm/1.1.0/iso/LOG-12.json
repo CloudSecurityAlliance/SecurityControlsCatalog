@@ -1,0 +1,25 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--476e54b1-4887-439d-b7dc-f598e3968272",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--d06c9539-98c4-4d75-8a75-eb54df4c2984",
+  "target_refs": [
+    "x-control--b05d1c8a-9e7e-4033-b106-f2dcb7193140",
+    "x-control--2004ea09-f535-485f-b5a8-e15f5262a1f0",
+    "x-control--d723678c-ca3c-48ac-b0f4-c311d931f6e9"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "No ISO 42001 control maps to LOG-11 topic.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

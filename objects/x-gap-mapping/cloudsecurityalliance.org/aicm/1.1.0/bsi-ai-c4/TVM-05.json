@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--60c7773a-4b7d-423a-947e-011e0a4d0e7b",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--136c1cc3-0e53-4485-b914-2d68fa3ddf6f",
+  "target_refs": [
+    "x-control--06bbf014-6852-4cf4-9c89-f0e50e2d5021",
+    "x-control--ca3219b0-7e58-433d-a259-9cc62ad9bbee"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "AI-CM TVM-04 requires at least weekly, while C4 SR-01 suggests quarterly.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}
