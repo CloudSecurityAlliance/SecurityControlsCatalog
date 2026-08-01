@@ -1,0 +1,77 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--2c53754a-bcab-42fa-aea1-00f0bdc13d6a",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Knowledge Access Control - Need to Know",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "IAM-16",
+  "domain": "Identity & Access Management",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define policy and procedure for \"need to know\" access to knowledge, information and data within the organization and in the context of the AI system to be applied when regulating access to resources.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared across the supply chain",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage, Resource provisioning",
+    "development": "Design, Supply Chain",
+    "evaluation_validation": "Validation/Red Teaming, Evaluation, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Define the methods of data and information classification, Tools such as a matrix can be \nhelpful.\n\n2. Define and implement the method of assigning and tracking information ownership/stewardship.\n\n3. Implement approval procedures for accessing that information (either permanent access to \nor time-limited access).\n\n4. Implement data lineage tools to track the collection, transformation and use of data in MLops \nto better assign classification to models.\n\n5. Regularly review permissions to data, and have data owners certify access configurations. \n\n6. Ensure tools accessible to Agent-based AI systems are classified and tagged based on the sensitivity of data \nthey have access to.\n\n7. Implement access control mechanisms in agent-based AI systems to ensure access to information is derived from a users credential and limited to their roles need-to-know.\n\n8. Implement principle of least privilege to avoid the violation of \"need-to-know\" principle.",
+    "model_provider": "[MP]\n1. Implement process to track the categorization, classification and ownership for all data used to train model.\n\n2. Implement tools and processes to allow data owner to authorize which roles can access models trained on \nthere data.\n\n3. Implement role based access control in ML/AIOps tools and pipeline to ensure only authorized user have access \nto information.\n\n4. Implement procedures and tools to track data lineage of training data and its use training models, ensure models \nare classified based on the information they are trained on.\n\n[All Actors]\n1. Define the methods of data and information classification, Tools such as a matrix can be \nhelpful.\n\n2. Define and implement the method of assigning and tracking information ownership/stewardship.\n\n3. Implement approval procedures for accessing that information (either permanent access to \nor time-limited access).\n\n4. Implement data lineage tools to track the collection, transformation and use of data in MLops \nto better assign classification to models.\n\n5. Regularly review permissions to data, and have data owners certify access configurations. \n\n6. Ensure tools accessible to Agent-based AI systems are classified and tagged based on the sensitivity of data \nthey have access to.\n\n7. Implement access control mechanisms in agent-based AI systems to ensure access to information is derived from a users credential and limited to their roles need-to-know.\n\n8. Implement principle of least privilege to avoid the violation of \"need-to-know\" principle.",
+    "orchestrated_service_provider": "[OSP]\n1. Implement process and procedures to classify assets and data, such as tagging.\n\n2. Implement approval workflows that have data owners and stewards approve access resources such as storage \nor compute with access to their data.\n\n3. Implement granular access control policy and roles for accessing AI infrastructure components based on\n information.\n\n4. Implement segmentation of resources, through controls like logical accounts and network segmentation to \nlimit access to information.\n\n5. Provided tools and settings for AICs to manage information & asset classification such as tagging and grouping.\n\n6. Provide granular infrastructure permissions for AICs to customize to enforce need-to-know.\n\n\n[All Actors]\n1. Define the methods of data and information classification, Tools such as a matrix can be \nhelpful.\n\n2. Define and implement the method of assigning and tracking information ownership/stewardship.\n\n3. Implement approval procedures for accessing that information (either permanent access to \nor time-limited access).\n\n4. Implement data lineage tools to track the collection, transformation and use of data in MLops \nto better assign classification to models.\n\n5. Regularly review permissions to data, and have data owners certify access configurations. \n\n6. Ensure tools accessible to Agent-based AI systems are classified and tagged based on the sensitivity of data \nthey have access to.\n\n7. Implement access control mechanisms in agent-based AI systems to ensure access to information is derived from a users credential and limited to their roles need-to-know.\n\n8. Implement principle of least privilege to avoid the violation of \"need-to-know\" principle.",
+    "application_provider": "[AP]\n1. Implement approval workflows that have data owners and stewards approve access application components, features and actions such as access to certain models or Agent tools.\n\n2. Provided tools and settings for AICs to manage information & asset classification such as tagging and grouping.\n\n3. Provide granular infrastructure permissions for AICs to customize to enforce need-to-know.\n\n\n[All Actors]\n1. Define the methods of data and information classification, Tools such as a matrix can be \nhelpful.\n\n2. Define and implement the method of assigning and tracking information ownership/stewardship.\n\n3. Implement approval procedures for accessing that information (either permanent access to \nor time-limited access).\n\n4. Implement data lineage tools to track the collection, transformation and use of data in MLops \nto better assign classification to models.\n\n5. Regularly review permissions to data, and have data owners certify access configurations. \n\n6. Ensure tools accessible to Agent-based AI systems are classified and tagged based on the sensitivity of data \nthey have access to.\n\n7. Implement access control mechanisms in agent-based AI systems to ensure access to information is derived from a users credential and limited to their roles need-to-know.\n\n8. Implement principle of least privilege to avoid the violation of \"need-to-know\" principle.",
+    "ai_customer": "[AIC]\n1. Implement policies, processes and procedures to track the sharing/training of information with AI systems.\n\n2. Apply granular permission to roles in tools, application and infrastructure to ensure access to information is on a need to know basis.\n\n3. Ensure Agent-based. \n\n[All Actors]\n1. Define the methods of data and information classification, Tools such as a matrix can be \nhelpful.\n\n2. Define and implement the method of assigning and tracking information ownership/stewardship.\n\n3. Implement approval procedures for accessing that information (either permanent access to \nor time-limited access).\n\n4. Implement data lineage tools to track the collection, transformation and use of data in MLops \nto better assign classification to models.\n\n5. Regularly review permissions to data, and have data owners certify access configurations. \n\n6. Ensure tools accessible to Agent-based AI systems are classified and tagged based on the sensitivity of data \nthey have access to.\n\n7. Implement access control mechanisms in agent-based AI systems to ensure access to information is derived from a users credential and limited to their roles need-to-know.\n\n8. Implement principle of least privilege to avoid the violation of \"need-to-know\" principle.",
+    "cloud_service_provider": "[CSP]\n1. Implement process and procedures to classify assets and information in various cloud offerings such as virtual machines, containers, AI services (Vector Databases, GPU compute)\n\n2. Implement approval workflows that have data owners and stewards approve access resources such as storage, provide approval workflow customization to AI Customers (Self-service or upon-request)\n\n3. Implement granular access control policy and roles for accessing Cloud & AI infrastructure components based on role\n\n4. Implement segmentation of resources, through controls like logical accounts and network segmentation to \nlimit access to information. Allow AI & Cloud customers to segment resource into security contexts to meet organization needs\n\n5. Provided tools and settings for AICs to manage information & asset classification such as tagging and grouping \n\n6. Provide granular infrastructure permissions for AICs to customize to enforce need-to-know\n\n7. Restrict CSP access to customer data and services to what is necessarily for day-to-day operations, implement approval and privilege escalation procedure for activities that require access to sensitive data and services.\n\n[All Actors]\n1. Define the methods of data and information classification, Tools such as a matrix can be \nhelpful.\n\n2. Define and implement the method of assigning and tracking information ownership/stewardship.\n\n3. Implement approval procedures for accessing that information (either permanent access to \nor time-limited access).\n\n4. Implement data lineage tools to track the collection, transformation and use of data in MLops \nto better assign classification to models.\n\n5. Regularly review permissions to data, and have data owners certify access configurations. \n\n6. Ensure tools accessible to Agent-based AI systems are classified and tagged based on the sensitivity of data \nthey have access to.\n\n7. Implement access control mechanisms in agent-based AI systems to ensure access to information is derived from a users credential and limited to their roles need-to-know.\n\n8. Implement principle of least privilege to avoid the violation of \"need-to-know\" principle."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that documented policies and procedures enforce “need to know” access principles, covering data, system functions, model configurations, and other forms of knowledge or sensitive information related to AI systems.\n\n2. Confirm that access to AI artifacts (e.g., training data, model weights, system prompts) is limited to users with a justifiable business requirement, and enforced through access control mechanisms.\n\n3. Ensure that access permissions are defined, assigned, and reviewed based on role or responsibility, with restrictions applied to reduce exposure to non-relevant information or systems.\n\n4. Check that access review procedures include knowledge-based assets, and that excess or outdated access is revoked in a timely manner.\n\n5. Verify that access provisioning and revocation related to sensitive AI knowledge is logged and auditable, including requests, approvals, and changes.",
+    "orchestrated_service_provider": "1. Validate policy enforcement for knowledge artifacts shared across orchestrated pipelines and services.\n\n2. Ensure controls restrict access to orchestration metadata, DAGs, and runtime logs based on “need-to-know.”\n\n3. Confirm isolation between tenant environments in multi-tenant AI pipelines.\n\n4. Check for enforcement of access boundaries across integrated service endpoints and APIs.\n\n5. Verify periodic review and de-provisioning of access for ephemeral compute roles.\n\n6. Review access granularity applied to orchestrated AI workloads and intermediate model results.",
+    "model_provider": "1. Confirm policies explicitly define access limits for model design, hyperparameters, and architecture blueprints.\n\n2. Verify that model developers and data scientists are granted access only to components necessary for their roles.\n\n3. Check access control logs for model tuning and retraining datasets.\n\n4. Ensure version control repositories (e.g., for model weights) enforce restricted contributor permissions.\n\n5. Validate procedures for securely sharing model internals with external researchers or partners.\n\n6. Verify role-based access for experimentation on proprietary training datasets and augmentation logic.",
+    "ai_customer": "1. Confirm access controls are enforced on model outputs, dashboards, and results shared with business users.\n\n2. Check that AIC personnel with access to sensitive inference results (e.g., risk scores) are vetted and approved.\n\n3. Ensure defined roles align with regulatory obligations (e.g., HIPAA or GDPR “minimum necessary” principles).\n\n4. Validate periodic audits to ensure role drift or privilege creep has not occurred.\n\n5. Review process to onboard new users or teams with access to analytical output.",
+    "cloud_service_provider": "1. Verify platform-level RBAC or ABAC policies are configured to enforce knowledge access limitations.\n\n2. Check tenant-level isolation controls on data lake, object storage, and model registry.\n\n3. Confirm logging and monitoring of access attempts to AI knowledge resources like datasets and features.\n\n4. Validate cloud-native services (e.g., Vertex AI, SageMaker) restrict access to metadata and pipeline artifacts.\n\n5. Ensure policies align with CSP customer’s \"least privilege\" configuration templates for AI workloads."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#IAM-16"
+    }
+  ]
+}

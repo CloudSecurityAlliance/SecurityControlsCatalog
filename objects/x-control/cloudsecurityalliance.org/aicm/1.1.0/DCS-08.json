@@ -1,0 +1,71 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--f48a5883-fc16-413d-a65c-8fc418edd994",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Controlled Physical Access Points",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-08",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Design and implement physical security perimeters to safeguard personnel, data, and information systems.",
+  "control_type": "Cloud-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data storage",
+    "delivery": "Operations"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors Except AIC]\n1. Providers should implement physical security measures to safeguard personnel, data and information systems that are involved in tasks, such as data processing, inference, training.",
+    "model_provider": "Role Specific\n1. Providers should  implement physical security measures to safeguard personnel, data and information systems that are involved in tasks such as data processing , inference, training .\n\n2. Implement access control for model development areas with multi-factor authentication.\n\n3. Create an isolated secure room for storing model weights and sensitive training datasets.\n\n4. Install tamper-evident seals on server racks containing model training infrastructure.\n\n5. Design visitor management workflows with temporary access credentials and mandatory escorts.\n\n[All Actors Except AIC]\n1. Providers should implement physical security measures to safeguard personnel, data and information systems that are involved in tasks, such as data processing, inference, training.",
+    "orchestrated_service_provider": "Role Specific\n1. Providers should  implement physical security measures to safeguard personnel, data and information systems that are involved in tasks such as data processing , inference, training .\n\n2. Establish dedicated secure zones for critical orchestration servers with mantrap entrances with role-based physical access systems tied to identity management platforms.\n\n3. Develop documented physical access procedures for maintenance activities.\n\n[All Actors Except AIC]\n1. Providers should implement physical security measures to safeguard personnel, data and information systems that are involved in tasks, such as data processing, inference, training.",
+    "application_provider": "Role Specific\n1. Providers should  implement physical security measures to safeguard personnel, data and information systems that are involved in tasks such as data processing , inference, training.\n\n2. Implement smart card access to development floors with differing clearance zones.\n\n[All Actors Except AIC]\n1. Providers should implement physical security measures to safeguard personnel, data and information systems that are involved in tasks, such as data processing, inference, training.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "Role specific\nCSPs handle sensitive data and information systems for the AICs , making them a prime target for physical security breaches. Establishing robust physical security perimeters enables CSPs to safeguard personnel, data, and information systems within CSP facilities. These guidelines outline best practices for implementing effective physical security perimeters to protect CSP assets.\n\n1. Implementation best practices for the physical perimeter security include (but not limited to):\n a. Perimeter Security:\n i. High-security fencing with controlled access points should be installed to demarcate the CSP's physical boundaries\n ii. Multi-factor authentication (MFA) should be implemented for all entry points, including gates, doors, and loading docks. Employees and visitors should present valid credentials and undergo identity verification before entering\n iii. A comprehensive network of high-resolution, motion-activated surveillance cameras should be installed throughout the perimeter and within restricted areas\n iv. Adequate and well-maintained lighting around the perimeter should be installed to deter unauthorized access and improve visibility for security personnel and surveillance systems\n b. Administrative and Business Areas:\n i. A physical separation between administrative and business areas and data storage and processing facilities areas should be created\n ii. Stricter access controls for data storage and processing facilities areas should be implemented, restricting entry to authorized personnel only\n iii. A formal visitor management process should be established that requires visitors to be accompanied by authorized personnel at all times. Maintain visitor logs and restrict access to sensitive areas\n iv. Vendor access should be segregated to designated areas and access to sensitive areas restricted to monitor vendor activities and ensure proper documentation of their presence and actions\n c. Data Storage and Processing Facilities Areas:\n i. Sensitive data and critical IT assets should be stored within dedicated, secure rooms with reinforced walls, doors, and access control systems. Mantraps or other physical barriers should be implemented to control entry and prevent unauthorized access\n ii. A designated area for deliveries and inspection should be established. Tamper-evident seals, tracking mechanisms should be implemented for deliveries and equipment. Access to delivery areas should be restricted and documentation maintained of all deliveries\n iii. Reliable power backup systems and surge protection should be implemented to ensure uninterrupted operation and protection of IT infrastructure in case of power outages or power surges\n d. Continuous Monitoring and Evaluation:\n i. Physical security assessments should be regularly conducted to identify and address potential vulnerabilities\n ii. Share threat intelligence with relevant personnel, and stay informed about emerging physical security threats and adapt security measures accordingly\n\n[All Actors Except AIC]\n1. Providers should implement physical security measures to safeguard personnel, data and information systems that are involved in tasks, such as data processing, inference, training."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that the AP has reviewed the CSP’s third-party audit reports (e.g., SOC 2 Type 2, ISO 27001) for evidence of physical access controls at the data centers hosting the application.\n\n2. Confirm that service agreements with the CSP specify their responsibility for physical security.",
+    "orchestrated_service_provider": "1. Verify that the OSP's vendor risk management program includes a review of the physical security controls for all underlying CSPs used in the orchestrated service.\n\n2. Check for evidence that the OSP assesses the physical location risks of its dependencies.",
+    "model_provider": "1. Verify that the MP has assessed the physical security of the data centers where model training and hosting occur by reviewing the CSP’s compliance certifications and reports.\n\n2. Confirm that data residency for sensitive training data aligns with physically secure locations.",
+    "ai_customer": "1. Verify that the AIC’s procurement and vendor assessment policies require providers (AP, OSP, MP) to use CSPs with certified physical security controls.\n\n2. Review contracts to ensure providers are obligated to disclose the physical regions where customer data is processed and stored.",
+    "cloud_service_provider": "1. Examine the policy relating to physical security perimeters.\n\n2. Examine the lists of types of areas in the organization, and the classification of each.\n\n3. Determine if there are appropriate physical security barriers and if monitoring exists between areas.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-08"
+    }
+  ]
+}

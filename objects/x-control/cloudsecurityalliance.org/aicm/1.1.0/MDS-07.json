@@ -1,0 +1,79 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--4b903df1-c613-416a-a605-0efbcbf69258",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Robustness against Adversarial Attack / Model Hardening",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-07",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement, and evaluate processes, procedures, and technical measures for Model Hardening to mitigate relevant adversarial attacks as identified in the Threat Analysis and Adversarial Threat Analysis.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage, Team and expertise",
+    "development": "Design, Training",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous improvement",
+    "service_retirement": "Model disposal, Data deletion"
+  },
+  "implementation_guidelines": {
+    "shared": "Not Applicable\n(Access to model artifacts and weights is needed for robustness (hardening) training)",
+    "model_provider": "[Model Provider (MP)]\n\n1. Define and enforce appropriate system prompts to guide model behavior and to enhance the overall robustness.\n\n2. Evaluate models regularly against known adversarial attack techniques, updating risk assessments and mitigation strategies in accordance with MDS-06.\n\n3. Implement both forward and backward alignment techniques to ensure model consistency and reduce susceptibility to attacks.\n\nAdditional mitigation techniques to enhance a model robustness may include:\n\n4. Strength the model by augmenting training data with adversarial examples to improve resilience against adversarial inputs.\n\n5. Apply differential privacy techniques to safeguard against model inversion attacks and protect sensitive data.\n\n6. Conduct adversarial testing & stress testing to evaluate model robustness against attacks.",
+    "orchestrated_service_provider": "Not Applicable\n(Access to model artifacts and weights is needed for robustness (hardening) training)",
+    "application_provider": "Not Applicable\n(Access to model artifacts and weights is needed for robustness \n(hardening) training)",
+    "ai_customer": "Not Applicable \n\n(The customer does not train the model and does not have access to the physical model \nto perform model hardening)",
+    "cloud_service_provider": "Not Applicable\n(Access to model artifacts and weights is needed for robustness (hardening) training)"
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine the AP's implementation of application-level protections that complement model hardening measures. \n\n2. Verify input sanitization and validation controls that protect against adversarial inputs targeting model vulnerabilities. \n\n3. Assess output filtering mechanisms that prevent exploitation of model outputs. \n\n4. Review testing procedures for application interfaces that verify resistance to adversarial attacks. \n\n5. Confirm documentation of how application-level protections integrate with and enhance underlying model hardening measures from upstream providers.",
+    "orchestrated_service_provider": "1. Examine the OSP's procedures for maintaining model hardening protections during service orchestration and deployment. \n\n2. Verify the implementation of service-level protective measures that complement model hardening, such as input validation, rate limiting, and anomaly detection. \n\n3. Assess coordination documentation between the OSP and MP regarding model-specific vulnerabilities and appropriate orchestration approaches. \n\n4. Review testing procedures that verify model hardening measures remain effective in the orchestrated environment. \n\n5. Confirm that monitoring mechanisms detect potential adversarial attacks against the orchestrated service.",
+    "model_provider": "1. Examine the MP's documented approach to model hardening that addresses threats identified through adversarial threat analysis (MDS-06). \n\n2. Verify implementation of specific model hardening techniques appropriate to the model architecture and identified threats. \n\n3. Assess documentation of hardening testing procedures and results, confirming that techniques effectively mitigate identified vulnerabilities. \n\n4. Review the periodic re-evaluation process for hardening measures to adapt to emerging threats. \n\n5. Verify that model hardening measures are implemented without unduly impacting model performance, and any performance tradeoffs are documented and approved. \n\n6. Confirm that model hardening measures are thoroughly documented and communicated to OSPs and APs to enable appropriate downstream implementation.",
+    "ai_customer": "1. Examine the AP's implementation of application-level protections that complement model hardening measures. \n\n2. Verify input sanitization and validation controls that protect against adversarial inputs targeting model vulnerabilities. \n\n3. Assess output filtering mechanisms that prevent exploitation of model outputs. \n\n4. Review testing procedures for application interfaces that verify resistance to adversarial attacks. \n\n5. Confirm documentation of how application-level protections integrate with and enhance underlying model hardening measures from upstream providers.",
+    "cloud_service_provider": "1. Examine the CSP's service-level protections that complement model hardening, such as input validation, rate limiting, and anomaly detection at the infrastructure level. \n\n2. Assess monitoring mechanisms detect potential adversarial attacks on hosted models. \n\n3. Verify documentation of how CSP infrastructure supports customer's model hardening strategies. \n\n4. Review the process for testing and validating the effectiveness of infrastructure-level defenses."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-07"
+    }
+  ]
+}

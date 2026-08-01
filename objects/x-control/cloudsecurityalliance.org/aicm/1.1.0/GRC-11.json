@@ -1,0 +1,70 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--15ab1112-a4f9-40a1-be3c-160b1ff04b55",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Bias and Fairness Assessment",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "GRC-11",
+  "domain": "Governance, Risk and Compliance",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Regularly evaluate AI systems, models, datasets & algorithms for bias and fairness to ensure compliance with ethical standards.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "insecure_supply_chain",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Customer (AIC)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Customer (AIC)"
+  },
+  "stack_components": [
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Guardrails",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "AI applications, Orchestration",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Data deletion, Archiving"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Establish a process for regularly evaluating bias and fairness in AI models, data pipelines, and decision systems.\n\n2. Use quantitative and qualitative methods to assess disparate impact across demographic groups.\n\n3. Document fairness metrics, thresholds, and mitigation steps taken.\n\n4. Engage domain experts, ethicists, and legal teams in reviewing fairness practices.\n\n5. Make fairness assessments auditable and repeatable through documentation and tool use.",
+    "model_provider": "1. Perform fairness testing on training and validation datasets, and document the distributions and assumptions.\n\n2. Apply fairness metrics like demographic parity, equalized odds, and false positive rate balance where applicable.\n\n3. Include fairness evaluation in model testing and promotion criteria.\n\n4. Track fairness metrics across retraining cycles and model updates.\n\n5. Document known limitations and intended use to prevent out-of-scope deployment.\n\n[All Actors]\n1. Establish a process for regularly evaluating bias and fairness in AI models, data pipelines, and decision systems.\n\n2. Use quantitative and qualitative methods to assess disparate impact across demographic groups.\n\n3. Document fairness metrics, thresholds, and mitigation steps taken.\n\n4. Engage domain experts, ethicists, and legal teams in reviewing fairness practices.\n\n5. Make fairness assessments auditable and repeatable through documentation and tool use.",
+    "orchestrated_service_provider": "1. Ensure fairness-sensitive models are not altered by pipeline logic without validation.\n\n2. Include fairness evaluation as a quality gate or CI/CD checkpoint.\n\n3. Automate alerts if retrained models show fairness regressions.\n\n4. Preserve pipeline metadata to support post-hoc fairness analysis.\n\n5. Validate pipeline reproducibility to maintain consistent fairness outcomes.\n\n[All Actors]\n1. Establish a process for regularly evaluating bias and fairness in AI models, data pipelines, and decision systems.\n\n2. Use quantitative and qualitative methods to assess disparate impact across demographic groups.\n\n3. Document fairness metrics, thresholds, and mitigation steps taken.\n\n4. Engage domain experts, ethicists, and legal teams in reviewing fairness practices.\n\n5. Make fairness assessments auditable and repeatable through documentation and tool use.",
+    "application_provider": "1. Ensure front-end implementation does not introduce or amplify biases in AI decision paths.\n\n2. Perform UX studies on how AI outputs are perceived across demographic groups.\n\n3. Test variations in display formats or personalization features for fairness disparities.\n\n4. Support UI/UX prompts for human override or appeals on biased decisions.\n\n5. Log user interactions to identify fairness issues at the application level.\n\n[All Actors]\n1. Establish a process for regularly evaluating bias and fairness in AI models, data pipelines, and decision systems.\n\n2. Use quantitative and qualitative methods to assess disparate impact across demographic groups.\n\n3. Document fairness metrics, thresholds, and mitigation steps taken.\n\n4. Engage domain experts, ethicists, and legal teams in reviewing fairness practices.\n\n5. Make fairness assessments auditable and repeatable through documentation and tool use.",
+    "ai_customer": "1. Request provider fairness assessments and compare them to internal ethical standards.\n\n2. Conduct external audits or impact assessments for sensitive AI use cases.\n\n3. Use fairness metrics as part of model selection and acceptance criteria.\n\n4. Ensure business leaders are trained to interpret fairness results responsibly.\n\n5. Document and escalate bias concerns identified through usage or audit.\n\n[All Actors]\n1. Establish a process for regularly evaluating bias and fairness in AI models, data pipelines, and decision systems.\n\n2. Use quantitative and qualitative methods to assess disparate impact across demographic groups.\n\n3. Document fairness metrics, thresholds, and mitigation steps taken.\n\n4. Engage domain experts, ethicists, and legal teams in reviewing fairness practices.\n\n5. Make fairness assessments auditable and repeatable through documentation and tool use.",
+    "cloud_service_provider": "Establish dedicated AI oversight groups for monitoring CSP-side practices, risks, and operations.\n\nShare documentation of CSP internal audits, compliance reports, and AI risk registers upon request.\n\nProvide named points of contact for AI governance issues, including support escalation paths.\n\nSupport audit trails for model hosting, API usage, and infrastructure changes impacting AI.\n\nAlign internal oversight with evolving global standards and regulatory expectations for AI services.\n\n[All Actors]\n1. Establish a process for regularly evaluating bias and fairness in AI models, data pipelines, and decision systems.\n\n2. Use quantitative and qualitative methods to assess disparate impact across demographic groups.\n\n3. Document fairness metrics, thresholds, and mitigation steps taken.\n\n4. Engage domain experts, ethicists, and legal teams in reviewing fairness practices.\n\n5. Make fairness assessments auditable and repeatable through documentation and tool use."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Bias and Fairness Policy: Confirm a documented policy exists for assessing and mitigating bias in end-user applications, aligned with Responsible AI principles and relevant regulations.\n\n2. Representative User Contexts: Ensure training and fine-tuning consider diverse user demographics, languages, and contexts relevant to the application’s global reach.\n\n3. Fairness in Output Behavior: Verify that models are evaluated and adjusted to reduce biased or harmful outputs across different use cases and user interactions.\n\n4. Real-Time Monitoring and Safeguards: Confirm mechanisms exist to detect, log, and respond to bias-related issues in real-time usage.\n \n5. Transparency to Users: Ensure that limitations, fairness considerations, and usage guidelines are clearly communicated to users (e.g., through system cards, help docs).",
+    "orchestrated_service_provider": "1. Policy and Governance Framework: Confirm a documented policy exists for evaluating bias and fairness across hosted models and AI services, aligned with global standards and customer obligations.\n\n2. Inclusive Service Design: Ensure datasets, prebuilt models, and APIs are developed or selected with consideration for demographic and regional diversity.\n\n3. Fairness Controls in Platform Offerings: Verify the availability of platform features (e.g., bias mitigation options, fairness constraints) for customers deploying models through the OSP.\n\n4. Monitoring and Detection Tools: Confirm that tools and APIs are provided for detecting and addressing bias in both OSP-hosted and customer-deployed models.\n\n5. Transparency and Communication: Ensure fairness risks, limitations, and best practices are documented in service documentation, model cards, and customer guidance materials.",
+    "model_provider": "1. Policy and Framework: Confirm a documented framework exists for evaluating bias and fairness in data, models, and outputs—aligned with Responsible AI principles and global regulations.\n\n2. Diverse Training Data: Ensure training datasets reflect demographic, geographic, and other requirements to reduce bias.\n\n3. Fairness in Model Design: Verify that fairness goals or constraints are incorporated during training and fine-tuning, post training\n\n4. Bias Detection Tools: Check that validated tools and metrics are used to detect, measure, and mitigate bias throughout the model lifecycle.\n\n5. Transparent Reporting: Confirm fairness findings, limitations, and mitigations are regularly reported through model cards or transparency reports for downstream users.",
+    "ai_customer": "1. Policy-Based Evaluation: Verify that assessments of data, models, and algorithms for bias and fairness are documented and aligned with the organization’s AI fairness policy and applicable regulatory obligations.\n\n2. Diverse Data Representation: Ensure that training and evaluation datasets reflect the diversity dimensions (e.g., demographic, geographic, socioeconomic) defined in the organization’s fairness and bias policy.\n\n3. Fairness-Aware Model Training: Verify that model development includes fairness constraints or mitigation techniques as required by internal policy or external standards.\n\n4. Bias Detection and Mitigation Tools: Confirm the availability and use of validated tools, metrics, and procedures for detecting, measuring, and mitigating bias throughout the AI lifecycle.\n\n5. Ongoing Monitoring and Reporting: Ensure there is a regular process for bias re-evaluation, mitigation, and transparent reporting—ideally documented through model cards or equivalent artifacts accessible to internal stakeholders.",
+    "cloud_service_provider": "1. Bias and Fairness Policy: Confirm a documented policy exists for assessing and mitigating bias in end-user applications, aligned with Responsible AI principles and relevant regulations.\n\n2. Representative User Contexts: Ensure training and fine-tuning consider diverse user demographics, languages, and contexts relevant to the application’s global reach.\n\n3. Fairness in Output Behavior: Verify that models are evaluated and adjusted to reduce biased or harmful outputs across different use cases and user interactions.\n\n4. Real-Time Monitoring and Safeguards: Confirm mechanisms exist to detect, log, and respond to bias-related issues in real-time usage.\n\n5. Transparency to Users: Ensure that limitations, fairness considerations, and usage guidelines are clearly communicated to users (e.g., through system cards, help docs)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#GRC-11"
+    }
+  ]
+}

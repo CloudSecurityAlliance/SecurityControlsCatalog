@@ -1,0 +1,76 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--41357276-8f0c-419f-b384-1cb4452bc272",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Assets Cataloguing and Tracking",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-07",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Catalogue and track all relevant physical and logical assets located at all of the service provider's sites within a secured system. Review and update the catalogue at least annually, or upon significant changes.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Resource provisioning",
+    "deployment": "AI Services supply chain, AI applications",
+    "delivery": "Operations"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Maintaining detailed catalogs of physical and digital assets relevant to each entity's role.\n\n2. Documenting dependencies, connections, and data flows between components.\n\n3. Monitoring assets from creation through deployment to retirement.\n\n4. Implementing appropriate protection mechanisms based on asset classification.\n\n5. Ensuring asset management practices support industry frameworks.",
+    "model_provider": "Role Specific\n1. Providers should catalogue and track the different types of assets that are involved in tasks such as data processing , inference, training\n\n2. Create a comprehensive registry of all AI models including version history, training parameters, and performance metrics. Along with mapping of physical and virtual resources dedicated to model training and serving.\n\n3. Maintain detailed catalogs of all training, validation, and test datasets, and track dataset transformations and preprocessing steps. \n\n[All Actors]\n1. Maintaining detailed catalogs of physical and digital assets relevant to each entity's role.\n\n2. Documenting dependencies, connections, and data flows between components.\n\n3. Monitoring assets from creation through deployment to retirement.\n\n4. Implementing appropriate protection mechanisms based on asset classification.\n\n5. Ensuring asset management practices support industry frameworks.",
+    "orchestrated_service_provider": "Role Specific\n1. Providers should catalogue and track the different types of assets that are involved in tasks such as data processing , inference, training .\n\n2. Create visual representations of service connections and dependencies.\n\n3. Document API versions and compatibility requirement with SLA for each integrated component.\n\n4. Maintain a secure repository of all orchestration configurations.\n\n[All Actors]\n1. Maintaining detailed catalogs of physical and digital assets relevant to each entity's role.\n\n2. Documenting dependencies, connections, and data flows between components.\n\n3. Monitoring assets from creation through deployment to retirement.\n\n4. Implementing appropriate protection mechanisms based on asset classification.\n\n5. Ensuring asset management practices support industry frameworks.",
+    "application_provider": "Role Specific\n1. Providers should catalogue and track the different types of assets that are involved in tasks such as data processing , inference, training \n\n2. Maintain a registry of all application modules with AI integrations.\n\n3. Document accessibility features and compliance requirements.\n\n[All Actors]\n1. Maintaining detailed catalogs of physical and digital assets relevant to each entity's role.\n\n2. Documenting dependencies, connections, and data flows between components.\n\n3. Monitoring assets from creation through deployment to retirement.\n\n4. Implementing appropriate protection mechanisms based on asset classification.\n\n5. Ensuring asset management practices support industry frameworks.",
+    "ai_customer": "Role Specific\n1. Providers should catalogue and track the different types of assets that are involved in tasks such as data processing , inference, training \n\n2. Maintain a registry of all application modules with AI integrations.\n\n3. Document accessibility features and compliance requirements.\n\n[All Actors]\n1. Maintaining detailed catalogs of physical and digital assets relevant to each entity's role.\n\n2. Documenting dependencies, connections, and data flows between components.\n\n3. Monitoring assets from creation through deployment to retirement.\n\n4. Implementing appropriate protection mechanisms based on asset classification.\n\n5. Ensuring asset management practices support industry frameworks.",
+    "cloud_service_provider": "Role Specific\n1. The AIC should reach out to its CSP to understand what tools it provides (e.g., access to the cloud management plane via catalog managers and APIs) that enable the CSC to retrieve the list of cloud assets that are used to handle the AIC's data.\n\n2. The AIC should define a tagging strategy for their environment that involves creating a list of tags to categorize assets and asset owners in a catalog. A standardized naming convention is the starting point for organizing the cloud-hosted resources. The same naming conventions on tags should be consistently used across multiple CSPs (e.g., multi-cloud environment), and where possible, cloud assets should be tracked by an automated means, allowing for prompt decisions to be made according to them (e.g., access control decisions, monitoring and alerting, accounting).\n\n3. Templates for defining a naming and tagging convention for tagging assets are defined by all major CSPs. The AIC may choose to adopt the CSP’s naming standards or define their own that they wish to apply to each asset type they plan to deploy as part of their cloud adoption effort.\n\nExamples of tagging conventions and respective cloud assets types that should be cataloged and tracked are below, where applicable by cloud service model (but not limited to):\na. Asset Tags Types:\ni. Environment Tag: Identifying resources belonging to different environments such as production, development, or testing\nii. Function/Application Tag: Associating resources with specific applications or services within the cloud environment\niii. Department Tag: Associating resources with specific departments in the organization\niv. Location Tag: Tagging resources based on their geographic location or data center region\nv. Owner Tag: Specifying the individual or team responsible for a particular resource\nvi. Release Version Tag: Version number of the software or application they are associated with\nvii. Security Classification Tag:  Identifying the security classification or sensitivity level of resources\nviii. Compliance/Regulatory Tag: Indicate compliance with specific regulations or standards\nix. Automation Tag: Indicate whether the asset should be selected for action by scripts, scanners or other form of automation\nx. Active Tag: Designates resources currently in use for production, development, or other relevant purposes\nxi. Deprecated Tag: Designates resources scheduled for retirement or no longer actively used\nb. Cloud Asset Types:\ni. Virtual machines (e.g., VM instances/images, OS name/version),\nii. Virtual networking (e.g., VPC networks and subnets, DNS records, IP addresses),\niii. Databases (e.g., database/SQL servers),\niv. Storage (e.g., block, file, object storage types), \nv. Applications (e.g., custom applications, container images, software licenses)\nvi. Maintaining detailed catalogs of physical and digital assets relevant to each entity's role.\nvii. Documenting dependencies, connections, and data flows between components\nviii. Monitoring assets from creation through deployment to retirement\nix. Implementing appropriate protection mechanisms based on asset classification\nx. Ensuring asset management practices support industry frameworks.\n\n4. The catalog should include all device status changes (e.g., patch levels, lost/decommissioned status, and to whom the asset type is assigned, or approved for BYOD).\n\n5. Cloud asset cataloging and tracking should be prioritized to include the most security-relevant or critical ones followed by the inclusion of remaining asset types that pertain to minimal or no risk.\n\n6. If supported by the CSP, automated scans should be made to identify assets that are not tagged or have tagged values not aligned to AIC's tagging rules (e.g., assets tagged or not tagged with a ‘classification level’ value).\n\n7. When tagging tools are not made available from the CSP, the AIC should proceed with manually tagging and cataloging assets. Easy-to-parse formats (JSON, YAML, XML) should be preferred for more efficient management and maintenance of the catalog.\n\n8. The AIC should map security tools to the assets included in the catalog in order to prevent, detect, recover, and respond to security risks that are applicable to them (e.g., use vulnerabilities patching and antivirus tools with VM/OS assets as preventive and detective security controls).\n\n9. Assets that have been tagged with a ‘Security Classification Level’ key type should inherit the highest data classification level (high-water mark) value among the different classification levels of data that the particular asset type is destined to use for performing computational, network or storage operations on such data.\n\n10. Ensure that contractual agreements with CSPs cover data handling and physical access restrictions\" or  \"periodically review third-party audit reports.\n\n[All Actors]\n1. Maintaining detailed catalogs of physical and digital assets relevant to each entity's role.\n\n2. Documenting dependencies, connections, and data flows between components.\n\n3. Monitoring assets from creation through deployment to retirement.\n\n4. Implementing appropriate protection mechanisms based on asset classification.\n\n5. Ensuring asset management practices support industry frameworks."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the AP maintains a secure inventory of its logical assets, such as code repositories, container images, and deployed application instances.\n\n2. Confirm the inventory is updated automatically as part of the CI/CD pipeline and reconciled regularly.",
+    "orchestrated_service_provider": "1. Verify the OSP maintains an inventory of all orchestrated services, integrated components, and their versions.\n\n2. Confirm this inventory is used to track dependencies and manage the security posture of the entire service chain.",
+    "model_provider": "1. Verify the MP maintains a versioned inventory of all model artifacts, including training data, source code, and model weights, in a secure model registry.\n\n2. Check that the inventory tracks the lineage and deployment status of each model.",
+    "ai_customer": "1. Verify the AIC maintains an inventory of all procured AI services, including provider details, contract terms, and the business owner.\n\n2. Confirm this inventory is used for vendor risk management and is reviewed at least annually.",
+    "cloud_service_provider": "1. Examine the policy relating to defining asset location and disposition.\n\n2. Examine the asset registers and determine if they are stored and accessed securely.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-07"
+    }
+  ]
+}

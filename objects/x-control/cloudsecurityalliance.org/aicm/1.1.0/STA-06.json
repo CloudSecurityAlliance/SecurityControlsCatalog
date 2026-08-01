@@ -1,0 +1,80 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--37ce9d2a-af3c-41ce-8e08-33154f08678b",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "SSRM Documentation Review",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "STA-06",
+  "domain": "Supply Chain Management, Transparency, and Accountability",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Review and validate the SSRM documentation.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared across the supply chain",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data storage, Resource provisioning",
+    "development": "Supply Chain",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Regularly review and validate SSRM documentation to ensure it accurately reflects current system design, business objectives, threat landscape, and mitigation practices.\n\n2. Conduct a comprehensive review of SSRM-related documents, including risk assessments, mitigation plans, and supplier evaluations.\n\n3. Ensure that all relevant stakeholders have access to the most current and accurate SSRM documentation.\n\n4. Document changes made during the review process and communicate updates to all relevant parties.",
+    "model_provider": "Role Specific:\n1. Review and validate Model Security Manifests to ensure accuracy of model development processes, training data sources, security controls, and performance baselines before delivery to Application Providers.\n\n2. Validate documentation of data provider relationships including data licensing agreements, quality assessments, provenance records, and supplier security evaluations for all training data sources.\n\n3. Review model development lifecycle documentation covering secure coding practices, model validation procedures, adversarial testing results, and bias evaluation reports for accuracy and completeness.\n\n4. Ensure data supply chain documentation is current and complete, covering: Data licensing and usage rights agreements, Data preprocessing and anonymization procedures, Third-party data provider compliance evidence.\n\n5. Ensure model distribution documentation accurately reflects current licensing terms, usage restrictions, integration requirements, and support obligations for downstream customers.\n\n[All Actors]\n1. Regularly review and validate SSRM documentation to ensure it accurately reflects current system design, business objectives, threat landscape, and mitigation practices.\n\n2. Conduct a comprehensive review of SSRM-related documents, including risk assessments, mitigation plans, and supplier evaluations.\n\n3. Ensure that all relevant stakeholders have access to the most current and accurate SSRM documentation.\n\n4. Document changes made during the review process and communicate updates to all relevant parties.",
+    "orchestrated_service_provider": "Role Specific:\n1. Specifically review and validate service delivery SSRM documentation including: Data handling and processing procedures for client AI data, Workforce training and security compliance records, Subcontractor management and oversight documentation.\n\n2. Validate that service-level documentation accurately reflects: Quality assurance and validation processes, Secure data transfer and return procedures, Incident response plans for service-specific issues (data breaches, quality failures)\n\n3. Ensure tool and platform documentation is current and complete, covering: Software and tool security configurations, Access controls for annotation/platform systems, Integration security with client AI systems.\n\n4. Validate service orchestration documentation including service discovery configurations, inter-service communication security, monitoring and logging procedures, and service coordination workflows across the integrated platform.\n\n[All Actors]\n1. Regularly review and validate SSRM documentation to ensure it accurately reflects current system design, business objectives, threat landscape, and mitigation practices.\n\n2. Conduct a comprehensive review of SSRM-related documents, including risk assessments, mitigation plans, and supplier evaluations.\n\n3. Ensure that all relevant stakeholders have access to the most current and accurate SSRM documentation.\n\n4. Document changes made during the review process and communicate updates to all relevant parties.",
+    "application_provider": "Role Specific:\n1. Review and validate Application Assurance Reports to ensure accurate representation of end-to-end supply chain security status, customer security responsibilities, and application-level controls before delivery to AI Customers.\n\n2. Review upstream supply chain documentation consolidation ensuring accurate compilation of Model Security Manifests, Service Assurance Documentation, and infrastructure attestations into comprehensive customer-facing security evidence.\n\n3. Ensure customer onboarding documentation accurately reflects current security setup requirements, user training materials, compliance configuration guidance, and ongoing support procedures for AI Customer organizations\n\n4. Validate application integration documentation including upstream AI service integrations, API security implementations, data flow security controls, and customer data protection measures throughout the application stack.\n\n[All Actors]\n1. Regularly review and validate SSRM documentation to ensure it accurately reflects current system design, business objectives, threat landscape, and mitigation practices.\n\n2. Conduct a comprehensive review of SSRM-related documents, including risk assessments, mitigation plans, and supplier evaluations.\n\n3. Ensure that all relevant stakeholders have access to the most current and accurate SSRM documentation.\n\n4. Document changes made during the review process and communicate updates to all relevant parties.",
+    "ai_customer": "Role Specific:\n1. Review and validate vendor governance SSRM documentation including: Application Provider compliance evidence and audit reports, Vendor risk assessment methodologies and results, Contractual security requirement compliance documentation.\n\n2. Validate that business integration documentation accurately reflects:  AI system integration with business processes and workflows, User access management and training procedures, Business continuity and disaster recovery plans for AI services.\n\n3. Ensure regulatory compliance documentation is current and complete, covering: Industry-specific regulatory requirement mappings (e.g., HIPAA, GDPR), Data sovereignty and cross-border transfer compliance records, Audit readiness documentation for regulatory examinations.\n\n[All Actors]\n1. Regularly review and validate SSRM documentation to ensure it accurately reflects current system design, business objectives, threat landscape, and mitigation practices.\n\n2. Conduct a comprehensive review of SSRM-related documents, including risk assessments, mitigation plans, and supplier evaluations.\n\n3. Ensure that all relevant stakeholders have access to the most current and accurate SSRM documentation.\n\n4. Document changes made during the review process and communicate updates to all relevant parties.",
+    "cloud_service_provider": "Role Specific:\n1. Review and validate Infrastructure Assurance Documentation to ensure accurate representation of physical security controls, hardware integrity measures, multi-tenant isolation capabilities, and shared responsibility matrices for all customer types.\n\n2. Validate infrastructure supply chain documentation including hardware supplier certifications, component provenance records, firmware integrity validations, and vendor security assessments throughout the infrastructure stack.\n\n3. Review multi-customer compliance documentation ensuring accuracy of regulatory attestations (SOC 2, FedRAMP, ISO 27001), audit reports, certification maintenance records, and compliance support capabilities across multiple jurisdictions.\n\n4. Ensure infrastructure resilience documentation accurately reflects current disaster recovery procedures, backup capabilities, failover mechanisms, and business continuity plans supporting critical AI workloads for all ecosystem actors.\n\n5. Validate shared responsibility documentation including customer security obligation matrices, infrastructure boundary definitions, control ownership clarifications, and support procedures for each AI ecosystem actor type (MP, OSP, AP, AIC).\n\n[All Actors]\n1. Regularly review and validate SSRM documentation to ensure it accurately reflects current system design, business objectives, threat landscape, and mitigation practices.\n\n2. Conduct a comprehensive review of SSRM-related documents, including risk assessments, mitigation plans, and supplier evaluations.\n\n3. Ensure that all relevant stakeholders have access to the most current and accurate SSRM documentation.\n\n4. Document changes made during the review process and communicate updates to all relevant parties.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThe CSP and CSC should jointly review the SSRM documentation and finalize responsibilities for the cloud service offering.\n\nImplementation Guidelines.\nApplicable to all service models:\nThe CSP and CSC should independently and jointly review the SSRM documentation and guidance for each cloud service implementation. For the CSP, these reviews should include any cloud services used for delivering services to the CSC, as well as cloud services used for internal organizational purposes (e.g., cloud-based financial or HR applications).  \n\nThe SSRM guidance for the cloud service offering under STA-03 and STA-04 should provide the basis for initial review. The CSC should request joint meetings to clarify any questions the CSC may have about control implementation and responsibilities. The CSP should use this feedback to adjust and improve its cloud service SSRM guidance.\n\nThe SSRM review should focus particularly on controls designated as \"Shared (Dependent)\" in the SSRM.  Both parties should ensure that they are clear on their respective responsibilities for coordinated operations.  \n\nThe review may also include discussion of any controls offered on an optional basis by the CSP. The CSP should clearly inform the CSC of additional fees or conditions of such optional services.\n\nThe SSRM should be updated to reflect any changes warranted by the review.  As needed, the cloud service contract agreement should be updated (under control STA-10) to reflect the change. It is important that the SSRM documentation and contract agreement are aligned and consistent with each other."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Confirm the Application Provider (AP) has a process to regularly review its own SSRM documentation and that of key suppliers (e.g., CSP), ensuring alignment and clarity on shared responsibilities.\n\n2. Examine these reviews occur at least annually or when significant service changes happen (e.g., new cloud region, architecture updates, reflect changes in data residency and encryption responsibilities).",
+    "orchestrated_service_provider": "1. Confirm the AI Orchestrator Provider has a process to regularly review its own SSRM documentation and that of key suppliers (e.g., CSPs, model providers), ensuring shared responsibilities are clearly defined and made current by updating its own matrix to reflect orchestration-layer responsibilities such as data routing and API access control.\n\n2. Verify these reviews are conducted at least annually or when major service changes occur (e.g., new model integrations, orchestration logic updates, the orchestrator updates its SSRM to reflect changes in data flow, logging, and access control ownership).",
+    "model_provider": "1. Confirm the Model Provider (MP) has a process to regularly review its own SSRM documentation and that of key suppliers (e.g., CSPs, infrastructure providers), ensuring shared responsibilities are clearly defined and current by updating its matrix to reflect model-layer responsibilities such as model training, inference security, and API access control.\n\n2. Examine these reviews are conducted at least annually or when major service changes occur (e.g., new model deployments, architecture changes, or API updates), ensuring the SSRM reflects changes in data flow, logging, and control ownership.",
+    "ai_customer": "1. Confirm the AIC (Application Integrator/Customer) has a process to regularly review SSRM documentation from its providers (e.g., CSPs, APs, OSPs, MPs), ensuring shared responsibilities are clearly understood and current by updating its own matrix to reflect customer-owned responsibilities such as user access management, data classification, and compliance oversight.\n\n2. Verify these reviews are conducted at least annually or when major service changes occur (e.g., onboarding a new SaaS provider, changes in data residency), ensuring the SSRM reflects updated responsibilities and control ownership.",
+    "cloud_service_provider": "1. Confirm the Cloud Service Provider (CSP) has a process to regularly review its own SSRM documentation and that of key suppliers (e.g., hardware vendors, colocation providers), ensuring shared responsibilities are clearly defined and current by updating its matrix to reflect infrastructure-layer responsibilities such as physical security, virtualization, and network segmentation.\n\n2. Verify these reviews are conducted at least annually or when major service changes occur (e.g., new data center deployments, platform upgrades), ensuring the SSRM reflects changes in control ownership, data handling, and operational responsibilities.\n\nFrom CCM v4.1:\n1. Examine the policy for assessing, demarcating, and documenting the interfaces at the edges of the Organization's responsibility.\n2. Examine the process for validating the boundaries for cloud services used.\n3. Examine the process for validating the seamlessness of controls for cloud services used.\n\n (Note: This control applies to an Organization that is in the role of a CSC)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#STA-06"
+    }
+  ]
+}

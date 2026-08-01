@@ -1,0 +1,78 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--c9203252-9ad4-49af-b2d7-dc01dfc6c75f",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Access Changes and Revocation",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "IAM-07",
+  "domain": "Identity & Access Management",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "De-provision or modify identity access in a timely manner.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared across the supply chain",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Shared Application Provider-AI Customer (Shared AP-AIC)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise, Data storage, Resource provisioning, Data curation",
+    "development": "Training, Guardrails, Supply Chain",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Define time-bound policies for revoking access upon role change, termination, or inactivity.\n\n2. Automate access modification and revocation workflows based on triggers (e.g., HR system updates).\n\n3. Revoke all credentials and tokens (passwords, API keys, cloud roles, third-party SaaS entitlements) and/or any standing sessions the user still holds.\n\n4. Detect and handle orphaned or dormant accounts; auto-disable or flag them for immediate review.\n\n5. Log every modification or revocation action to an immutable store for audit, forensics and compliance reporting.\n\n6. Run periodic access-list reviews to validate that current entitlements match active business roles and projects; document any exceptions and corrective actions.",
+    "model_provider": "1. Immediately remove access to model-training, model-registry and deployment systems when personnel leave or change project roles.\n\n2. Ensure CI/CD pipelines invalidate cached credentials and signed artefact permissions for departing users.\n\n[All Actors]\n1. Define time-bound policies for revoking access upon role change, termination, or inactivity.\n\n2. Automate access modification and revocation workflows based on triggers (e.g., HR system updates).\n\n3. Revoke all credentials and tokens (passwords, API keys, cloud roles, third-party SaaS entitlements) and/or any standing sessions the user still holds.\n\n4. Detect and handle orphaned or dormant accounts; auto-disable or flag them for immediate review.\n\n5. Log every modification or revocation action to an immutable store for audit, forensics and compliance reporting.\n\n6. Run periodic access-list reviews to validate that current entitlements match active business roles and projects; document any exceptions and corrective actions.",
+    "orchestrated_service_provider": "1. Auto-revoke pipeline, dashboard and cluster roles via identity-federation APIs when HR status changes.\n\n2. Strip admin privileges first, then normal roles, to minimise window for misconfiguration.\n\n[All Actors]\n1. Define time-bound policies for revoking access upon role change, termination, or inactivity.\n\n2. Automate access modification and revocation workflows based on triggers (e.g., HR system updates).\n\n3. Revoke all credentials and tokens (passwords, API keys, cloud roles, third-party SaaS entitlements) and/or any standing sessions the user still holds.\n\n4. Detect and handle orphaned or dormant accounts; auto-disable or flag them for immediate review.\n\n5. Log every modification or revocation action to an immutable store for audit, forensics and compliance reporting.\n\n6. Run periodic access-list reviews to validate that current entitlements match active business roles and projects; document any exceptions and corrective actions.",
+    "application_provider": "1. Suspend or downgrade application and API tokens at once when users are flagged inactive or terminated.\n\n2. Cascade revocation to every integrated module (plug-ins, third-party SDKs) and integration that relied on the original credentials.\n\n[All Actors]\n1. Define time-bound policies for revoking access upon role change, termination, or inactivity.\n\n2. Automate access modification and revocation workflows based on triggers (e.g., HR system updates).\n\n3. Revoke all credentials and tokens (passwords, API keys, cloud roles, third-party SaaS entitlements) and/or any standing sessions the user still holds.\n\n4. Detect and handle orphaned or dormant accounts; auto-disable or flag them for immediate review.\n\n5. Log every modification or revocation action to an immutable store for audit, forensics and compliance reporting.\n\n6. Run periodic access-list reviews to validate that current entitlements match active business roles and projects; document any exceptions and corrective actions.",
+    "ai_customer": "1. Coordinate closely with HR and vendors to confirm off-boarded staff—and contractors—lose access across all supplier portals.\n\n2. Track outstanding revocations on a central dashboard and escalate items that exceed SLA.\n\n[All Actors]\n1. Define time-bound policies for revoking access upon role change, termination, or inactivity.\n\n2. Automate access modification and revocation workflows based on triggers (e.g., HR system updates).\n\n3. Revoke all credentials and tokens (passwords, API keys, cloud roles, third-party SaaS entitlements) and/or any standing sessions the user still holds.\n\n4. Detect and handle orphaned or dormant accounts; auto-disable or flag them for immediate review.\n\n5. Log every modification or revocation action to an immutable store for audit, forensics and compliance reporting.\n\n6. Run periodic access-list reviews to validate that current entitlements match active business roles and projects; document any exceptions and corrective actions.",
+    "cloud_service_provider": "[All Actors]\n1. Define time-bound policies for revoking access upon role change, termination, or inactivity.\n\n2. Automate access modification and revocation workflows based on triggers (e.g., HR system updates).\n\n3. Revoke all credentials and tokens (passwords, API keys, cloud roles, third-party SaaS entitlements) and/or any standing sessions the user still holds.\n\n4. Detect and handle orphaned or dormant accounts; auto-disable or flag them for immediate review.\n\n5. Log every modification or revocation action to an immutable store for audit, forensics and compliance reporting.\n\n6. Run periodic access-list reviews to validate that current entitlements match active business roles and projects; document any exceptions and corrective actions.\n\nOffer automated access revocation via hooks or event triggers integrated with customer \nidentity systems.\n\nProvide tools to monitor inactive accounts and apply revocation policies after a set period \nof non-use.\n\nImmediately revoke access when service subscriptions or tenants are deactivated or \ndeleted.\n\nEnsure revocation audit data is available for regulatory inspection and reporting.\n\nApplicable to all service models:\nAs and when it is determined that the access that was previously granted to a user is not required any more, the CSP is responsible for deprovisioning the users’ access. The scope of the control includes all the access and permissions managed by the access management processes.\n\nImplementation best practices for deprovisioning or modifying user access in a timely manner include (but are not limited to):\na. IDaaS for Access Deprovisioning: The IDaaS system (refer to IAM-03) should be leveraged to consolidate identity management and access deprovisioning across all cloud services and applications\ni. Deprovisioning tools or scripts should be utilized (automated where possible) as part of the IAM process for revoking access rights upon account termination or reassignment\nii. Access rights should be revoked within all the relevant identities following the termination date\nb. HR Systems Synchronization: The IDaaS system should be integrated with HR systems to automatically de-provision user accounts based on employee termination or role changes\nc. Deprovisioning Workflow Automation: The deprovisioning process should be automated using workflow automation tools to reduce errors and ensure timely and consistent changes\nd. Single-Point of Contact (SPOC) for Access Deprovisioning Management: \ni. A role hierarchy and delegation structure should be defined to ensure that deprovisioning actions propagate effectively across related roles\nii. A centralized SPOC responsible should be designated for receiving and managing deprovisioning access requests\ne. Access Deprovisioning Events Logging:  \ni. All identity related events, including modification and deletion of accounts, access privileges, failed attempts, and resource utilization should be monitored and recorded\nii. An accurate and up-to-date record of all access events should be generated and maintained for a specified retention period to facilitate investigations and compliance audits\nf. Access Deprovisioning Changes Notification:\ni. Users should be informed of access changes, such as deprovisioning and modification of access permissions (e.g., due to periodic access recertification, transfer, account termination), through secure channels like email or in-app notifications\nii. Periodic reporting of all access modification and deprovisioning actions should be provided to responsible security managers for review\ng. Revocation and Suspension Mechanisms: A process should be implemented for revoking or suspending access rights temporarily, when necessary, to address security breaches or compliance violations\nh. Inactive Identities Deprovision: A process should be implemented (automated if possible) to detect inactive accounts, flag them for review and where necessary deprovision unused or inactive identities\ni. Deprovisioning Incorporation into Crisis Management Plans: Deprovisioning procedures should be integrated into crisis management plans to ensure timely and effective access revocation in the event of incidents or emergencies\nj. Access Deprovisioning Audits:  Security audits should be regularly conducted to assess the effectiveness of the user access deprovisioning process and identify potential vulnerabilities or misconfigurations"
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that documented procedures exist for user access changes and revocation, including role changes, terminations, and access reassignments.\n\n2. Confirm that access revocation actions are executed promptly, particularly for sensitive or critical roles, and that any automated mechanisms securely support timely de-provisioning.\n\n3. Ensure that records of access modifications and revocations are accurate and complete, reflecting approval, timing, and implementation details.\n\n4. Verify that periodic reviews are conducted to validate the accuracy of access changes, and to ensure access rights remain aligned with current job responsibilities.\n\n5. Confirm that audit trails and compliance follow-up mechanisms exist, including documented evidence of revocation actions and resolution of any discrepancies.\n\n6. Verify that responsibilities for managing access modifications and revocations are clearly defined and assigned.",
+    "orchestrated_service_provider": "1. Validate orchestration platform supports automated access revocation.\n\n2. Review scripts or policies that revoke access across distributed service layers.\n\n3. Check whether revocations sync with directory services (e.g., LDAP, AD).\n\n4. Confirm logs show comprehensive coverage of de-provisioning activities.",
+    "model_provider": "1. Ensure access to training and inference environments is revoked upon role change or offboarding.\n\n2. Verify process to immediately revoke access to sensitive AI model assets.\n\n3. Confirm AI service accounts are disabled or rotated when no longer needed.\n\n4. Review exceptions and delays in revocation of model contributors.",
+    "ai_customer": "1. Confirm clear procedures exist for revoking access to customer accounts or personnel.\n\n2. Check whether customer-initiated revocation requests are honored within agreed SLAs.\n\n3. Validate customer has visibility into revocation audit logs.",
+    "cloud_service_provider": "1. Review CSP’s automated de-provisioning mechanisms.\n\n2. Confirm revocation includes access to cloud APIs, consoles, and back-end storage.\n\n3. Verify that emergency revocation (e.g., threat detection) is supported and logged.\n\nFrom CCM:\n1. Determine if a process is established for removing logical access when users leave the organization or when access is no longer appropriate.\n2. Determine if a timeframe for access removal and access modification is defined.\n3. Verify that a process is established for removing existing system access and assigning appropriate access or for modifying existing access after internal transfer or change of job functions.\n4. Determine if established processes for access removal and modification, within the defined time frame, are followed in practice."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#IAM-07"
+    }
+  ]
+}

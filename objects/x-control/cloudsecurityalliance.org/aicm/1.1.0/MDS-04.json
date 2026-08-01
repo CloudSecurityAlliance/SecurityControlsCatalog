@@ -1,0 +1,74 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--259ef22c-d142-4252-902b-83c2d8be8126",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Model Documentation Requirements",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-04",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish and implement baseline requirements for Model documentation.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Design, Supply Chain",
+    "evaluation_validation": "Validation/Red Teaming, Re-evaluation",
+    "deployment": "AI Services supply chain, AI applications",
+    "delivery": "Operations, Continuous improvement",
+    "service_retirement": "Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "Not Applicable",
+    "model_provider": "1) Model Description:\n- State clear intended use cases and purpose\n- Define target users and application purpose\n- List key features and capabilities\n- Specify any known limitations or constraints\n\n2) Example Input:\n- Provide representative input samples\n- Include multiple formats if applicable\n- Document expected input schema\n- Note any input restrictions or requirements, particularly for model failure\n\n3) Example Output:\n- Show corresponding outputs for example inputs based on input samples\n- Include success and error cases, indicating whether evaluated internally or using an external benchmark\n- Document output format specifications\n- List possible response types\n\n4) Ownership:\n- List primary maintainers/team\n- Specify responsible organization\n- Include contact information\n- Define access and usage rights and follow the OSI nomenclature for license naming\n\n5) Source Information:\n- Provide source URL for third-party models or name the team and team members for internal models\n- Document original model name/identifier\n- Include licensing information and follow the OSI nomenclature for license naming\n- List any dependencies and also make it clear if cross-license dependencies exist\n\n6) Creation Date:\n- Record initial development date\n- Note deployment date\n- Track major update timestamps and hash values of the model\n- Document review/maintenance schedule\n\n7) Evaluation Data:\n- Describe evaluation datasets used\n- Document performance metrics\n- Include benchmark results, stating clearly if internal or external benchmarks were used\n- Note any biases or limitations identified, particularly related to Responsible AI violations\n\n8) Version Control:\n- Use semantic versioning (MAJOR.MINOR.PATCH)\n- Record current version number\n- Document compatibility requirements\n- Track model iterations\n- Highlight any changes related to the license agreement\n\n9) Change Log:\n- Maintain chronological list of changes\n- Include version numbers\n- Describe modifications made also adding timestamps for all updates\n- Note impact of changes\n\n10) Training Data Schema:\n- Document data structure\n- Define field types and formats\n- List required vs optional fields\n- Include data validation rules\n\n11) Ethical Considerations:\n- Document potential biases in training data and model outputs.\n- Specify fairness and bias mitigation strategies applied.\n- Define the model’s intended use, limitations, and potential societal impact.\n\n12) Privacy and Security Concerns:\n - Document privacy concerns related to the dataset used for model training, ensuring compliance with standard regulations, detailing the methods applied for anonymization, pseudonymization, or data minimization, and specifying whether differential privacy, federated learning, or other privacy-enhancing technologies are implemented to prevent unauthorized data exposure.\n- Identify known security vulnerabilities related to the model’s design or deployment. .\n- Discuss the potential for adversarial attacks that could exploit security weaknesses.",
+    "orchestrated_service_provider": "1) Extend templated Model Cards with additional deployment-specific information, such as:\n- Service-level performance metrics and SLAs\n- Integration and dependency details\n- Operational monitoring and alerting configurations\n- Security and compliance measures implemented in the deployment environment.",
+    "application_provider": "1. Document any applied guardrails or input/output filtering.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "Not Applicable"
+  },
+  "auditing_guidelines": {
+    "application_provider": "Applicability Considerations:\n\nScenario 1 (Consumption Only): While direct control creation may not be relevant, the AP should be able to verify and validate the template with the pre-trained model provided from the provider.\n\nScenario 2 (Fine-Tuning/Modification): The AP has direct influence, including validating all steps.\n\n1. Review that the AP ensures and verifies that the format and parameters from the third-party meet requirements and documentation is maintained for validation that is complete.\n\n2. Assess whether the requirements of all stakeholders are addressed and maintained, as part of a systematic plan, as defined by regulations or internal policies.\n\n3. Audit the process used when validating the process that model development, deployment and/or code is checked to see that the models are built with a consistent model card using approved template.",
+    "orchestrated_service_provider": "1. Review OSP policies and procedures that ensures model documentation adheres to standards before deployment and management of any model through the orchestrated platform.\n\n2. Assess procedures followed to meet best practices (for example, technical or governance changes that could occur during deployment), and verify artifacts’ ability to track and to align with industry standards.\n\n3. Audit documented handoff procedures where model developers or data science teams provide model artifacts and sign-off for compliance with the standards, and inspect logs that track that policy has been confirmed.\n\n4. If the OSP is not involved in creating the framework for the model, and that template is with a third party, document this as Not Applicable.",
+    "model_provider": "1. Review that there are processes in place for the development and documentation of standardized attributes for each model, and review the standards and policies.\n\n2. Evaluate with leadership whether the Model Card can be followed at all lifecycle stages of the model.\n\n3. Assess the process and policy and evaluate the scope against the risk management plan.\n\n4. Audit the validation of the data that must occur on an annual basis.",
+    "ai_customer": "1. Review service agreements that ensure adherence to established security baseline in supply chain agreement, as they have limited and/or indirect control within the environment and to maintain the appropriate controls within this specific environment.\n\n2. Evaluate whether the organization confirms appropriate security and legal standards are implemented to establish and document standards and assess compliance.\n\n3. Inspect what steps were made to document standards with technical and governance standards used by leadership and team personnel.\n\n4. Check the system in use to ensure that regulatory and industry-accepted standards are in place.",
+    "cloud_service_provider": "1. Verify that the CSP provides tools and capabilities to support customer's model documentation requirements. \n\n2. Assess the CSP's documentation for how to securely manage and store model documentation. \n\n3. Confirm that service agreements outline clear responsibilities for model documentation security."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-04"
+    }
+  ]
+}

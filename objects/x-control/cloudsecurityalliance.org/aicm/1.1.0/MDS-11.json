@@ -1,0 +1,79 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--ad8f5518-4273-446b-8225-ddd7dd38f8b1",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Model Failure",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-11",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Perform a risk-based evaluation of the model and model serving infrastructure for model failure. Define and implement measures to mitigate model and model serving infrastructure failures, and regularly evaluate throughout the AI system's lifecycle.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data storage, Resource provisioning",
+    "development": "Design, Training",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Archiving, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (Applicable to ALL actors)]\n1. Define service-level agreements (SLAs) or objectives (SLOs) that include metrics reflecting overall model performance and reliability.\n\n[Shared Responsibilities (Applicable to AP, OSP)]\n1. Redundancy Management:\n• Implement Multiple model support with weighted importance \n• Perform Quality and performance monitoring\n• Implement Automatic detection of degraded or failed models\n• Adopt Quorum-based decision making techniques\n\n2. Model Configuration:\n• Set appropriate weights for each model based on reliability\n• Configure quality thresholds based on your use case\n• Adjust quorum size based on reliability requirements\n• Implement fallback scenarios for complete model failure\n\n3. Implement Failure Detection techniques such as:\n• Quality score tracking\n• Error rate monitoring\n• Latency monitoring\n• Historical metrics tracking\n• Trend analysis for early warning\n\n4. Failover Mechanisms:\n• Automatic model exclusion when quality degrades\n• Dynamic load balancing across healthy models\n• Cooldown periods between recovery attempts\n• Graceful degradation when insufficient models are available\n\n5. Monitoring Setup:\n• Implement comprehensive logging\n• Set up alerts for degraded performance\n• Monitor recovery attempts and success rates\n• Track load distribution across models\n• Monitor long-term quality trends\n\n6. Recovery Strategy:\n• Implement model-specific recovery logic\n• Consider automatic scaling for heavy loads\n• Perform and validate Disaster Recovery or Chaos Engineering tests",
+    "model_provider": "[Shared Responsibilities (Applicable to ALL actors)]\n1. Define service-level agreements (SLAs) or objectives (SLOs) that include metrics reflecting overall model performance and reliability.",
+    "orchestrated_service_provider": "[Shared Responsibilities (Applicable to ALL actors)]\n1. Define service-level agreements (SLAs) or objectives (SLOs) that include metrics reflecting overall model performance and reliability.\n\n[Shared Responsibilities (Applicable to AP, OSP)]\n1. Redundancy Management:\n• Implement Multiple model support with weighted importance \n• Perform Quality and performance monitoring\n• Implement Automatic detection of degraded or failed models\n• Adopt Quorum-based decision making techniques\n\n2. Model Configuration:\n• Set appropriate weights for each model based on reliability\n• Configure quality thresholds based on your use case\n• Adjust quorum size based on reliability requirements\n• Implement fallback scenarios for complete model failure\n\n3. Implement Failure Detection techniques such as:\n• Quality score tracking\n• Error rate monitoring\n• Latency monitoring\n• Historical metrics tracking\n• Trend analysis for early warning\n\n4. Failover Mechanisms:\n• Automatic model exclusion when quality degrades\n• Dynamic load balancing across healthy models\n• Cooldown periods between recovery attempts\n• Graceful degradation when insufficient models are available\n\n5. Monitoring Setup:\n• Implement comprehensive logging\n• Set up alerts for degraded performance\n• Monitor recovery attempts and success rates\n• Track load distribution across models\n• Monitor long-term quality trends\n\n6. Recovery Strategy:\n• Implement model-specific recovery logic\n• Consider automatic scaling for heavy loads\n• Perform and validate Disaster Recovery or Chaos Engineering tests",
+    "application_provider": "[Application Provider (AP)]\n\n1) Transparent Communication: Any model performance failure or degradation from the contractual obligation, should be transparently conveyed to the user and addressed in the next model training.\n\n[Shared Responsibilities (Applicable to ALL actors)]\n1. Define service-level agreements (SLAs) or objectives (SLOs) that include metrics reflecting overall model performance and reliability.\n\n[Shared Responsibilities (Applicable to AP, OSP)]\n1. Redundancy Management:\n• Implement Multiple model support with weighted importance \n• Perform Quality and performance monitoring\n• Implement Automatic detection of degraded or failed models\n• Adopt Quorum-based decision making techniques\n\n2. Model Configuration:\n• Set appropriate weights for each model based on reliability\n• Configure quality thresholds based on your use case\n• Adjust quorum size based on reliability requirements\n• Implement fallback scenarios for complete model failure\n\n3. Implement Failure Detection techniques such as:\n• Quality score tracking\n• Error rate monitoring\n• Latency monitoring\n• Historical metrics tracking\n• Trend analysis for early warning\n\n4. Failover Mechanisms:\n• Automatic model exclusion when quality degrades\n• Dynamic load balancing across healthy models\n• Cooldown periods between recovery attempts\n• Graceful degradation when insufficient models are available\n\n5. Monitoring Setup:\n• Implement comprehensive logging\n• Set up alerts for degraded performance\n• Monitor recovery attempts and success rates\n• Track load distribution across models\n• Monitor long-term quality trends\n\n6. Recovery Strategy:\n• Implement model-specific recovery logic\n• Consider automatic scaling for heavy loads\n• Perform and validate Disaster Recovery or Chaos Engineering tests",
+    "ai_customer": "[Shared Responsibilities (Applicable to ALL actors)]\n1. Define service-level agreements (SLAs) or objectives (SLOs) that include metrics reflecting overall model performance and reliability.",
+    "cloud_service_provider": "1. Deliver resilient infrastructure built for high availability, leveraging redundant compute, storage, \nand networking layers to minimize downtime and ensure continuous service delivery.\n\n2. Adopt robust, fault-tolerant system designs—such as multi-region or multi-zone deployments with \nautomatic failover capabilities—to sustain operations during infrastructure failures or outages.\n\n3. Establish comprehensive backup strategies and tested disaster recovery plans to protect essential \nsystem components and minimize recovery time in the event of service disruptions or data loss.\n\n4. Implement scalable, distributed storage architectures with built-in replication to securely persist \nmodel files, configuration settings, and related datasets, ensuring data durability and accessibility.\n\n[Shared Responsibilities (Applicable to ALL actors)]\n1. Define service-level agreements (SLAs) or objectives (SLOs) that include metrics reflecting overall model performance and reliability."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine implementation of application integration with redundant model services. \n\n2. Verify application-level redundancy features such as multi-model routing or result aggregation. \n\n3. Assess fallback mechanisms that handle model failures gracefully from the user perspective. \n\n4. Review application testing under various model failure scenarios. \n\n5. Confirm that the application design accounts for potential variations in responses when using redundant models. \n\n6. Verify that application monitoring can detect and report model failures to trigger redundancy mechanisms. \n\n7. Examine documentation of application behavior during failover events. \n\n8. Clearly outlining the documented procedures for failure management and recovery.",
+    "orchestrated_service_provider": "1. Examine the documented evaluation of redundancy requirements based on service criticality. \n\n2. Verify implementation of appropriate redundancy strategies (e.g., multi-model deployment, load balancing). \n\n3. Assess failover mechanism design and effectiveness in redirecting traffic during failures. \n\n4. Review testing procedures and results that validate redundancy measures under various failure scenarios. \n\n5. Examine monitoring systems that detect failures and trigger redundancy mechanisms. \n\n6. Verify documentation of redundancy architecture and recovery procedures. \n\n7. Confirm that redundancy implementation aligns with service level agreements and business continuity requirements.",
+    "model_provider": "1. Examine documentation of model characteristics relevant to redundancy planning. \n\n2. Verify that models are designed to function effectively in redundant deployments. \n\n3. Assess whether multiple model variants or versions are available to support diversity in redundancy. \n\n4. Review compatibility with backup and restoration processes. \n\n5. Examine implementation of architectures providing inherent redundancy (e.g., mixture of experts, ensemble models). \n\n6. Confirm that model design accounts for potential failure modes and mitigations. \n\n7. Verify testing procedures that validate model behavior in redundant configurations.",
+    "ai_customer": "1. Examine implementation of application integration with redundant model services. \n\n2. Verify application-level redundancy features such as multi-model routing or result aggregation. \n\n3. Assess fallback mechanisms that handle model failures gracefully from the user perspective. \n\n4. Review application testing under various model failure scenarios. \n\n5. Confirm that the application design accounts for potential variations in responses when using redundant models. \n\n6. Verify that application monitoring can detect and report model failures to trigger redundancy mechanisms. \n\n7. Examine documentation of application behavior during failover events.",
+    "cloud_service_provider": "1. Review CSP's infrastructure resilience and high-availability measures for hosting AI models. \n\n2. Assess failover mechanisms that ensure model availability during infrastructure failures. \n\n3. Verify documentation of redundancy architecture and recovery procedures. \n\n4. Confirm that redundancy implementation aligns with service level agreements and business continuity requirements. Verify that redundant implementations don't contribute to data poisoning or model theft."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-11"
+    }
+  ]
+}

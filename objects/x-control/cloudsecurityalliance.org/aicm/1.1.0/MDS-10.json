@@ -1,0 +1,79 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--f14df2a8-66b1-46ff-9e52-a37b1791b41c",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Model Continuous Monitoring",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-10",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement, and evaluate processes, procedures, and technical measures for continuous monitoring of model performance metrics over time to identify sudden shifts or unexpected changes in predictions that could degrade model performance.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Resource provisioning",
+    "development": "Design",
+    "evaluation_validation": "Re-evaluation, Evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Data deletion"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (MP, AP)]\n1. Revising or optimizing the prompts used in applications to ensure they generate accurate and relevant outputs, particularly as the model evolves or data context shifts.\n\n2. Continuously monitor these metrics for signs of drift or unexpected changes leveraging Model Observability Platforms.\n\n3. Set up automated alerts to notify stakeholders when significant deviations or anomalies are detected.",
+    "model_provider": "[Model Provider (MP)]\n1. Identify key performance metrics that are critical to operations (e.g. Model Entropy, Statistical Drift Metrics, Performance-Based Monitoring, Feature Distribution Monitoring, Embedding and Representation Drift Detection, etc.).\n\n2. Implement, when needed, corrective actions that may include:\ni) Fine-tuning the model with updated data.\nii) Expanding or updating the training dataset to reflect new trends.\niii) Retraining the model to adapt to changes in data patterns.\niv) Adjusting model parameters or algorithms to improve performance under current conditions.\n\n[Shared Responsibilities (MP, AP)]\n1. Revising or optimizing the prompts used in applications to ensure they generate accurate and relevant outputs, particularly as the model evolves or data context shifts.\n\n2. Continuously monitor these metrics for signs of drift or unexpected changes leveraging Model Observability Platforms.\n\n3. Set up automated alerts to notify stakeholders when significant deviations or anomalies are detected.",
+    "orchestrated_service_provider": "Not Applicable",
+    "application_provider": "[Shared Responsibilities (MP, AP)]\n1. Revising or optimizing the prompts used in applications to ensure they generate accurate and relevant outputs, particularly as the model evolves or data context shifts.\n\n2. Continuously monitor these metrics for signs of drift or unexpected changes leveraging Model Observability Platforms.\n\n3. Set up automated alerts to notify stakeholders when significant deviations or anomalies are detected.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "1.  Ensure visibility into AI LLMs' requests, responses, and overall performance metrics to support monitoring, auditing, and troubleshooting.\n\n2. Determine Model Types and Use Cases: Identify which hosted models require continuous monitoring (e.g., LLMs, CV models, tabular models).\n\n3. Define Metrics: Choose relevant performance metrics—accuracy, F1, latency, error rate, drift metrics, fairness scores.\n\n4. Set Monitoring Goals: Clarify what constitutes performance degradation, prediction anomalies, or business risk.\n\n[Shared Responsibilities (Applicable to ALL actors)]\n1. Define service-level agreements (SLAs) or objectives (SLOs) that include metrics reflecting overall model performance and reliability."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine application-specific monitoring implemented to track model performance within the application context. \n\n2. Verify that user interaction patterns are captured and correlated with model performance. \n\n3. Assess implementation of custom metrics relevant to application-specific performance concerns. \n\n4. Review integration of monitoring with application incident response processes. \n\n5. Confirm that monitoring insights are made available to AI Customers using the application. \n\n6. Verify processes for escalating detected anomalies to upstream providers when necessary.",
+    "orchestrated_service_provider": "1. Examine monitoring systems implemented for orchestrated model environments. \n\n2. Verify that service-level monitoring tracks performance across different deployment configurations. \n\n3. Assess correlation capabilities between infrastructure metrics and model performance metrics. \n\n4. Review alerting mechanisms and threshold configurations for detecting performance degradation. \n\n5. Verify the implementation of monitoring dashboards providing visibility to downstream consumers. \n\n6. Confirm that automated or semi-automated response procedures exist for common performance issues. \n\n7. Examine how monitoring data is used to inform service improvements and optimization.",
+    "model_provider": "1. Examine the MP's documented approach to continuous model performance monitoring. \n\n2. Verify that appropriate performance metrics are defined based on model type and intended use cases. \n\n3. Assess the establishment of performance baselines and acceptable thresholds for each metric. \n\n4. Review anomaly detection algorithms implemented to identify unexpected shifts in model behavior. \n\n5. Verify the frequency and comprehensiveness of performance monitoring reports. \n\n6. Confirm that monitoring capabilities integrate with alerting systems to enable timely response to anomalies. \n\n7. Examine processes for investigating and remediating detected performance degradation.",
+    "ai_customer": "1. Examine application-specific monitoring implemented to track model performance within the application context. \n\n2. Verify that user interaction patterns are captured and correlated with model performance. \n\n3. Assess implementation of custom metrics relevant to application-specific performance concerns. \n\n4. Review integration of monitoring with application incident response processes. \n\n5. Confirm that monitoring insights are made available to AI Customers using the application. \n\n6. Verify processes for escalating detected anomalies to upstream providers when necessary.",
+    "cloud_service_provider": "1. Examine the CSP's infrastructure monitoring systems and how they track resource utilization related to hosted AI models. \n\n2. Verify the alerting mechanisms for detecting anomalies in resource consumption or performance that could indicate issues. \n\n3. Assess integration of monitoring data with incident response processes. \n\n4. Examine if the infrastructure ensures the model has high-quality data that does not cause data poisoning."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-10"
+    }
+  ]
+}

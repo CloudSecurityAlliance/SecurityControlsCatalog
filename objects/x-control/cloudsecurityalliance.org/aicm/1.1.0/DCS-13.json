@@ -1,0 +1,68 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--29386c27-20e5-4300-875d-b93ff441e228",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Cabling Security",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-13",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement and evaluate processes, procedures and technical measures that ensure a risk-based protection of power and telecommunication cables from a threat of interception, interference or damage at all facilities, offices and rooms.",
+  "control_type": "Cloud-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage"
+  ],
+  "lifecycle_relevance": {
+    "delivery": "Operations"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors except AIC]\n1. Providers should implement measures that ensure risk based approach to protection of equipment such as cables, server racks, that perform sensitive tasks, such as data processing, inference, training, etc.\n\n2. Provider should establish redundant connections for critical systems, deploy real-time monitoring with tamper detection, and restrict physical access through role-based controls. \n\n3. Regular inspections, maintenance schedules during minimal usage windows, and comprehensive disaster recovery plans ensure ongoing protection.",
+    "model_provider": "Role Specific\n1. Providers should  implement measures that ensure risk based approach to protection of equipment such as cables, server racks, that perform sensitive tasks such as data processing, inference, training etc.\n\n2. Maintain minimum a foot separation between power and data cables. Implement redundant power pathways with automatic failover\n\n[All Actors except AIC]\n1. Providers should implement measures that ensure risk based approach to protection of equipment such as cables, server racks, that perform sensitive tasks, such as data processing, inference, training, etc.\n\n2. Provider should establish redundant connections for critical systems, deploy real-time monitoring with tamper detection, and restrict physical access through role-based controls. \n\n3. Regular inspections, maintenance schedules during minimal usage windows, and comprehensive disaster recovery plans ensure ongoing protection.",
+    "orchestrated_service_provider": "Role Specific\n1. Providers should  implement measures that ensure risk based approach to protection of equipment such as cables, server racks, that perform sensitive tasks such as data processing, inference, training etc.\n\n2. Provider should deploy cable management systems with visual verification capabilities and tamper-evident seals on connection points between services.\n\n3. Maintain service maps with physical dependency documentation.\n\n[All Actors except AIC]\n1. Providers should implement measures that ensure risk based approach to protection of equipment such as cables, server racks, that perform sensitive tasks, such as data processing, inference, training, etc.\n\n2. Provider should establish redundant connections for critical systems, deploy real-time monitoring with tamper detection, and restrict physical access through role-based controls. \n\n3. Regular inspections, maintenance schedules during minimal usage windows, and comprehensive disaster recovery plans ensure ongoing protection.",
+    "application_provider": "No Role Specific\n\n[All Actors except AIC]\n1. Providers should implement measures that ensure risk based approach to protection of equipment such as cables, server racks, that perform sensitive tasks, such as data processing, inference, training, etc.\n\n2. Provider should establish redundant connections for critical systems, deploy real-time monitoring with tamper detection, and restrict physical access through role-based controls. \n\n3. Regular inspections, maintenance schedules during minimal usage windows, and comprehensive disaster recovery plans ensure ongoing protection.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "Role Specific\n\nPower and telecommunication cables are critical infrastructure components that support \nthe operation of data centers, offices, and rooms. These cables are vulnerable to a \nvariety of threats, including interception, interference, and damage. \n • Interception can allow unauthorized individuals to gain access to sensitive data\n • Interference can disrupt or disable critical systems\n • Damage can cause power outages and data loss\n \n To protect power and telecommunication cables from these threats, CSPs should \nimplement a risk-based approach that includes (but not limited to) the following \nmeasures:\n a. Cable Security Risk Assessment: Risk assessment should be conducted to identify \npotential threats to power and telecommunication cables, including physical access, \nelectromagnetic interference (EMI), and intentional sabotage\n b. Cables Physical Access Barriers: Physical barriers should be implemented to \nrestrict unauthorized access to power and telecommunication cables (e.g., fences, \nsecurity gates, and access control systems)\n c. Secure Cable Routing: Cables should be routed through secure pathways (e.g., \nconduits or dedicated cable trays)\n d. Cable Shielding: Shielded cables or protective enclosures should be utilized to \nminimize electromagnetic interference (EMI) and prevent unauthorized signal tapping \n e. Power and Telecommunication Cables Segregation: Segregating power and \ntelecommunication cables can help to prevent EMI from interfering with \ntelecommunication signals\n f. Grounding and Bonding: Proper grounding and bonding practices should be \nimplemented to protect cables from electrical surges and lightning strikes\n g. Monitoring and Surveillance: Surveillance systems to monitor cable infrastructure \nfor signs of tampering or damage should be installed and maintained\n h. Continuous Monitoring and Evaluation: \n i. The effectiveness of implemented cable security controls should be evaluated through regular testing and monitoring to identify any gaps or weaknesses\n ii. Trends in cable damage, interference, or interception incidents should be analyzed to identify patterns and potential areas for improvement, incorporating lessons learned and emerging threats\ni. Implement automated documentation of cable infrastructure changes.\nj. Establish security review processes for new connectivity requirements.\nk. Install diverse entry points for ISPs and telecommunications connections\n\n[All Actors except AIC]\n1. Providers should implement measures that ensure risk based approach to protection of equipment such as cables, server racks, that perform sensitive tasks, such as data processing, inference, training, etc.\n\n2. Provider should establish redundant connections for critical systems, deploy real-time monitoring with tamper detection, and restrict physical access through role-based controls. \n\n3. Regular inspections, maintenance schedules during minimal usage windows, and comprehensive disaster recovery plans ensure ongoing protection."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that the AP's due diligence includes reviewing their CSP's controls for cabling security.\n\n2. Confirm that the CSP’s audit reports (e.g., SOC 2) cover the physical protection of network and power infrastructure within the data center.",
+    "orchestrated_service_provider": "1. Verify that the OSP's vendor assurance program assesses the cabling security controls of all underlying infrastructure providers.\n\n2. Review evidence that the OSP has evaluated this aspect of its providers' physical security posture.",
+    "model_provider": "1. Verify that the MP's due diligence process confirms that their CSPs have robust cabling security to protect the integrity of the infrastructure used for model training and inference.\n\n2. Review the MP's internal policies for cabling security at any on-premises facilities.",
+    "ai_customer": "1. Verify the AIC's vendor risk policy requires that their AI providers use data centers with certified cabling security and infrastructure protection.\n\n2. Review provider security documentation for information on physical infrastructure protection.",
+    "cloud_service_provider": "1. Examine the policy and procedures relating to cabling infrastructure.\n\n2. Determine if risk registers are maintained for cabling (For plant and ancillary equipment).\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-13"
+    }
+  ]
+}

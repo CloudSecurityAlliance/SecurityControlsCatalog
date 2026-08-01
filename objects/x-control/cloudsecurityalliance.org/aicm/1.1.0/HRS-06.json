@@ -1,0 +1,61 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--ce11cae9-8240-4d2c-ba63-dbe0d5aec938",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Employment Termination",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "HRS-06",
+  "domain": "Human Resources",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish, document, and communicate to all relevant  personnel the procedures outlining the roles and  responsibilities concerning changes in employment.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "application": "Shared across the supply chain"
+  },
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Supply Chain",
+    "deployment": "AI Services supply chain"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\nAssign and communicate responsibilities to relevant personnel (e.g., HR, IAM administrators, system owners, etc.) for executing the following procedures when employment changes occur:\n\n1. Role Reassignment and Knowledge Transfer: Define AI-related responsibilities (e.g., data handling, model maintenance) and ensure formal handover of tasks and documentation when individuals change roles or leave the organization.\n\n2. Establish procedures for access revocation: For example, revoke or update all credentials, accounts, and permissions upon termination or role change, including access to shared or provider-hosted AI environments. Please check IAM-07 as well.\n\n3. Contractual and Third-Party Coordination: Incorporate access termination requirements in service-level agreements or contracts with external providers, ensuring offboarding processes align for both internal staff and external consultants.",
+    "model_provider": "[All Actors]\nAssign and communicate responsibilities to relevant personnel (e.g., HR, IAM administrators, system owners, etc.) for executing the following procedures when employment changes occur:\n\n1. Role Reassignment and Knowledge Transfer: Define AI-related responsibilities (e.g., data handling, model maintenance) and ensure formal handover of tasks and documentation when individuals change roles or leave the organization.\n\n2. Establish procedures for access revocation: For example, revoke or update all credentials, accounts, and permissions upon termination or role change, including access to shared or provider-hosted AI environments. Please check IAM-07 as well.\n\n3. Contractual and Third-Party Coordination: Incorporate access termination requirements in service-level agreements or contracts with external providers, ensuring offboarding processes align for both internal staff and external consultants.",
+    "orchestrated_service_provider": "[All Actors]\nAssign and communicate responsibilities to relevant personnel (e.g., HR, IAM administrators, system owners, etc.) for executing the following procedures when employment changes occur:\n\n1. Role Reassignment and Knowledge Transfer: Define AI-related responsibilities (e.g., data handling, model maintenance) and ensure formal handover of tasks and documentation when individuals change roles or leave the organization.\n\n2. Establish procedures for access revocation: For example, revoke or update all credentials, accounts, and permissions upon termination or role change, including access to shared or provider-hosted AI environments. Please check IAM-07 as well.\n\n3. Contractual and Third-Party Coordination: Incorporate access termination requirements in service-level agreements or contracts with external providers, ensuring offboarding processes align for both internal staff and external consultants.",
+    "application_provider": "[All Actors]\nAssign and communicate responsibilities to relevant personnel (e.g., HR, IAM administrators, system owners, etc.) for executing the following procedures when employment changes occur:\n\n1. Role Reassignment and Knowledge Transfer: Define AI-related responsibilities (e.g., data handling, model maintenance) and ensure formal handover of tasks and documentation when individuals change roles or leave the organization.\n\n2. Establish procedures for access revocation: For example, revoke or update all credentials, accounts, and permissions upon termination or role change, including access to shared or provider-hosted AI environments. Please check IAM-07 as well.\n\n3. Contractual and Third-Party Coordination: Incorporate access termination requirements in service-level agreements or contracts with external providers, ensuring offboarding processes align for both internal staff and external consultants.",
+    "ai_customer": "[All Actors]\nAssign and communicate responsibilities to relevant personnel (e.g., HR, IAM administrators, system owners, etc.) for executing the following procedures when employment changes occur:\n\n1. Role Reassignment and Knowledge Transfer: Define AI-related responsibilities (e.g., data handling, model maintenance) and ensure formal handover of tasks and documentation when individuals change roles or leave the organization.\n\n2. Establish procedures for access revocation: For example, revoke or update all credentials, accounts, and permissions upon termination or role change, including access to shared or provider-hosted AI environments. Please check IAM-07 as well.\n\n3. Contractual and Third-Party Coordination: Incorporate access termination requirements in service-level agreements or contracts with external providers, ensuring offboarding processes align for both internal staff and external consultants.",
+    "cloud_service_provider": "[All Actors]\nAssign and communicate responsibilities to relevant personnel (e.g., HR, IAM administrators, system owners, etc.) for executing the following procedures when employment changes occur:\n\n1. Role Reassignment and Knowledge Transfer: Define AI-related responsibilities (e.g., data handling, model maintenance) and ensure formal handover of tasks and documentation when individuals change roles or leave the organization.\n\n2. Establish procedures for access revocation: For example, revoke or update all credentials, accounts, and permissions upon termination or role change, including access to shared or provider-hosted AI environments. Please check IAM-07 as well.\n\n3. Contractual and Third-Party Coordination: Incorporate access termination requirements in service-level agreements or contracts with external providers, ensuring offboarding processes align for both internal staff and external consultants.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThe determination for this control objective remains the same regardless of the cloud architecture adoption; fundamentally this control is shared between both the CSC and the CSP. The controls however are Independent from one another. Both entities may have different requirements for the return of organization-owned assets as per their policies and procedures which link to their respective standards and requirements.\n\nImplementation Guidelines.\nApplicable to all service models:\nThe CSP is responsible for establishing and communicating a termination of employment policy or procedure that makes its people aware of the responsibilities and duties that will apply valid post termination. Post Employment Obligations may be presented to a terminating employee in the form of a refreshed NDA, a non-compete, or other form of legal document. These may also apply to a change in employment status.\n\nThe policies or documents should include requirements to maintain the confidentiality of organizational information such as trade secrets, intellectual property, client data, or any other information that may be valuable to the organization. The responsibilities should link to those details in the employment terms and conditions. \n\nExternal personnel should also be subject to the same process for termination or changes when contracts or jobs are terminated or in the event of a role, team or department change is instigated.\n\nThe CSP should take caution on any restrictions or additional provisions it has made to specific CSCs with respect to their requirements or contractual agreements."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the AP's HR and IT policies clearly define the process for changes in employment, including immediate revocation of access to source code, user databases, and deployment pipelines upon termination.\n\n2. Confirm that HR, IT, and the employee's manager have clearly defined responsibilities in the offboarding process.",
+    "orchestrated_service_provider": "1. Verify the OSP's policies for employment changes ensure that access to the orchestration platform, tenant configurations, and all upstream/downstream service credentials is revoked or transferred in a timely manner.\n\n2. Review role change procedures to ensure the principle of least privilege is maintained.",
+    "model_provider": "1. Verify the MP's termination procedures include immediate revocation of access to all model development environments, training datasets, model registries, and research repositories.\n\n2. Confirm that a knowledge transfer process is in place to retain critical information about model development and research.",
+    "ai_customer": "1. Verify the AIC's process for employment changes includes revoking access to the AI service and any internal systems that integrate with it.\n\n2. Confirm that responsibilities for any AI-related outputs or configurations are formally transferred from the departing employee to a new owner.",
+    "cloud_service_provider": "1. Verify the CSP's policies for employment changes ensure that all access to the cloud provider's physical and logical infrastructure is immediately and permanently revoked upon termination.\n\n2. Check for integration between the HR system and IAM systems to automate access removal.\n\nFrom CCM v4.1:\n1. Examine policy for adequacy, currency, communication, and effectiveness.\n2. Verify that organization charts are maintained and available as appropriate.\n3. Verify that a definition of terminated employees exists, and is implemented.\n4. Examine policy and procedures for notification of stakeholders upon changes in employment, or of roles, and the appropriate activities are triggered, i.e. access changes, asset return, etc."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#HRS-06"
+    }
+  ]
+}

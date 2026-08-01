@@ -1,0 +1,76 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--af0ecb7d-f178-47ac-b86e-da3e4aa82827",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Agent Access Restriction",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "IAM-18",
+  "domain": "Identity & Access Management",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Restrict agents' access to the tools and plugins necessary for the activity or use case at hand, ensuring adherence to the principles of need-to-know and least privilege.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared across the supply chain",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "development": "Design, Guardrails",
+    "evaluation_validation": "Validation/Red Teaming",
+    "deployment": "Orchestration, AI applications",
+    "delivery": "Operations, Continuous monitoring"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Inventory Agent tools and categorize them based: \n   i. Risk of accessible resource and the operations it can perform on those resources\n   ii. Sensitivity and Criticality of resources\n   iii. Establish stakeholder and tool owners\n\n2. Implement access control mechanism that authorize the agent-based system and/or authorize the user interacting with the agent-based system.\n\n3. Implement policies and workflows to ensure users and not given access to information or privileged outside of the role requirements.\n\n[OSP, AP] \n1. Provide api and in-platform access control mechanism to restrict access to tools or the capabilities of tools based on the agent-based system and requesting user.\n\n2. Provide methods of tagging resources and/or assigning classification and ownership.",
+    "model_provider": "[All Actors]\n1. Inventory Agent tools and categorize them based: \n   i. Risk of accessible resource and the operations it can perform on those resources\n   ii. Sensitivity and Criticality of resources\n   iii. Establish stakeholder and tool owners\n\n2. Implement access control mechanism that authorize the agent-based system and/or authorize the user interacting with the agent-based system.\n\n3. Implement policies and workflows to ensure users and not given access to information or privileged outside of the role requirements.",
+    "orchestrated_service_provider": "[All Actors]\n1. Inventory Agent tools and categorize them based: \n   i. Risk of accessible resource and the operations it can perform on those resources\n   ii. Sensitivity and Criticality of resources\n   iii. Establish stakeholder and tool owners\n\n2. Implement access control mechanism that authorize the agent-based system and/or authorize the user interacting with the agent-based system.\n\n3. Implement policies and workflows to ensure users and not given access to information or privileged outside of the role requirements.\n\n[OSP, AP] \n1. Provide api and in-platform access control mechanism to restrict access to tools or the capabilities of tools based on the agent-based system and requesting user.\n\n2. Provide methods of tagging resources and/or assigning classification and ownership.",
+    "application_provider": "[All Actors]\n1. Inventory Agent tools and categorize them based: \n   i. Risk of accessible resource and the operations it can perform on those resources\n   ii. Sensitivity and Criticality of resources\n   iii. Establish stakeholder and tool owners\n\n2. Implement access control mechanism that authorize the agent-based system and/or authorize the user interacting with the agent-based system.\n\n3. Implement policies and workflows to ensure users and not given access to information or privileged outside of the role requirements.\n\n[OSP, AP] \n1. Provide api and in-platform access control mechanism to restrict access to tools or the capabilities of tools based on the agent-based system and requesting user.\n\n2. Provide methods of tagging resources and/or assigning classification and ownership.",
+    "ai_customer": "Policy Scope:\n\nAccess restriction policies cover evaluation of agent-based solutions in AI-powered applications from CSPs, MPs, OSPs, or APs. Focus on validating that provider agents adhere to least privilege and resource segregation through documentation or audits. Include procedures for assessing risks from over-privileged agents (e.g., excessive tool access) before adoption.\n\n[All Actors]\n1. Inventory Agent tools and categorize them based: \n   i. Risk of accessible resource and the operations it can perform on those resources\n   ii. Sensitivity and Criticality of resources\n   iii. Establish stakeholder and tool owners\n\n2. Implement access control mechanism that authorize the agent-based system and/or authorize the user interacting with the agent-based system.\n\n3. Implement policies and workflows to ensure users and not given access to information or privileged outside of the role requirements.",
+    "cloud_service_provider": "1. Define Policy Scope: Establish provider-specific policy scopes for restricting access in agent-based solutions. Ensure policies address limiting tools and plugins to those required for specific use cases, enforcing resource segregation (e.g., isolated environments), and adhering to least privilege principles across deployment and runtime.\n\n2. Policy Governance Structure: Define roles for overseeing access restrictions in agent-based solutions, involving cross-functional teams (e.g., security architects, DevOps, compliance). Set approval workflows with senior management and security leads to ensure alignment with organizational access control policies.\n\n3. Policy Documentation Requirements: Create structured documentation standards for access restriction policies, including procedures for defining necessary tools/plugins, implementing segregation (e.g., containerization), and enforcing least privilege (e.g., role-based access). Use templates to document access controls, segregation mechanisms, and compliance checks.\n\n4. Policy Management Framework: Implement a review process for access restriction policies. Conduct reviews at least annually or after significant changes (e.g., new tools/plugins, updated use cases, identified privilege escalations). Align with standards like NIST 800-53 (AC-6 Least Privilege), OWASP Secure Configuration, and AI-specific frameworks like NIST AI RMF where applicable.\n\n5. Communication and Training Standards: Define requirements for communicating access restriction policies: distribute formal documentation, mandate training for teams managing agent-based solutions (e.g., developers, operators), and run awareness campaigns on least privilege. Ensure accessibility via internal portals and comprehension across teams.\n\n6. Quality Control Standards: Set policies for quality assurance in access restrictions, including requirements for automated access reviews (e.g., IAM audits), segregation testing (e.g., network isolation checks), and monitoring for over-privileged access (e.g., anomaly detection). Require audit logs for tool/plugin usage and access attempts.\n\n7. Access restriction policies cover agent-based solutions running on CSP infrastructure (e.g., monitoring agents, deployment agents). Limit tools/plugins to those required for infrastructure tasks, enforce segregation via isolated VMs or containers, and apply least privilege to CSP-managed agents interacting with MPs, OSPs, or APs.\n\n[All Actors]\n1. Inventory Agent tools and categorize them based: \n   i. Risk of accessible resource and the operations it can perform on those resources\n   ii. Sensitivity and Criticality of resources\n   iii. Establish stakeholder and tool owners\n\n2. Implement access control mechanism that authorize the agent-based system and/or authorize the user interacting with the agent-based system.\n\n3. Implement policies and workflows to ensure users and not given access to information or privileged outside of the role requirements."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that documented policies and procedures exist for managing access to agent-based tools, including orchestration agents, automation bots, AI agents, and any autonomous systems capable of initiating actions.\n\n2. Confirm that access to agent configuration, deployment, and execution is restricted to authorized personnel only, and that role-based access controls are enforced.\n\n3. Ensure separation of duties is implemented, so that no single individual has full control over agent provisioning, credential management, and execution.\n\n4. Verify that authentication credentials (e.g., API keys, tokens) used by agents are securely stored, rotated regularly, and access to them is monitored and restricted.\n\n5. Confirm that all agent activities and access attempts are logged, and that logs are reviewed periodically to detect unauthorized or anomalous usage.\n\n6. Check that any overrides, escalations, or emergency interventions involving agent tools follow documented approval procedures, with post-action reviews and audit trails maintained.",
+    "orchestrated_service_provider": "1. Confirm orchestration tools support identity-aware pipelines that respect consent revocation.\n\n2. Validate that identity-token exchange and mapping components comply with the customer’s privacy model.\n\n3. Verify mechanisms exist to anonymize or redact user identifiers post-revocation.\n\n4. Check consent-aware routing policies for triggering alternate processing or opting out.\n\n5. Ensure audit trails are available for consent changes across service orchestrations.",
+    "model_provider": "1. Confirm user identities used during model training or fine-tuning are mapped securely and revocably.\n\n2. Validate that user consent is collected before training on identifiable or sensitive inputs.\n\n3. Ensure controls prevent model memorization or exposure of revoked identities during inference.\n\n4. Verify retraining workflows accommodate removal of revoked user records.",
+    "ai_customer": "1. Confirm AI models deployed internally respect the consent preferences configured for customer users.\n\n2. Check AIC policies support re-mapping or decoupling identity upon user request.\n\n3. Validate mechanisms for users to access AI activity logs tied to their identity.\n\n4. Ensure responsible teams audit and review identity mapping accuracy regularly.\n\n5. Confirm anonymization processes are applied post-consent revocation or data withdrawal.",
+    "cloud_service_provider": "1. Verify that consent and identity mapping services offered by CSPs are compliant with privacy frameworks.\n\n2. Confirm support for federated identity systems enabling cross-platform consent synchronization.\n\n3. Validate revocation propagation across CSP-hosted microservices or serverless architectures.\n\n4. Ensure CSP logging infrastructure retains mappings only as long as necessary.\n\n5. Confirm service-level agreements support customer demands for identity mapping transparency."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#IAM-18"
+    }
+  ]
+}

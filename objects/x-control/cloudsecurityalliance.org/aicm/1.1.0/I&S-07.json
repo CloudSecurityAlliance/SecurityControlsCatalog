@@ -1,0 +1,70 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--2b9d6e11-0099-4ece-9e39-be3c4a7a90d8",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Migration to Hosted Environments",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "I&S-07",
+  "domain": "Infrastructure Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Use secure and encrypted communication channels when migrating  servers, services, applications, or data to hosted environments.  Such channels must include only up-to-date and approved protocols.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data storage, Resource provisioning",
+    "development": "Design",
+    "deployment": "Orchestration, AI applications",
+    "delivery": "Operations"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Define Secure Migration Standards.\n\n2. Establish encryption policies for data migration based on NIST and CIS guidelines.\n\n3. Ensure that all cloud migrations follow an approved security framework.\n\n4. Approved Secure Protocols.\n\n5. Use only industry-standard encrypted channels such as TLS 1.2+, IPSec, and SSH.\n\n6. Implement end-to-end encryption for sensitive data transfers.\n\n7. Access Control and Monitoring.\n\n8. Ensure only authorized personnel can initiate migration processes.\n\n9. Implement logging and monitoring mechanisms to track migration activities.",
+    "model_provider": "1. Define security controls for AI model transfers between cloud platforms.\n\n2. Use encryption and authentication measures to protect AI training datasets.\n\n3. Implement access logging for all AI model migrations.\n\n[All Actors]\n1. Define Secure Migration Standards.\n\n2. Establish encryption policies for data migration based on NIST and CIS guidelines.\n\n3. Ensure that all cloud migrations follow an approved security framework.\n\n4. Approved Secure Protocols.\n\n5. Use only industry-standard encrypted channels such as TLS 1.2+, IPSec, and SSH.\n\n6. Implement end-to-end encryption for sensitive data transfers.\n\n7. Access Control and Monitoring.\n\n8. Ensure only authorized personnel can initiate migration processes.\n\n9. Implement logging and monitoring mechanisms to track migration activities.",
+    "orchestrated_service_provider": "1. Ensure all inter-service communications in cloud environments are encrypted.\n\n2. Implement automated security checks before and after migrations.\n\n3. Monitor API and network traffic for anomalies during migrations.\n\n[All Actors]\n1. Define Secure Migration Standards.\n\n2. Establish encryption policies for data migration based on NIST and CIS guidelines.\n\n3. Ensure that all cloud migrations follow an approved security framework.\n\n4. Approved Secure Protocols.\n\n5. Use only industry-standard encrypted channels such as TLS 1.2+, IPSec, and SSH.\n\n6. Implement end-to-end encryption for sensitive data transfers.\n\n7. Access Control and Monitoring.\n\n8. Ensure only authorized personnel can initiate migration processes.\n\n9. Implement logging and monitoring mechanisms to track migration activities.",
+    "application_provider": "1. Secure application data and configurations during cloud migration.\n\n2. Implement authentication controls for cloud-based service transfers.\n\n3. Use key management solutions to secure encryption keys.\n\n[All Actors]\n1. Define Secure Migration Standards.\n\n2. Establish encryption policies for data migration based on NIST and CIS guidelines.\n\n3. Ensure that all cloud migrations follow an approved security framework.\n\n4. Approved Secure Protocols.\n\n5. Use only industry-standard encrypted channels such as TLS 1.2+, IPSec, and SSH.\n\n6. Implement end-to-end encryption for sensitive data transfers.\n\n7. Access Control and Monitoring.\n\n8. Ensure only authorized personnel can initiate migration processes.\n\n9. Implement logging and monitoring mechanisms to track migration activities.",
+    "ai_customer": "1. Validate encryption and security controls used by cloud service providers.\n\n2. Ensure compliance with regulatory requirements for cloud data migration.\n\n3. Conduct security assessments of cloud migration activities.\n\n[All Actors]\n1. Define Secure Migration Standards.\n\n2. Establish encryption policies for data migration based on NIST and CIS guidelines.\n\n3. Ensure that all cloud migrations follow an approved security framework.\n\n4. Approved Secure Protocols.\n\n5. Use only industry-standard encrypted channels such as TLS 1.2+, IPSec, and SSH.\n\n6. Implement end-to-end encryption for sensitive data transfers.\n\n7. Access Control and Monitoring.\n\n8. Ensure only authorized personnel can initiate migration processes.\n\n9. Implement logging and monitoring mechanisms to track migration activities.",
+    "cloud_service_provider": "[All Actors]\n1. Define Secure Migration Standards.\n\n2. Establish encryption policies for data migration based on NIST and CIS guidelines.\n\n3. Ensure that all cloud migrations follow an approved security framework.\n\n4. Approved Secure Protocols.\n\n5. Use only industry-standard encrypted channels such as TLS 1.2+, IPSec, and SSH.\n\n6. Implement end-to-end encryption for sensitive data transfers.\n\n7. Access Control and Monitoring.\n\n8. Ensure only authorized personnel can initiate migration processes.\n\n9. Implement logging and monitoring mechanisms to track migration activities.\n\nFrom CCM:\nControl Ownership Rationale.\nThis control is a “Shared (Dependent)” control irrespective of the service model. It should be implemented/operated by both the CSP and CSC.\n\nThe CSP and CSC should use secure and encrypted communication channels including up-to-date and approved protocols (e.g., FIPS), when migrating servers, services, applications, or data both within and outside its boundary.\n\n\nImplementation Guidelines.\nApplicable to all service models:\nWhen migrating servers, services, applications, or data to cloud environments, CSPs should implement secure and encrypted communication channels to safeguard sensitive information. This ensures that data remains protected throughout the migration process and during its subsequent operation in the cloud.\n\nThe CSPs should adhere to the following implementation best practices:\na. End-to-End Data Encryption:\ni. Data should be encrypted at all stages of its lifecycle, from storage to transmission and processing\nii. Data-at-rest encryption should be employed to protect data stored on disks or persistent storage devices within the cloud\niii. Data-in-transit encryption should be utilized to protect data transmitted between cloud components and between clients and the cloud\nb. Secure Transport Protocols:\ni. Up-to-date and industry-approved encryption protocols should be leveraged, at the various OSI layers, for communication between cloud infrastructure components and between clients and the cloud (e.g., Use HTTPS/TLS or FTPS (transport layer), IPSec (network layer), and secure file transfer protocols SFTP, SCP over SSH (application layer))\nii. These protocols should be configured with strong cryptographic cipher suites and authentication mechanisms (refer to CEK domain) and used in accordance with corporate security standards and industry best practices\nc. VPN Technology:\ni. VPNs should be implemented to establish a secure and encrypted tunnel between on-premises networks and cloud environments\nii. VPN protocols like IPSec or TLS should be employed with strong encryption and authentication mechanisms\nd. API Security: If APIs are used in the migration process, they should be secured with proper authentication, authorization, and data validation mechanisms\ne. Authentication Mechanisms: MFA should be utilized to verify the identity of users and systems participating in the data transfer\nf. Limit Data Exposure:\ni. The amount of sensitive data being transferred should be minimized and only what is necessary exposed\nii. For sensitive data, using data masking or obfuscation techniques during migration should be considered to further reduce the risk of data exposure\ng. Migration Monitoring and Logging:\ni. All data transfers should be continuously monitored and logged during the migration process\nii. The security practices of any third-party vendors involved in the migration process should be evaluated and monitored"
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the Application Provider (AP) documented migration procedures explicitly require secure, encrypted communication channels (e.g., encryption along the Application Development DevSecOps tool chain, data movement across environments).\n\n2. Confirm encryption mechanisms adhere to current security standards.\n\n3. Check records documenting secure migration processes.\n\n4. Ensure risk assessments conducted before migrating sensitive data to cloud environments.\n\n5. Validate compliance checks post-migration to confirm the security and integrity of data.\n\n6. Confirm clearly defined roles and responsibilities for migration activities.\n\n7. Verify documented incident response plans for issues arising during cloud migration.",
+    "orchestrated_service_provider": "1. Verify the Orchestrated Service Provider (OSP) documented migration procedures explicitly require secure, encrypted communication channels (e.g., across instances, AI models, AI deployments).\n\n2. Confirm encryption mechanisms adhere to current security standards.\n\n3. Check records documenting secure migration processes.\n\n4. Ensure risk assessments conducted before migrating sensitive data to cloud environments.\n\n5. Validate compliance checks post-migration to confirm the security and integrity of data.\n\n6. Confirm clearly defined roles and responsibilities for migration activities.\n\n7. Verify documented incident response plans for issues arising during cloud migration.",
+    "model_provider": "1. Verify the Model Provider (MP) documented migration procedures explicitly require secure, encrypted communication channels.\n\n2. Confirm encryption mechanisms adhere to current security standards (e.g., ensuring data privacy, model security, and communications with users).\n\n3. Check records documenting secure migration processes.\n\n4. Ensure risk assessments conducted before migrating sensitive data to cloud environments.\n\n5. Validate compliance checks post-migration to confirm the security and integrity of data.\n\n6. Confirm clearly defined roles and responsibilities for migration activities.\n\n7. Verify documented incident response plans for issues arising during cloud migration.",
+    "ai_customer": "1. Verify the AI Customer (AIC) documented migration procedures explicitly require secure, encrypted communication channels.\n\n2. Confirm encryption mechanisms adhere to current security standards, ensuring AI consumer interactions, suppliers, and stakeholder expectations are covered.\n\n3. Check records documenting secure migration processes.\n\n4. Ensure risk assessments conducted before migrating sensitive data to cloud environments.\n\n5. Validate compliance checks post-migration to confirm the security and integrity of data.\n\n6. Confirm clearly defined roles and responsibilities for migration activities.\n\n7. Verify documented incident response plans for issues arising during cloud migration.",
+    "cloud_service_provider": "1. Verify the Cloud Service Provider has comprehensive documentation identifying and detailing high-risk environments based on data sensitivity, threat exposure, and business impact.\n\n2. Confirm encryption mechanisms adhere to current security standards.(e.g., supporting processing, storage, and network services).\n \n3. Check records documenting secure migration processes.\n\n4. Ensure risk assessments conducted before migrating sensitive data to cloud environments.\n\n5. Validate compliance checks post-migration to confirm the security and integrity of data.\n\n6. Confirm clearly defined roles and responsibilities for migration activities.\n\n7. Verify documented incident response plans for issues arising during cloud migration.\n\nFrom CCM v4.1:\n1. Examine the list of environments that will be the target of migrations.\n2. Examine the criteria for maintaining a list of approved protocols.\n3. Examine the records of migrations."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#I&S-07"
+    }
+  ]
+}

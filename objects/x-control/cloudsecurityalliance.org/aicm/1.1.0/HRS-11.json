@@ -1,0 +1,69 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--98fd7bac-06c3-479f-ac3d-a646ba7957ba",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Security Awareness Training",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "HRS-11",
+  "domain": "Human Resources",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish, document, approve, communicate, apply, evaluate and maintain a security awareness training program for all employees of the organization and provide regular training updates.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "application": "Shared across the supply chain"
+  },
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Supply Chain",
+    "deployment": "AI Services supply chain"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Develop a comprehensive code of conduct, security, and privacy training program using interactive modules, intranet content, webinars, videos, emails, and posters aligned with organizational policies and risk profiles. Note on AI-specific training: Content should provide guidelines on using AI tools to prevent data leaks and attacks, teach employees to recognize AI-generated threats, address AI-related risks, incorporate ethical considerations and compliance, handle data, report incidents, and prevent misuse of AI.\n\n2. Provide training to all employees and contractors during onboarding and annually thereafter to educate personnel about their responsibilities and the necessary means for securing corporate assets. \n\n3. Evaluate the training effectiveness and maintain records of evaluation.\n\n4. Maintain training attendance records.\n\n5. Tailor training based on roles and responsibilities.\n\n6. Review and update the training program annually.",
+    "model_provider": "[All Actors]\n1. Develop a comprehensive code of conduct, security, and privacy training program using interactive modules, intranet content, webinars, videos, emails, and posters aligned with organizational policies and risk profiles. Note on AI-specific training: Content should provide guidelines on using AI tools to prevent data leaks and attacks, teach employees to recognize AI-generated threats, address AI-related risks, incorporate ethical considerations and compliance, handle data, report incidents, and prevent misuse of AI.\n\n2. Provide training to all employees and contractors during onboarding and annually thereafter to educate personnel about their responsibilities and the necessary means for securing corporate assets. \n\n3. Evaluate the training effectiveness and maintain records of evaluation.\n\n4. Maintain training attendance records.\n\n5. Tailor training based on roles and responsibilities.\n\n6. Review and update the training program annually.",
+    "orchestrated_service_provider": "[All Actors]\n1. Develop a comprehensive code of conduct, security, and privacy training program using interactive modules, intranet content, webinars, videos, emails, and posters aligned with organizational policies and risk profiles. Note on AI-specific training: Content should provide guidelines on using AI tools to prevent data leaks and attacks, teach employees to recognize AI-generated threats, address AI-related risks, incorporate ethical considerations and compliance, handle data, report incidents, and prevent misuse of AI.\n\n2. Provide training to all employees and contractors during onboarding and annually thereafter to educate personnel about their responsibilities and the necessary means for securing corporate assets. \n\n3. Evaluate the training effectiveness and maintain records of evaluation.\n\n4. Maintain training attendance records.\n\n5. Tailor training based on roles and responsibilities.\n\n6. Review and update the training program annually.",
+    "application_provider": "[All Actors]\n1. Develop a comprehensive code of conduct, security, and privacy training program using interactive modules, intranet content, webinars, videos, emails, and posters aligned with organizational policies and risk profiles. Note on AI-specific training: Content should provide guidelines on using AI tools to prevent data leaks and attacks, teach employees to recognize AI-generated threats, address AI-related risks, incorporate ethical considerations and compliance, handle data, report incidents, and prevent misuse of AI.\n\n2. Provide training to all employees and contractors during onboarding and annually thereafter to educate personnel about their responsibilities and the necessary means for securing corporate assets. \n\n3. Evaluate the training effectiveness and maintain records of evaluation.\n\n4. Maintain training attendance records.\n\n5. Tailor training based on roles and responsibilities.\n\n6. Review and update the training program annually.",
+    "ai_customer": "[All Actors]\n1. Develop a comprehensive code of conduct, security, and privacy training program using interactive modules, intranet content, webinars, videos, emails, and posters aligned with organizational policies and risk profiles. Note on AI-specific training: Content should provide guidelines on using AI tools to prevent data leaks and attacks, teach employees to recognize AI-generated threats, address AI-related risks, incorporate ethical considerations and compliance, handle data, report incidents, and prevent misuse of AI.\n\n2. Provide training to all employees and contractors during onboarding and annually thereafter to educate personnel about their responsibilities and the necessary means for securing corporate assets. \n\n3. Evaluate the training effectiveness and maintain records of evaluation.\n\n4. Maintain training attendance records.\n\n5. Tailor training based on roles and responsibilities.\n\n6. Review and update the training program annually.",
+    "cloud_service_provider": "[All Actors]\n1. Develop a comprehensive code of conduct, security, and privacy training program using interactive modules, intranet content, webinars, videos, emails, and posters aligned with organizational policies and risk profiles. Note on AI-specific training: Content should provide guidelines on using AI tools to prevent data leaks and attacks, teach employees to recognize AI-generated threats, address AI-related risks, incorporate ethical considerations and compliance, handle data, report incidents, and prevent misuse of AI.\n\n2. Provide training to all employees and contractors during onboarding and annually thereafter to educate personnel about their responsibilities and the necessary means for securing corporate assets. \n\n3. Evaluate the training effectiveness and maintain records of evaluation.\n\n4. Maintain training attendance records.\n\n5. Tailor training based on roles and responsibilities.\n\n6. Review and update the training program annually.\n\nFrom CCM:\nControl Ownership Rationale.\nThe determination for this control objective remains the same regardless of the cloud architecture adoption; fundamentally this control is shared between both the CSC and the CSP. The controls however are independent from one another. Both entities should establish, document, approve, communicate, apply, evaluate and maintain a security awareness training program for all employees of the organization and provide regular training updates.\n\nImplementation Guidelines.\nApplicable to all service models:\nThe CSP should establish and maintain a robust ongoing integrated security and privacy training program which may include, but not be limited to, interactive training modules, intranet content, online webinars, videos, email communications, posters, checklists and tip cards, etc. Security and privacy awareness training should be provided to all employees and contractors upon onboarding and annually thereafter to educate personnel about their responsibilities and the necessary means for securing corporate assets. A training attendance registry is to be maintained. Roles and responsibilities of organizational members should be considered and training should be tailored accordingly. Targeted training should be provided for developers on secure coding. The Security awareness training program should be reviewed at least annually and updated as needed."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the AP provides security awareness training that includes modules on secure coding practices, common application vulnerabilities (e.g., OWASP Top 10), and the specific risks of AI (e.g., prompt injection).\n\n2. Review training completion records.",
+    "orchestrated_service_provider": "1. Verify the OSP’s training program covers the security of cloud-native environments, container security, and the specific risks of managing a multi-tenant orchestration platform.\n\n2. Confirm that training includes procedures for handling incidents that span multiple services.",
+    "model_provider": "1. Verify the MP's security awareness training includes specialized content on adversarial ML, data poisoning threats, and the protection of intellectual property related to AI models.\n\n2. Check for training on the ethical implications of model development.",
+    "ai_customer": "1. Verify the AIC’s security awareness program includes training on the safe and responsible use of third-party AI tools.\n\n2. Confirm the training covers what data is permissible to enter into AI systems and how to identify and report suspicious or biased AI outputs.",
+    "cloud_service_provider": "1. Verify the CSP provides comprehensive and role-based security awareness training to all employees, covering topics from physical datacenter security to cloud infrastructure security and customer data privacy obligations.\n\n2. Review the CSP's training curriculum and completion metrics.\n\nFrom CCM v4.1:\n1. Examine the security awareness training program for adequacy, currency, communication, and effectiveness.\n2. Verify, by Interviews or otherwise, that the training program has been implemented.\n3. Verify that the scope of the training program extends to all employees.\n4. Examine policy and procedures for evidence of review."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#HRS-11"
+    }
+  ]
+}

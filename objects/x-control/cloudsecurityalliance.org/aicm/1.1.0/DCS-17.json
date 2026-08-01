@@ -1,0 +1,75 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--1a9e6c5a-2373-41f2-a45d-bb8f210f54c3",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Datacenter Metrics",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-17",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish, monitor and report data center security metrics to secure data center assets and services.",
+  "control_type": "Cloud-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "evaluation_validation": "Evaluation, Validation \n/ Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services \nsupply chain",
+    "delivery": "Operations, Maintenance, Continuous Monitoring, Continuous Improvement",
+    "service_retirement": "Archiving"
+  },
+  "implementation_guidelines": {
+    "shared": "[All actors]\n1. Organizations should define, monitor, and report security-relevant metrics to evaluate the protection and reliability of infrastructure supporting AI systems. \n\n2. Metrics should include indicators of physical and environmental conditions, infrastructure availability, access control events, hardware and platform health, and configuration integrity. \n\n3. Organizations should monitor for deviations from approved configurations, patch levels, and security baselines that could impact the confidentiality, integrity, or availability of data center assets and services. \n\n4. Metric thresholds, alerting mechanisms, and reporting processes should be defined, reviewed periodically, and integrated into operational response and risk management workflows.",
+    "model_provider": "1. Model Providers should establish and monitor infrastructure metrics related to environments used for model training, tuning, validation, and storage of model artifacts. \n\n2. Metrics should include platform health, storage reliability, access events, and configuration integrity of systems supporting model pipelines. \n\n3. Providers should monitor for deviations from approved training and inference environments, unauthorized infrastructure changes, and security baseline drift that could affect model integrity or availability. \n\n4. Metrics should inform incident response and operational decision-making related to model lifecycle management.",
+    "orchestrated_service_provider": "1. Orchestrated Service Providers should establish and monitor security and reliability metrics across orchestration platforms, including compute node availability, container runtime stability, access controls, and configuration integrity of orchestration components. \n\n2. Metrics should detect deviations from approved platform configurations, unauthorized workload placement, and infrastructure anomalies that may affect service reliability or security. \n\n3. Providers should integrate metrics into automated alerting and recovery workflows to support continuous service availability.",
+    "application_provider": "1. Application Providers should monitor metrics related to infrastructure (self-hosted or third party) and services supporting AI-enabled applications, including service availability, access anomalies, and configuration integrity of application hosting environments. \n\n2. Application providers should detect deviations from approved deployment configurations, insecure service states, and infrastructure conditions that could affect application performance or expose sensitive outputs.\n\n3. Metrics should support both operational monitoring and incident investigation processes.",
+    "ai_customer": "1. AI Customers should monitor, assess and document operational and security-relevant indicators associated with AI services and any on-premises or customer-managed infrastructure that supports AI system integration. \n\n2. Metrics should include service availability, access control events, configuration integrity of customer-managed components, and indicators of service degradation that could impact AI-dependent business processes. \n\n3. Customers should review provider-supplied service health and availability reporting, and establish escalation and response procedures when infrastructure metrics indicate potential security or continuity risks.",
+    "cloud_service_provider": "1.Cloud Service Providers should monitor comprehensive physical, environmental, and infrastructure security metrics across all facilities and platforms supporting AI workloads. \n\n2. Metrics should include physical access events, power and cooling stability, hardware failures, network performance, and configuration integrity across compute, storage, and network services. \n\n3. Providers should monitor for deviations from approved security baselines and platform configurations, and use automated analytics to identify emerging risks. \n\n4. Metrics should be centrally analyzed and integrated into operational response, resilience planning, and customer assurance reporting.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThe CSP is typically responsible for the implementation of this control. The CSP has the authority, insight, tools, and operational control on datacenter security metrics. These metrics enable the CSP to monitor performance, continuously improve reliability and resilience, plan for capacity and scalability, ensure security and compliance, enhance customer satisfaction, optimize resources, and support data-driven decision-making. The CSC lacks visibility, has limited accountability and control over the data center, making this primarily the responsibility of the CSP.\n\nImplementation Guidelines.\nApplicable to all service models:\na. Define security objectives and scope of the data center security metrics program by identifying critical assets (i,e., servers, network devices, storage, power systems).\nb. Determine threat vectors such as physical intrusion, unauthorized access, cyber threats, environmental risks to the critical assets.\nc. Determine the essential security metrics that are crucial for safeguarding datacenter assets and services, such as \ni. Operational Security Metrics\n• Number of unauthorized access attempts.\n• Number of successful vs. failed access logins.\n• Number of security patches applied vs. pending.\nii. Infrastructure Security Metrics\n• Percentage of assets with up-to-date firmware/security patches.\n• Redundancy compliance (e.g., dual power/network paths).\n• Physical access control compliance (e.g., biometric, RFID).\nd. Set security goals by aligning each metric with SMART criteria:\ni. Specific: Define exact goals (reduce intrusions by X%)\nii. Measurable: Use quantifiable indicators\niii. Achievable: Set realistic targets\niv. Relevant: Align with security strategy\nv. Time-bound: Include deadlines (e.g., within Y months)\ne. Set Thresholds and Benchmarks by\ni. using historical data and industry standards.\nii. defining alert levels (green/yellow/red).\niii. adjusting thresholds dynamically based on workload patterns.\nf. Classify the metrics as Key risk Indicators (KRI), Key control indicators (KCI) and Key Performance Indicators (KPI) to help ensure datacenter’s metrics are effective, actionable and aligned with overall security goals.\ni. Key risk indicators are metrics indicating potential risks (e.g., \"Number of intrusions detected per month\").\nii. Key Control Indicator (KCI): Metrics indicating the effectiveness of controls (e.g., \"Number of  unauthorized access attempts blocked\").\niii. Key Performance Indicator (KPI): Metrics indicating overall performance (e.g., \"Percentage of unauthorized access attempts blocked\").\ng. Establish a monitoring framework by selecting monitoring tools such as SIEM systems for centralized monitoring, IDS/IPS for real-time threat detection, and Network monitoring tools for traffic analysis. These tools could be cloud native, third party solutions or in-house built solutions. \nh. Automate data collection, monitoring and alerts. \ni. Configure alerts for when metrics exceed pre-defined thresholds.\nii. Develop automated responses for common incidents such as blocking IP addresses after multiple failed login attempts. \ni. Assign Ownership: Define responsibilities for monitoring, reporting, and response.\nj. Provide periodic training on security metrics and their importance to relevant staff to promote data-driven decision making.\nk. Create reporting templates for consistent reporting of metrics. \nl. Schedule reports by establishing reporting schedules at agreed frequency.  \nm. Build dashboards to visualize historical trends, real time performance and deviations to thresholds. \nn. Communicate results with stakeholders to use in operational reviews."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that the AP monitors availability and performance metrics for infrastructure supporting AI-enabled applications.\n\n2. Confirm that security-relevant indicators (e.g., access anomalies, service disruptions, configuration deviations) are tracked and reviewed.\n\n3. Verify that thresholds and alerting mechanisms are defined and integrated into operational response procedures.\n\n4. Where infrastructure is outsourced, confirm that the AP reviews hosting provider service health and security reports.",
+    "orchestrated_service_provider": "1. Verify that the OSP monitors health and availability of orchestration platforms and supporting infrastructure.\n\n2. Confirm that access control events and configuration integrity indicators for orchestration components are tracked.\n\n3. Verify that monitoring detects unauthorized changes or abnormal platform behavior.\n\n4. Confirm that alerts and metrics are integrated into operational recovery and response workflows.",
+    "model_provider": "1. Verify that monitoring is in place for infrastructure supporting model training, inference, and storage of model artifacts.\n\n2. Confirm that metrics include compute health, storage reliability, access events, and configuration deviations.\n\n3. Verify that deviations from approved environments are investigated and documented.\n\n4. Confirm that monitoring supports continuity of model development and deployment operations.",
+    "ai_customer": "1. Verify that the AIC monitors service availability and performance indicators affecting AI-dependent business processes.\n\n2. Confirm that provider-supplied service health and incident notifications are reviewed.\n\n3. Verify that escalation and response procedures are defined for service disruptions.\n\n4. Where customer-managed systems support AI integration, confirm monitoring of system availability and configuration state.",
+    "cloud_service_provider": "1. Verify that the CSP monitors physical, environmental, and infrastructure metrics across facilities supporting AI workloads.\n\n2. Confirm that access events, hardware failures, environmental conditions, and configuration integrity are centrally analyzed.\n\n3. Verify that monitoring supports detection of security and availability risks.\n\n4. Confirm that metrics are integrated into operational response and resilience programs.\n\nFrom CCM v4.1:\n1. Confirm that datacenter security metrics are defined.\n2. Verify that metrics are continuously monitored and reviewed to detect anomalies, trends, or deviations from expected performance.\n3. Verify that security metric reports are reported to stakeholders, and include actionable insights and recommendations."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-17"
+    }
+  ]
+}

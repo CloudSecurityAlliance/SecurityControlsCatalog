@@ -1,0 +1,67 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--78dcf49d-5e0a-4174-8d37-6393608da778",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Equipment Identification",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-09",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Use equipment identification as a method for connection authentication.",
+  "control_type": "Cloud-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app"
+  ],
+  "lifecycle_relevance": {
+    "delivery": "Operations"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors Except AIC]\n1. Providers should implement equipment identification as a means for authenticating to connection for systems that perform data processing, inference tasks.\n\n2. Providers should have hardware identity foundations with trusted platform modules and unique fingerprinting across infrastructure, which combined with authentication mechanism, such as mutual TLS, certificate-based validation, and hardware-bound access controls. \n\n3. Providers should establish continuous attestation services and anomaly detection while protecting infrastructure through secure boot capabilities and hardware roots of trust.",
+    "model_provider": "Role Specific\n1. Providers should  implement equipment identification as a means for authenticating to connection for systems that perform data processing, inference tasks.\n\n2. Implement TPM (Trusted Platform Module) or hardware security modules for all training infrastructure which also include mTLS authentication between model serving endpoints and approved clients. Deploy continuous attestation services to verify hardware integrity and automated revocation for compromised equipment.\n\n3. Providers should  implement equipment identification as a means for authenticating to connection for systems that perform data processing, inference tasks.\n\n4. Providers should have hardware identity foundations with trusted platform modules and unique fingerprinting across infrastructure, which combined with authentication mechanism, such as mutual TLS, certificate-based validation, and hardware-bound access controls. Providers should establish continuous attestation services and anomaly detection while protecting infrastructure through secure boot capabilities and hardware roots of trust.\n\n[All Actors Except AIC]\n1. Providers should implement equipment identification as a means for authenticating to connection for systems that perform data processing, inference tasks.\n\n2. Providers should have hardware identity foundations with trusted platform modules and unique fingerprinting across infrastructure, which combined with authentication mechanism, such as mutual TLS, certificate-based validation, and hardware-bound access controls. \n\n3. Providers should establish continuous attestation services and anomaly detection while protecting infrastructure through secure boot capabilities and hardware roots of trust.",
+    "orchestrated_service_provider": "Role Specific\n1. Providers should  implement equipment identification as a means for authenticating to connection for systems that perform data processing, inference tasks.\n\n2. OSP needs to focus on secure intermediation via dedicated gateway hardware with tamper-resistant features by adding hardware-based identity management for orchestration nodes and use the identity as federation systems to broker trust between entities.\n\n[All Actors Except AIC]\n1. Providers should implement equipment identification as a means for authenticating to connection for systems that perform data processing, inference tasks.\n\n2. Providers should have hardware identity foundations with trusted platform modules and unique fingerprinting across infrastructure, which combined with authentication mechanism, such as mutual TLS, certificate-based validation, and hardware-bound access controls. \n\n3. Providers should establish continuous attestation services and anomaly detection while protecting infrastructure through secure boot capabilities and hardware roots of trust.\n\n2. Providers should have hardware identity foundations with trusted platform modules and unique fingerprinting across infrastructure, which combined with authentication mechanism, such as mutual TLS, certificate-based validation, and hardware-bound access controls. \n\n3. Providers should establish continuous attestation services and anomaly detection while protecting infrastructure through secure boot capabilities and hardware roots of trust.",
+    "application_provider": "Role Specific\n\n1. Create hardware-based code signing requirements tied to registered devices, which are used for application release.\n\n[All Actors Except AIC]\n1. Providers should implement equipment identification as a means for authenticating to connection for systems that perform data processing, inference tasks.\n\n2. Providers should have hardware identity foundations with trusted platform modules and unique fingerprinting across infrastructure, which combined with authentication mechanism, such as mutual TLS, certificate-based validation, and hardware-bound access controls. \n\n3. Providers should establish continuous attestation services and anomaly detection while protecting infrastructure through secure boot capabilities and hardware roots of trust.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "Role Specific\nImplementing physical equipment identification as a method for connection authentication enhances cloud security by verifying the authenticity of devices connecting to cloud resources. This approach adds an extra layer of protection beyond traditional username and password authentication, mitigating risks associated with unauthorized access and credential theft.\n \n Implementation best practices for equipment authentication include (but not limited to):\n a. Equipment Registration and Identification:\n i. A comprehensive inventory of all authorized equipment should be maintained (refer to DCS-06)\n ii. Automated mechanisms to discover and register equipment connecting to the cloud environment should be employed\n iii. Equipment identification should be integrated with cloud access control mechanisms to enforce granular access policies\n b. Identifiers Assignment and Protection:\n i. Unique identifiers (e.g., MAC addresses, serial numbers) should be assigned to all physical equipment connected to the cloud infrastructure (e.g., servers, network devices, storage devices, and any other connected hardware)\n ii. A consistent and standardized naming convention for equipment identifiers should be used\n iii. Tamper-proof mechanisms to prevent unauthorized modification of equipment identifiers should be employed (e.g., hardware-based identifiers, cryptographic techniques, or secure tamper-evident labels)\n c. Equipment Trustworthiness Assessment:\n i. Equipment attestation protocols should be implemented to validate the integrity and trustworthiness of connecting equipment\n ii. Secure boot mechanisms should be utilized to ensure that equipment is running genuine and unmodified firmware\n iii. Vulnerability scanning and patching techniques should be employed to maintain equipment security posture\n d. Connection Authentication Mechanisms:\n i. Granular access control policies based on equipment identity, risk assessment, and user authorization levels should be employed\n ii. Access to sensitive resources and privileged functionalities should be restricted based on equipment trustworthiness and user privileges\n iii. A secure communication channel should be established between the cloud infrastructure and the equipment to be authenticated (e.g., using TLS, SSH encryption or a dedicated authentication protocol)\n iv. An equipment mechanism should be implemented to present its unique identifier to the cloud infrastructure during the authentication process (e.g., a cryptographic handshake, a challenge-response mechanism, or a secure configuration protocol)\n v. The authenticity of the equipment identifier should be validated using a trusted source of equipment information (e.g., a centralized equipment registry, a distributed ledger technology, or a trusted hardware security module (HSM))\n e. Continuous Monitoring and Evaluation:\n i. The effectiveness of equipment authentication controls should be continuously monitored and assessed (e.g., by using SIEM tools, cloud-based security monitoring services)\n ii. Audit logs should be maintained (e.g., the equipment identifier, authentication method, timestamp, and connection status) and regularly reviewed to identify potential security breaches, unauthorized access attempts, or misconfigurations related to equipment identification and authentication\n\n[All Actors Except AIC]\n1. Providers should implement equipment identification as a means for authenticating to connection for systems that perform data processing, inference tasks.\n\n2. Providers should have hardware identity foundations with trusted platform modules and unique fingerprinting across infrastructure, which combined with authentication mechanism, such as mutual TLS, certificate-based validation, and hardware-bound access controls. \n\n3. Providers should establish continuous attestation services and anomaly detection while protecting infrastructure through secure boot capabilities and hardware roots of trust.\n\n2. Providers should have hardware identity foundations with trusted platform modules and unique fingerprinting across infrastructure, which combined with authentication mechanism, such as mutual TLS, certificate-based validation, and hardware-bound access controls. \n\n3. Providers should establish continuous attestation services and anomaly detection while protecting infrastructure through secure boot capabilities and hardware roots of trust."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that the AP uses logical equipment identification, such as workload identities (e.g., SPIFFE/SPIRE) or service accounts, to authenticate connections between microservices or application components.\n\n2. Confirm that device identity is a factor in the AP's zero-trust access policies.",
+    "orchestrated_service_provider": "1. Verify that the OSP uses workload identities or similar mechanisms to authenticate connections between different services in the orchestration chain.\n\n2. Check that the orchestration platform enforces policies based on trusted equipment or service identity.",
+    "model_provider": "1. Verify that the MP uses secure methods to identify and authenticate infrastructure components (e.g., specific GPU nodes, storage servers) used in the training pipeline.\n\n2. Confirm that only identified and authorized equipment can access sensitive training data.",
+    "ai_customer": "1. Verify that the AIC’s security policy requires device posture checks for endpoints accessing the AI service.\n\n2. Confirm that access to the AI service can be restricted to only company-managed and identified devices, where technically feasible and supported by the provider.",
+    "cloud_service_provider": "1. Examine the policy relating to equipment classification and identification.\n\n2. Determine if appropriate methods are implemented.\n\n3. Confirm the existence of a process or procedure to track and maintain a list of appropriate equipment permitted for authorized connections.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-09"
+    }
+  ]
+}

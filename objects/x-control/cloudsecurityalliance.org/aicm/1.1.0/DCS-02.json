@@ -1,0 +1,74 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--c327615f-3838-41e8-9003-aa7cf8b01573",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Off-Site Equipment Disposal Policy and Procedures",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-02",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish, document, approve, communicate, apply, evaluate and maintain policies and procedures for the secure disposal of equipment used outside  the organization's premises. If the equipment is not physically destroyed a data destruction procedure that renders recovery of information  impossible must be applied. Review and update the policies and procedures at least annually, or upon significant changes.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage",
+    "development": "Design, Training, Supply Chain",
+    "evaluation_validation": "Evaluation, Re-evaluation, Validation/Red Teaming",
+    "deployment": "AI Services supply chain",
+    "delivery": "Operations, Maintenance",
+    "service_retirement": "Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly documented processes for the secure disposal of equipment that is used outside their physical premises, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third party datacenter vendors, ensure they have these procedures in place.",
+    "model_provider": "Role Specific\n1. Providers should ensure that they have robust and clearly documented \nprocesses for the secure disposal of equipment that is used outside \ntheir physical premises, including devices that handle model \ndevelopment, data processing, or inference tasks. These include but \nnot limited to the procedures listed for the CSP. If using third party \ndatacenter vendors, ensure they have these procedures in place.\n\n2. Provider should have an established secure chain of custody for \ndecommissioned equipment with documented handoffs.\n\n3. Implement of data sanitization procedures following in line with NIST \nSP 800-88 Guidelines.\n\n4. Maintain contractual arrangements with certified disposal vendors \nwho can provide certificates of destruction.\n\n[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly\n documented processes for the secure disposal of equipment that is \nused outside their physical premises, including devices that handle model \ndevelopment, data processing, or inference tasks. These include but not \nlimited to the procedures listed for the CSP. If using third party \ndatacenter vendors, ensure they have these procedures in place.",
+    "orchestrated_service_provider": "Role Specific\n1.Providers should ensure that they have robust and clearly documented processes for the \nsecure disposal of equipment that is used outside their physical premises, including \ndevices that handle model development, data processing, or inference tasks. \nThese include but not limited to the procedures listed for the CSP. If using third party \ndatacenter vendors, ensure they have these procedures in place.\n\n2. Implementation of verification system for data removal across interconnected services and have disposal coordination procedures with upstream and downstream partners.\n\n3. Removal of configuration data and access credentials and a post-disposal security validation should be done, to verify no orchestration metadata remains accessible.\n\n[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly documented processes for the \nsecure disposal of equipment that is used outside their physical premises, including devices \nthat handle model development, data processing, or inference tasks. These include but not \nlimited to the procedures listed for the CSP. If using third party datacenter vendors, ensure \nthey have these procedures in place.",
+    "application_provider": "Role Specific\nVerify the AP reviews CSP attestations specifically for:\n• High-compute AI workload environments\n• GPU cluster availability SLAs (99.95% minimum)\n• Cooling capacity for sustained AI workloads\n• Power redundancy for training continuity\n• Network bandwidth for distributed training\n• Hardware failure contingency plans\n\n[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly documented \nprocesses for the secure disposal of equipment that is used outside their \nphysical premises, including devices that handle model development, data \nprocessing, or inference tasks. These include but not limited to the \nprocedures listed for the CSP. If using third party datacenter vendors, \nensure they have these procedures in place.",
+    "ai_customer": "Not applicable",
+    "cloud_service_provider": "Role Specific\nThe Cloud Service Provider has a broader operational reach given the scale of data center environments and off-site equipment usage.\n\n[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly documented processes for the secure disposal of equipment that is used outside their physical premises, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third party datacenter vendors, ensure they have these procedures in place.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThe CSP owns the control of ensuring that client data is effectively removed from the provider environment when clients delete, leave, or egress from a cloud platform, due to their direct access to the infrastructure and data, contractual obligations, expertise, and resources.\n\nImplementation Guidelines.\nApplicable to all service models:\nThe CSP should have a policy outlining the requirements and procedures for the disposal of physical equipment within their data centers.\n\nPolicies should include (but not limited to) provisions on the following:\na. Disposal Authorization: Authorization procedures for equipment disposal requests. Only authorized personnel should be able to initiate and approve such requests\nb. Equipment Disposal: Τhe procedures for the disposal of physical equipment, including servers, storage devices, and networking hardware, when they reach the end of their lifecycle\nc. Asset Inventory and Decommissioning Procedures: Procedures for maintaining an accurate asset inventory (refer to DCS-06) and define the steps to be taken when decommissioning equipment, including the initiation of data destruction processes\nd. Secure Transportation and Disposal: Security measures to be taken during the physical disposal process, including secure transportation to disposal facilities and protection against theft or unauthorized access\ne. Data Destruction: Procedures to completely destroy all data stored on the equipment prior to physical equipment disposal, using industry-approved methods (refer to DSP-02). Secure data erasure procedures should be established to render data irretrievable from storage devices. This may include physical destruction of media (e.g., hard drives demagnetization, paper shredding, etc.), data cryptographic erasure, or software-based erasure methods\nf. Verification of Equipment Destruction:  Requirement of a systematic process for verifying the successful and complete destruction of data on decommissioned equipment through a documented and auditable verification mechanism\ng. Disposal Record-Keeping and Auditing: Detailed records of all equipment and data disposal events into a tracking system with a digital certificate of media disposition that clearly indicates whether they have been cleared, purged, or destroyed. Records should include the date, type of equipment/data, equipment serial numbers, disposal methods, dates of disposal, authorized personnel involved and verification results for audit and compliance purposes\nh. Certification of Equipment Disposal Vendors: Requirements to use certified data disposal vendors who adhere to recognized industry standards and provide documentation certifying the proper disposal of data and equipment\ni. Chain of Custody Procedures: Chain of custody procedures to track the movement and handling of equipment slated for disposal, ensuring accountability and preventing unauthorized access\nj. Approval: Approval requirements and senior management involvement to ensure alignment with the organization's strategic goals and risk appetite\nk. An approval process should be established for any changes or modifications to the policy and procedures\nl. A documented record of approvals (including dates, names of approvers, and any relevant comments or discussions) should be maintained\nm. Communication: Effective communication of the policy and procedures should be facilitated to all relevant cloud stakeholders\nn. Maintenance and Reviews: Data center and equipment disposal security policies and procedures should be documented, reviewed and updated at least annually to ensure alignment with evolving cloud security landscape and to reflect changes in cloud technology, regulations, and risks"
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the AP’s asset management policy includes procedures for the secure decommissioning of virtual assets (e.g., VMs, containers) and storage volumes in their cloud environment.\n\n2. Confirm that contracts with CSPs include clauses requiring secure data and media disposal in accordance with standards like NIST SP 800-88.",
+    "orchestrated_service_provider": "1. Verify the OSP’s policy requires all integrated CSPs to follow secure equipment disposal procedures.\n\n2. Review the OSP’s vendor due diligence process to confirm it assesses the disposal practices of its underlying infrastructure providers through their SOC 2 or ISO 27001 reports.",
+    "model_provider": "1. Verify the MP’s policy requires that any physical media used for transferring or storing training data is securely disposed of or sanitized after use.\n\n2. Review contracts with CSPs to ensure they are obligated to follow secure disposal standards for infrastructure used in model training or hosting.",
+    "ai_customer": "1. Verify the AIC’s vendor risk management policy requires its AI providers to attest to using CSPs with certified media and equipment disposal processes.\n\n2. Review service agreements for clauses that address the secure deletion of customer data upon service termination.",
+    "cloud_service_provider": "1. Examine the organization's policy and procedures related to data destruction.\n\n2. Determine if the policy has been approved, communicated, and reviewed.\n\n3. Determine if a policy exists that addresses the secure destruction of data and for conditions when equipment is reused as opposed to when equipment is destroyed.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-02"
+    }
+  ]
+}

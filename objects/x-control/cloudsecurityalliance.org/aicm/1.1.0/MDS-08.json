@@ -1,0 +1,77 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--20128c9e-289b-41b4-b339-ccb650fca3f8",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Model Integrity Checks",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-08",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Regularly calculate and compare checksums using cryptographic hashes of model checkpoints to detect unauthorized modifications. Apply at least annually based on the level of risk, or after any change of hands.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage",
+    "development": "Training, Design",
+    "evaluation_validation": "Validation/Red Teaming, Evaluation, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring",
+    "service_retirement": "Archiving, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (Applicable to MP, OSP, AP)]\n1. Comparison of checksums should be applied both in production and test environment at least annually based on the level of risk, or during any change of hands.",
+    "model_provider": "[Model Provider (MP)]\n1. Anytime changes are made to the model, a new checkpoint, containing both the checksum and the version, should be generated (e.g. model version pinning, etc.). \n\n2. Checkpoints should be documented securely, i.e. via immutable log for audits and further reviews.\n\n3. If cryptographic keys are used, standard key rotation and access policies should be established and followed, as per section CEK.\n\n[Shared Responsibilities (Applicable to MP, OSP, AP)]\n1. Comparison of checksums should be applied both in production and test environment at least annually based on the level of risk, or during any change of hands.",
+    "orchestrated_service_provider": "[Shared Responsibilities (Applicable to MP, OSP, AP)]\n1. Comparison of checksums should be applied both in production and test environment at least annually based on the level of risk, or during any change of hands.",
+    "application_provider": "[Shared Responsibilities (Applicable to MP, OSP, AP)]\n1. Comparison of checksums should be applied both in production and test environment at least annually based on the level of risk, or during any change of hands.",
+    "ai_customer": "1. As part of vendor due diligence, require the AP to provide verifiable evidence of model \nintegrity controls.",
+    "cloud_service_provider": "1. Deliver isolated and trusted execution environments for performing integrity \nverification operations such as checksum computation and validation, ensuring data confidentiality and \npreventing unauthorized tampering during the process.\n\n2. Make available standardized libraries and utilities that support the generation of \ncryptographic digests for model artifacts, enabling consistent and verifiable tracking of \nmodel integrity across development stages.\n\n3. Deploy resilient and access-controlled storage infrastructure for safeguarding both \nmodel checkpoint files and their associated integrity metadata, preserving availability \nand ensuring secure long-term retention."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine procedures for verifying the integrity of models or orchestrated services received from upstream providers. \n\n2. Verify implementation of integrity checks before deploying models in applications. \n\n3. Assess the application-level mechanisms for ongoing integrity verification during operation. \n\n4. Review documentation of integrity verification results and frequency. \n\n5. Confirm procedures for responding to integrity check failures, including appropriate escalation and remediation steps. \n\n6. Verify that integrity checks are performed at least annually and after any model update or change.",
+    "orchestrated_service_provider": "1. Examine procedures for verifying model integrity upon receipt from Model Providers. \n\n2. Verify the implementation of regular integrity checks during orchestration and deployment processes. \n\n3. Assess documentation of verification results, including timestamp, method used, and outcome. \n\n4. Review the process for responding to integrity verification failures. \n\n5. Confirm that integrity verification occurs at least annually and after any change of hands. \n\n6. Verify that checksum verification results are securely communicated to downstream Application Providers and AI Customers.",
+    "model_provider": "1. Examine the documented process for generating cryptographic checksums of model checkpoints and versions. \n\n2. Verify that strong cryptographic algorithms are used for checksum generation. \n\n3. Assess the security of the checksum repository, confirming appropriate access controls and backup procedures. \n\n4. Review procedures for regular (at least annual) verification of model integrity against baseline checksums. \n\n5. Examine the process for securely communicating checksums to downstream consumers. \n\n6. Verify documentation of baseline checksums for all model versions in the release history. \n\n7. Confirm that integrity verification occurs after any model transfer or change of hands.",
+    "ai_customer": "1. Examine procedures for verifying the integrity of models or orchestrated services received from upstream providers. \n\n2. Verify implementation of integrity checks before deploying models in applications. \n\n3. Assess the application-level mechanisms for ongoing integrity verification during operation. \n\n4. Review documentation of integrity verification results and frequency. \n\n5. Confirm procedures for responding to integrity check failures, including appropriate escalation and remediation steps. \n\n6. Verify that integrity checks are performed at least annually and after any model update or change.",
+    "cloud_service_provider": "1. Verify implementation of data integrity monitoring for stored models, using checksums or other methods. \n\n2. Assess procedures for detecting unauthorized modifications to stored model files. \n\n3. Confirm procedures for alerting and responding to integrity check failures. \n\n4. Verify the frequency of integrity checks aligns with the level of risk. \n\n5. Examine mechanisms to ensure data is protected against tampering and potential security vulnerabilities."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-08"
+    }
+  ]
+}

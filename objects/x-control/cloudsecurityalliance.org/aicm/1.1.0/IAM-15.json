@@ -1,0 +1,78 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--cea88772-2a75-4920-80bf-f3717bd03b16",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Authorization Mechanisms",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "IAM-15",
+  "domain": "Identity & Access Management",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement and evaluate processes, procedures and technical measures to verify access to data and system functions is authorized.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared across the supply chain",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Resource provisioning, Team and expertise",
+    "development": "Design, Supply Chain, Training, Guardrails",
+    "evaluation_validation": "Validation/Red Teaming, Evaluation",
+    "deployment": "AI Services supply chain, Orchestration, AI applications",
+    "delivery": "Operations, Maintenance",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Implement processes and controls to define, maintain and deploy permission set based on roles to systems and applications.\n\n2. Implement processes and controls for request and approval of permissions to the resources owner.\n\n3. Regularly review and certify authorization mechanisms settings and configuration (such as permission \nsets).\n\n4. Implement alerting mechanisms through SIEM to flag when high-risk permission sets or roles have been \nchanged.",
+    "model_provider": "[MP]\n1. Ensure only authorized actors can access, modify, train, manage, or deploy specific AI models, training datasets, and other MLOps infrastructure, based on defined roles.\n\n2. When applicable develop and implement a process for the AIC to approve and review access to training \ndata.\n\n3. Implement granular access control method to components such as:\n    i. Training data\n    ii. AI experiment configuration and data\n    iii. CI/CD pipelines\n\n[All Actors]\n1. Implement processes and controls to define, maintain and deploy permission set based on roles to systems and applications.\n\n2. Implement processes and controls for request and approval of permissions to the resources owner.\n\n3. Regularly review and certify authorization mechanisms settings and configuration (such as permission \nsets).\n\n4. Implement alerting mechanisms through SIEM to flag when high-risk permission sets or roles have been changed.",
+    "orchestrated_service_provider": "[OSP]\n1. Ensure platform and services support interoperable standards for Agent based systems identification and authorization to resources (such as A2A).\n\n2. Ensure only authorized actors can access, modify, train, manage, or deploy specific tenant infrastructure and setting including resources, networking and access controls.\n\n3. When applicable develop and implement a process for the AIC to approve and review access to sensitive.\n\n4. Ensure provided API endpoints and Interfaces support and are configured with granular authorization mechanism (such as resource, permission [read, write, update, etc]).\n\n5. Implement granular access control method to components such as:\n    i. Resource configuration and rules (such as GPU usage, scaling, etc)\n    ii. Orchestration settings and configuration\n    iii. Tenant Configuration\n\n[All Actors]\n1. Implement processes and controls to define, maintain and deploy permission set based on roles to systems and applications.\n\n2. Implement processes and controls for request and approval of permissions to the resources owner.\n\n3. Regularly review and certify authorization mechanisms settings and configuration (such as permission \nsets).\n\n4. Implement alerting mechanisms through SIEM to flag when high-risk permission sets or roles have been changed.",
+    "application_provider": "1. Ensure platform and services support interoperable standards for Agent based systems identification and authorization to resources (such as A2A).\n\n2. Ensure only authorized actors can access, modify, and manage application settings.\n\n3. Ensure the application allows for configuration of granular authorization mechanism (such as resource, permission [read, write, update, etc]).\n\n4. Implement granular access control method to components such as:\n    i. User Management\n    ii. Application settings\n    iii. Application security settings\n\n[All Actors]\n1. Implement processes and controls to define, maintain and deploy permission set based on roles to systems and applications.\n\n2. Implement processes and controls for request and approval of permissions to the resources owner.\n\n3. Regularly review and certify authorization mechanisms settings and configuration (such as permission \nsets).\n\n4. Implement alerting mechanisms through SIEM to flag when high-risk permission sets or roles have been changed.",
+    "ai_customer": "[AIC]\n1. Ensure access to AI application and services is configured with granular access control based on actor (user/system) role and responsibilities.\n\n2. Implement approval processes for changes to authorization (RBAC) configuration for users.\n \n3. Regularly review AI application and services authorization configuration to ensure principle \nof least privilege.\n\n[All Actors]\n1. Implement processes and controls to define, maintain and deploy permission set based on roles to systems and applications.\n\n2. Implement processes and controls for request and approval of permissions to the resources owner.\n\n3. Regularly review and certify authorization mechanisms settings and configuration (such as permission \nsets).\n\n4. Implement alerting mechanisms through SIEM to flag when high-risk permission sets or roles have been changed.",
+    "cloud_service_provider": "Role Specific:\nAll access and permissions should be revoked outside the allowed (approved) session duration as per Zero Standing Privileges (ZSP).\n\n[All Actors]\n1. Implement processes and controls to define, maintain and deploy permission set based on roles to systems and applications.\n\n2. Implement processes and controls for request and approval of permissions to the resources owner.\n\n3. Regularly review and certify authorization mechanisms settings and configuration (such as permission \nsets).\n\n4. Implement alerting mechanisms through SIEM to flag when high-risk permission sets or roles have been changed.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThis control’s implementation responsibility is “Shared (Independent)” since CSP and CSC are both responsible, but also independently manage the processes and procedures to ensure formal approvals are obtained for access granted to users in their respective organizations. The CSP owns the control in relation to the entities whose access to the cloud environment it provides and maintains, including its internal users, external users (vendors and customers), applications, and services.\n\nImplementation Guidelines.\nApplicable to all service models:\nVerifying access authorization is a fundamental component of effective access control, ensuring that users are granted access based on their legitimate needs and that unauthorized access attempts are promptly identified and prevented.\n\nThe CSPs play a critical role in implementing robust technical measures to verify authorization and prevent unauthorized access. Implementation best practices to defining, implementing, and evaluating these measures include (but are not limited to):\na. Authorization Mechanisms:\ni. Identities should be provided with only the access necessary to perform their job duties according to the PoLP\nii. Dynamic RBAC, ABAC and Context-aware access control mechanisms should be implemented to assign users specific roles with defined privileges and permissions as part of the access control decision-making process\niii. Explicit permissions (read, write, execute) should be assigned to users or groups on individual resources (e.g., files, databases, applications)\niv. A process to verify that access is authorized before granting permissions should be implemented\nb. Authorization Request and Approval:\ni. Senior management should be informed of a new user request to access a resource, and with sufficient justification, review, approve, and document such request\nii. Ad-hoc access requests without approvals should not be granted, with exceptions in emergency situations (e.g., resolving a security incident or recovering from a major outage) where they should be approved by senior management\niii. Two levels of approvals should be required for granting privileged entitlements (i.e., approval of the user's manager or supervisor and of the asset owner should be required)\niv. Detection mechanisms should be implemented to identify and report any access that is granted without formal approvals\nv. A list of persons who are authorized to approve access types and relevant requests should be documented and maintained\nvi. Access rights should be immediately revoked after the business justification for such access ceases to exist\nc. Authorization Monitoring and Reviews: Authorization mechanisms should be regularly reviewed and updated. Reviews should be conducted on records of identities activity, including access requests, successful and failed login attempts, and resource usage to ensure that only authorized identities have access"
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that authorization policies are defined and documented, specifying how access rights are granted, modified, and revoked within applications and services.\n\n2. Confirm that access to systems and data is restricted based on defined user roles or attributes, and enforced using mechanisms such as role-based or attribute-based access control.\n\n3. Ensure that systems log denied access attempts and unauthorized access requests, and that these logs are reviewed regularly to detect potential abuse or misconfiguration.\n\n4. Check that changes to authorization rules or entitlements follow a documented approval process, with audit trails maintained.\n\n5. Verify that periodic reviews of authorization assignments are conducted, and that access rights are adjusted in response to changes in roles, responsibilities, or business requirements.",
+    "orchestrated_service_provider": "1. Confirm orchestrated workflows implement access controls for all pipeline stages.\n\n2. Check that access to shared artifacts (e.g., models, logs) is governed by scoped permissions.\n\n3. Validate systems restrict access to configuration files and credentials.\n\n4. Verify logging of access decisions within the orchestration layer.\n\n5. Ensure that temporary or elevated access is reviewed and revoked automatically.",
+    "model_provider": "1. Verify authorization is required for all model training, updating, or output modification actions.\n\n2. Check that only approved identities can access sensitive training data or parameter configurations.\n\n3. Confirm access control lists (ACLs) are applied at the model repository level.\n\n4. Validate logging of all authorization decisions tied to AI model usage.\n\n5. Ensure periodic validation of role-to-permission mappings.",
+    "ai_customer": "1. Confirm that AI output access is authorized based on role, department, or sensitivity level.\n\n2. Validate controls restrict user access to only permitted AI models and predictions.\n\n3. Check enforcement of business rules governing authorized usage of AI decisions.\n\n4. Ensure downstream access to AI-generated data is audited and aligned with data-sharing agreements.\n\n5. Verify policy-driven restrictions on sensitive AI use cases (e.g., financial approvals).",
+    "cloud_service_provider": "1. Verify IAM policies enforce least-privilege access to AI workloads and resources.\n\n2. Confirm that access to sensitive cloud-native AI services is governed by conditional IAM policies.\n\n3. Validate cloud authorization logs capture all access grant and denial events.\n\n4. Ensure regular reviews of authorization rules to prevent privilege creep.\n\n5. Confirm that misconfigured policies are automatically flagged by cloud-native analyzers.\n\nFrom CCM v4.1:\n1. Determine if processes, procedures and technical measures, for verification of access authorization to data and system functions, are defined.\n2. Determine if processes, procedures and technical measures, for verification of access authorization to data and system functions, are implemented and consistently followed in practice."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#IAM-15"
+    }
+  ]
+}

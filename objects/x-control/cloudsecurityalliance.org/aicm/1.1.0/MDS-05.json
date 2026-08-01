@@ -1,0 +1,75 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--4f2abfda-aa69-4e0c-a971-317851cf1749",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Model Documentation Validation",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-05",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement, and evaluate processes, procedures, and technical measures for the validation of the Model documentation aligned with the current model.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation",
+    "development": "Design, Training",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous improvement"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (Applicable to MP, OSP, AP)]\n\n1. Perform regular Validation including:\n          - Automated schema validation\n          - Full model behavior validation\n          - Comprehensive documentation review\n\n2. Perform Event-Triggered Validation\n          - Model updates - consider training data changes\n          - API modifications\n          - Dependency updates\n\n3. Define thresholds to be used in the validation process, which trigger an alert for investigation\n\n4. Review Procedures and Documentation\n    - Compare model card against actual implementation\n    - Verify accuracy of all technical specifications\n    - Validate example inputs and outputs\n    - Review evaluation metrics and results\n\n5. Incident Response\n    - Document validation failures\n    - Track resolution progress\n    - Update relevant stakeholders\n    - Maintain audit trail\n\n6. Continuous Improvement Optional\n    - Regular review of validation processes\n    - Update procedures based on findings\n    - Incorporate feedback from stakeholders\n    - Maintain validation documentation",
+    "model_provider": "[Shared Responsibilities (Applicable to MP, OSP, AP)]\n\n1. Perform regular Validation including:\n          - Automated schema validation\n          - Full model behavior validation\n          - Comprehensive documentation review\n\n2. Perform Event-Triggered Validation\n          - Model updates - consider training data changes\n          - API modifications\n          - Dependency updates\n\n3. Define thresholds to be used in the validation process, which trigger an alert for investigation\n\n4. Review Procedures and Documentation\n    - Compare model card against actual implementation\n    - Verify accuracy of all technical specifications\n    - Validate example inputs and outputs\n    - Review evaluation metrics and results\n\n5. Incident Response\n    - Document validation failures\n    - Track resolution progress\n    - Update relevant stakeholders\n    - Maintain audit trail\n\n6. Continuous Improvement Optional\n    - Regular review of validation processes\n    - Update procedures based on findings\n    - Incorporate feedback from stakeholders\n    - Maintain validation documentation",
+    "orchestrated_service_provider": "[Orchestrated Service Provider (OSP)]\n1. Automated Validation Process- extract the fields from the model card for a) Source Information, b) Creation Date and c) Version Control- match the extracted fields against the values derived from the deployed model- highlight any conflicts between model card values and values derived from deployed model.\n\n\n[Shared Responsibilities (Applicable to MP, OSP, AP)]\n1. Perform regular Validation including:\n          - Automated schema validation\n          - Full model behavior validation\n          - Comprehensive documentation review\n\n2. Perform Event-Triggered Validation\n          - Model updates - consider training data changes\n          - API modifications\n          - Dependency updates\n\n3. Define thresholds to be used in the validation process, which trigger an alert for investigation\n\n4. Review Procedures and Documentation\n    - Compare model card against actual implementation\n    - Verify accuracy of all technical specifications\n    - Validate example inputs and outputs\n    - Review evaluation metrics and results\n\n5. Incident Response\n    - Document validation failures\n    - Track resolution progress\n    - Update relevant stakeholders\n    - Maintain audit trail\n\n6. Continuous Improvement Optional\n    - Regular review of validation processes\n    - Update procedures based on findings\n    - Incorporate feedback from stakeholders\n    - Maintain validation documentation",
+    "application_provider": "[Shared Responsibilities (Applicable to MP, OSP, AP)]\n\n1. Perform regular Validation including:\n          - Automated schema validation\n          - Full model behavior validation\n          - Comprehensive documentation review\n\n2. Perform Event-Triggered Validation\n          - Model updates - consider training data changes\n          - API modifications\n          - Dependency updates\n\n3. Define thresholds to be used in the validation process, which trigger an alert for investigation\n\n4. Review Procedures and Documentation\n    - Compare model card against actual implementation\n    - Verify accuracy of all technical specifications\n    - Validate example inputs and outputs\n    - Review evaluation metrics and results\n\n5. Incident Response\n    - Document validation failures\n    - Track resolution progress\n    - Update relevant stakeholders\n    - Maintain audit trail\n\n6. Continuous Improvement Optional\n    - Regular review of validation processes\n    - Update procedures based on findings\n    - Incorporate feedback from stakeholders\n    - Maintain validation documentation",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "1. Provide protected and compliant data storage options for preserving validation outputs and audit evidence, ensuring long-term availability, traceability, and tamper resistance.\n\n2. Enforce granular permission models to restrict Model Card validation activities to designated roles, reducing the risk of unauthorized actions and ensuring accountability throughout the validation process."
+  },
+  "auditing_guidelines": {
+    "application_provider": "Applicability Considerations: The level of AP's direct responsibility varies depending on involvement in the model development lifecycle\n\nScenario 1 (Consumption Only): Due diligence.\n\nScenario 2 (Fine-Tuning/Modification): Responsibility for consistency of own changes. Perform the following at least yearly or any new model changes. \n\n1. Review AP's policy and procedures to support efforts used to perform periodic validation of the Model Card.\n\n2. Verify the defined data, roles and responsibilities are being followed.\n\n3. Evaluate and verify model changes during regular validation points are checked.\n\n4. Assess how findings are recorded and what processes are in place.\n\n5. Audit due diligence that all components are in action to the proper lifecycle stage.\n\nIf only consuming the existing Model Card, review if steps were taken to validate that that access to the Model Card is secure.",
+    "orchestrated_service_provider": "1. Review what the procedures to perform regular verification to check if there are any manual approvals for model changes or updates to documentation.\n\n2. Assess if there any mechanisms and processes for managing the validation activities (for example, what validation schedule is used and if alerts are sent to personnel and relevant third parties).\n\n3. Audit that validation and security reports were generated as expected.\n\n4. Examine if the OSP has the ability to support validation based on the features that they are using in the environment.",
+    "model_provider": "1. Review the procedures used for validation to check if there was an update or a lifecycle event, and determine the role in documentation validation in the service.\n\n2. Evaluate and assess the framework in use with regards to accuracy and controls within the Model/System Card to ensure Model/System Card consistency with the Model implementation.\n\n3. Check whether the validation activity includes both model performance and ethical/safety-related characteristics in accordance with the standards for AI.\n\n4. Inspect and document validation, including its scope, test environment and success/failure criteria, and verify its test and development procedures with security requirements, as specified in an established policy.\n\n5. Assess the criteria of success/failure for ongoing activities, and examine records of formal communication, such as alerts or dashboards.",
+    "ai_customer": "1. Review SLAs with the Application Provider.\n\n2. Audit that the AI Systems and tools used within the processes for validation with any and all components and artifacts.\n\n3. Evaluate if there has been communication that states security measures are in place, and access is restricted.\n\n4. Review compliance and internal policies that ensures data integrity for model implementation and data use to assess if the organization is following data governance.",
+    "cloud_service_provider": "1. Assess the CSP's processes for ensuring integrity and validation of the models' documentation. \n\n2. Examine validation mechanisms in place and whether they align with the security protocols implemented by the organization. \n\n3. Ensure all documentation is consistently updated to address any data changes."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-05"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--7edb3252-5509-46a1-be97-e207d6d7f28e",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Model Artifact Scanning",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-02",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement, and evaluate policies, procedures, and technical measures for the scanning of model artifacts for vulnerabilities and attacks, at each step of the service lifecycle and at each hand over point. Regularly review and update policies, procedures and technical measures to address model artifact scanning.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Design, Training, Supply Chain",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance",
+    "service_retirement": "Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (Applicable to MP, AP)]\n1. Determine which scanners will be used: Periodically conduct research for which attacks have been proven detectable in model files. Ensure that the scanners used are up to date on these attacks and tested for accuracy.\n\n2. Periodic checks: According to risk, deployed models in production should be scanned periodically, especially if running inference on user data.\n\n3. Documentation: Keep logs of model scan results including scan configuration, model identifier, timestamp, stage of service lifecycle, and results. Collect overall metrics from these logs such as issue detection rate and any errors encountered.\n\n4. Resolution Processes: Determine a response plan for any issues found. For critical issues, this should be immediate model quarantine, stopping it in the development cycle or removing it from production, and launching an investigation. For lower severity issues, this may involve limiting the model deployment scope until the issues are investigated. Applications relying on compromised models can be rolled back to a previous model version determined to have a clean scan.",
+    "model_provider": "1. Determine scanner integration points: After training/fine-tuning, models should be scanned after the training process to make sure nothing in the training data or environment introduced attacks. This also provides a record of a clean state before storage in a model registry.\n\n[Shared Responsibilities (Applicable to MP, AP)]\n1. Determine which scanners will be used: Periodically conduct research for which attacks have been proven detectable in model files. Ensure that the scanners used are up to date on these attacks and tested for accuracy.\n\n2. Periodic checks: According to risk, deployed models in production should be scanned periodically, especially if running inference on user data.\n\n3. Documentation: Keep logs of model scan results including scan configuration, model identifier, timestamp, stage of service lifecycle, and results. Collect overall metrics from these logs such as issue detection rate and any errors encountered.\n\n4. Resolution Processes: Determine a response plan for any issues found. For critical issues, this should be immediate model quarantine, stopping it in the development cycle or removing it from production, and launching an investigation. For lower severity issues, this may involve limiting the model deployment scope until the issues are investigated. Applications relying on compromised models can be rolled back to a previous model version determined to have a clean scan.",
+    "orchestrated_service_provider": "Not Applicable",
+    "application_provider": "[Application Provider (AP)]\n1. Determine scanner integration points:\n   a. Acquisition of any pre-trained models: If foundation models are coming into the organization from model hubs or other third party sources, they should be scanned before use.\n    b. Before deployment: Upon loading from a model registry before deployment, models should be scanned before use in production environments to ensure no attacks were introduced if the registry could have been compromised.\n    c. Exchange of models between organizations/departments: If models change hands between different organizations or groups within an organization they should be scanned to exclude introduction of attacks from the source or during the transfer process.\n\n[Shared Responsibilities (Applicable to MP, AP)]\n1. Determine which scanners will be used: Periodically conduct research for which attacks have been proven detectable in model files. Ensure that the scanners used are up to date on these attacks and tested for accuracy.\n\n2. Periodic checks: According to risk, deployed models in production should be scanned periodically, especially if running inference on user data.\n\n3. Documentation: Keep logs of model scan results including scan configuration, model identifier, timestamp, stage of service lifecycle, and results. Collect overall metrics from these logs such as issue detection rate and any errors encountered.\n\n4. Resolution Processes: Determine a response plan for any issues found. For critical issues, this should be immediate model quarantine, stopping it in the development cycle or removing it from production, and launching an investigation. For lower severity issues, this may involve limiting the model deployment scope until the issues are investigated. Applications relying on compromised models can be rolled back to a previous model version determined to have a clean scan.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "1. Ensure the availability of secure and isolated execution environments specifically designed for running model artifact scans, minimizing the risk of data leakage or unauthorized access during the scanning process.\n\n2. Offer highly scalable and reliable compute resources capable of handling the intensive workloads associated with comprehensive model artifact scanning, ensuring performance and efficiency even under high-demand conditions.\n\n3. Provide robust and secure storage solutions for both storing model artifacts and retaining scan results, ensuring data integrity, access control, and compliance with security and privacy requirements."
+  },
+  "auditing_guidelines": {
+    "application_provider": "Scenario 1: Consumption only, not model fine-tuning: Perform the following at least yearly or if new model is used.\n\n1. Examine AP processes and procedures for verifying pre-trained model integrity and security upon initial integration and updates.\n\n2. Confirm a trusted source for the model is used.\n\n3. Validate digital signature or checksum verification (if provided).\n\n4. Check for any AP-specific security scanning of the model before deployment.\n\n5. Assess alignment with industry best practices.\n\n6. Audit implementation through logs, configurations, and evidence of performed checks.\n\n7. Examine documentation for regular policy reviews and updates.\n\nScenario 2: Fine-Tuning or Modifying the Model:\n\n1. Examine documented processes and procedures for periodic model artifact scanning, covering all stages where the AP handles/modifies the model (data preparation, fine-tuning, integration).\n\n2. Verify documented processes cover all stages.\n\n3. Assess if the scanning frequency aligns with risk appetite and best practices.\n\n4. Audit implementation of scanning processes.\n\n5. Confirm the use of appropriate scanning tools.\n\n6. Inspect scan configurations.\n\n7. Examine scan reports.\n\n8. Verify timely remediation of identified vulnerabilities.\n\n9. Confirm a documented process for secure model hand-over.\n\n10. Check for evidence of regular process, procedure, and tool reviews/updates.\n\nScenario 3: Full Training (Rare):\n\nFollow the Model Provider guidelines.",
+    "orchestrated_service_provider": "1. Examine documented processes/procedures for periodic model artifact scanning, covering lifecycle stages where the OSP handles the model (e.g., deployment, orchestration, storage).\n\n2. Verify documented process coverage.\n\n3. Assess if scanning frequency aligns with risk appetite and best practices.\n\n4. Confirm procedure and process approval\n\n5. Audit implementation.\n\n6. Verify appropriate scanning tool usage.\n\n7. Inspect scan configurations.\n\n8. Examine scan reports.\n\n9. Confirm timely remediation or hand-off of vulnerabilities to the responsible party (MP or AP).\n\n10. Assess communication/coordination effectiveness between OSP, MP, and AP.\n\n11. Verify a documented process for secure model hand-over.\n\n12. Check for evidence of regular process, procedure, and tool reviews/updates.\n\n13. If the OSP is not involved in handling model artifacts, document this as not applicable.",
+    "model_provider": "1. Examine documented processes/procedures for periodic scanning of all model artifacts, ensuring coverage across the entire model lifecycle.\n\n2. Assess if scanning frequency aligns with risk appetite/best practices.\n\n3. Verify appropriate scanning tool usage.\n\n4. Inspect configurations and reports.\n\n5. Confirm vulnerability remediation.\n\n6. Check for CI/CD pipeline scanning integration.\n\n7. Verify a documented process for secure model hand-over.\n\n8. Examine evidence of regular process, procedure, and tool reviews/updates.\n\n9. Confirm communication of vulnerability information and remediation steps to OSP and AP (as applicable).",
+    "ai_customer": "1. Examine documented AIC processes/procedures for ensuring providers (AP, OSP, MP) have adequate model artifact scanning.\n\n2. Audit due diligence performance.\n\n3. Review contracts/SLAs.\n\n4. Assess provider security certifications/audit reports (specifically for model artifact scanning evidence).\n\n5. Consider questionnaires/assessments if needed.\n\n6. Audit for documentation of a plan by the AIC for the periodic review of the provider.",
+    "cloud_service_provider": "1. Examine security measures in place for storing model artifacts, including access controls and encryption. \n\n2. Verify logging and monitoring of access to model artifacts. \n\n3. Evaluate measures to prevent unauthorized modification or deletion of model artifacts. \n\n4. Assess compliance with relevant data security standards and regulations. \n\n5. Check procedures for secure transfer of model artifacts. \n\n6. Verify backup and recovery procedures for model artifacts."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-02"
+    }
+  ]
+}

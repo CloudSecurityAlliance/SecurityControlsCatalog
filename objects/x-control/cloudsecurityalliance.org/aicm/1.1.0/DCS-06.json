@@ -1,0 +1,75 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--1231718c-c07c-4163-9693-4c510d02fb46",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Assets Classification",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-06",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Classify and document the physical, and logical assets (e.g., applications) based on the organizational business risk. Review and update the assets’ classification at least annually, or upon significant changes.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data curation, Resource provisioning",
+    "delivery": "Operations"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Providers should classify the different types of assets that perform tasks such as data processing , inference based on the risk of data that might affect the organization, if exposed. \n\n2. Core principles for Asset classification which applies to all AI ecosystem participants (MP, OSP, AP, AIC, CSP) should implement consistent asset classification. \n\n3. Core areas where each needs to be expanded are: Comprehensive Inventory Management, Risk-Based Classification, Access Control Framework, Monitoring & Incident Response, Documentation Requirements.",
+    "model_provider": "Role Specific\n1. Providers should classify the different types of assets that perform tasks such as data processing , inference based on the risk of data that might affect the organization if exposed \n\n2, Document each model's purpose, data requirements, and performance characteristics. \n\n3. Create a model registry with version control, documenting model lineage and training datasets.\n\n4. Classify models by sensitivity and business impact and appropriate access controls are applied based on classification\n\n5. Providers should ensure that they have  document, approve, communicate, apply, evaluate and maintain policies and procedures for secure transportation of media that processes data for models or inference tasks. \n\n6. Implement Physical protection standards for transfer of media. \n\n7. Design/Implement procedural safeguards/steps in place to authorize and verify such transfers, with separation of duties of personnel involved.\n\n[All Actors]\n1. Providers should classify the different types of assets that perform tasks such as data processing , inference based on the risk of data that might affect the organization, if exposed. \n\n2. Core principles for Asset classification which applies to all AI ecosystem participants (MP, OSP, AP, AIC, CSP) should implement consistent asset classification. \n\n3. Core areas where each needs to be expanded are: Comprehensive Inventory Management, Risk-Based Classification, Access Control Framework, Monitoring & Incident Response, Documentation Requirements.",
+    "orchestrated_service_provider": "Role Specific\n1. Providers should classify the different types of assets that perform tasks such as data processing, inference based on the risk of data that might affect the organization if exposed. \n\n2. Document the connections between various AI services and the data paths across orchestration platform. Create visual diagrams of service workflows and how 3rd party AI services are integrated.\n\n[All Actors]\n1. Providers should classify the different types of assets that perform tasks such as data processing , inference based on the risk of data that might affect the organization, if exposed. \n\n2. Core principles for Asset classification which applies to all AI ecosystem participants (MP, OSP, AP, AIC, CSP) should implement consistent asset classification. \n\n3. Core areas where each needs to be expanded are: Comprehensive Inventory Management, Risk-Based Classification, Access Control Framework, Monitoring & Incident Response, Documentation Requirements.",
+    "application_provider": "Role Specific\n1. Providers should classify the different types of assets that perform tasks such as data processing , inference based on the risk of data that might affect the organization if exposed \n\n2. Documenting the application architecture that incorporates AI capabilities. \n\n3. Classify each component based on its interaction with sensitive data and AI models.\n\n[All Actors]\n1. Providers should classify the different types of assets that perform tasks such as data processing , inference based on the risk of data that might affect the organization, if exposed. \n\n2. Core principles for Asset classification which applies to all AI ecosystem participants (MP, OSP, AP, AIC, CSP) should implement consistent asset classification. \n\n3. Core areas where each needs to be expanded are: Comprehensive Inventory Management, Risk-Based Classification, Access Control Framework, Monitoring & Incident Response, Documentation Requirements.",
+    "ai_customer": "Role Specific\nControl Ownership Rationale.\nThe control ownership rationale provided for the CSP applies.\n \nImplementation Guidelines.\nThe AIC should ensure that its data is properly protected and that the CSP implements appropriate classification and security controls on its physical and logical assets based on the sensitivity of such data.\n \nThe following implementation best practices apply for the AIC :\na. Data Classification Policy: The AIC should develop a comprehensive data classification policy (refer to DSP-01 and DSP-04) that defines the different data sensitivity levels and the criteria for classifying data into those levels. The policy should be communicated to the CSP to guide their asset classification process.\nb. Data Usage Patterns: Data usage patterns, such as data access frequencies, data flows, and data processing activities could be shared with the CSP. This information can help the CSP understand the context in which your data is used and make informed classification decisions over the physical and logical assets.\n c. Regulatory Compliance Requirements: The CSP should be informed about applicable legal and regulatory compliance requirements that apply to CSC data, such as industry standards or government regulations. This will ensure that these requirements are taken into account by the CSP when classifying assets and implementing security controls.\nd. Change Management and Communication: Open communication channels should be maintained with the CSP regarding any changes to physical and logical assets handling AIC data, or any changes to the AIC’s data classification policy or usage patterns. This communication will enable the CSP to keep asset classifications and security controls aligned with the AIC's evolving data security and protection requirements.Prioritize documenting usage patterns, data sharing agreements, and security requirements for AI vendors.\ne. Ensure that contractual agreements with CSPs cover data handling and physical access restrictions\" or  \"periodically review third-party audit reports.\n\n[All Actors]\n1. Providers should classify the different types of assets that perform tasks such as data processing , inference based on the risk of data that might affect the organization, if exposed. \n\n2. Core principles for Asset classification which applies to all AI ecosystem participants (MP, OSP, AP, AIC, CSP) should implement consistent asset classification. \n\n3. Core areas where each needs to be expanded are: Comprehensive Inventory Management, Risk-Based Classification, Access Control Framework, Monitoring & Incident Response, Documentation Requirements.",
+    "cloud_service_provider": "Role Specific\nCSPs should adhere to a comprehensive approach that aligns with the data sensitivity levels defined by the CSC. This involves understanding the CSC’s data classification policy, identifying and assessing the sensitivity of data stored on each asset, implementing appropriate security controls, and continuously monitoring and auditing asset security. \n \nAdditionally, CSPs should document asset classification and security controls, train employees, and leverage automated tools to streamline the process and enhance data protection measures. By adopting these best practices, CSPs can effectively safeguard sensitive data and fulfill their contractual responsibilities as trusted partners in the cloud ecosystem.\n \nImplementation best practices for the CSP to classify and document the physical, and logical assets include (but not limited to):\na. Asset Inventory and Tracking: The CSP should leverage an inventory of all physical and logical assets that are used to store, \nprocess, or transmit CSC data (refer to DCS-06), including physical equipment, such as servers and storage devices, as well as \nsoftware components, such as network assets and configurations, virtual machines, operating systems and applications\nb. Asset Classification: The CSP should assess the sensitivity of data stored on each asset based on the CSC’s data classification \npolicy. This assessment should take into account the type of CSC data, the potential harm that could be caused if the data were \nbreached, and the legal and regulatory requirements for protecting the data\nc. Automated Tools for Assets Classification: The CSP can use automated tools to help with asset classification and security. \nThese tools can scan assets for vulnerabilities and identify assets that are not in compliance with the asset classification policies\nd. Assets Classification Documentation: The CSP should document the classification of each asset and the security controls that \nare applied to the asset. This documentation should be made available to the CSC upon request\ne. Assets Tagging: The CSPs should assign unique tags or labels to physical and logical assets to facilitate identification, tracking, \nand management (refer to DCS-06).\nf. Apply Security Controls: Appropriate classification levels should be applied to physical and logical assets and appropriate security \nprotection and controls in accordance to the sensitivity of the data stored on, processed or transmitted by the cloud asset\ng. Continuous Monitoring and Evaluation: The CSP should monitor and audit assets security on a regular basis or upon changes to \nassets to ensure that the security controls applied are effective and appropriate based on the sensitivity levels of CSC data\nh. Prioritize documenting usage patterns, data sharing agreements, and security requirements for AI vendors.\n\n[All Actors]\n1. Providers should classify the different types of assets that perform tasks such as data processing , inference based on the risk of data that might affect the organization, if exposed. \n\n2. Core principles for Asset classification which applies to all AI ecosystem participants (MP, OSP, AP, AIC, CSP) should implement consistent asset classification. \n\n3. Core areas where each needs to be expanded are: Comprehensive Inventory Management, Risk-Based Classification, Access Control Framework, Monitoring & Incident Response, Documentation Requirements."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the AP classifies its logical assets, including application code repositories, databases, APIs, and containers, based on data sensitivity and business criticality.\n\n2. Confirm that access controls and other security measures are applied according to this classification.",
+    "orchestrated_service_provider": "1. Verify the OSP classifies its logical assets, such as orchestration templates, API gateways, and service configurations, based on their role in the service chain and the sensitivity of the data they handle.\n\n2. Check that tenant environments are classified as high-risk assets.",
+    "model_provider": "1. Verify the MP classifies its assets, including training datasets, model weights, and research documentation, based on confidentiality and IP value.\n\n2. Confirm that the classification scheme informs data handling, storage, and access control policies.",
+    "ai_customer": "1. Verify the AIC classifies the data it inputs into AI services according to its internal data classification policy.\n\n2. Confirm that the AI service itself is classified as a critical business asset, and that appropriate risk management is applied.",
+    "cloud_service_provider": "1. Examine the policy relating to defining the organization's business risk.\n\n2. Confirm that the physical and logical assets are being classified in accordance with defined policy and procedures.\n\n3. Review the asset Inventory to determine if assets are cataloged and tagged according to the organization's business risk classification criteria.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-06"
+    }
+  ]
+}

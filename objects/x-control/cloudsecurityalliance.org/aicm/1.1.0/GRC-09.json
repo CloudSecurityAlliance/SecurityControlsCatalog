@@ -1,0 +1,72 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--9828205a-cbd6-41f2-b1bf-c2b030de7417",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Acceptable Use of the AI Service",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "GRC-09",
+  "domain": "Governance, Risk and Compliance",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, document and enforce policies and procedures on the acceptable use of AI services offered by the organization. Ensure effectiveness by continuous risk assessments, reviews and human oversight.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Customer (AIC)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Customer (AIC)"
+  },
+  "stack_components": [
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Resource provisioning, Data collection",
+    "development": "Design, Guardrails",
+    "evaluation_validation": "Re-evaluation, Validation/Red Teaming",
+    "deployment": "Orchestration, AI Services supply chain",
+    "delivery": "Continuous improvement, Continuous monitoring, Operations, Maintenance",
+    "service_retirement": "Data deletion, Archiving"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Define and enforce a formal Acceptable Use Policy (AUP) for AI systems and services.\n\n2. Specify prohibited use cases (e.g., surveillance, hate speech, deepfakes) and high-risk applications requiring pre-approval.\n\n3. Clarify acceptable interaction boundaries for users, developers, and third-party integrations.\n\n4. Ensure the AUP is accessible, legally reviewed, and referenced in user onboarding,  API usage, and contracts.\n\n5. Establish enforcement mechanisms for violations, including logging, suspension, and escalation protocols.",
+    "model_provider": "1. Embed AUP enforcement logic in model inputs, outputs, or usage gating systems.\n\n2. Log and review interactions that may breach policy thresholds or ethical guidelines.\n\n3. Align model deployment practices with documented AUP enforcement criteria.\n\n4. Provide metadata to downstream systems to support content filtering or usage flagging.\n\n5. Document model limitations and ensure AUP alignment in model cards or datasheets.\n\n[All Actors]\n1. Define and enforce a formal Acceptable Use Policy (AUP) for AI systems and services.\n\n2. Specify prohibited use cases (e.g., surveillance, hate speech, deepfakes) and high-risk applications requiring pre-approval.\n\n3. Clarify acceptable interaction boundaries for users, developers, and third-party integrations.\n\n4. Ensure the AUP is accessible, legally reviewed, and referenced in user onboarding,  API usage, and contracts.\n\n5. Establish enforcement mechanisms for violations, including logging, suspension, and escalation protocols.",
+    "orchestrated_service_provider": "1. Enforce AUP-relevant constraints in deployment configurations (e.g., feature flags, service exposure).\n\n2. Integrate AUP policies into CI/CD pipelines for automated validation of configuration compliance.\n\n3. Monitor system telemetry for behavior inconsistent with intended use or flagged by abuse detection.\n\n4. Support automated service shutdown or isolation workflows when AUP violations are detected.\n\n5. Ensure version-controlled policy mapping for AI-related configurations.\n\n[All Actors]\n1. Define and enforce a formal Acceptable Use Policy (AUP) for AI systems and services.\n\n2. Specify prohibited use cases (e.g., surveillance, hate speech, deepfakes) and high-risk applications requiring pre-approval.\n\n3. Clarify acceptable interaction boundaries for users, developers, and third-party integrations.\n\n4. Ensure the AUP is accessible, legally reviewed, and referenced in user onboarding,  API usage, and contracts.\n\n5. Establish enforcement mechanisms for violations, including logging, suspension, and escalation protocols.",
+    "application_provider": "1. Present users with clear notices and terms aligned with the AUP before enabling AI features.\n\n2. Restrict application behavior based on known AUP edge cases (e.g., impersonation, misinformation).\n\n3. Provide users with feedback channels to report inappropriate or unexpected AI behavior.\n\n4. Use runtime controls to prevent high-risk or ambiguous interactions from reaching AI endpoints.\n\n5. Log AUP-relevant activity for post-deployment review and compliance tracking.\n\n[All Actors]\n1. Define and enforce a formal Acceptable Use Policy (AUP) for AI systems and services.\n\n2. Specify prohibited use cases (e.g., surveillance, hate speech, deepfakes) and high-risk applications requiring pre-approval.\n\n3. Clarify acceptable interaction boundaries for users, developers, and third-party integrations.\n\n4. Ensure the AUP is accessible, legally reviewed, and referenced in user onboarding,  API usage, and contracts.\n\n5. Establish enforcement mechanisms for violations, including logging, suspension, and escalation protocols.",
+    "ai_customer": "1. Incorporate provider AUP terms into internal usage policy training and governance workflows.\n\n2. Monitor usage patterns to detect any violations from internal teams or integrated third-party tools.\n\n3. Flag ambiguous or high-risk use cases to providers for joint review before deployment.\n\n4. Include AUP compliance clauses in vendor contracts and incident handling plans.\n\n5. Develop internal processes for responding to provider-flagged AUP breaches.\n\n[All Actors]\n1. Define and enforce a formal Acceptable Use Policy (AUP) for AI systems and services.\n\n2. Specify prohibited use cases (e.g., surveillance, hate speech, deepfakes) and high-risk applications requiring pre-approval.\n\n3. Clarify acceptable interaction boundaries for users, developers, and third-party integrations.\n\n4. Ensure the AUP is accessible, legally reviewed, and referenced in user onboarding,  API usage, and contracts.\n\n5. Establish enforcement mechanisms for violations, including logging, suspension, and escalation protocols.",
+    "cloud_service_provider": "1. Provide policy-as-code support (e.g., with OPA, GCP Org Policy, AWS SCPs) for enforcing AI governance controls.\n\n2. Enable customers to define and enforce AI-specific policies (e.g., model usage, data access, export restrictions).\n\n3. Offer centralized policy dashboards and APIs for managing and auditing AI policy enforcement.\n\n4. Implement CSP-level controls to prevent misuse or misconfiguration of hosted AI services.\n\n5. Support alerts and compliance triggers when policies are violated or drift is detected.\n\n[All Actors]\n1. Define and enforce a formal Acceptable Use Policy (AUP) for AI systems and services.\n\n2. Specify prohibited use cases (e.g., surveillance, hate speech, deepfakes) and high-risk applications requiring pre-approval.\n\n3. Clarify acceptable interaction boundaries for users, developers, and third-party integrations.\n\n4. Ensure the AUP is accessible, legally reviewed, and referenced in user onboarding,  API usage, and contracts.\n\n5. Establish enforcement mechanisms for violations, including logging, suspension, and escalation protocols."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine the AI Acceptable Use Policy for adequacy, currency, and communication to relevant interested parties and users.\n\n2. Verify that the AI Acceptable Use Policy identifies the applicable AI applications and users subject to these guidelines.\n\n3. Verify that the AI Acceptable Use Policy clearly defines the intended uses of the AI application, specifying what constitutes acceptable and prohibited use cases as applicable\n\n4. Verify, through interviews or otherwise, that the policy is communicated to users and/or internal personnel and acknowledged as applicable. \n\n5. Examine policy for evidence of review by policy owner or committee at least annually.",
+    "orchestrated_service_provider": "1. Examine the AI Acceptable Use Policy for adequacy, currency, and communication to relevant interested parties and users.\n\n2. Verify that the AI Acceptable Use Policy identifies the applicable orchestration services and users subject to these guidelines.\n\n3. Verify that the AI Acceptable Use Policy clearly defines the acceptable and prohibited use of the orchestration services, with respect to AI systems and use cases (i.e. prohibiting unacceptable AI use cases within the service) \n\n4. Verify, through interviews or otherwise, that the policy is communicated to Orchestration service users, and acknowledged as applicable. \n\n5. Examine policy for evidence of review by policy owner or committee at least annually.",
+    "model_provider": "1. Examine the AI Acceptable Use Policy for adequacy, currency, and communication to relevant interested parties and users.\n\n2. Verify that the AI Acceptable Use Policy identifies the applicable AI models and use cases subject to these guidelines.\n\n3. Verify that the AI Acceptable Use Policy clearly defines the intended uses of the model, specifying what constitutes acceptable and prohibited use cases as applicable\n\n4. Verify, through interviews or otherwise, that the policy is communicated to interested parties, and acknowledged as applicable. \nExamine policy for evidence of review by policy owner or committee at least annually.",
+    "ai_customer": "1. Examine the AI Acceptable Use Policy for adequacy, currency, and communication to relevant interested parties, including cloud service customers.\n\n2. Verify that the AI Acceptable Use Policy identifies the applicable cloud services subject to these guidelines.\n\n3. Verify that the AI Acceptable Use Policy clearly defines the acceptable and prohibited use of the cloud services, with respect to AI systems and AI use cases (i.e. prohibiting unacceptable AI use cases within the service)  \n\n4. Verify, through interviews or otherwise, that the policy is communicated to interested parties, and acknowledged as applicable. \n\n5. Examine policy for evidence of review by policy owner or committee at least annually.",
+    "cloud_service_provider": "1. Examine the AI Acceptable Use Policy for adequacy, currency, and communication to relevant interested parties and users.\n\n2. Verify that the AI Acceptable Use Policy identifies the applicable CSP-operated AI infrastructure and services users subject to these guidelines.\n\n3. Verify that the AI Acceptable Use Policy clearly defines the acceptable and prohibited use of the CSP services, with respect to AI-enabling services, specifying what constitutes acceptable and prohibited use cases as applicable.\n\n4. Verify, through interviews or otherwise, that the policy is communicated to CSP users, and acknowledged as applicable. \n\n5. Examine policy for evidence of review by policy owner or committee at least annually."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#GRC-09"
+    }
+  ]
+}

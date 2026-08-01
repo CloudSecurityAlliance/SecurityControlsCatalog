@@ -1,0 +1,69 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--b6483baa-9175-449e-889e-2e7c5223ee94",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Ethics Committee",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "GRC-12",
+  "domain": "Governance, Risk and Compliance",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish an ethics committee to review AI applications, ensuring alignment with ethical standards and organizational values.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Customer (AIC)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Customer (AIC)"
+  },
+  "stack_components": [
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Guardrails",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming",
+    "deployment": "Orchestration, AI Services supply chain",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Form a cross-functional AI Ethics Committee responsible for oversight of high-risk, controversial, or novel AI use cases.\n\n2. Define the committee’s mandate, including authority to approve, reject, or demand modifications of AI systems.\n\n3. Include representation from technical, legal, business, compliance, and diversity/equity/inclusion functions.\n\n4. Establish a formal intake and escalation process for ethics-related AI concerns.\n\n5. Document decisions, rationales, and meeting minutes for accountability and transparency.",
+    "model_provider": "1. Bring proposed model use cases, data sources, and deployment plans to the ethics committee for review.\n\n2. Document risks identified and mitigations required by the committee.\n\n3. Maintain a changelog of decisions related to fairness, explainability, and social impact.\n\n4. Ensure ML practitioners are trained on the ethics review process.\n\n5. Escalate novel modeling techniques or sensitive data usage for prior approval.\n\n[All Actors]\n1. Form a cross-functional AI Ethics Committee responsible for oversight of high-risk, controversial, or novel AI use cases.\n\n2. Define the committee’s mandate, including authority to approve, reject, or demand modifications of AI systems.\n\n3. Include representation from technical, legal, business, compliance, and diversity/equity/inclusion functions.\n\n4. Establish a formal intake and escalation process for ethics-related AI concerns.\n\n5. Document decisions, rationales, and meeting minutes for accountability and transparency.",
+    "orchestrated_service_provider": "1. Present pipeline-level risks (e.g., data leakage, auto-scaling drift) to the committee for review when relevant.\n\n2. Support ethics committee with reproducibility evidence and audit logs.\n\n3. Implement technical safeguards required by the ethics committee (e.g., environment isolation).\n\n4. Log deployment events linked to ethics-reviewed models or policies.\n\n5. Include the committee in rollback decisions for ethically non-compliant deployments.\n\n[All Actors]\n1. Form a cross-functional AI Ethics Committee responsible for oversight of high-risk, controversial, or novel AI use cases.\n\n2. Define the committee’s mandate, including authority to approve, reject, or demand modifications of AI systems.\n\n3. Include representation from technical, legal, business, compliance, and diversity/equity/inclusion functions.\n\n4. Establish a formal intake and escalation process for ethics-related AI concerns.\n\n5. Document decisions, rationales, and meeting minutes for accountability and transparency.",
+    "application_provider": "1. Submit product features using AI that affect autonomy, decision rights, or emotional manipulation to the ethics committee.\n\n2. Demonstrate that alternative designs were considered and trade-offs justified.\n\n3. Present plans for user consent, override, or appeal mechanisms.\n\n4. Document A/B test outcomes related to ethical risks.\n\n5. Work with ethics reviewers to adjust deployment thresholds or feature exposure levels.\n\n[All Actors]\n1. Form a cross-functional AI Ethics Committee responsible for oversight of high-risk, controversial, or novel AI use cases.\n\n2. Define the committee’s mandate, including authority to approve, reject, or demand modifications of AI systems.\n\n3. Include representation from technical, legal, business, compliance, and diversity/equity/inclusion functions.\n\n4. Establish a formal intake and escalation process for ethics-related AI concerns.\n\n5. Document decisions, rationales, and meeting minutes for accountability and transparency.",
+    "ai_customer": "1. Participate in vendor ethics review processes when using high-risk AI externally or with end users.\n\n2. Develop an internal ethics committee for AI usage in regulated or sensitive domains.\n\n3. Include committee recommendations in executive approvals for major rollouts.\n\n4. Ensure whistleblower protections and confidential reporting channels.\n\n5. Use committee guidance to build ethical escalation trees in governance policies.\n\n[All Actors]\n1. Form a cross-functional AI Ethics Committee responsible for oversight of high-risk, controversial, or novel AI use cases.\n\n2. Define the committee’s mandate, including authority to approve, reject, or demand modifications of AI systems.\n\n3. Include representation from technical, legal, business, compliance, and diversity/equity/inclusion functions.\n\n4. Establish a formal intake and escalation process for ethics-related AI concerns.\n\n5. Document decisions, rationales, and meeting minutes for accountability and transparency.",
+    "cloud_service_provider": "Offer downloadable compliance artifacts, audit reports, and certification packages via customer portals.\n\nProvide APIs or dashboards for real-time visibility into control status and compliance posture.\n\nSupport integration with third-party GRC tools and evidence management systems.\n\nNotify customers promptly of any compliance gaps, findings, or changes to controls.\n\nMaintain documentation for CSP-side implementations of AICM and related governance frameworks.\n\n[All Actors]\n1. Form a cross-functional AI Ethics Committee responsible for oversight of high-risk, controversial, or novel AI use cases.\n\n2. Define the committee’s mandate, including authority to approve, reject, or demand modifications of AI systems.\n\n3. Include representation from technical, legal, business, compliance, and diversity/equity/inclusion functions.\n\n4. Establish a formal intake and escalation process for ethics-related AI concerns.\n\n5. Document decisions, rationales, and meeting minutes for accountability and transparency."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that AP has an ethics committee consists of a diverse set of stakeholders needs to be involved AI application lifecycle.\n\n2. Verify the AP roles and responsibilities are clearly defined and documented.\n\n3. Verify that AP has clear understanding of their role and have knowledge to contribute/guide towards Ethical AI Applications.\n\n4. Verify that there established standards for decision making and approving AI applications.",
+    "orchestrated_service_provider": "1. Verify that OSP has an ethics committee consists of a diverse set of stakeholders.\n\n2. Verify the committee roles and responsibilities are clearly defined and documented.\n\n3. Verify that there are clear understanding of their role and have knowledge to contribute/guide.\n \n4. Verify that there is established standards for decision making and approvals.\n\n5. Verify that no individual committee member has a conflict of interest with the AI applications under review.",
+    "model_provider": "1. Verify that Model provider has a ethics committee consists of a diverse set of stakeholders needs to be involved Model development lifecycle.\n\n2. Verify the committee roles and responsibilities are clearly defined and documented.\n\n3. Verify that there are clear understanding of their role and have knowledge to contribute/guide towards Ethical model development.\n\n4. Verify that there established standards for decision making and approving Models for use.\n\n5. Verify that no individual committee member has a conflict of interest with the AI applications under review",
+    "ai_customer": "1. Verify that customer has a ethics committee consists of a diverse set of stakeholders needs to be involved AI application lifecycle.\n\n2. Verify the committee roles and responsibilities are clearly defined and documented.\n\n3. Verify that customer has clear understanding of their role and have knowledge to contribute/guide towards Ethical AI Applications.\n\n4. Verify that there established standards for decision making and approving AI applications",
+    "cloud_service_provider": "1. Verify that CSP has a ethics committee consists of a diverse set of stakeholders needs to be involved AI application lifecycle.\n\n2. Verify the CSP roles and responsibilities are clearly defined and documented.\n\n3. Verify that CSP has clear understanding of their role and have knowledge to contribute/guide towards Ethical AI Applications.\n\n4. Verify that there established standards for decision making and approving AI applications."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#GRC-12"
+    }
+  ]
+}

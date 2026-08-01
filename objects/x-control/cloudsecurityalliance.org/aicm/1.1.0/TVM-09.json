@@ -1,0 +1,80 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--752c0fc3-788e-42c9-a458-c4234430521c",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Vulnerability Prioritization",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "TVM-09",
+  "domain": "Threat & Vulnerability Management",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Use a risk-based method for effective prioritization of vulnerability remediation using an industry recognized framework.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Resource provisioning",
+    "development": "Design, Training",
+    "evaluation_validation": "Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n\n1. Adopt an industry-recognized framework (e.g latest version CVSS) to prioritize vulnerabilities consistently across all partners. \n\n2. Ensure consistent scoring across systems, and leverage threat intelligence to adjust prioritization based on active and emerging threats that considers severity, exploitability, asset criticality, and business impact.",
+    "model_provider": "1. Prioritize vulnerabilities affecting models, ML frameworks, training pipelines, and dependencies based on severity, exploitability, and impact to model integrity, accuracy, and performance.\n\n[All Actors]\n1. Adopt an industry-recognized framework (e.g latest version CVSS) to prioritize vulnerabilities consistently across all partners. \n\n2. Ensure consistent scoring across systems, and leverage threat intelligence to adjust prioritization based on active and emerging threats that considers severity, exploitability, asset criticality, and business impact.",
+    "orchestrated_service_provider": "1.Prioritize vulnerabilities in orchestration platforms, containers, and infrastructure based on system criticality, exploitability, and potential impact to service availability and operations.\n\n[All Actors]\n1. Adopt an industry-recognized framework (e.g latest version CVSS) to prioritize vulnerabilities consistently across all partners. \n\n2. Ensure consistent scoring across systems, and leverage threat intelligence to adjust prioritization based on active and emerging threats that considers severity, exploitability, asset criticality, and business impact.",
+    "application_provider": "1.Prioritize vulnerabilities in applications, APIs, integrations, and AI-enabled components based on exploitability, user impact, and business risk.\n\n[All Actors]\n1. Adopt an industry-recognized framework (e.g latest version CVSS) to prioritize vulnerabilities consistently across all partners. \n\n2. Ensure consistent scoring across systems, and leverage threat intelligence to adjust prioritization based on active and emerging threats that considers severity, exploitability, asset criticality, and business impact.",
+    "ai_customer": "1. Establish and document a risk-based vulnerability prioritization process that incorporates business impact, data sensitivity (e.g., CUI, PII), and AI system criticality.\n\n2. Incorporate AI-specific risk factors into vulnerability prioritization decisions by evaluating potential impacts to model integrity (such as model poisoning or tampering, exposure of sensitive training or inference data, risks associated with adversarial inputs influencing model outputs, and dependencies on third-party models, APIs, or datasets, etc.)\n\n3. Define and enforce remediation timelines (SLAs) based on risk levels.\n\n[All Actors]\n1. Adopt an industry-recognized framework (e.g latest version CVSS) to prioritize vulnerabilities consistently across all partners. \n\n2. Ensure consistent scoring across systems, and leverage threat intelligence to adjust prioritization based on active and emerging threats that considers severity, exploitability, asset criticality, and business impact.",
+    "cloud_service_provider": "1. Prioritize vulnerabilities across infrastructure, platforms, and services using risk-based frameworks, considering multi-tenant impact, exposure, and service availability.\n\n[All Actors]\n1. Adopt an industry-recognized framework (e.g latest version CVSS) to prioritize vulnerabilities consistently across all partners. \n\n2. Ensure consistent scoring across systems, and leverage threat intelligence to adjust prioritization based on active and emerging threats that considers severity, exploitability, asset criticality, and business impact. \n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThe implementation responsibility for this control is shared between both parties CSP and CSC, and both are independently responsible for implementing a risk-based model for vulnerability prioritization according to their own business needs and compliance requirements, and irrespectively of the cloud service delivery models (IaaS/PaaS/SaaS). Each party, CSP and CSC is responsible for the remediation of vulnerabilities identified within the assets they own and securely manage.\n\nImplementation Guidelines.\nApplicable to all service models:\nVulnerability prioritization is a critical security control for CSPs to effectively manage and mitigate security risks in cloud environments. By prioritizing vulnerabilities based on their potential impact and likelihood of exploitation, CSPs can focus their resources on the most critical threats and reduce the overall attack surface of their cloud infrastructure.\n\nFor all identified vulnerabilities on the host infrastructure, network devices, virtualization technologies, operating systems, platform applications such as databases, and web applications, the CSP should use a risk-based model for effective prioritization of vulnerability remediation using an industry-recognized framework, such as but not limited to: CVSS, the OWASP risk rating methodology, EPSS, SSVC, etc.\n\nVulnerabilities should be prioritized in terms of their relative risk, importance, organizational impact, and urgency. When evaluating impact, the CSP should consider exposure levels to applicable threats from its specific usage and/or implementation. When evaluating importance, the CSP should consider the criticality and value of the affected assets. Finally, when assessing urgency, the CSP should consider the vulnerability scoring ratings and timeframes, the relevance to current and ongoing threats, and the effort required for remediation.\n\nImplementation best practices for vulnerabilities prioritization include (but not be limited to):\na. Risk-based Vulnerabilities Prioritization: \ni. Vulnerabilities that pose the greatest risk to the cloud organization should be prioritized first, based on their severity, likelihood of exploitation, and potential impact\nii. A vulnerability prioritization matrix can be used to guide decision-making and ensure a consistent approach to vulnerability management\nb. Vulnerability Scoring System: An appropriate scoring system (e.g., CVSS, EPSS, SSVC, etc.) should be integrated into the vulnerabilities management process and used for assessing the severity of vulnerabilities based on their potential impact and exploitability. CSPs should use appropriate scoring to objectively prioritize vulnerabilities and make informed decisions about remediation efforts\nc. Threat Intelligence Feeds: Threat intelligence feeds provide real-time information about emerging threats, vulnerabilities, and exploits and should be integrated into the vulnerability management processes to dynamically prioritize vulnerabilities\nd. Asset Criticality: Vulnerabilities prioritization should consider the criticality of the assets affected (i.e., Assets with higher criticality, such as those that store sensitive data or support critical business functions, should be prioritized for remediation)\ne. Remediation Workflows: CSPs should establish clear remediation workflows to ensure that prioritized vulnerabilities are addressed promptly and effectively\nf. Prioritization Effectiveness: The effectiveness of vulnerability prioritization strategies should be continuously measured (e.g., by tracking remediation times), to help refine prioritization criteria and improve overall security effectiveness\ng. CSCs Collaboration: The CSP should collaborate with the CSCs to understand their specific security requirements and priorities in order to tailor its vulnerability prioritization strategies to better align with CSC needs and risk tolerance\nh.Continuous Monitoring and Evaluation: The CSP should continuously monitor and adopt evolving cloud security best practices, including those related to vulnerability prioritization."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that the Application Provider (AP) systematically adopts a method to support efforts in effectively and efficiently prioritizing remediations to vulnerabilities identified within the security perimeter.\n\n2. Examine the above-mentioned method to verify that it adopts of a risk-based approach.\n\n3. Examine the above-mentioned method to verify its compliance with industry recognized standards and frameworks.",
+    "orchestrated_service_provider": "1. Verify that the Orchestrated Services Provider (OSP) systematically adopts a method to support efforts in effectively and efficiently prioritizing remediations to vulnerabilities identified within the security perimeter.\n\n2. Examine the above-mentioned method to verify that it adopts of a risk-based approach.\n\n3. Examine the above-mentioned method to verify its compliance with industry recognized standards and frameworks.",
+    "model_provider": "1. Verify that the Model Provider (MP) systematically adopts a method to support efforts in effectively and efficiently prioritizing remediations to vulnerabilities identified within the security perimeter.\n\n2. Examine the above-mentioned method to verify that it adopts of a risk-based approach.\n\n3. Examine the above-mentioned method to verify its compliance with industry recognized standards and frameworks.",
+    "ai_customer": "1. Verify that the AI Consumer (AIC) systematically adopts a method to support efforts in effectively and efficiently prioritizing remediations to vulnerabilities identified within the security perimeter.\n\n2. Examine the above-mentioned method to verify that it adopts of a risk-based approach.\n\n3. Examine the above-mentioned method to verify its compliance with industry recognized standards and frameworks.",
+    "cloud_service_provider": "1. Verify that the Cloud Service Provider (CSP) systematically adopts a method to support efforts in effectively and efficiently prioritizing remediations to vulnerabilities identified within the security perimeter.\n\n2. Examine the above-mentioned method to verify that it adopts of a risk-based approach.\n\n3. Examine the above-mentioned method to verify its compliance with industry recognized standards and frameworks.\n\nFrom CCM v4.1:\n1. Examine policy and procedures related to prioritization of vulnerabilities detected.  \n2. Determine if an industry recognized or widely used framework is implemented.\n3. Examine how the output of risk assessment of the vulnerabilities is used to inform prioritization of remediation.\n4. Determine if the process is evaluated for effectiveness."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#TVM-09"
+    }
+  ]
+}
