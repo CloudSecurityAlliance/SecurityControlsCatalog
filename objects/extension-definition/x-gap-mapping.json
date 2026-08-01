@@ -1,0 +1,18 @@
+{
+  "type": "extension-definition",
+  "spec_version": "2.1",
+  "id": "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682",
+  "created": "2026-07-31T00:00:00.000Z",
+  "modified": "2026-07-31T00:00:00.000Z",
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "name": "CSA Security Controls Catalog: x-gap-mapping",
+  "description": "A CSA gap mapping: one source requirement assessed against a set of target requirements, carrying a single coverage verdict for the set. Modelled as an object rather than a relationship because the verdict is about the whole set — removing a target can change it — so the targets are constitutive of the claim.",
+  "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/x-gap-mapping.json",
+  "version": "1.0",
+  "extension_types": [
+    "new-sdo"
+  ]
+}

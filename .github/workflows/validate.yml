@@ -66,6 +66,11 @@ jobs:
           bad = []
           for path in sorted(glob.glob("objects/extension-definition/*.json")):
               obj = json.load(open(path))
+              if obj.get("revoked"):
+                  # A retired definition is deliberately absent from the schema
+                  # document; it is kept only as a record of what was withdrawn.
+                  print(f"{path}: retired, not required in the schema document")
+                  continue
               if obj["id"] not in doc:
                   bad.append(f"{path}: {obj['id']} not referenced in the schema document")
           ident = json.load(open("objects/identity/cloud-security-alliance.json"))

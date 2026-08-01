@@ -78,10 +78,25 @@ retract.
 object remains meaningful, it is a relationship. If removing it makes the object
 incoherent, it is a property.
 
-`x-control-assessment.assessed_control_ref` and `entity_ref` are the current
-instance of the exception: an assessment with no assessed control and no assessed
-entity is not an assessment. Converting them to SROs would be *more* invention,
-not less, and would permit assessment objects to exist in an incoherent state.
+`x-control-assessment.assessed_control_ref` and `entity_ref` are one instance: an
+assessment with no assessed control and no assessed entity is not an assessment.
+
+`x-gap-mapping.target_refs` is the other, and it shows the test applies to sets as well
+as single references. A gap verdict is assessed against all its targets together —
+remove one and `No Gap` may no longer hold — so the set is constitutive of the claim.
+That, plus the fact that a STIX `relationship` carries only one `target_ref`, is why a
+mapping is an object rather than an edge.
+
+**An assertion about many objects is an object, not many relationships.** STIX uses this
+shape throughout: `report`, `grouping`, `observed-data`, `note`, and `opinion` all carry
+`object_refs`. SROs are for genuinely binary claims. Splitting an n-ary claim into binary
+edges asserts the verdict once per target, which is not what was assessed, and forces
+every consumer to re-group them to recover the original meaning.
+
+Note this is not in tension with the rule above. The objection to embedding identifiers
+in a control was that the claim had nowhere to put its rationale, confidence, or
+authorship. An `x-gap-mapping` is a first-class object with its own identity and all of
+that metadata — the claim promoted further, not demoted.
 
 ## 2. Relationship types prefer the standard vocabulary
 

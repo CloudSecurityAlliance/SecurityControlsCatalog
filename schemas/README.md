@@ -16,7 +16,7 @@ Where the two disagree, that document is authoritative and this directory has a 
 | `x-control-implementation.json` | A technology-agnostic implementation approach |
 | `x-capability.json` | A specific product or service security feature |
 | `x-control-assessment.json` | An assessment outcome |
-| `csa-gap-mapping.json` | A CSA gap mapping — a `relationship` with CSA's coverage verdict |
+| `x-gap-mapping.json` | A CSA gap mapping — one source assessed against a set of targets |
 | `derived-from.json` | A standard `derived-from` relationship, as used for CAIQ question to control |
 | `superseded-by.json` | A newer object replacing an older one |
 
@@ -74,13 +74,11 @@ non-boolean maps stay objects, because flattening them would lose the pairing.
 `x-capability`, and an implementation approach carrying them has drifted into being
 a capability — the conflation the two types exist to prevent.
 
-**One schema covers a standard type.** `csa-gap-mapping.json` validates
-`relationship` objects whose `relationship_type` is `csa-gap-mapping`.
-`tools/validate.py` dispatches on `relationship_type` for relationships, so a plain
-`mitigates` edge is left to the OASIS validator while a CSA mapping is checked here.
-Its custom properties are declared by a `toplevel-property-extension`, since
-`relationship` is a standard STIX type and an undeclared property on it could collide
-with another producer's.
+**Two schemas cover a standard type.** `derived-from.json` and `superseded-by.json`
+validate `relationship` objects by their `relationship_type`; `tools/validate.py`
+dispatches on that property, so a relationship the catalog does not define is left to
+the OASIS validator. Neither adds custom properties, so neither needs an extension
+declaration.
 
 **Every object must carry TLP:WHITE.** `object_marking_refs` is required and must
 contain the specification-assigned TLP:WHITE identifier. Additional markings are

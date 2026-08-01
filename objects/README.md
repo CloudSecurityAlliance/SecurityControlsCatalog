@@ -50,11 +50,13 @@ definition through `extensions`.
 | `x-capability` | `extension-definition--43f8f73f-45e2-4d06-bdc0-46bdd5cb3e81` |
 | `x-control-assessment` | `extension-definition--c2b74dc8-5ea7-4d9c-ade0-85474e5f70b4` |
 
-One further definition adds properties to a **standard** type rather than declaring a new one:
+| `x-gap-mapping` | `extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682` |
 
-| Extension | Definition identifier |
-|---|---|
-| `csa-gap-mapping` (`toplevel-property-extension` on `relationship`) | `extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903` |
+One retired definition is kept rather than deleted, so the record of what was declared
+and withdrawn survives: `csa-gap-mapping` (`extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903`) declared gap-mapping properties on
+the standard `relationship` type. It is `revoked` and was never referenced by catalog
+content — a gap verdict is assessed against a set of targets, and a relationship carries
+only one `target_ref`, so mappings became the `x-gap-mapping` object type instead.
 
 ### `marking-definition/`
 

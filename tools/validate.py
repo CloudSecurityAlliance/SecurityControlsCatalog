@@ -92,7 +92,7 @@ def mapping_extension_id(schemas):
     Taken from the schema rather than hardcoded here, so the self-test cannot pass
     against an id the schema does not actually accept.
     """
-    required = schemas["csa-gap-mapping"]["properties"]["extensions"]["required"]
+    required = schemas["x-gap-mapping"]["properties"]["extensions"]["required"]
     return required[0]
 
 
@@ -125,21 +125,20 @@ def self_test(schemas):
                 "target_ref": f"x-control--{uuid.uuid4()}",
                 "object_marking_refs": [TLP_WHITE],
             }
-        if t == "csa-gap-mapping":
+        if t == "x-gap-mapping":
             return {
-                "type": "relationship",
+                "type": "x-gap-mapping",
                 "spec_version": "2.1",
-                "id": f"relationship--{uuid.uuid4()}",
+                "id": f"x-gap-mapping--{uuid.uuid4()}",
                 "created": "2026-01-15T00:00:00.000Z",
                 "modified": "2026-01-15T00:00:00.000Z",
-                "relationship_type": "csa-gap-mapping",
-                "source_ref": f"x-control--{uuid.uuid4()}",
-                "target_ref": f"x-control--{uuid.uuid4()}",
                 "extensions": {
-                    MAPPING_EXT: {"extension_type": "toplevel-property-extension"}
+                    MAPPING_EXT: {"extension_type": "new-sdo"}
                 },
-                "gap_level": "No Gap",
                 "object_marking_refs": [TLP_WHITE],
+                "source_ref": f"x-control--{uuid.uuid4()}",
+                "target_refs": [f"x-control--{uuid.uuid4()}"],
+                "gap_level": "No Gap",
             }
         return {
             "type": t,
@@ -223,33 +222,40 @@ def self_test(schemas):
         ("valid assessment", "x-control-assessment", with_refs, False),
 
         # csa-gap-mapping
-        ("mapping with an invented gap level", "csa-gap-mapping",
+        ("mapping with an invented gap level", "x-gap-mapping",
          lambda o: o.update(gap_level="Some Gap"), True),
-        ("mapping with a lowercase gap level", "csa-gap-mapping",
+        ("mapping with a lowercase gap level", "x-gap-mapping",
          lambda o: o.update(gap_level="no gap"), True),
-        ("mapping missing gap_level entirely", "csa-gap-mapping",
+        ("mapping missing gap_level entirely", "x-gap-mapping",
          lambda o: o.pop("gap_level"), True),
-        ("mapping with the wrong relationship_type", "csa-gap-mapping",
-         lambda o: o.update(relationship_type="maps-to"), True),
-        ("mapping referencing a foreign extension id", "csa-gap-mapping",
+        ("mapping with an empty target set", "x-gap-mapping",
+         lambda o: o.update(target_refs=[]), True),
+        ("mapping referencing a foreign extension id", "x-gap-mapping",
          lambda o: o.update(extensions={
              f"extension-definition--{uuid.uuid4()}":
                  {"extension_type": "toplevel-property-extension"}}), True),
-        ("mapping declared as new-sdo rather than a property extension",
-         "csa-gap-mapping",
+        ("mapping declared as a property extension rather than new-sdo",
+         "x-gap-mapping",
          lambda o: o.update(extensions={
-             MAPPING_EXT: {"extension_type": "new-sdo"}}), True),
-        ("mapping targeting a capability", "csa-gap-mapping",
-         lambda o: o.update(target_ref=f"x-capability--{uuid.uuid4()}"), True),
-        ("mapping with a non-boolean bidirectional", "csa-gap-mapping",
+             MAPPING_EXT: {"extension_type": "toplevel-property-extension"}}), True),
+        ("mapping targeting a capability", "x-gap-mapping",
+         lambda o: o.update(target_refs=[f"x-capability--{uuid.uuid4()}"]), True),
+        ("mapping with a non-boolean bidirectional", "x-gap-mapping",
          lambda o: o.update(bidirectional="yes"), True),
-        ("valid mapping, control to control", "csa-gap-mapping",
+        ("valid mapping, control to control", "x-gap-mapping",
          lambda o: o.update(gap_level="Partial Gap",
                             description="Scope differs: the target is narrower."), False),
-        ("valid mapping to a regulation clause", "csa-gap-mapping",
-         lambda o: o.update(target_ref=f"x-regulation--{uuid.uuid4()}",
+        ("valid mapping to a regulation clause", "x-gap-mapping",
+         lambda o: o.update(target_refs=[f"x-regulation--{uuid.uuid4()}"],
                             gap_level="Full Gap"), False),
-        ("valid bidirectional mapping", "csa-gap-mapping",
+        ("valid mapping over a set of eleven targets", "x-gap-mapping",
+         lambda o: o.update(
+             target_refs=[f"x-control--{uuid.uuid4()}" for _ in range(11)],
+             gap_level="No Gap",
+             description="The set jointly covers the source requirement."), False),
+        ("mapping with duplicate targets", "x-gap-mapping",
+         lambda o: o.update(target_refs=[t := f"x-control--{uuid.uuid4()}", t]), True),
+        ("valid bidirectional mapping", "x-gap-mapping",
          lambda o: o.update(bidirectional=True), False),
 
         # data markings
@@ -260,7 +266,7 @@ def self_test(schemas):
         ("control marked TLP:AMBER instead", "x-control",
          lambda o: o.update(object_marking_refs=[
              "marking-definition--f88d31f6-486f-44da-b317-01333bde0b82"]), True),
-        ("mapping with no object_marking_refs", "csa-gap-mapping",
+        ("mapping with no object_marking_refs", "x-gap-mapping",
          lambda o: o.pop("object_marking_refs"), True),
         ("control with TLP:WHITE plus another marking", "x-control",
          lambda o: o.update(object_marking_refs=[
@@ -322,14 +328,16 @@ def self_test(schemas):
         ("valid superseded-by, old control to new", "superseded-by",
          lambda o: None, False),
         ("superseded-by between two mappings", "superseded-by",
-         lambda o: o.update(source_ref=f"relationship--{uuid.uuid4()}",
-                            target_ref=f"relationship--{uuid.uuid4()}"), False),
+         lambda o: o.update(source_ref=f"x-gap-mapping--{uuid.uuid4()}",
+                            target_ref=f"x-gap-mapping--{uuid.uuid4()}"), False),
+        ("superseded-by pointing at a bare relationship", "superseded-by",
+         lambda o: o.update(target_ref=f"relationship--{uuid.uuid4()}"), True),
         ("superseded control, still valid until a date", "x-control",
          lambda o: o.update(framework="27001", framework_namespace="iso.org",
                             framework_version="2013",
                             valid_from="2013-10-01T00:00:00.000Z",
                             valid_until="2022-10-25T00:00:00.000Z"), False),
-        ("superseded and revoked, the claim was wrong", "csa-gap-mapping",
+        ("superseded and revoked, the claim was wrong", "x-gap-mapping",
          lambda o: o.update(revoked=True,
                             valid_until="2026-03-01T00:00:00.000Z"), False),
         ("control with a future valid_until, still current", "x-control",

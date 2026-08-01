@@ -96,7 +96,7 @@ an edit.
 | `x-control-implementation` | `extension-definition--1690104a-d3f2-4716-a334-252356f338dc` |
 | `x-capability` | `extension-definition--43f8f73f-45e2-4d06-bdc0-46bdd5cb3e81` |
 | `x-control-assessment` | `extension-definition--c2b74dc8-5ea7-4d9c-ade0-85474e5f70b4` |
-| `csa-gap-mapping` (properties on `relationship`) | `extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903` |
+| `x-gap-mapping` | `extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682` |
 
 **A published bundle carries its own definitions.** They travel with the content, so
 an unfamiliar consumer can retrieve what `x-control` means from the `schema` property
