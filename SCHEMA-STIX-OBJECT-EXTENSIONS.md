@@ -11,8 +11,8 @@ tags: [security-controls-catalog, stix, schema, oscal, secid, sdo]
 
 # STIX Object Extensions for the CSA Security Controls Catalog (CSA-CC)
 
-This document defines five custom STIX 2.1 object types — `x-control`,
-`x-regulation`, `x-control-implementation`, `x-capability`, and
+This document defines six custom STIX 2.1 object types — `x-control`,
+`x-regulation`, `x-gap-mapping`, `x-control-implementation`, `x-capability`, and
 `x-control-assessment` — designed to represent and operate the CSA Security
 Controls Catalog (CSA-CC) in a machine-readable, graph-relational format. It also
 maps each object type to the relevant portions of the CSA-CC architecture and
@@ -54,9 +54,10 @@ assessment:
 
 ```
 x-regulation                 GDPR Art. 32(1)(a)          what the law requires
-     ↑ csa-gap-mapping
+     ↑
+x-gap-mapping                one control assessed against a SET of the above
+     ↑
 x-control                    "sensitive data is encrypted at rest"
-     ↑ csa-gap-mapping       ← also to other frameworks' x-control objects
      ↑ (relationship not yet defined)
 x-control-implementation     "enforce encryption at rest for object storage"
      ↑ (relationship not yet defined)
@@ -120,7 +121,7 @@ For `x-control` the properties are `framework_namespace`, `framework`,
 
 This is what lets CSA's own catalog and the frameworks it harmonizes coexist in
 one object type: `cloudsecurityalliance.org/ccm@4.1` and
-`cloudsecurityalliance.org/scc` sit side by side, related by `csa-gap-mapping`, and "the
+`cloudsecurityalliance.org/scc` sit side by side, related by `x-gap-mapping`, and "the
 CCM view" is a property filter rather than a separate export.
 
 ## How these objects extend STIX 2.1
@@ -341,18 +342,22 @@ which edges exist.
 
 ### Canonical edges
 
-**Two relationship types are defined.**
+**A mapping is an object, not a relationship.** A gap verdict is assessed against a
+*set* of targets, and a STIX `relationship` carries a single `target_ref`, so a mapping
+is the `x-gap-mapping` object type. See
+[conventions § 1](CONVENTIONS-STIX-MODELING.md).
+
+**Two relationship types are defined**, both genuinely binary:
 
 | Assertion | `relationship_type` | Source | Target |
 |---|---|---|---|
-| How much of the source's requirement the target covers | `csa-gap-mapping` | `x-control` or `x-regulation` | `x-control` or `x-regulation` |
 | A CAIQ question is derived from the control it assesses | `derived-from` | `x-control` (a CAIQ question) | `x-control` |
-| A newer object replaces an older one | `superseded-by` | `x-control`, `x-regulation`, or a mapping | the same, newer |
+| A newer object replaces an older one | `superseded-by` | `x-control`, `x-regulation`, or `x-gap-mapping` | the same, newer |
 
 `derived-from` comes from the STIX `relationship-type-ov` vocabulary, so it needs no
-coinage and no extension declaration — it adds no custom properties. Its schema exists
-only to catch mistargeted references in catalog data and makes no claim about how
-`derived-from` may be used elsewhere.
+coinage. `superseded-by` is a custom value, which STIX permits. Neither adds custom
+properties, so neither needs an extension declaration; their schemas exist only to catch
+mistargeted references in catalog data.
 
 Read left to right, as CIS does: `source_ref` is what is mapped **from**. A→B and
 B→A are two separate objects, each with its own verdict, because coverage is not
@@ -390,44 +395,8 @@ succession is expressed **both** ways and both are meaningful: `superseded-by` s
 replaces 4.0, while gap mappings say how 4.0's controls correspond to 4.1's. Those are
 different assertions and neither substitutes for the other.
 
-### A worked mapping
-
-Showing what an embedded identifier array could not express — the verdict, the
-rationale, and the authorship of the claim:
-
-```json
-{
-  "type": "relationship",
-  "spec_version": "2.1",
-  "id": "relationship--<UUID>",
-  "created": "2026-01-15T00:00:00.000Z",
-  "modified": "2026-01-15T00:00:00.000Z",
-  "object_marking_refs": [
-    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
-  ],
-  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
-  "relationship_type": "csa-gap-mapping",
-  "source_ref": "x-control--<UUID>",
-  "target_ref": "x-regulation--<UUID>",
-  "extensions": {
-    "extension-definition--025268d9-bd6e-44e0-a3d5-b18821232903": {
-      "extension_type": "toplevel-property-extension"
-    }
-  },
-  "gap_level": "Partial Gap",
-  "bidirectional": false,
-  "description": "The control requires encryption of sensitive data at rest and in transit; the target clause requires encryption of personal data. Partial coverage — the control's scope is broader than personal data.",
-  "external_references": [
-    {
-      "source_name": "secid",
-      "external_id": "secid:methodology/nist.gov/ir-8477"
-    }
-  ]
-}
-```
-
-The `external_references` entry records the methodology the mapping was derived
-under — provenance that belongs on the claim, not on either endpoint.
+The mapping object itself is documented as a type below; see
+[3. `x-gap-mapping`](#3-x-gap-mapping--a-coverage-verdict-over-a-set-of-targets).
 
 The one exception to the SRO rule in this model is `x-control-assessment`, whose
 `assessed_control_ref` and `entity_ref` stay embedded because they are
@@ -447,7 +416,7 @@ Benchmarks, PCI DSS, SOC 2 — distinguished by their source provenance properti
 rather than by object type.
 
 Mappings to other frameworks are **not** properties of the control; they are
-`csa-gap-mapping` relationship SROs. See
+`x-gap-mapping` objects. See
 [Relationships use SROs, not embedded references](#relationships-use-sros-not-embedded-references).
 
 ### Schema
@@ -654,7 +623,8 @@ across versions, and why the resulting growth is acceptable are all in
   roles including `model_provider` and `ai_customer` while CCM uses `csp`, `csc`, and
   `shared`.
 - **Mapping / gap analysis** — links to other frameworks' controls and to binding
-  law via `csa-gap-mapping` SROs, each carrying its own coverage verdict.
+  law via `x-gap-mapping` objects, each carrying one coverage verdict for the set of
+  targets it names.
 - **Specification, implementation, and auditing guidelines** — represented
   directly.
 - **Status and governance** — supports control lifecycle via `status`. Replacement
@@ -738,7 +708,81 @@ requirement in original wording. See
 
 ---
 
-## 3. `x-control-implementation` — a technology-agnostic implementation approach
+## 3. `x-gap-mapping` — a coverage verdict over a set of targets
+
+### Description
+
+One source requirement assessed against a **set** of target requirements, carrying a
+single coverage verdict for the set.
+
+It is an object rather than a relationship for two reasons. A STIX `relationship`
+carries one `target_ref`, and a CSA mapping routinely names several targets — up to
+eleven in the published AICM data. More importantly, the verdict is *about* the set:
+remove a target and `No Gap` may no longer hold, which by the constitutive test in
+[conventions § 1](CONVENTIONS-STIX-MODELING.md) makes the targets a property rather
+than edges. STIX uses the same shape wherever one assertion covers many objects —
+`report`, `grouping`, `observed-data`, `note`, and `opinion` all carry `object_refs`.
+
+Recording each target as its own mapping would assert the verdict once per target,
+which is not what was assessed, and a consumer would have to re-group them to recover
+the original claim.
+
+### Schema
+
+Showing what an embedded identifier array could not express — the verdict, the set it
+was assessed against, the rationale, and the authorship of the claim:
+
+```json
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--<UUID>",
+  "created": "2026-01-15T00:00:00.000Z",
+  "modified": "2026-01-15T00:00:00.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--<UUID-1>",
+  "target_refs": [
+    "x-control--<UUID-2>",
+    "x-control--<UUID-3>",
+    "x-regulation--<UUID-4>"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "The control requires encryption of sensitive data at rest and in transit; the targets together address encryption of personal data. Partial coverage — the control's scope is broader.",
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:methodology/nist.gov/ir-8477"
+    }
+  ]
+}
+```
+
+The verdict belongs to the **set**. Recording each target as its own mapping would
+assert `Partial Gap` three separate times, which is not what was assessed, and a
+consumer would have to re-group them to recover the original claim.
+
+The `external_references` entry records the methodology the mapping was derived
+under — provenance that belongs on the claim, not on either endpoint.
+
+
+### CSA-CC alignment
+
+- **Mapping / gap analysis** — the unit of the analysis is one control against the set
+  of provisions said to cover it, which is what this object holds.
+- **Mapping guidelines and protocols** — `description` carries the addendum text from
+  CSA's published mappings, where scope qualification and caveats live.
+
+---
+
+## 4. `x-control-implementation` — a technology-agnostic implementation approach
 
 ### Description
 
@@ -788,7 +832,7 @@ that implement it.
 
 ---
 
-## 4. `x-capability` — a product or service security feature
+## 5. `x-capability` — a product or service security feature
 
 ### Description
 
@@ -850,7 +894,7 @@ product detail that changes weekly.
 
 ---
 
-## 5. `x-control-assessment` — a control assessment result
+## 6. `x-control-assessment` — a control assessment result
 
 ### Description
 
@@ -906,6 +950,7 @@ so both are constitutive properties, following the STIX `sighting` pattern. See
 |---|---|
 | `x-control` | Control data model, specification, lifecycle, ownership, guidelines, threat relevance, cross-framework harmonization |
 | `x-regulation` | Regulatory traceability, legal mapping and gap analysis |
+| `x-gap-mapping` | Mapping and gap analysis — one control against the set of provisions covering it |
 | `x-control-implementation` | Implementation guidelines, architectural relevance, ownership |
 | `x-capability` | Controls engineering, automation, configuration and audit detail |
 | `x-control-assessment` | CAIQ, metrics and monitoring, assessment results, presentation dashboard |
@@ -951,7 +996,7 @@ raise an issue rather than assume an answer.
    `x-control-assessment.score` are undefined.
 7. **Whether an SCC control and its source-framework controls are one object or
    two.** A unified catalog control harmonizing CCM CEK-03 and an AICM equivalent
-   could be a distinct `x-control` in the `scc` namespace related by `csa-gap-mapping`, or
+   could be a distinct `x-control` in the `scc` namespace related by `x-gap-mapping`, or
    the CCM object could simply gain SCC properties. The first keeps provenance
    clean; the second halves the object count. Note that carrying multiple framework
    versions weighs against the second: with CCM 4.0 and 4.1 both present as

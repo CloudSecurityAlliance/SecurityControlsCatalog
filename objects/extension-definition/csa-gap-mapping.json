@@ -6,7 +6,7 @@
   "modified": "2026-07-31T00:00:00.000Z",
   "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
   "name": "CSA Security Controls Catalog: csa-gap-mapping",
-  "description": "Adds top-level properties to the standard STIX relationship object for CSA gap mappings: gap_level, carrying CSA's coverage verdict, and bidirectional, marking a mapping whose relation is symmetric. Used with relationship_type csa-gap-mapping.",
+  "description": "Adds top-level properties to the standard STIX relationship object for CSA gap mappings: gap_level, carrying CSA's coverage verdict, and bidirectional, marking a mapping whose relation is symmetric. Used with relationship_type csa-gap-mapping. RETIRED before any catalog content referenced it: gap mappings are modelled as the x-gap-mapping object type instead, because a STIX relationship carries a single target_ref and a gap verdict is assessed against a set of targets. Kept rather than deleted so the record of what was declared, and withdrawn, survives.",
   "schema": "https://raw.githubusercontent.com/CloudSecurityAlliance/SecurityControlsCatalog/refs/heads/main/schemas/csa-gap-mapping.json",
   "version": "1.0",
   "extension_types": [
@@ -14,5 +14,6 @@
   ],
   "object_marking_refs": [
     "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
-  ]
+  ],
+  "revoked": true
 }
