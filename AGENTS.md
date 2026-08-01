@@ -49,9 +49,10 @@ No build system or package manager. Validation exists (needs `jsonschema`):
 - `python3 tools/validate.py bundle.json`: check catalog objects against those schemas.
 - `python3 tools/generate_aicm_controls.py --self-test`: check that a publisher's text is carried through untouched.
 - `python3 tools/generate_aicm_controls.py <aicm.json>`: regenerate AICM controls from a published release. Idempotent — it preserves committed identifiers and rewrites nothing when the source is unchanged.
+- `python3 tools/generate_aicm_caiq.py <aicm-caiq.json>`: regenerate the CAIQ questions and their `derived-from` links. Run it after the matching controls exist, since each link names a committed control.
 - `stix2_validator --schemas ./schemas/ --enforce-refs bundle.json`: full STIX 2.1 conformance plus catalog field rules, via the OASIS validator. Install it from a **recursive clone**, not PyPI — the published wheel omits its bundled JSON schemas and fails on every object, including standard ones.
 
-`tools/validate.py` covers only the custom types, not STIX conformance — run both. Bundle-level rules are not yet checked: that an `extension-definition` travels with the instances referencing it, that licence-constrained fields match the source's recorded terms, and that `revoked` was not used to mean retired.
+`tools/validate.py` covers only the custom types, not STIX conformance — run both. Neither checks referential integrity: the OASIS `--enforce-refs` resolves references within a bundle, and catalog objects are committed one per file, so a dangling `target_ref` passes it silently. CI resolves every reference against the committed objects instead. Still unchecked: that licence-constrained fields match the source's recorded terms, and that `revoked` was not used to mean retired.
 
 - `git ls-files`: list tracked files quickly.
 - `git status --short`: check local changes before editing or committing.

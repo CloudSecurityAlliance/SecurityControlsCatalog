@@ -24,11 +24,9 @@ import pathlib
 import sys
 import uuid
 
-CONTROL_EXT = "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea"
-TLP_WHITE = "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
-CSA_IDENTITY = "identity--51f9d480-d80b-4415-93c7-507cde4d1e85"
+from catalog import (CONTROL_EXT, CSA_IDENTITY, NAMESPACE, TLP_WHITE, emit,
+                     order, report)
 
-NAMESPACE = "cloudsecurityalliance.org"
 FRAMEWORK = "aicm"
 
 # Taxonomy columns the source answers for every control. Omitted when the answer
@@ -124,8 +122,7 @@ def build(control, version, published, now):
                  "implementation_guidelines", "auditing_guidelines"):
         if not obj[prop]:
             sys.exit(f"{cid}: {prop} is empty in the source; refusing to emit")
-    obj = prune_empty(obj)
-    return {k: obj[k] for k in KEY_ORDER if k in obj}
+    return order(prune_empty(obj), KEY_ORDER)
 
 
 def self_test():
@@ -187,19 +184,6 @@ def self_test():
     return 1 if bad else 0
 
 
-def reconcile(fresh, path):
-    """Carry an already-published object's identity onto a regenerated one."""
-    if not path.exists():
-        return fresh, "new"
-    old = json.loads(path.read_text())
-    fresh["id"] = old["id"]
-    fresh["created"] = old["created"]
-    comparable = dict(fresh, modified=old["modified"])
-    if comparable == old:
-        return old, "unchanged"
-    return fresh, "updated"
-
-
 def main(argv):
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("source", nargs="?", help="the AICM JSON distribution")
@@ -222,19 +206,9 @@ def main(argv):
     published = f"{data['published']}T00:00:00.000Z"
 
     out = pathlib.Path(args.out) / "x-control" / NAMESPACE / FRAMEWORK / version
-    out.mkdir(parents=True, exist_ok=True)
-
-    tally = {"new": 0, "updated": 0, "unchanged": 0}
-    for control in data["controls"]:
-        path = out / f"{control['control_id']}.json"
-        obj, state = reconcile(build(control, version, published, now), path)
-        tally[state] += 1
-        if state != "unchanged":
-            path.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n")
-
-    print(f"{FRAMEWORK} {version} -> {out}")
-    print(f"  {tally['new']} new, {tally['updated']} updated, "
-          f"{tally['unchanged']} unchanged")
+    tally = emit((out / f"{c['control_id']}.json",
+                  build(c, version, published, now)) for c in data["controls"])
+    report(f"{FRAMEWORK} {version}", out, tally)
     return 0
 
 

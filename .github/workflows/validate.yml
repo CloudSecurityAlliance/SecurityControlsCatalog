@@ -36,7 +36,9 @@ jobs:
         # Tidying text in transit changes what the catalog asserts a publisher
         # requires. Published control data is not clean, and the fix for that
         # belongs upstream with the publisher, not in a generator.
-        run: python3 tools/generate_aicm_controls.py --self-test
+        run: |
+          python3 tools/generate_aicm_controls.py --self-test
+          python3 tools/generate_aicm_caiq.py --self-test
 
       - name: Validate the schema document's own examples
         # Keeps SCHEMA-STIX-OBJECT-EXTENSIONS.md and schemas/ from drifting apart:
@@ -170,6 +172,55 @@ jobs:
                   bad.append(f"{path}: SecID is {secids}, expected [{expected!r}]")
           print("\n".join(bad) if bad
                 else f"{len(ids)} objects agree with their path, identifier, and SecID")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: References resolve to committed objects
+        # The OASIS validator's --enforce-refs resolves references within a bundle.
+        # Catalog objects are committed one per file and validated as a file list,
+        # so it has nothing to resolve against: a dangling target_ref passes it
+        # silently. Verified by planting one, which --enforce-refs did not catch.
+        #
+        # This also covers the rule that an extension-definition must travel with
+        # the instances referencing it, by treating the extensions keys as
+        # references like any other.
+        run: |
+          python3 - <<'PY'
+          import glob, json, sys
+          objs = {}
+          for path in sorted(glob.glob("objects/**/*.json", recursive=True)):
+              obj = json.load(open(path))
+              objs[obj["id"]] = (path, obj)
+
+          def refs(obj):
+              for key, value in obj.items():
+                  if key == "extensions":
+                      yield from ((key, ref) for ref in value)
+                  elif key.endswith("_ref") and isinstance(value, str):
+                      yield key, value
+                  elif key.endswith("_refs") and isinstance(value, list):
+                      yield from ((key, ref) for ref in value)
+
+          bad, checked = [], 0
+          for path, obj in objs.values():
+              for key, ref in refs(obj):
+                  checked += 1
+                  if ref not in objs:
+                      bad.append(f"{path}: {key} -> {ref} is not a committed object")
+              # derived-from reads left to right: a questionnaire item is derived
+              # from the control it assesses. A reversed pair satisfies the schema,
+              # since both ends are an x-control, but inverts the meaning.
+              if obj.get("relationship_type") == "derived-from":
+                  src = objs.get(obj["source_ref"], (None, {}))[1]
+                  tgt = objs.get(obj["target_ref"], (None, {}))[1]
+                  if not src.get("framework", "").endswith("-caiq"):
+                      bad.append(f"{path}: derived-from source {src.get('framework')!r} "
+                                 f"is not a questionnaire framework — is it reversed?")
+                  if tgt.get("framework", "").endswith("-caiq"):
+                      bad.append(f"{path}: derived-from target {tgt.get('framework')!r} "
+                                 f"is a questionnaire framework — is it reversed?")
+          print("\n".join(bad) if bad
+                else f"{checked} references across {len(objs)} objects all resolve")
           sys.exit(1 if bad else 0)
           PY
 
