@@ -1,0 +1,80 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--aea32e03-f110-4745-8977-274f9f8e59fa",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Requirements Compliance",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "A&A-04",
+  "domain": "Audit & Assurance",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Verify compliance with all relevant standards, regulations, legal/contractual, and statutory requirements applicable to the audit.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage",
+    "development": "Design, Training, Guardrails",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous improvement",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "Compliance with relevant standards, regulations, legal, contractual, and statutory requirements is critical for ensuring that AI systems operate within the boundaries of the law and adhere to organizational and industry-specific obligations.\n\n[All Providers: MP, OSP, AP]\n1. Compliance Identification: Identify all applicable regulations governing AI systems ( e.g. GDPR, HIPAA, CCPA, ISO 27001, NIST AI RMF, EU AI Act, etc.) across relevant jurisdictions where AI components are developed, deployed, or used.\n\n2. Governance Integration: Integrate compliance checks into AI governance frameworks to ensure consistent implementation across model development, training data management, deployment infrastructure, and monitoring systems.\n\n3. Assessment and Verification: Conduct periodic gap analyses and compliance audits to identify discrepancies between current practices and requirements, with focus on data protection, model transparency, fairness, and security controls.\n\n4. Monitoring and Documentation: Establish systems to track regulatory changes relevant to AI systems, maintain comprehensive audit trails, and document evidence including policies, logs, training records, and system configurations.",
+    "model_provider": "[All Providers: MP, OSP, AP]\n1. Compliance Identification: Identify all applicable regulations governing AI systems (e.g. GDPR, HIPAA, CCPA, ISO 27001, NIST AI RMF, EU AI Act, etc.) across relevant jurisdictions where AI components are developed, deployed, or used.\n\n2. Governance Integration: Integrate compliance checks into AI governance frameworks to ensure consistent implementation across model development, training data management, deployment infrastructure, and monitoring systems.\n\n3. Assessment and Verification: Conduct periodic gap analyses and compliance audits to identify discrepancies between current practices and requirements, with focus on data protection, model transparency, fairness, and security controls.\n\n4. Monitoring and Documentation: Establish systems to track regulatory changes relevant to AI systems, maintain comprehensive audit trails, and document evidence including policies, logs, training records, and system configurations.",
+    "orchestrated_service_provider": "[All Providers: MP, OSP, AP]\n1. Compliance Identification: Identify all applicable regulations governing AI systems (e.g. GDPR, HIPAA, CCPA, ISO 27001, NIST AI RMF, EU AI Act, etc.) across relevant jurisdictions where AI components are developed, deployed, or used.\n\n2. Governance Integration: Integrate compliance checks into AI governance frameworks to ensure consistent implementation across model development, training data management, deployment infrastructure, and monitoring systems.\n\n3. Assessment and Verification: Conduct periodic gap analyses and compliance audits to identify discrepancies between current practices and requirements, with focus on data protection, model transparency, fairness, and security controls.\n\n4. Monitoring and Documentation: Establish systems to track regulatory changes relevant to AI systems, maintain comprehensive audit trails, and document evidence including policies, logs, training records, and system configurations.",
+    "application_provider": "[All Providers: MP, OSP, AP]\n1. Compliance Identification: Identify all applicable regulations governing AI systems (e.g. GDPR, HIPAA, CCPA, ISO 27001, NIST AI RMF, EU AI Act, etc.) across relevant jurisdictions where AI components are developed, deployed, or used.\n\n2. Governance Integration: Integrate compliance checks into AI governance frameworks to ensure consistent implementation across model development, training data management, deployment infrastructure, and monitoring systems.\n\n3. Assessment and Verification: Conduct periodic gap analyses and compliance audits to identify discrepancies between current practices and requirements, with focus on data protection, model transparency, fairness, and security controls.\n\n4. Monitoring and Documentation: Establish systems to track regulatory changes relevant to AI systems, maintain comprehensive audit trails, and document evidence including policies, logs, training records, and system configurations.",
+    "ai_customer": "[AI Customer (AIC)]\nImplementation best practices for this actor include (but are not limited to):\n\nThe AIC's responsibilities focus primarily on ensuring compliant usage of AI systems rather than development compliance.\n1. Review provider compliance documentation to verify alignment with organizational requirements. \n\n2. Validate that AI system usage complies with internal policies, ethical guidelines, and applicable regulations. \n\n3. Maintain documentation of compliance with data protection laws when using AI for processing sensitive information. \n\n4. Establish monitoring protocols to validate AI outputs for quality, fairness, and compliance.",
+    "cloud_service_provider": "The CSP should conduct audits and assessments against industry standards, regulations and statutory requirements depending on the\nservices and the jurisdictions in which they operate. The CSP should implement a process to identify and document legal\nand regulatory requirements that impact its cloud service offering, both within itself and with third-party suppliers that operate on \nits behalf.\nThe process should:\na. Cover the jurisdictions, i.e., regions, countries, states, where\nthe organization conducts business\nb. Incorporate the following: Security-specific legislations or regulations and Legislations or regulations which has security control \nimplications.\nc. Identify the regulatory, statutory, contractual, or other compliance requirements to which the cloud service, its associated systems, \nand its data are subject\nd. Identify the respective specific technical and administrative compliance requirements that are required for the data, technology, \nand processes comprising and supporting the cloud service. In general, this should include:\ni. objects and data elements, system settings and capabilities, metadata, events, activities, and processes subject to any special \nregulatory requirements\nii. what specific requirements apply to objects, system settings, metadata, activity, and processes.\n\n(The above CSP implementation guidelines from CCM v4.1 apply here as well.)"
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Map Legal/Contractual Obligations (e.g., GDPR, CCPA, accessibility laws (WCAG), licensing terms of underlying models): Examine the process used to identify relevant standards, regulations, legal, contractual, and technical requirements applicable to the audit scope.\n\n2. Check Privacy/Security Certifications: Look for ISO 27001, SOC2, or security posture alignment. Determine if the organization maintains and reviews a list of relevant standards, regulations, legal/contractual, and statutory requirements (including AI-specific regulations that must be met).\n\n3. Review SLAs/Contracts: Identify whether contractual obligations specify compliance with standards or specific laws.\n\n4. Audit Testing Records: For user-facing systems, inspect whether accessibility and usability testing was conducted under legal guidance.\n\n5. Determine if the audit plan is informed by the list of the organization’s requirements. \n\n6. Assess Incident Handling: Determine how legal violations (e.g., IP infringement or data misuse) are identified and resolved.",
+    "orchestrated_service_provider": "1. Conduct Legal Harmonization Review: Check whether integrated models and apps have consistent licensing, IP, and privacy guarantees.\n\n2. Verify SLA Mapping: Ensure contracts include language that carries upstream obligations downstream (e.g., subprocessors, sub-vendors).\n\n3. Review Regulatory Assessments: Examine impact assessments, such as DPIAs or algorithmic impact assessments.\n\n4. Check Continuous Monitoring: Audit the provider's mechanisms to track ongoing compliance of orchestrated components (e.g., component version changes).\n\n5. Trace Regulatory Responsibility: For end-user-facing features, verify which actor owns compliance (orchestrator provider or model/app provider).",
+    "model_provider": "1. Identify Applicable Requirements (e.g., EU AI Act, GDPR (if personal data is involved), export controls on sensitive models, IP rights for training data): Check alignment with emerging AI regulations (e.g., EU AI Act, NIST AI RMF) and ethical frameworks. \n\n2. Assess Documentation: Review licenses for training datasets and contracts with third-party data providers.\n\n3. Evaluate Processes: Verify formal processes for regulatory tracking to identify how they keep up with changing laws. Focus on regulatory compliance related to model training data, algorithm transparency, bias/fairness, and AI explainability.\n\n4. Verify contracts governing use of datasets and licensing of model outputs. \n\n5. Examine Controls: Assess if technical safeguards and policy enforcement mechanisms are in place (e.g., bias mitigation, dataset consent tracking).\n\n6. Review Third-Party Attestations: If applicable, examine SOC2, ISO 42001, or similar reports.",
+    "ai_customer": "1. Determine what laws apply to their sectoral use of AI (e.g., HIPAA, FINRA, SEC rules).\n\n2. Review Procurement Contracts: Do contracts with AI vendors include legal compliance clauses? Are liability terms clear?\n\n3. Verify Compliance Mechanisms: Confirm internal reviews and data protection impact assessments were performed.\n\n4. Examine Internal Policies: Review how customers ensure responsible AI use (e.g., acceptable use policies, downstream impact reviews).\n\n5. Ensure there is a process for reporting and remediating legal noncompliance or violations.",
+    "cloud_service_provider": "1. Examine the process for determining the standards and regulations applicable to the organization's systems and environments.\n\n2. Examine the process to determine contractual, legal, and technical requirements applicable to the organization's systems and environments.\n\n3. Determine if the organization maintains and reviews a list of relevant standards, regulations, legal/contractual, and statutory requirements.\n \n4. Determine if senior management exercises oversight of this control specification. \n\n5. Determine if the audit plan is informed by the list of the organization's requirements.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)"
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#A&A-04"
+    }
+  ]
+}

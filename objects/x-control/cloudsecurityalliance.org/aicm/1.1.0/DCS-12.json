@@ -1,0 +1,65 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--b1a74e64-30ba-48ab-bd66-38ed766da806",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Adverse Event Response Training",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-12",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Train datacenter personnel to safely manage adverse events, including but not limited to unauthorized ingress and egress attempts.",
+  "control_type": "Cloud-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft",
+    "denial_of_service"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "delivery": "Operations"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors except AIC]\n1. Providers should have trained personnel to handle unauthorized access into areas of data center that perform sensitive tasks, such as data processing.",
+    "model_provider": "No Role Specific\n\n[All Actors except AIC]\n1. Providers should have trained personnel to handle unauthorized access into areas of data center that perform sensitive tasks, such as data processing.",
+    "orchestrated_service_provider": "No Role Specific\n\n[All Actors except AIC]\n1. Providers should have trained personnel to handle unauthorized access into areas of data center that perform sensitive tasks, such as data processing.",
+    "application_provider": "No Role Specific\n\n[All Actors except AIC]\n1. Providers should have trained personnel to handle unauthorized access into areas of data center that perform sensitive tasks, such as data processing.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "Role Specific\n\nData center personnel should be properly trained to respond effectively to unauthorized physical access attempts for maintaining the security of a CSP’s environment. \n \nImplementation best practices in training personnel to respond to unauthorized ingress or egress incidents include (but not limited to):\n a. Training Programs: Training programs that cover various aspects of physical security (e.g., recognizing unauthorized access, responding to incidents, and following established procedures should be designed and implemented)\n i. Data center personnel should be well-versed in the incident response plan related to unauthorized physical access attempts\n ii. Personnel should be trained on the specific steps to take in the event of an unauthorized ingress or egress incident\n iii. Personnel should be trained on the importance of accurate and timely documentation of ingress/egress access incidents and need for detailed reports that can be used for analysis, investigations, and compliance purposes\n b. Emergency Procedures: Detailed training on emergency procedures should be provided (e.g., evacuations, lockdowns, or any other response measures that may be required during a security incident)\n c. Simulation Exercises: Regular simulated exercises should be conducted to allow personnel to practice responding to unauthorized physical access attempts\n d. Communication Protocols: Personnel should be trained on how to quickly and accurately report incidents to the appropriate authorities, including security teams, management, and, if necessary, law enforcement\n e. Use of Security Technology: Personnel should be trained on the use of security technology (e.g., surveillance cameras, access control systems, and intrusion detection systems), how to interpret alerts and respond appropriately\n f. Security Teams Coordination: \n i. Collaboration and coordination should be fostered between datacenter personnel and dedicated security teams\n ii. Roles and responsibilities should be understood by relevant teams during a security incident\n g. Escorting Procedures: \n i. Personnel should be trained on proper escorting procedures for visitors or contractors within secure areas \n ii. Challenge procedures should be implemented to verify the identity of individuals without proper credentials\n h. Legal and Ethical Considerations: Education should be provided on the legal and ethical aspects of responding to unauthorized physical access attempts and understanding of the limits of personnel’s authority and the appropriate actions to take within the confines of the law\n i. Post-Incident Review: After each simulated exercise or real incident, a post-incident review should be conducted to identify areas for improvement identified, and incorporate lessons learned into future training sessions\n\n[All Actors except AIC]\n1. Providers should have trained personnel to handle unauthorized access into areas of data center that perform sensitive tasks, such as data processing."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the AP relies on the CSP's attestation for this control.\n\n2. Confirm that the AP's own incident response plan includes procedures for responding to infrastructure-level events reported by their CSP.",
+    "orchestrated_service_provider": "1. Verify the OSP's vendor management process confirms that their underlying CSPs provide adverse event response training to their datacenter personnel.\n\n2. Review the OSP's incident response plan for procedures on how to react to physical security events at a provider facility.",
+    "model_provider": "1. Verify the MP's due diligence process confirms that their CSPs train their data center personnel on responding to adverse physical events.\n\n2. Review the MP's own physical security policies for training requirements for staff at any on-premises research facilities.",
+    "ai_customer": "1. Verify that the AIC requires its AI service providers to use CSPs that train their data center staff on adverse event response.\n\n2. Check contracts for clauses requiring providers to notify the AIC of physical security incidents that could impact service or data.",
+    "cloud_service_provider": "1. Examine the policy and procedures relating to activities and actions to perform in case of unauthorized access.\n\n2. Examine the policy and procedures related to datacenter’s personnel training.\n\n3. Determine if the training content is appropriate and approved by the organization.\n\n4. Ascertain that appropriate datacenter personnel have completed all relevant training through review of training plans and records. Confirm that these have been completed in accordance with policy and procedures.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-12"
+    }
+  ]
+}

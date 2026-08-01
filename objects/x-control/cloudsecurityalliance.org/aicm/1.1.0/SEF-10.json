@@ -1,0 +1,80 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--c4e894d5-9d6c-4a0b-996d-e03d49e999e2",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Points of Contact Maintenance",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "SEF-10",
+  "domain": "Security Incident Management, E-Discovery, & Cloud Forensics",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Maintain points of contact for applicable regulation authorities, national and local law enforcement, and other legal jurisdictional authorities.  Review and update the points of contact at least annually.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared across the supply chain",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage, Resource provisioning, Team and expertise",
+    "development": "Supply Chain, Guardrails, Training, Design",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Continuous monitoring",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Establish and maintain a centralized registry of designated points of contact (PoCs) for security, compliance, and incident response across all participating entities.\n\n2. Ensure contact information includes role-specific PoCs for legal, regulatory, compliance, security, and DevSecOps functions, along with backup personnel.\n\n3. Define procedures to regularly verify and update PoC information, especially when there are organizational changes, role transitions, or partner onboarding/offboarding.\n\n4. Ensure availability of PoC data during incident triage and e-discovery, with clearly assigned responsibilities for rapid engagement.\n\n5. Maintain contact retention and access procedures in alignment with applicable regulatory or contractual requirements (e.g., GDPR, HIPAA, CJIS).",
+    "model_provider": "1. Maintain contacts for model security owners, responsible ML engineers, and legal response teams.\n\n2. Share escalation contacts with customers in case of critical model security events.\n\n[All Actors]\n1. Establish and maintain a centralized registry of designated points of contact (PoCs) for security, compliance, and incident response across all participating entities.\n\n2. Ensure contact information includes role-specific PoCs for legal, regulatory, compliance, security, and DevSecOps functions, along with backup personnel.\n\n3. Define procedures to regularly verify and update PoC information, especially when there are organizational changes, role transitions, or partner onboarding/offboarding.\n\n4. Ensure availability of PoC data during incident triage and e-discovery, with clearly assigned responsibilities for rapid engagement.\n\n5. Maintain contact retention and access procedures in alignment with applicable regulatory or contractual requirements (e.g., GDPR, HIPAA, CJIS).",
+    "orchestrated_service_provider": "1. Define contacts for service-level security, deployment failures, and incident automation tooling.\n\n2. Maintain vendor support escalation channels.\n\n[All Actors]\n1. Establish and maintain a centralized registry of designated points of contact (PoCs) for security, compliance, and incident response across all participating entities.\n\n2. Ensure contact information includes role-specific PoCs for legal, regulatory, compliance, security, and DevSecOps functions, along with backup personnel.\n\n3. Define procedures to regularly verify and update PoC information, especially when there are organizational changes, role transitions, or partner onboarding/offboarding.\n\n4. Ensure availability of PoC data during incident triage and e-discovery, with clearly assigned responsibilities for rapid engagement.\n\n5. Maintain contact retention and access procedures in alignment with applicable regulatory or contractual requirements (e.g., GDPR, HIPAA, CJIS).",
+    "application_provider": "1. Include DevSecOps, product, and customer support representatives in contact rosters.\n\n2. Ensure support engineers have direct access to AI pipeline owners when relevant.\n\n[All Actors]\n1. Establish and maintain a centralized registry of designated points of contact (PoCs) for security, compliance, and incident response across all participating entities.\n\n2. Ensure contact information includes role-specific PoCs for legal, regulatory, compliance, security, and DevSecOps functions, along with backup personnel.\n\n3. Define procedures to regularly verify and update PoC information, especially when there are organizational changes, role transitions, or partner onboarding/offboarding.\n\n4. Ensure availability of PoC data during incident triage and e-discovery, with clearly assigned responsibilities for rapid engagement.\n\n5. Maintain contact retention and access procedures in alignment with applicable regulatory or contractual requirements (e.g., GDPR, HIPAA, CJIS).",
+    "ai_customer": "1. Maintain mapped contact lists for every critical provider in the AI supply chain.\n\n2. Assign internal liaison roles for cross-vendor incident coordination.\n\n[All Actors]\n1. Establish and maintain a centralized registry of designated points of contact (PoCs) for security, compliance, and incident response across all participating entities.\n\n2. Ensure contact information includes role-specific PoCs for legal, regulatory, compliance, security, and DevSecOps functions, along with backup personnel.\n\n3. Define procedures to regularly verify and update PoC information, especially when there are organizational changes, role transitions, or partner onboarding/offboarding.\n\n4. Ensure availability of PoC data during incident triage and e-discovery, with clearly assigned responsibilities for rapid engagement.\n\n5. Maintain contact retention and access procedures in alignment with applicable regulatory or contractual requirements (e.g., GDPR, HIPAA, CJIS).",
+    "cloud_service_provider": "1. Offer customers dedicated AI support representatives for escalations and risk response.\n\n2. Provide a self-service portal to manage and update tenant-specific contact preferences and SLAs.\n\n[All Actors]\n1. Establish and maintain a centralized registry of designated points of contact (PoCs) for security, compliance, and incident response across all participating entities.\n\n2. Ensure contact information includes role-specific PoCs for legal, regulatory, compliance, security, and DevSecOps functions, along with backup personnel.\n\n3. Define procedures to regularly verify and update PoC information, especially when there are organizational changes, role transitions, or partner onboarding/offboarding.\n\n4. Ensure availability of PoC data during incident triage and e-discovery, with clearly assigned responsibilities for rapid engagement.\n\n5. Maintain contact retention and access procedures in alignment with applicable regulatory or contractual requirements (e.g., GDPR, HIPAA, CJIS).\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThis control is “Shared (Independent)” since both the CSP and CSC are responsible for the maintenance and documentation of points of contact for applicable regulation authorities, national and local law enforcement, and other legal jurisdictional authorities. \n\nImplementation Guidelines.\nApplicable to all service models:\nThe CSP should document and maintain security incident contact information with relevant authorities and implement a communication process, and assign responsibilities to the communications team (personnel authorized to send notifications) and external regulatory entities, to prepare them for investigations requiring engagement with law enforcement.\n\nImplementation best practices for maintaining points of contact include (but not limited to):\na. Authorities Identification:\ni. The relevant regulatory bodies should be searched for and identified in each region where the CSP operates (e.g., financial regulators, data protection authorities).\nii. Points of contact should be established within national and local law enforcement agencies in operational regions\niii. Legal jurisdictions should be identified where CSC data might be stored or processed due to international operations.\nb. Centralized Contact Repository:\ni. A secure repository should be developed containing contact information for all identified authorities (e.g., names, titles, phone numbers, email addresses, jurisdiction areas, and preferred communication methods)\nii. The repository should be updated at least annually and upon any changes in personnel or contact information within the included authorities\nc. Communication Channels:\ni. Communication protocols for each authority type should be established (e.g., secure email for regulatory bodies, dedicated hotlines for law enforcement)\nii. A process should be implemented for verifying the legitimacy of any communication received from claiming authorities\nd. Legal Counsel: Legal counsel should be considered to ensure proper procedures and data sharing protocols are followed when interacting with authorities."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify documented procedures for Application Provider (AP) to meet regulatory responsibilities and maintain points of contact.\n\n2. Verify procedures for review of dependencies with OSP, MP, AIC and CSP that would impact Application Provider's ability to meet its regulatory contact obligations (e.g., ISO 27001).\n\n3. Confirm regular updates and validation of points of contact.\n\n4. Check records clearly document responsibility for points of contact maintenance.\n\n5. Ensure immediate updates to contact information upon role changes.\n\n6. Confirm periodic audits validating the accuracy and availability of contacts.",
+    "orchestrated_service_provider": "1. Verify documented procedures for Orchestration Service Provider (OSP) to meet regulatory responsibilities and maintain points of contact.\n\n2. Verify procedures for review of dependencies with AP, MP, AIC and CSP that would impact Application Provider's ability to meet its regulatory contact obligations (e.g., AI and data regulations).\n\n3. Confirm regular updates and validation of points of contact.\n\n4. Check records clearly document responsibility for points of contact maintenance.\n\n5. Ensure immediate updates to contact information upon role changes.\n\n6. Confirm periodic audits validating the accuracy and availability of contacts.",
+    "model_provider": "1. Verify documented procedures for Model Providers (MP) to meet regulatory responsibilities and maintain points of contact.\n\n2. Verify procedures for review of dependencies with OSP, AP, AIC and CSP that would impact Application Providers ability to meet its regulatory contact obligations (e.g., AI and data regulations)\n\n3. Confirm regular updates and validation of points of contact.\n\n4. Check records clearly document responsibility for points of contact maintenance.\n\n5. Ensure immediate updates to contact information upon role changes.\n\n6. Confirm periodic audits validating the accuracy and availability of contacts.",
+    "ai_customer": "1. Verify documented procedures for AI Customer (AIC) to meet regulatory responsibilities and maintain points of contact.\n\n2. Verify procedures for review of dependencies, with OSP, MP, AP and CSP for which would impact Application Providers ability to meet its regulatory contact obligations (e.g., GDPR, NIS2, ISO 27001, NIST 800-61).\n\n3. Confirm regular updates and validation of points of contact.\n\n4. Check records clearly document responsibility for points of contact maintenance.\n\n5. Ensure immediate updates to contact information upon role changes.\n\n6. Confirm periodic audits validating the accuracy and availability of contacts.",
+    "cloud_service_provider": "1. Verify documented procedures for Cloud Service Provider (CSP) to meet regulatory responsibilities and maintain points of contact.\n\n2. Verify procedures for review of dependencies with OSP, MP, AIC and AP that would impact the Application Provider's ability to meet its regulatory contact obligations (e.g., GDPR, CIRCIA, NIS2, nation CSIRTs).\n\n3. Confirm regular updates and validation of points of contact.\n\n4. Check records clearly document responsibility for points of contact maintenance.\n\n5. Ensure immediate updates to contact information upon role changes.\n\n6. Confirm periodic audits validating the accuracy and availability of contacts.\n\nFrom CCM v4.1:\n1. Examine the process used to determine applicable points of contact, and the procedure for reviewing the list/documentation that contains them.\n2. Verify if the organization has updated the list of  points of contact for applicable regulation authorities, national and local law enforcement, and other legal jurisdictional authorities.\n3. Examine when the last updates were done and if there is a schedule for reviewing and updating these contacts."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#SEF-10"
+    }
+  ]
+}

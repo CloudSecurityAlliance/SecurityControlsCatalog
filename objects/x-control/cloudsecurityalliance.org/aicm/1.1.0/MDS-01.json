@@ -1,0 +1,78 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--7e31ff06-d3f5-46c8-a85e-9d2198fcfb60",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Training Pipeline Security",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-01",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement, and evaluate policies, procedures, and technical measures that ensure the security of the Training Pipeline. Regularly review and update policies, procedures and technical measures to address new security threats and best practices.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage, Resource provisioning",
+    "development": "Training, Supply Chain, Design",
+    "evaluation_validation": "Validation/Red Teaming",
+    "deployment": "Orchestration",
+    "delivery": "Operations, Maintenance"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (Applicable to MP, CSP)]\n1. Configuration Management: Secure configurations and credentials with a secrets management tool.\n\n2. Logging and Monitoring: Implement logging, monitoring, and SIEM integration for activity detection.",
+    "model_provider": "Role Specific:\n1. Identification of Trusted Code Sources or Repositories: Clearly define and maintain an updated list of trusted code sources and repositories.\n\n2. Code Review and Security Testing: Establish regular code reviews focused on security vulnerabilities in the training pipeline code. Use automated tools (e.g., static application security testing (SAST), dynamic application security testing (DAST),  interactive application security testing (IAST)) to identify issues based on frameworks like OWASP, CSA, NIST, MITRE, MIT.\n\n3. Access Control: Limit access to the training pipeline code repository based on roles and responsibilities. Implement multi-factor authentication (MFA) and use least privilege principles to restrict who can view, modify, or deploy the code, according to IAM controls.\n\n4. Dependency Management: Regularly update dependencies with SCA tools for vulnerability detection.\n\n5. Secure Coding Training: Train developers on secure coding for AI and ML pipelines.\n\n6. Pipeline Segmentation: Segment the pipeline and apply stage-specific security controls.\n\n7. Audits and Updates: Conduct regular audits and update controls as needed.\n\n8. Incident Response: Maintain a response plan for pipeline-related incidents.\n\n9. Definition of Structured Procedures and Responsibilities: Establish well-documented procedures covering operational and technical aspects, including vulnerability thresholds, risk acceptance levels, roles, and responsibilities.\n\n[Shared Responsibilities (Applicable to MP, CSP)]\n1. Configuration Management: Secure configurations and credentials with a secrets management tool.\n\n2. Logging and Monitoring: Implement logging, monitoring, and SIEM integration for activity detection.",
+    "orchestrated_service_provider": "Not Applicable",
+    "application_provider": "Not Applicable",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "[Shared Responsibilities (Applicable to MP, CSP)]\n1. Configuration Management: Secure configurations and credentials with a secrets management tool.\n\n2. Logging and Monitoring: Implement logging, monitoring, and SIEM integration for activity detection."
+  },
+  "auditing_guidelines": {
+    "application_provider": "Scenario 1: Consumption Only (No Training/Fine-Tuning):\n\nTraining Pipeline Security: Not Directly Applicable (responsibility with MP/OSP). Focus is on due diligence and secure integration.\n\nPolicy and Procedure Review: Review policies and procedures for the secure use and integration of the pre-trained model, covering input/output validation, access controls, secure configuration, and secure data handling.\n\nBest Practices Adherence: Verify adherence to relevant security best practices (e.g., OWASP Top 10).\n\n1. Implementation Verification: Review application code, audit API security measures, and assess the application for vulnerabilities, focusing on secure input/output handling, access controls, and configuration related to model integration.\n\n2. Due Diligence: Audit that the AP performed due diligence on the MP and/or OSP regarding their training pipeline security (review contracts, SLAs, certifications, audit reports).\n\n3. Regular Review and Update: Review documentation supporting regular policy reviews and updates.\n\nScenario 2: Fine-Tuning:\n\nTraining Pipeline Security (Fine-Tuning Portion): The AP has direct responsibility.\n\nPolicy and Procedure Review: Review documented processes and procedures for the entire fine-tuning pipeline, including data preprocessing, the fine-tuning process itself, integration of the fine-tuned model, and security of all related code. Ensure that these policies and procedures are formally approved.\n\nBest Practices Adherence: Assess alignment with OWASP Top 10 and other relevant guidelines, specifically for the fine-tuning process.\n\n1. Implementation Verification: Audit the implementation of fine-tuning security by reviewing the fine-tuning code and configurations, auditing the security of the data used for fine-tuning (including its source, storage, and access controls), assessing the security of the infrastructure used for fine-tuning, and verifying that appropriate security measures are in place to prevent data poisoning, model manipulation, or other relevant attacks.\n\n2. Regular Review and Update: Review evidence of regular reviews and updates to the fine-tuning security measures.\n\n3. Due Diligence (Base Model): Audit that the AP performed due diligence on the provider of the base model.\n\n4. Data and Pre-trained Model Security (if applicable): Verify how datasets are being used and secured, and how any Pre-trained models leveraged are being used and secured.\n\nScenario 3: Full Training (Rare):\n\nFollow the Model Provider guidelines.",
+    "orchestrated_service_provider": "Policy and Procedure Review: Review documented processes and procedures for training pipeline security related to the orchestrated services, covering relevant aspects such as data preprocessing (if applicable), training orchestration (if applicable), integration, use of datasets and pre-trained models (if applicable), and codebase security (if applicable). Ensure that these policies and procedures are formally approved.\n\nBest Practices Adherence: Assess alignment with security best practices (e.g., OWASP Top 10), as applicable to the OSP's role.\n\n1. Implementation Verification: Audit implementation of relevant processes and procedures; this may include reviewing configurations of orchestration tools, auditing API security, and interviewing operations staff.\n\n2. Regular Review and Update: Review evidence of regular reviews and updates to relevant security measures.\n\n3. Coordination with MP and/or AP: Verify clear definition/documentation of responsibilities and assess communication/coordination effectiveness between the OSP, MP, and AP (if the AP is fine-tuning).\n\n4. Data and Pre-trained Model Security (if applicable): Verify how datasets and pre-trained models are being used and secured by the OSP, if applicable to their role.\n\nNot Applicable: If the OSP has no involvement with the training pipeline, document this as Not Applicable.",
+    "model_provider": "Policy and Procedure Review: Review documented processes and procedures for the entire AI training pipeline, covering all stages (data preprocessing, model training, integration), security of datasets and pre-trained models, and codebase security, ensuring formal approval of these policies and procedures.\n\nBest Practices Adherence: Assess alignment with security best practices (e.g., OWASP Top 10).\n\n1. Implementation Verification: Audit implementation through extensive reviews, including deep code reviews, examination of data handling practices, assessment of training infrastructure security, and interviews with relevant personnel.\n\n2. Regular Review and Update: Review evidence of regular reviews and updates.\n\n3. Coordination with OSP and/or AP: Verify clear definition/documentation of responsibilities and assess communication/coordination.\n\n4. Data and Pre-trained Model Security (if applicable): Verify how datasets are being used and secured. Verify how pre-trained models are being used and secured.",
+    "ai_customer": "Training Pipeline Security: Not Directly Applicable (primary responsibility is due diligence).\n\nDue Diligence: Review contracts/SLAs for security clauses. Assess provider security (review certifications, audit reports) from the AP, OSP, and MP (as applicable), specifically addressing training pipeline security. Consider questionnaires/assessments if needed. \n\n1. Audit documentation of a plan by the AIC for the periodic review of the provider. If the rare case exists where the AIC is directly involved in training or fine-tuning, then review their internal policies, procedures, and implementation, similarly to the approach used for the AP when involved in those activities.\n\n2. To validate vendor security assurances, require documented evidence such as certifications, audits, or third-party assessments rather than self-attestation. \n\n3. Review adversarial testing reports to ensure they cover relevant attack vectors, use recognized methods, and document mitigation of vulnerabilities. \n\n4. Demand transparent model change logs that record version updates, data or architecture changes, reasons for updates, and associated risks. These requirements should be built into procurement, contracts, and ongoing vendor management to maintain continuous oversight.",
+    "cloud_service_provider": "1. Review security measures implemented to protect the CSP infrastructure used for AI model training pipelines. \n\n2. Verify controls around data storage, access, and transit used in training. Assess the configuration of network security, including firewalls and intrusion detection/prevention systems protecting training environments. \n\n3. Evaluate the physical security and environmental controls for the facilities where training infrastructure is housed. Verify the incident response procedures related to the training pipeline infrastructure. Evaluate how access control is maintained in the training environment. \n\n4. Confirm regular reviews and updates of security measures and procedures."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-01"
+    }
+  ]
+}

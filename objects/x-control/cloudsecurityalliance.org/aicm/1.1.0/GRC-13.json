@@ -1,0 +1,77 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--692e8a5a-4ced-4569-b5d8-2e6c8c8d040c",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Explainability Requirement",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "GRC-13",
+  "domain": "Governance, Risk and Compliance",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish, document, and communicate the degree of explainability needed for the AI Services.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Customer (AIC)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Customer (AIC)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage, Team and expertise",
+    "development": "Design, Training, Guardrails, Supply Chain",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Define explainability expectations for AI systems based on use case criticality, audience, and regulatory context.\n\n2. Use appropriate methods (e.g., LIME, SHAP, saliency maps, rule extraction, counterfactuals or causal based methods) to generate model explanations.\n\n3. Document the explainability strategy, limitations, and interpretability metrics.\n\n4. Ensure explanations are accessible to intended audiences (e.g., end users, regulators, developers).\n\n5. Evaluate explainability outputs for clarity, consistency, and fairness implications.",
+    "model_provider": "1. Design models with post-hoc or intrinsic interpretability based on expected exposure.\n\n2. Provide model-level explanations as part of validation and deployment packages.\n\n3. Document assumptions and known edge cases that affect interpretability.\n\n4. Evaluate trade-offs between accuracy and explainability for each model class.\n\n5. Ensure model metadata includes explainability method selection and rationale.\n\n[All Actors]\n1. Define explainability expectations for AI systems based on use case criticality, audience, and regulatory context.\n\n2. Use appropriate methods (e.g., LIME, SHAP, saliency maps, rule extraction, counterfactuals or causal based methods) to generate model explanations.\n\n3. Document the explainability strategy, limitations, and interpretability metrics.\n\n4. Ensure explanations are accessible to intended audiences (e.g., end users, regulators, developers).\n\n5. Evaluate explainability outputs for clarity, consistency, and fairness implications.",
+    "orchestrated_service_provider": "1. Ensure pipelines retain explainability metadata and outputs during inference and deployment.\n\n2. Support integration of explainability tools within the CI/CD flow.\n\n3. Log explanation generation steps for auditability.\n\n4. Validate explanations remain consistent across model re-deployments.\n\n5. Flag missing or corrupted explanation artifacts in the deployment workflow.\n\n[All Actors]\n1. Define explainability expectations for AI systems based on use case criticality, audience, and regulatory context.\n\n2. Use appropriate methods (e.g., LIME, SHAP, saliency maps, rule extraction, counterfactuals or causal based methods) to generate model explanations.\n\n3. Document the explainability strategy, limitations, and interpretability metrics.\n\n4. Ensure explanations are accessible to intended audiences (e.g., end users, regulators, developers).\n\n5. Evaluate explainability outputs for clarity, consistency, and fairness implications.",
+    "application_provider": "1. Surface explanations to users in a format suitable for the application (e.g., text, charts, tooltips).\n\n2. Test whether end users understand and trust AI explanations.\n\n3. Provide user feedback channels for explanation usefulness or errors.\n\n4. Log explanation interactions to improve future UI/UX.\n\n5. Ensure updates to models or decision logic don't remove previously provided explanations.\n\n[All Actors]\n1. Define explainability expectations for AI systems based on use case criticality, audience, and regulatory context.\n\n2. Use appropriate methods (e.g., LIME, SHAP, saliency maps, rule extraction, counterfactuals or causal based methods) to generate model explanations.\n\n3. Document the explainability strategy, limitations, and interpretability metrics.\n\n4. Ensure explanations are accessible to intended audiences (e.g., end users, regulators, developers).\n\n5. Evaluate explainability outputs for clarity, consistency, and fairness implications.",
+    "ai_customer": "1. Define minimum explainability requirements for each use case during procurement.\n\n2. Review vendor explanations for clarity, completeness, and consistency with contractual terms.\n\n3. Translate explanations into business-specific impact insights.\n\n4. Include explainability documentation in internal audit and compliance reporting.\n\n5. Work with providers to address cases where explanation quality degrades over time.\n\n[All Actors]\n1. Define explainability expectations for AI systems based on use case criticality, audience, and regulatory context.\n\n2. Use appropriate methods (e.g., LIME, SHAP, saliency maps, rule extraction, counterfactuals or causal based methods) to generate model explanations.\n\n3. Document the explainability strategy, limitations, and interpretability metrics.\n\n4. Ensure explanations are accessible to intended audiences (e.g., end users, regulators, developers).\n\n5. Evaluate explainability outputs for clarity, consistency, and fairness implications.",
+    "cloud_service_provider": "Vet third-party components embedded in CSP-hosted AI services (e.g., model APIs, datasets, plugins).\n\nDisclose usage of pretrained models, open datasets, or external APIs included in AI products.\n\nProvide configuration options to allow/deny third-party tool usage within customer environments.\n\nOffer security and compliance documentation for third-party integrations where applicable.\n\nEnsure contractual protections and indemnity clauses for third-party risk where supported.\n\n[All Actors]\n1. Define explainability expectations for AI systems based on use case criticality, audience, and regulatory context.\n\n2. Use appropriate methods (e.g., LIME, SHAP, saliency maps, rule extraction, counterfactuals or causal based methods) to generate model explanations.\n\n3. Document the explainability strategy, limitations, and interpretability metrics.\n\n4. Ensure explanations are accessible to intended audiences (e.g., end users, regulators, developers).\n\n5. Evaluate explainability outputs for clarity, consistency, and fairness implications."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that the Application Provider has clearly articulated explainability requirements, informed by applicable compliance, regulatory, or ethical obligations.\n\n2. Verify that the priority of explainability is defined and aligned with these requirements, considering the potential consequences of errors.\n\n3. Verify that regular and structured stakeholder communication is in place to ensure explainability practices are effectively conveyed to both internal and external stakeholders.\n\n4. Verify that there is a documented process for selecting algorithms based on explainability criteria defined in the explainability requirements.\n\n5. Verify that the Application Provider is transparent about its explainability practices and that customers are informed and understand how decisions are made.",
+    "orchestrated_service_provider": "1. Verify that the Orchestrated Service Provider (OSP) has clearly defined explainability requirements that align with applicable compliance, regulatory, or ethical obligations.\n\n2. Verify that the OSP prioritizes explainability based on risk levels and use cases, ensuring alignment with customer requirements and potential consequences of decision errors.\n\n3. Verify that the OSP maintains consistent and transparent communication with all stakeholders—including customers, integrated service providers, and internal teams—regarding explainability standards and responsibilities.\n\n4. Verify that the OSP has a documented framework for selecting, integrating, or substituting AI components based on explainability factors outlined in its requirements.\n\n5. Verify that the OSP ensures transparency, enabling customers to understand explainability expectations and how decisions are made across the full AI pipeline.",
+    "model_provider": "1. Verify that the Model Provider has clearly articulated explainability requirements, informed by applicable compliance, regulatory, or ethical obligations.\n\n2. Verify that the priority of explainability is defined and aligned with these requirements, considering the potential consequences of errors.\n\n3. Verify that regular and structured stakeholder communication is in place to ensure explainability practices are effectively conveyed to both internal and external stakeholders.\n\n4. Verify that there is a documented process for selecting algorithms based on explainability criteria defined in the explainability requirements.\n\n5. Verify that the Application Provider is transparent about its explainability practices and that customers are informed and understand how decisions are made.",
+    "ai_customer": "1. Verify that the AI customer has clearly articulated explainability requirements, informed by applicable compliance, regulatory, or ethical obligations.\n\n2. Verify that the priority of explainability is defined and aligned with these requirements, considering the potential consequences of errors.\n\n3. Verify that regular and structured stakeholder communication is in place to ensure explainability practices are effectively conveyed to both internal and external stakeholders.\n\n4. Verify that there is a documented process for choosing the right partner based on explainability criteria defined in the explainability requirements.\n\n5. Verify that the AI customer is transparent about its explainability practices and their customers are informed and understand how decisions are made.",
+    "cloud_service_provider": "1. Verify that the CSP has clearly defined explainability requirements that align with applicable compliance, regulatory, or ethical obligations.\n\n2. Verify that the CSP prioritizes explainability based on risk levels and use cases, ensuring alignment with customer requirements and potential consequences of decision errors.\n\n3. Verify that the CSP maintains consistent and transparent communication with all stakeholders, including customers, integrated service providers, and internal teams, regarding explainability standards and responsibilities.\n\n4. Verify that the CSP has a documented framework for selecting, integrating, or substituting AI components based on explainability factors outlined in its requirements.\n\n5. Verify that the CSP ensures transparency, enabling customers to understand explainability expectations and how decisions are made across the full AI pipeline."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#GRC-13"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--89fc4457-d06a-4051-b0eb-0f602cc4f8d2",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Model Signing/Ownership Verification",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-09",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Sign models cryptographically and verify signatures to ensure model provenance and ownership, any time the model changes hands or is loaded from storage.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Training",
+    "evaluation_validation": "Validation/Red Teaming",
+    "deployment": "AI Services supply chain, Orchestration, AI applications",
+    "delivery": "Operations, Maintenance",
+    "service_retirement": "Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (MP, OSP, AP, CSP)]\n1.  Model signatures should be verified whenever the model is changing hands or being moved between locations.\n\n2. Signing keys or identities should be clearly associated with the code producers, ensuring an unambiguous link to the corresponding code as the owning entity. Public registries should be used wherever possible to support this association.\n\n3. Only verified models and model files from trusted sources should be loaded or used in applications.\n\n4. Enforce automated signature verification at model loading time to prevent unauthorized or tampered models from being used.\n\n5. Maintain a model signing and verification audit log, documenting all signature validations, transfers, and ownership changes for traceability.",
+    "model_provider": "[Shared Responsibilities (MP, OSP, AP, CSP)]\n1.  Model signatures should be verified whenever the model is changing hands or being moved between locations.\n\n2. Signing keys or identities should be clearly associated with the code producers, ensuring an unambiguous link to the corresponding code as the owning entity. Public registries should be used wherever possible to support this association.\n\n3. Only verified models and model files from trusted sources should be loaded or used in applications.\n\n4. Enforce automated signature verification at model loading time to prevent unauthorized or tampered models from being used.\n\n5. Maintain a model signing and verification audit log, documenting all signature validations, transfers, and ownership changes for traceability.",
+    "orchestrated_service_provider": "[Shared Responsibilities (MP, OSP, AP, CSP)]\n1.  Model signatures should be verified whenever the model is changing hands or being moved between locations.\n\n2. Signing keys or identities should be clearly associated with the code producers, ensuring an unambiguous link to the corresponding code as the owning entity. Public registries should be used wherever possible to support this association.\n\n3. Only verified models and model files from trusted sources should be loaded or used in applications.\n\n4. Enforce automated signature verification at model loading time to prevent unauthorized or tampered models from being used.\n\n5. Maintain a model signing and verification audit log, documenting all signature validations, transfers, and ownership changes for traceability.",
+    "application_provider": "[Shared Responsibilities (MP, OSP, AP, CSP)]\n1.  Model signatures should be verified whenever the model is changing hands or being moved between locations.\n\n2. Signing keys or identities should be clearly associated with the code producers, ensuring an unambiguous link to the corresponding code as the owning entity. Public registries should be used wherever possible to support this association.\n\n3. Only verified models and model files from trusted sources should be loaded or used in applications.\n\n4. Enforce automated signature verification at model loading time to prevent unauthorized or tampered models from being used.\n\n5. Maintain a model signing and verification audit log, documenting all signature validations, transfers, and ownership changes for traceability.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "[Shared Responsibilities (MP, OSP, AP, CSP)]\n1.  Model signatures should be verified whenever the model is changing hands or being moved between locations.\n\n2. Signing keys or identities should be clearly associated with the code producers, ensuring an unambiguous link to the \ncorresponding code as the owning entity. Public registries should be used wherever possible to support this association.\n\n3. Only verified models and model files from trusted sources should be loaded or used in applications.\n\n4. Enforce automated signature verification at model loading time to prevent unauthorized or tampered models from being used.\n\n5. Maintain a model signing and verification audit log, documenting all signature validations, transfers, and ownership changes for \ntraceability."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine procedures for verifying signatures of models or services received from upstream providers. \n\n2. Verify implementation of signature verification before model deployment in applications. \n\n3. Assess application-level mechanisms for verifying signatures when models are loaded during operation. \n\n4. Review documentation of signature verification results and frequency. \n\n5. Confirm procedures for responding to signature verification failures, including appropriate incident response steps. \n\n6. Verify security controls for any application-specific signing keys if extending the provenance chain.",
+    "orchestrated_service_provider": "1., Examine procedures for verifying signatures of models received from Model Providers. \n\n2. Verify the implementation of signature verification during orchestration and deployment processes. \n\n3. Assess security controls for any signing keys used by the OSP for applying additional signatures. \n\n4. Review documentation of all signature verification results, including timestamp, verification method, and outcome. \n\n5. Confirm that signature verification occurs any time a model is loaded from storage. \n\n6. Verify that procedures exist for handling signature verification failures.",
+    "model_provider": "1. Examine the documented model signing process, verifying the use of industry-standard cryptographic algorithms.\n\n2. Assess the security controls protecting private signing keys, including access restrictions and key rotation procedures.\n\n3. Verify that all model versions and checkpoints are cryptographically signed before release.\n\n4. Review the process for securely distributing public keys or certificates to downstream consumers.\n\n5. Confirm documentation of the signing algorithms, key strengths, and certification authorities used.\n\n6. Verify implementation of signing verification prior to any deployment or distribution of models.",
+    "ai_customer": "1. Examine procedures for verifying signatures of models or services received from upstream providers. \n\n2. Verify implementation of signature verification before model deployment in applications. \n\n3. Assess application-level mechanisms for verifying signatures when models are loaded during operation. \n\n4. Review documentation of signature verification results and frequency. \n\n5. Confirm procedures for responding to signature verification failures, including appropriate incident response steps. \n\n6. Verify security controls for any application-specific signing keys if extending the provenance chain.",
+    "cloud_service_provider": "1. Review the mechanisms the CSP provides to support customer's model signing and ownership verification. If the CSP offers key management services, assess the security controls for managing cryptographic keys. \n\n2. Evaluate how the CSP verifies the validity of digital signatures on models being hosted. \n\n3. Confirm that the CSP's documentation details how customers can verify the provenance and ownership of their models."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-09"
+    }
+  ]
+}

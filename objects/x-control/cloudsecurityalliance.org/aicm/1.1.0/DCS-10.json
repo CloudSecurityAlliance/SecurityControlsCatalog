@@ -1,0 +1,63 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--ff213ffd-cad4-495a-b7bc-61ecc4cc743f",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Secure Area Authorization",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-10",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Allow only authorized personnel access to secure areas, with all ingress and egress points restricted, documented, and monitored by  physical access control mechanisms. Retain access control records on a  periodic basis as deemed appropriate by the organization.",
+  "control_type": "Cloud-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical"
+  ],
+  "lifecycle_relevance": {
+    "delivery": "Operations"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors except AIC]\n1. Providers should allow only authorized personnel access to secure areas that contain equipment that perform tasks, data processing, inference.  The access should be restricted by physical security controls and reviewed on a periodic basis.",
+    "model_provider": "Role Specific\n1. Providers should  allow only authorized personnel access to secure areas that contain equipment that perform tasks  data processing, inference . The access should be restricted by physical security controls and reviewed on a periodic basis \n\n2. Establish graduated security perimeters with increasing restrictions as personnel approach model training environments. Authenticate using multi-factor methods (biometric plus badge) at transition points. \n\n3. Require pre-approved clearance for all non-employee visitors with designated escorts throughout their stay. Log all interactions with sensitive systems.\n\n[All Actors except AIC]\n1. Providers should allow only authorized personnel access to secure areas that contain equipment that perform tasks, data processing, inference.  The access should be restricted by physical security controls and reviewed on a periodic basis.",
+    "orchestrated_service_provider": "No Role Specific \n\n[All Actors except AIC]\n1. Providers should allow only authorized personnel access to secure areas that contain equipment that perform tasks, data processing, inference.  The access should be restricted by physical security controls and reviewed on a periodic basis.",
+    "application_provider": "No Role Specific \n\n[All Actors except AIC]\n1. Providers should allow only authorized personnel access to secure areas that contain equipment that perform tasks, data processing, inference.  The access should be restricted by physical security controls and reviewed on a periodic basis.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "Role Specific\nThe CSP should establish a comprehensive framework for restricting access to secure areas within cloud environments, \nensuring that only authorized personnel can gain entry and that all ingress and egress activities are documented, monitored, \nand retained for a specified period.\n \n Implementation best practices for secure areas access include (but not limited to):\n a. Physical Access Control:\n i. A layered approach to physical access control should be implemented using a combination of physical barriers, electronic \naccess control systems, and security personnel\n ii. Designated entry and exit points for secure areas should be established\n iii. Physical barriers should be installed to prevent unauthorized entry into secure areas (e.g., fences, walls, doors, mantraps)\n iv. Electronic access control systems should be implemented (e.g., key cards, proximity cards, or biometric scanners)\n v. Security personnel should be employed to monitor and patrol secure areas, both physically and electronically\n vi. Visitor management procedures should be implemented to track and control the entry and exit of non-authorized personnel.\n b. Access Control Records Documentation:\n i. Access control records system should be implemented to document and capture all ingress and egress activities within secure areas\n ii. Identity of all personnel entering and exiting secure areas should be recorded along with the date and time of access\n iii. The type of access granted should be documented, such as physical access, logical access, or remote access\n iv. Access control records should be maintained for a period of time deemed appropriate by the organization and in accordance with regulatory requirements and organizational policies\n c. Monitoring of Ingress and Egress Points:\n i. Ingress and egress points should be continuously monitored to secure areas using surveillance cameras and other monitoring systems\n ii. Monitoring systems should be integrated with access control systems to correlate access events with video footage.\n iii. Procedures should be established for promptly reviewing and investigating any suspicious access events\n d. Continuous Monitoring and Evaluation: The effectiveness of physical access controls should be continuously monitored and regular physical security assessments conducted to identify and address potential vulnerabilities.\n\n[All Actors except AIC]\n1. Providers should allow only authorized personnel access to secure areas that contain equipment that perform tasks, data processing, inference.  The access should be restricted by physical security controls and reviewed on a periodic basis."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the AP reviews and relies on the CSP's physical access control audits (e.g., SOC 2 reports) to ensure the data centers hosting their application are secure.\n\n2. Confirm the AP’s internal policies restrict access to their own secure development and office environments.",
+    "orchestrated_service_provider": "1. Verify the OSP’s due diligence process includes a review of the physical access controls for all CSPs and colocation facilities in its supply chain.\n\n2. Check that the OSP obtains and reviews these providers' attestations annually.",
+    "model_provider": "1. Verify the MP assesses the physical access controls of the data centers used for model training and research, particularly for facilities housing high-value compute resources.\n\n2. Review the MP's policies for securing any on-premises research labs.",
+    "ai_customer": "1. Verify the AIC’s vendor risk program requires that its AI providers use data centers with certified physical access controls.\n\n2. Review evidence (e.g., provider security questionnaires) that the AIC has verified this requirement.",
+    "cloud_service_provider": "1. Examine the policy and procedures relating to access to secure areas.\n\n2. Determine if the policy includes ingress and egress points to service and delivery areas.\n\n3. Determine if procedures include activities and actions against unauthorized personnel in the premises.\n\n4. Confirm that existence, review, and retention of Access logs for secure areas are aligned with policy and procedures.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-10"
+    }
+  ]
+}

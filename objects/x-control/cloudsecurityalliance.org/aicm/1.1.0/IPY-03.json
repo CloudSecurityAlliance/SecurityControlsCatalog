@@ -1,0 +1,72 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--632ebc19-d53e-40f3-ac55-5392e59d42ab",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Secure Interoperability and Portability Management",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "IPY-03",
+  "domain": "Interoperability & Portability",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Implement cryptographically secure network  protocols for the management, import and  export of data, according to industry  standards.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "network",
+    "storage",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage",
+    "development": "Design, Guardrails",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Data deletion"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Protocol Enforcement: a) Mandate current, strong, secure protocols (TLS 1.2+, HTTPS, SFTP, SSH) for all data management/import/export interfaces. b) Disable insecure protocols.  \n\n2. Cryptographic Methods: a) Use strong encryption/key lengths for data in transit. b) Implement robust key management. c) Regularly update crypto suites.  \n\n3. Data Integrity: a) Implement mechanisms to verify data integrity during transfer (e.g., checksums). \n\n4. Secure Tooling & Endpoints: a) Ensure provided tools/SDKs/endpoints use secure protocols. b) Secure management interfaces (web consoles, APIs) with HTTPS/strong authentication.",
+    "model_provider": "1. Ensure secure protocols (HTTPS, SFTP) are used for upload/download of datasets, model files, configurations. \n\n[All Actors]\n1. Protocol Enforcement: a) Mandate current, strong, secure protocols (TLS 1.2+, HTTPS, SFTP, SSH) for all data management/import/export interfaces. b) Disable insecure protocols.  \n\n2. Cryptographic Methods: a) Use strong encryption/key lengths for data in transit. b) Implement robust key management. c) Regularly update crypto suites.  \n\n3. Data Integrity: a) Implement mechanisms to verify data integrity during transfer (e.g., checksums). \n\n4. Secure Tooling & Endpoints: a) Ensure provided tools/SDKs/endpoints use secure protocols. b) Secure management interfaces (web consoles, APIs) with HTTPS/strong authentication.",
+    "orchestrated_service_provider": "1. Secure all platform management APIs/interfaces (deployment, scaling, monitoring) with HTTPS/TLS.  \n\n2. Use secure protocols for transferring logs, metrics, backups.  \n\n3. Secure import/export of configurations/snapshots.\n\n[All Actors]\n1. Protocol Enforcement: a) Mandate current, strong, secure protocols (TLS 1.2+, HTTPS, SFTP, SSH) for all data management/import/export interfaces. b) Disable insecure protocols.  \n\n2. Cryptographic Methods: a) Use strong encryption/key lengths for data in transit. b) Implement robust key management. c) Regularly update crypto suites.  \n\n3. Data Integrity: a) Implement mechanisms to verify data integrity during transfer (e.g., checksums). \n\n4. Secure Tooling & Endpoints: a) Ensure provided tools/SDKs/endpoints use secure protocols. b) Secure management interfaces (web consoles, APIs) with HTTPS/strong authentication.",
+    "application_provider": "1. Mandate HTTPS for all communication between applications and AI services (API calls).  \n\n2. Use secure protocols for any direct bulk data upload/download related to the AI service.\n\n[All Actors]\n1. Protocol Enforcement: a) Mandate current, strong, secure protocols (TLS 1.2+, HTTPS, SFTP, SSH) for all data management/import/export interfaces. b) Disable insecure protocols.  \n\n2. Cryptographic Methods: a) Use strong encryption/key lengths for data in transit. b) Implement robust key management. c) Regularly update crypto suites.  \n\n3. Data Integrity: a) Implement mechanisms to verify data integrity during transfer (e.g., checksums). \n\n4. Secure Tooling & Endpoints: a) Ensure provided tools/SDKs/endpoints use secure protocols. b) Secure management interfaces (web consoles, APIs) with HTTPS/strong authentication.",
+    "ai_customer": "1. Configure client tools/apps to exclusively use mandated secure protocols.  \n\n2. Ensure client systems have up-to-date secure communication libraries.  \n\n3. Verify authenticity of provider endpoints (e.g., TLS certs) before transferring data. \n\n4. Ensure all interactions (API calls, data transfers, console access) use secure channels.\n\n[All Actors]\n1. Protocol Enforcement: a) Mandate current, strong, secure protocols (TLS 1.2+, HTTPS, SFTP, SSH) for all data management/import/export interfaces. b) Disable insecure protocols.  \n\n2. Cryptographic Methods: a) Use strong encryption/key lengths for data in transit. b) Implement robust key management. c) Regularly update crypto suites.  \n\n3. Data Integrity: a) Implement mechanisms to verify data integrity during transfer (e.g., checksums). \n\n4. Secure Tooling & Endpoints: a) Ensure provided tools/SDKs/endpoints use secure protocols. b) Secure management interfaces (web consoles, APIs) with HTTPS/strong authentication.",
+    "cloud_service_provider": "[All Actors]\n1. Protocol Enforcement: a) Mandate current, strong, secure protocols (TLS 1.2+, HTTPS, SFTP, SSH) for all data management/import/export interfaces. b) Disable insecure protocols.  \n\n2. Cryptographic Methods: a) Use strong encryption/key lengths for data in transit. b) Implement robust key management. c) Regularly update crypto suites.  \n\n3. Data Integrity: a) Implement mechanisms to verify data integrity during transfer (e.g., checksums). \n\n4. Secure Tooling & Endpoints: a) Ensure provided tools/SDKs/endpoints use secure protocols. b) Secure management interfaces (web consoles, APIs) with HTTPS/strong authentication.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThe CSP is responsible for encrypting communications using industry-standard protocols and encryption algorithms. The CSP should make design and configuration documentation available to the CSC.\n\nImplementation Guidelines.\nApplicable to all service models:\nThe CSP is responsible for the secure configuration, monitoring, certificate renewal, and key management for all APIs within their control. The CSP should comply with applicable regulatory mandates.\n\nThe CSP should provide the CSC with accurate documentation, communicate planned changes and updates, and make independent security audit results available. When vulnerabilities are detected, the CSP should alert the CSC of the issue, provide status updates, and mitigation provide advice as applicable."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Review the Interoperability and Portability Policy, procedures for coverage, relevancy and effective communication to relevant stakeholders.\n\n2. Verify that the policy specifies the use of secure communication protocols (e.g., TLS 1.3, SFTP) and the supported cipher suites. Ensure that it also defines the types of data covered, such as user logs, model training data, and other sensitive information.\n\n3. Verify the policy contains acceptable and non acceptable methods of data management including clearly specifying secure and insecure practices.\n\n4. Verify, through interviews or documentation, that the policy is communicated to users and internal personnel and acknowledged by relevant parties.\n\n5. Examine the policy for evidence of review and updating by the policy owner or committee at least annually.",
+    "orchestrated_service_provider": "1. Review the Interoperability and Portability Policy and procedures to ensure they adequately cover necessary aspects related to the secure management, import, and export of data including across containerized environments and orchestration platforms like Kubernetes.\n\n2. Validate the inclusion of data types explicitly covered under the policy, like LLM training data, user interaction logs, and model weights.\n\n3. Verify the policy lists specific, secure network protocols used within the organization with sufficient detail and context of where each protocol is used.\n\n4. Through interviews or documentation review, ensure the policy has been communicated to all relevant users, internal personnel, and external stakeholders.",
+    "model_provider": "1. Examine Interoperability and Portability Policy for adequacy, currency, and communication.\n\n2. Verify inclusion of applicable data management scenarios\n\n3. Specify Secure Protocols and Cryptographic Standards: Ensure there is a formal acknowledgment process for policy acceptance, such as training sessions, signed acknowledgments, or digital records of policy acceptance.",
+    "ai_customer": "1. Examine the adequacy of the policy to ensure to if they contain comprehensive details regarding the implementation of cryptographically secure network protocols within the AIC environment.\n\n2. Review that the Interoperability and Portability Policy has been updated regularly to adapt to evolving industry standards and emerging threats.\n\n3. Review that the communication channels are adequate to communicate about the policy to all relevant parties involved.\n\n4. Examine the mechanisms used for the monitoring and enforcement of the policy. Ensure that there are clear procedures for detecting and addressing non-compliance.",
+    "cloud_service_provider": "1. Examine the adequacy of the policy to ensure to if they contain comprehensive details regarding the implementation of cryptographically secure network protocols within the CSP environment.\n\n2. Review that the Interoperability and Portability Policy has been updated regularly to adapt to evolving industry standards and emerging threats.\n\n3. Review that the communication channels are adequate to communicate about the policy to all relevant parties involved.\n\n4. Examine the mechanisms used for the monitoring and enforcement of the policy. Ensure that there are clear procedures for detecting and addressing non-compliance.\n\nFrom CCM v4.1:\n1. Examine the policy for the secure transmission of requests and data.\n2. Inspect the requirements, with respect to any security domains defined.\n3. Examine the policy that specifies protocols for transmission, with respect to standardization."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#IPY-03"
+    }
+  ]
+}

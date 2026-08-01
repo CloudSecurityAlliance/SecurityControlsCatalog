@@ -1,0 +1,71 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--c3b830d0-bed3-404f-a1ed-7fd7d0f243e4",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Secure Area Policy and Procedures",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-04",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish, document, approve, communicate, apply, evaluate and maintain policies and procedures for maintaining a safe and secure working environment in offices, rooms, and facilities. Review and update the policies and procedures at least annually, or upon significant changes.",
+  "control_type": "Cloud-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data storage, Resource provisioning, Team and expertise",
+    "deployment": "Orchestration, AI Services supply chain",
+    "delivery": "Operations, Maintenance",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors except AIC]\n1. Providers should ensure that they have documented, approved, communicated, applied, evaluated and maintained policies and procedures for maintaining a safe and secure working environment in offices, rooms, and facilities that processes data for models or inference tasks. These include but not limited to the procedures listed for the CSP.",
+    "model_provider": "Role Specific\n\n1. Establish dedicated zones for sensitive model development with tiered access controls such as Biometric verification for rooms housing training infrastructure which are under constant surveillance and also environment monitoring to prevent model degradation.\n\n2. Maintain visitor logs with purpose documentation for anyone accessing model development areas and implement \"clean desk\" practices for areas with model architecture documentation.\n\n[All Actors except AIC]\n1. Providers should ensure that they have documented, approved, communicated, applied, evaluated and maintained policies and procedures for maintaining a safe and secure working environment in offices, rooms, and facilities that processes data for models or inference tasks. These include but not limited to the procedures listed for the CSP.",
+    "orchestrated_service_provider": "Role Specific\n\n1. OSP position between model providers and applications requires enhanced security at connection points.\n\n2. Establish secure corridors for data transit between interconnected systems.\n\n3. Document all physical cable maps with appropriate classification levels.\n\n4. Create emergency shutdown protocols for compromised orchestration components\n\n[All Actors except AIC]\n1. Providers should ensure that they have documented, approved, communicated, applied, evaluated and maintained policies and procedures for maintaining a safe and secure working environment in offices, rooms, and facilities that processes data for models or inference tasks. These include but not limited to the procedures listed for the CSP.",
+    "application_provider": "Role Specific\n\n1. Establish check-in/check-out procedures for development devices.\n\n2. Implement workspace zoning based on application sensitivity.\n\n\n[All Actors except AIC]\n1. Providers should ensure that they have documented, approved, communicated, applied, evaluated and maintained policies and procedures for maintaining a safe and secure working environment in offices, rooms, and facilities that processes data for models or inference tasks. These include but not limited to the procedures listed for the CSP.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "Role Specific\nThe CSP should incorporate comprehensive security measures into its policies and procedures to maintain a secure and safe working environment in offices for employees\n\nTo meet these responsibilities, the CSP should maintain the following policies and procedures.\nPolicies should include (but not limited to) provisions on the following:\n\na.  Access Control: Requirements for establishing and implementing physical access controls specifically for office spaces, rooms and facilities to ensure that only authorized personnel can enter. Secure methods should be considered such as secure key cards or biometrics for access\n\nb.  Access Request and Approval Process: Requirements for  establishing a defined access request and approval process for all data center facilities, ensuring that access is granted only to authorized personnel and based on the principle of\nleast privilege\n\nc. Secure Storage: Requirements for maintaining secure storage  areas within offices, for sensitive equipment, data storage devices, and confidential documents and personal belongings. Employ access controls and monitoring systems\nfor these storage areas to prevent unauthorized handling or removal.\n\nd. Workstations Security: Requirements for securing employees workstations:\ni. Strong password policies and secure login practices\nii. Locking workstations when unattended to prevent\nunauthorized access\niii. Avoid leaving sensitive information or access\ncredentials in plain view\n\ne. Security Surveillance and Personnel: Requirements for the deployment of security personnel to maintain a visible security presence and to enhance safety and deter unauthorized access. Surveillance systems, including CCTV cameras, should be installed to monitor and enhance security\n\nf. Environmental Safety Measures: Requirements for the implementation of environmental controls to maintain stable temperature, humidity, and power conditions for the safety of employees. Establish procedures to conduct regular fire drills to ensure that employees are familiar with evacuation procedures in case of a fire\n\ng. Equipment Management: Controls over the secure management of devices, electronic and physical equipment in the working environment. Implement policies for the secure handling, removal, and disposal of equipment and data used\nin day-to-day work (refer to DSP-01 and DSP-02)\n\nh. Security Assessments: Requirements to conduct regular inspections in all working environments. Findings should be documented and corrective actions taken to address any issues identified\n\n[All Actors except AIC]\n1. Providers should ensure that they have  documented, approved, communicated, applied, evaluated and maintained policies and procedures for maintaining a safe and secure working environment in offices, rooms, and facilities that processes data for models or inference tasks. These include but not limited to the procedures listed for the CSP."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the AP's security policy requires that development and operations are performed in a secure working environment (physical or remote).\n\n2. Confirm that due diligence is performed on the physical security of any colocation or third-party facilities used, in addition to the primary CSP.",
+    "orchestrated_service_provider": "1. Verify the OSP's vendor management policy assesses the physical security of the facilities of all its critical suppliers and partners in the service chain.\n\n2. Review the OSP's own policies for maintaining a secure work environment for its personnel.",
+    "model_provider": "1. Verify the MP's security policy covers the physical protection of any on-premises labs or data centers used for model research and development.\n\n2. Confirm the MP reviews the physical security attestations (e.g., SOC 2) of the CSPs hosting their training and inference workloads.",
+    "ai_customer": "1. Verify the AIC’s third-party risk management policy includes requirements for their AI providers to attest to having secure work environments for their personnel.\n\n2. Review the AIC's internal physical security policies for their own office locations.",
+    "cloud_service_provider": "1. Examine the organization's policy and procedures related to physical areas under the organization's control.\n\n2. Determine if policy has been approved, communicated, and reviewed.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-04"
+    }
+  ]
+}

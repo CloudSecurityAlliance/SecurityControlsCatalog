@@ -1,0 +1,75 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--7c288cd9-ff3f-47f5-9561-4f5b9c91637b",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Datacenter Operations Resilience",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-18",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement and evaluate processes, procedures and technical measures to ensure continuous operations.",
+  "control_type": "Cloud-Specific",
+  "threat_category": [
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Resource provisioning, Team and expertise",
+    "development": "Design",
+    "evaluation_validation": "Evaluation, Validation \n/ Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services \nsupply chain",
+    "delivery": "Operations, Maintenance, Continuous monitoring",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All actors]\n1. Organizations should define, implement, and evaluate processes, procedures, and technical measures to ensure the continuous operation of infrastructure supporting AI systems. \n\n2. Resilience planning should address redundancy, fault tolerance, backup and recovery, and disaster recovery capabilities appropriate to the organization’s risk profile and service criticality. \n\n3. Operational resilience measures should be tested periodically, validated through exercises or failover events, and updated based on changes to infrastructure, workloads, and threat conditions. \n\n4. Dependencies on external service providers should be identified, defined and incorporated into continuity planning.",
+    "model_provider": "1. Model Providers should ensure that infrastructure supporting model training, tuning, and inference is designed for resilience, including redundant compute resources, resilient storage systems, and protected model artifact repositories. \n\n2. Model providers should implement recovery strategies for model pipelines, including the ability to resume interrupted training jobs and restore model states without data corruption. \n\n3. Continuity planning should address dependencies on orchestration platforms, cloud infrastructure, and specialized hardware such as GPUs or accelerators. \n\n4. Model providers should periodically test recovery procedures and validate, address gaps, so that disruptions do not compromise model integrity or availability.",
+    "orchestrated_service_provider": "1. Orchestrated Service Providers should implement resilience mechanisms across orchestration platforms, including workload failover, service redundancy, and automated recovery of orchestration components. \n\n2. Ensure that orchestration services can tolerate node failures, zone outages, and infrastructure degradation without disrupting AI service availability. \n\n3. Recovery procedures should be tested periodically (at least annually), and monitoring should verify that orchestration pipelines can recover to a known good state following disruptions. \n\n4. Dependencies on 3rd party infrastructure providers should be incorporated into continuity strategies.",
+    "application_provider": "1. Application Providers should implement continuity strategies to maintain availability of AI-enabled applications, including redundant application deployments, load balancing, and recovery procedures for dependent AI services. \n\n2. Ensure that application architectures can tolerate infrastructure outages and that AI components can reconnect or recover after service interruptions. \n\n3. Disaster recovery and business continuity plans should be aligned with service availability objectives and customer expectations. \n\n4. Application Providers should periodically (at least annually) validate recovery procedures through testing or simulated failure scenarios.",
+    "ai_customer": "AI Customers should define and maintain continuity strategies for business processes that rely on AI services, including contingency workflows, service failover options, and escalation procedures for prolonged service disruptions. Customers should assess the resilience capabilities and recovery commitments of service providers, and ensure contractual or operational arrangements support business continuity objectives. Where customer-managed infrastructure supports AI integrations, customers should implement appropriate backup, recovery, and restoration procedures and periodically validate continuity measures.",
+    "cloud_service_provider": "1. Cloud Service Providers should design infrastructure with redundancy in aspects such, as, but not limited to, power, cooling, network, and compute layers,  to support continuous operations of AI workloads. \n\n2. CSPs should implement geographically distributed facilities, automated failover mechanisms, and disaster recovery capabilities appropriate to service criticality. \n\n3. Operational resilience programs should include regular testing of recovery procedures, validation of redundancy controls, and continuous improvement based on incident analysis. \n\n4. CSPs should provide customers with transparency into resilience capabilities and service continuity commitments.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThe Cloud Service Provider (CSP) holds primary responsibility for establishing and managing the operational processes, procedures, and technical controls necessary to maintain uninterrupted data center services. The CSP has the authority and control over the infrastructure, while the Cloud Service Customer (CSC) has limited visibility and responsibility, making this a core responsibility of the CSP.\n\nImplementation Guidelines.\nApplicable to all service models:\nTo ensure continuous operations of data centers, organizations should follow a layered approach that combines technical, procedural, and security-focused actions.\na. Define requirements and scope by:\ni. Identify systems, services, and data that need high availability.\nii. Identify critical assets and prioritize based on business impact and compliance.\niii. Identify weak points. Map single points of failure and system dependencies.\nb. Strengthening Data Resiliency\ni. Replicate Data: Use synchronous and asynchronous replication across regions.\nii. Automate Backups: Follow the 3-2-1 rule—3 copies, 2 media types, 1 offsite.\niii. Protect Data Integrity: Use checksums, versioning, and immutability.\nc. Building Redundancy\ni. Compute: Use clusters or auto-scaling groups to avoid single-node failures.\nii. Storage: Implement RAID and distributed file systems.\niii. Network: Add redundant NICs, switches, and multi-path routing.\niv. Power & Cooling:\n• Use dual power supplies, UPS, and backup generators.\n• Install redundant cooling systems and monitor environmental conditions.\nv. Communication:\n• Use multiple ISPs or SD-WAN.\n• Set up failover for internal messaging and alerts.\nvi. Geographic Redundancy:\n• Deploy systems across multiple regions or availability zones.\n• Use geo-redundant storage and multi-region failover.\nvii. Application-Level Redundancy:\n• Use active-active or active-passive setups.\n• Add load balancers to manage traffic and detect failures.\nviii. Use Advanced Redundancy Techniques\n• JVM-Level: Distribute logic and data across N+1 JVMs.\n• Machine-Level: Spread workloads across N+1 virtual or physical machines.\n• Zone-Level: Add redundancy across server racks, power sources, and subnets.\n• Geographical: Operate in multiple regions to handle regional outages.\n• In-RAM Sync: Enable hot in-memory failover.\n• SSD Persistence: Combine RAM speed with SSD durability.\n• Asynchronous Replication: Use mirror services for external backups and replicate across clusters to protect against regional failures.\nd. Plan Fault Tolerance and Disaster Recovery\ni. Use Fault Tolerance: Add error detection, failover, managed service degradation, and isolation.\nii. Plan for Recovery: Maintain physical or cloud-based disaster recovery sites. Test and update plans regularly.\ne. Integrate Cybersecurity\ni. Encrypt Data: Protect data in transit, at rest, and in use.\nii. Control Access: Use strong authentication and role-based access.\niii. Prepare for Incidents: Develop and test response plans.\niv. Ensure Immutability: Protect backups and logs from tampering.\nv. Use air-gapped backups by keeping critical data offline\nvi. Audit Regularly: Run security audits and penetration tests.\nf. Monitoring, Automation, and Continuous Improvement\ni. Monitor Continuously: Track system health, replication lag, and failover events. Use synthetic monitoring to simulate user experience.\nii. Automate Responses: Automate scaling, failover, and recovery.\niii. Analyze Incidents: Perform root cause analysis and update systems based on lessons learned.\niv. Improve Continuously: Reassess needs and benchmark against best practices."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that the AP has implemented continuity and recovery mechanisms for AI-enabled applications, including redundancy and backup strategies.\n\n2. Confirm that recovery procedures are documented and tested periodically.\n\n3. Verify that application architectures support restoration of AI-dependent services following infrastructure disruptions.\n\n4. Confirm that incident records demonstrate successful recovery from outages or failures.",
+    "orchestrated_service_provider": "1. Verify that orchestration platforms implement automated recovery and failover mechanisms for workloads and control plane services.\n\n2. Confirm that orchestration services can tolerate node failures and infrastructure outages without sustained service disruption.\n\n3. Verify that recovery procedures are tested periodically and results are documented.\n\n4. Confirm that dependencies on infrastructure providers are addressed in continuity planning.",
+    "model_provider": "1. Verify that recovery capabilities exist for environments supporting model training, inference, and model artifact storage.\n\n2. Confirm that training pipelines and inference services can be resumed or restored following disruptions.\n\n3. Verify that backups of model artifacts and training data are maintained and tested.\n\n4. Confirm that continuity planning includes dependencies on orchestration platforms and infrastructure services.",
+    "ai_customer": "1. Verify that the AIC has continuity plans for business processes dependent on AI services.\n\n2. Confirm that provider recovery commitments and escalation procedures are documented and understood.\n\n3. Verify that contingency workflows exist for prolonged service disruptions.\n\n4. Where customer-managed systems support AI integrations, confirm that backup and recovery controls are implemented and tested.",
+    "cloud_service_provider": "1. Verify that the CSP implements redundancy across facilities, power, cooling, network, and compute layers supporting AI workloads.\n\n2. Confirm that disaster recovery and failover mechanisms are implemented and tested.\n\n3. Verify that recovery objectives are defined and monitored through operational testing.\n\n4. Confirm that incident analysis and corrective actions are used to improve resilience controls.\n\nFrom CCM v4.1:\n1. Examine that business continuity and operational resilience requirements are clearly defined based on risk assessments and critical business functions.\n2. Ensure that documented processes and procedures are implemented to support continuous operations.\n3. Check that technical measures such as redundancy, high availability, and automated failover systems are implemented and tested regularly."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-18"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--6b853925-e63f-4be0-83cf-d5072718f9cc",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Explainability Evaluation",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "GRC-14",
+  "domain": "Governance, Risk and Compliance",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Evaluate, document, and communicate the degree of explainability of the AI Services, including possible limitations and exceptions.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Customer (AIC)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Customer (AIC)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage, Team and expertise",
+    "development": "Design, Training, Guardrails, Supply Chain",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Define what AI model attributes, performance metrics, datasets, risks, and limitations must be disclosed to stakeholders.\n\n2. Create documentation templates (e.g., model cards, system cards) to standardize disclosures.\n\n3. Publish transparency reports or disclosures when AI models are used in decision-making roles.\n\n4. Update transparency documentation with each major model revision or retraining.\n\n5. Ensure disclosures are accessible, understandable, and tailored to stakeholder needs.",
+    "model_provider": "1. Publish model cards with performance metrics, training data summaries, evaluation methods, and limitations.\n\n2. Disclose potential risks such as demographic biases, security weaknesses, or edge-case failure modes.\n\n3. Track disclosures over time and version them with model artifacts.\n\n4. Work with compliance teams to ensure disclosure meets regulatory expectations.\n\n5. Provide disclaimers on intended use and known restrictions.\n\n[All Actors]\n1. Define what AI model attributes, performance metrics, datasets, risks, and limitations must be disclosed to stakeholders.\n\n2. Create documentation templates (e.g., model cards, system cards) to standardize disclosures.\n\n3. Publish transparency reports or disclosures when AI models are used in decision-making roles.\n\n4. Update transparency documentation with each major model revision or retraining.\n\n5. Ensure disclosures are accessible, understandable, and tailored to stakeholder needs.",
+    "orchestrated_service_provider": "1. Ensure orchestration metadata (e.g., environment, hyperparameters, dependencies) is captured and disclosed.\n\n2. Include reproducibility metadata in transparency artifacts.\n\n3. Ensure runtime environments match documented configurations.\n\n4. Support linking deployment logs to transparency documentation.\n\n5. Enable export of disclosure bundles from pipelines.\n\n[All Actors]\n1. Define what AI model attributes, performance metrics, datasets, risks, and limitations must be disclosed to stakeholders.\n\n2. Create documentation templates (e.g., model cards, system cards) to standardize disclosures.\n\n3. Publish transparency reports or disclosures when AI models are used in decision-making roles.\n\n4. Update transparency documentation with each major model revision or retraining.\n\n5. Ensure disclosures are accessible, understandable, and tailored to stakeholder needs.",
+    "application_provider": "1. Disclose when AI is involved in decision-making or personalization.\n\n2. Include a “Why am I seeing this?” feature in AI-powered outputs.\n\n3. Explain key input factors contributing to decisions or recommendations.\n\n4. Offer transparency overlays or tooltips for AI-driven UI elements.\n\n5. Include disclaimers for probabilistic, evolving, or experimental models.\n\n[All Actors]\n1. Define what AI model attributes, performance metrics, datasets, risks, and limitations must be disclosed to stakeholders.\n\n2. Create documentation templates (e.g., model cards, system cards) to standardize disclosures.\n\n3. Publish transparency reports or disclosures when AI models are used in decision-making roles.\n\n4. Update transparency documentation with each major model revision or retraining.\n\n5. Ensure disclosures are accessible, understandable, and tailored to stakeholder needs.",
+    "ai_customer": "1. Request detailed model documentation from vendors during onboarding and procurement.\n\n2. Ensure transparency disclosures are reviewed by internal compliance and risk teams.\n\n3. Map model transparency claims to actual performance and behavior in production.\n\n4. Disclose AI usage to end users where legally or ethically required.\n\n5. Report gaps in transparency to vendor or regulator channels.\n\n[All Actors]\n1. Define what AI model attributes, performance metrics, datasets, risks, and limitations must be disclosed to stakeholders.\n\n2. Create documentation templates (e.g., model cards, system cards) to standardize disclosures.\n\n3. Publish transparency reports or disclosures when AI models are used in decision-making roles.\n\n4. Update transparency documentation with each major model revision or retraining.\n\n5. Ensure disclosures are accessible, understandable, and tailored to stakeholder needs.",
+    "cloud_service_provider": "Provide customers with structured feedback channels (e.g., support tickets, user forums, feedback APIs).\n\nIncorporate customer feedback into CSP product development cycles for AI services.\n\nPublish changelogs and roadmaps to demonstrate responsiveness to enterprise needs.\n\nEnable issue tracking for AI-specific problems, including model performance or deployment risks.\n\nConduct periodic surveys and reviews to enhance customer experience with AI governance capabilities.\n\n[All Actors]\n1. Define what AI model attributes, performance metrics, datasets, risks, and limitations must be disclosed to stakeholders.\n\n2. Create documentation templates (e.g., model cards, system cards) to standardize disclosures.\n\n3. Publish transparency reports or disclosures when AI models are used in decision-making roles.\n\n4. Update transparency documentation with each major model revision or retraining.\n\n5. Ensure disclosures are accessible, understandable, and tailored to stakeholder needs."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that explainability requirements are defined based on the regulatory needs, ethical considerations and compliance requirements\n\n2. Verify there is a processes and frameworks how to evaluate the AI services\n\n3. Verify that limitations (e.g.: partial explainability due the nature of the algorithm) and exceptions (e.g.: consequence of error is negligible) are clearly \nidentified, documented and communicated to the stakeholders\n\n4. Ensure that the degree of explainability is evaluated and documented for each AI service integrated into the application.\n\n5. Verify that the explanations are interpretable by non-technical user friendly",
+    "orchestrated_service_provider": "1. Verify that explainability requirements are defined for each orchestrated component, aligned with regulatory, ethical, and compliance requirements \n\n2. Verify that the OSP has established processes and frameworks to evaluate the explainability of all integrated AI services\n\n3. Verify that limitations (e.g., inherited from upstream models) and exceptions (e.g., low-risk model outputs) are clearly identified, documented, and communicated to stakeholders.\n\n4. Ensure that the degree of explainability is assessed and documented for the overall orchestrated services, including dependencies across multiple AI components.\n\n5. Verify that the explanations generated at each stage of the orchestration are interpretable and usable by non-technical stakeholders, including business users.",
+    "model_provider": "1. Verify that explainability requirements are defined based on regulations, ethical principles, and expected customer compliance obligations.\n\n2. Verify that model providers have standardized evaluation processes and frameworks (e.g., use of SHAP, LIME, feature attribution) to assess model explainability prior to release.\n\n3. Verify that model limitations (e.g., opaque deep learning layers) and exceptions (e.g., low-risk outputs) are clearly documented and disclosed to downstream consumers.\n\n4. Ensure that each model is accompanied by documentation (e.g., model cards) describing its degree of explainability and known constraints.\n\n5. Verify that the explanation tools or outputs provided with the model are accessible and interpretable by non-technical users or business analysts.",
+    "ai_customer": "1. Verify that customer specific explainability requirements are defined and aligned with domain-specific compliance, regulatory, and ethical obligations.\n\n2. Verify that there are formalized processes to evaluate the explainability of third-party or in-house AI services before deployment.\n\n3. Verify that any limitations (e.g., black-box models) and exceptions (e.g., human-in-the-loop, low risk outputs) are assessed, documented, and understood by stakeholders.\n\n4. Ensure that the degree of explainability is captured( e.g., model cards) in risk assessments and system documentation for each AI system deployed.\n\n5. Verify that explanation outputs are validated with end users (e.g., case workers, analysts) for clarity and interpretability.",
+    "cloud_service_provider": "1. Verify that CSPs define explainability requirements for AI services hosted on their platforms, in alignment with regulatory and compliance expectations of customers.\n\n2. Verify that CSPs provide tools or APIs to evaluate the explainability of AI models deployed in their environment.\n\n3. Verify that any limitations (e.g., restrictions due to proprietary models) and exceptions (e.g., limited observability) are documented and communicated to customers.\n\n4. Ensure that CSP service documentation includes guidance on how to assess and document the explainability level of hosted AI services.\n\n5. Verify that any native explainability outputs are accessible and interpretable to non-technical users."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#GRC-14"
+    }
+  ]
+}

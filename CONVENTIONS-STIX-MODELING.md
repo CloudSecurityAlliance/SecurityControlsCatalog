@@ -385,6 +385,28 @@ STIX wire format, versioning model, or transport. If a design would require a
 consumer to special-case the catalog before it can parse or route the data, the
 design is wrong.
 
+### A property with nothing in it is omitted
+
+STIX prohibits empty lists and empty dictionaries, so an empty value and an absent
+property are the same thing on the wire. A property that would come out empty is
+left off entirely, and the schemas reject the empty form rather than let it be
+written as though it meant something.
+
+This has a cost worth stating rather than discovering. A source that assesses a
+control against every category and finds none applicable has given an answer, and
+STIX cannot distinguish that answer from silence. AICM 1.1.0 contains real cases:
+fifteen Human Resources controls apply to no architectural layer, two controls to
+no threat category, one to no lifecycle phase. Those objects carry no such
+property, exactly like a control from a framework with no such taxonomy.
+
+The alternatives were to emit empty values, which breaks conformance for a
+distinction STIX declines to carry, or to invent a sentinel, which every consumer
+would then have to know about. Both cost more than the distinction is worth. Where
+it matters, the answer is still recoverable from the framework — the source
+assesses every control against every column — but it is recoverable from the
+framework rather than from the object, and a consumer holding one object alone
+cannot tell the two cases apart.
+
 ## 9. Lifecycle state and revocation are distinct
 
 A custom property that duplicates a standard one is a defect (convention 4), but

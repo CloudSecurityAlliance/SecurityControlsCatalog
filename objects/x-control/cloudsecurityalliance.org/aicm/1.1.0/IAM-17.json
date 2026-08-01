@@ -1,0 +1,78 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--b639e406-8dff-46fd-9cce-641edebaaa86",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Output Modification and Special Authorization",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "IAM-17",
+  "domain": "Identity & Access Management",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "When allowing model output modification of AI generated output, establish a role for this access and allow changes only by authorized identities.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared across the supply chain",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Resource provisioning, Data collection",
+    "development": "Supply Chain, Design",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Implement the procedures and workflow for modification of AI generated output, including approvals form \nauthorized parties.\n\n2. Define based of organization policy and agreements, which roles are allowed to authorization the \nmodification of AI generated output.\n\n3. Ensure all modification of AI generate output are logged and reviewed on a regular basis.\n \n4. Implement SoD to ensure that individuals modifying AI output are separate for the individuals \nauthorizing and the individuals reviewing changes.\n\n[MP/OSP/AP]\n1. Ensure that details regarding the modification of AI generated output and the circumstances in which it occurs are shared with AIC through policy and agreements.\n\n2. Clearly label and notify users when the output has been modified, and when appropriate detail what the \nchange is.",
+    "model_provider": "[All Actors]\n1. Implement the procedures and workflow for modification of AI generated output, including approvals form \nauthorized parties.\n\n2. Define based of organization policy and agreements, which roles are allowed to authorization the \nmodification of AI generated output.\n\n3. Ensure all modification of AI generate output are logged and reviewed on a regular basis.\n \n4. Implement SoD to ensure that individuals modifying AI output are separate for the individuals \nauthorizing and the individuals reviewing changes.\n\n[MP/OSP/AP]\n1. Ensure that details regarding the modification of AI generated output and the circumstances in which it occurs are shared with AIC through policy and agreements.\n\n2. Clearly label and notify users when the output has been modified, and when appropriate detail what the \nchange is.",
+    "orchestrated_service_provider": "[All Actors]\n1. Implement the procedures and workflow for modification of AI generated output, including approvals form \nauthorized parties.\n\n2. Define based of organization policy and agreements, which roles are allowed to authorization the \nmodification of AI generated output.\n\n3. Ensure all modification of AI generate output are logged and reviewed on a regular basis.\n \n4. Implement SoD to ensure that individuals modifying AI output are separate for the individuals \nauthorizing and the individuals reviewing changes.\n\n[MP/OSP/AP]\n1. Ensure that details regarding the modification of AI generated output and the circumstances in which it occurs are shared with AIC through policy and agreements.\n\n2. Clearly label and notify users when the output has been modified, and when appropriate detail what the \nchange is.",
+    "application_provider": "[All Actors]\n1. Implement the procedures and workflow for modification of AI generated output, including approvals form \nauthorized parties.\n\n2. Define based of organization policy and agreements, which roles are allowed to authorization the \nmodification of AI generated output.\n\n3. Ensure all modification of AI generate output are logged and reviewed on a regular basis.\n \n4. Implement SoD to ensure that individuals modifying AI output are separate for the individuals \nauthorizing and the individuals reviewing changes.\n\n[MP/OSP/AP]\n1. Ensure that details regarding the modification of AI generated output and the circumstances in which it occurs are shared with AIC through policy and agreements.\n\n2. Clearly label and notify users when the output has been modified, and when appropriate detail what the \nchange is.",
+    "ai_customer": "[All Actors]\n1. Implement the procedures and workflow for modification of AI generated output, including approvals from authorized parties.\n\n2. Define based of organization policy and agreements, which roles are allowed to authorization the \nmodification of AI generated output.\n\n3. Ensure all modification of AI generate output are logged and reviewed on a regular basis.\n \n4. Implement SoD to ensure that individuals modifying AI output are separate for the individuals \nauthorizing and the individuals reviewing changes.",
+    "cloud_service_provider": "[All Actors]\n1. Implement the procedures and workflow for modification of AI generated output, including approvals from authorized parties.\n\n2. Define based of organization policy and agreements, which roles are allowed to authorization the modification of AI generated output.\n\n3. Ensure all modification of AI generate output are logged and reviewed on a regular basis.\n \n4. Implement SoD to ensure that individuals modifying AI output are separate for the individuals authorizing and the individuals reviewing changes."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that policies and procedures exist to restrict model output modification, ensuring that only authorized individuals or systems can alter generated outputs or override system behavior.\n\n2. Confirm that special authorization is required for any interventions that alter or influence AI model output, such as prompt injection handling, result overrides, or tampering with inference layers.\n\n3. Ensure that roles permitted to perform output modification are clearly defined and assigned, and that these roles are subject to elevated oversight or approval.\n\n4. Check that all output modifications, overrides, or interventions are logged, including identity of the actor, reason for intervention, and timestamp.\n\n5. Verify that periodic audits are conducted to review the frequency and appropriateness of model output modifications, with evidence of management oversight.\n\n6. Ensure that emergency or sensitive interventions are controlled through predefined procedures, and that the scope is limited to output-level actions rather than model retraining, access changes, or architectural updates.",
+    "orchestrated_service_provider": "1. Validate controls that prevent downstream output manipulation without special approval.\n\n2. Confirm secure APIs or service connectors restrict write-back or override permissions.\n\n3. Check traceability of modified outputs to originating workflows or user identity.\n\n4. Verify documentation exists for exception handling when output transformations are necessary.\n\n5. Confirm safeguards are in place to prevent suppression or alteration of alerts from AI pipelines.",
+    "model_provider": "1. Ensure documented justifications are required for model output overrides (e.g., for regulatory alignment).\n\n2. Verify only senior ML engineers or governance approvers can authorize output modification.\n\n3. Confirm cryptographic hash or signature verification to ensure output integrity.\n\n4. Validate regular reviews of model post-processing scripts and filters.",
+    "ai_customer": "1. Confirm visibility into when and why outputs are modified (e.g., flagged anomalies or overrides).\n\n2. Validate signed approvals for business-specific changes to AI model results.\n\n3. Ensure AIC-side applications consuming model results log unmodified vs. modified outputs distinctly.\n\n4. Check change impact assessments are conducted when enabling output overrides for critical use cases.\n\n5. Confirm user training includes awareness of when outputs might be subject to conditional override.",
+    "cloud_service_provider": "1. Ensure CSP-managed AI platforms restrict post-inference output modifications to administrative roles.\n\n2. Verify role-specific logging of any changes to AI inference result storage or redirection.\n\n3. Confirm support for output hashing or versioning mechanisms as part of audit requirements.\n\n4. Validate CSP’s change control procedures cover model endpoint outputs used in production pipelines.\n\n5. Check if customers are provided with mechanisms to lock output fields or enforce immutability where necessary."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#IAM-17"
+    }
+  ]
+}

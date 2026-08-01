@@ -1,0 +1,77 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--b95ab565-6251-413f-ae65-d50349209299",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Adversarial Attack Analysis",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-06",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement, and evaluate processes and technical measures to assess adversarial threats specific to each AI model.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data collection, Data curation, Data storage, Team and expertise",
+    "development": "Design, Training, Guardrails",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous improvement, Continuous monitoring",
+    "service_retirement": "Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (Applicable to MP, AP)]\n1. Ensure Adequate Training for Security Teams:\nIf an internal Vulnerability Assessment and Penetration Testing (VA/PT) service is available, ensure that operators and security professionals undergo specific training programs to assess AI model vulnerabilities and adversarial threats effectively.\n\n2. Analyze and Score Vulnerabilities:\nAnalyze identified vulnerabilities based on their likelihood and potential impact. Assign scores to help prioritize the most significant risks.\n\n3. Prioritize Mitigation Efforts:\nFocus on addressing high-risk threats first, ensuring that critical vulnerabilities are mitigated in a timely manner.\n\n4. Establish Periodic Reporting on VA/PT Activities:\nGenerate regular reports—at least annually—summarizing Vulnerability Assessment and Penetration Testing (VA/PT) activities. These reports should highlight key security findings, provide actionable insights, and outline recommended remediation strategies to enhance AI model security.\n\n5. Regular Reviews:\nOrganizations should schedule regular reviews of their models’ security posture, at minimum on a semi-annual basis. These reviews should include updated risk assessments that take into account newly deployed models and emerging threat landscapes.",
+    "model_provider": "1. Proactive Research on Adversarial Threats:\nConduct continuous research and study of known tactics, techniques, and procedures (TTPs) used by major threat actors. This can be achieved through reference frameworks (e.g., MITRE ATLAS) or specialized Cyber Threat Intelligence sources in the AI domain.\n\n2. Identify Possible Attack Vectors:\nList all potential attack vectors, such as input perturbation, model inversion, data poisoning, etc. For a comprehensive reference, organizations can consult the NIST AI 100-2, which outlines various adversarial attack types.\n\n3. Conduct Testing for Model Specific Vulnerabilities:\nPerform, automatically and/or manually, both white-box and black-box testing using established adversarial attack techniques. These tests should evaluate the model’s robustness against perturbations, edge cases, and other forms of attacks. Additionally, assess data pipelines to detect any vulnerabilities to poisoning.\n\n[Shared Responsibilities (Applicable to MP, AP)]\n1. Ensure Adequate Training for Security Teams:\nIf an internal Vulnerability Assessment and Penetration Testing (VA/PT) service is available, ensure that operators and security professionals undergo specific training programs to assess AI model vulnerabilities and adversarial threats effectively.\n\n2. Analyze and Score Vulnerabilities:\nAnalyze identified vulnerabilities based on their likelihood and potential impact. Assign scores to help prioritize the most significant risks.\n\n3. Prioritize Mitigation Efforts:\nFocus on addressing high-risk threats first, ensuring that critical vulnerabilities are mitigated in a timely manner.\n\n4. Establish Periodic Reporting on VA/PT Activities:\nGenerate regular reports—at least annually—summarizing Vulnerability Assessment and Penetration Testing (VA/PT) activities. These reports should highlight key security findings, provide actionable insights, and outline recommended remediation strategies to enhance AI model security.\n\n5. Regular Reviews:\nOrganizations should schedule regular reviews of their models’ security posture, at minimum on a semi-annual basis. These reviews should include updated risk assessments that take into account newly deployed models and emerging threat landscapes.",
+    "orchestrated_service_provider": "Not Applicable",
+    "application_provider": "[Shared Responsibilities (Applicable to MP, AP)]\n1. Ensure Adequate Training for Security Teams:\nIf an internal Vulnerability Assessment and Penetration Testing (VA/PT) service is available, ensure that operators and security professionals undergo specific training programs to assess AI model vulnerabilities and adversarial threats effectively.\n\n2. Analyze and Score Vulnerabilities:\nAnalyze identified vulnerabilities based on their likelihood and potential impact. Assign scores to help prioritize the most significant risks.\n\n3. Prioritize Mitigation Efforts:\nFocus on addressing high-risk threats first, ensuring that critical vulnerabilities are mitigated in a timely manner.\n\n4. Establish Periodic Reporting on VA/PT Activities:\nGenerate regular reports—at least annually—summarizing Vulnerability Assessment and Penetration Testing (VA/PT) activities. These reports should highlight key security findings, provide actionable insights, and outline recommended remediation strategies to enhance AI model security.\n\n5. Regular Reviews:\nOrganizations should schedule regular reviews of their models’ security posture, at minimum on a semi-annual basis. These reviews should include updated risk assessments that take into account newly deployed models and emerging threat landscapes.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "1. Conduct Testing for Model Infrastructure Vulnerabilities and Attack Paths:\nLeverage AI Security Posture Management (AISPM) and traditional Pen Testing tools to \nidentify security gaps in the underlying infrastructure."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine documented processes for analyzing adversarial threats specific to application implementations of AI models.\n\n2. Verify identification of application-specific attack vectors, including user input manipulation, context exploitation, and prompt engineering attacks. (For APs that fine-tune models: Review methodologies for evaluating threats related to fine-tuning processes or application-specific model customizations.)\n\n3. Assess the threat prioritization framework, confirming that attack vectors are ranked based on application architecture and user interaction patterns.\n\n4. Verify implementation of monitoring systems for detecting application-level attack indicators.\n\n5. Review testing procedures for application-specific defenses against prioritized threats.\n\n6. Examine coordination processes with upstream providers on shared threat mitigations.\n\n7. Verify mechanisms for communicating relevant threat information to end-users.\n\n8. Review processes for updating threat assessments when application features change or new attack techniques emerge.\n\n9. Assess how adversarial threat assessments influence security controls implemented in applications.",
+    "orchestrated_service_provider": "1. Examine documented processes for assessing adversarial threats specific to orchestrated deployment environments.\n\n2. Verify identification of threats related to service configurations, scaling mechanisms, and multi-tenant environments that could impact model security.\n\n3. Review methodologies for evaluating attack vectors targeting APIs, service integration points, and orchestration components.\n\n4. Assess the threat prioritization framework, confirming that threats are ranked based on service architecture and customer usage patterns.\n\n5. Verify implementation of monitoring systems for detecting orchestration-specific attack indicators.\n\n6. Review coordination processes with MPs on threats that span model and deployment domains, including information sharing protocols.\n\n7. Examine mechanisms for sharing deployment-specific threat intelligence with APs and AICs.\n\n8. Verify that adversarial threat assessments influence security controls implemented in orchestration environments.\n\n9. Review procedures for testing orchestration-specific defenses against prioritized threats.\n\n10. Assess processes for updating threat assessments when deployment configurations change or new attack techniques emerge.",
+    "model_provider": "1. Examine documented processes and technical measures for conducting model-specific adversarial threat assessments.\n\n2. Verify that adversarial attack analysis is performed for each AI model, with explicit consideration of model architecture, training data characteristics, and intended use cases.\n\n3. Review methodologies for identifying model-specific vulnerabilities, including data poisoning opportunities, prompt injection risks, extraction vulnerabilities, and evasion techniques.\n\n4. Assess the threat prioritization framework, verifying that attack vectors are ranked based on technical feasibility, potential impact, and likelihood.\n\n5. Examine documentation of adversarial threat models for each AI system, confirming completeness and technical accuracy.\n\n6. Verify implementation of testing protocols that simulate high-priority attack vectors, including red team exercises and technical adversarial testing.\n\n7. Review processes for updating threat assessments when models change or new attack techniques emerge.\n\n8. Assess mechanisms for sharing threat insights with downstream consumers (OSPs, APs, AICs).\n\n9. Verify that adversarial threat assessments influence security controls implemented in model development.",
+    "ai_customer": "1. Examine documented processes for analyzing adversarial threats specific to application implementations of AI models.\n\n2. Verify identification of application-specific attack vectors, including user input manipulation, context exploitation, and prompt engineering attacks.\n\n3. For APs that fine-tune models: Review methodologies for evaluating threats related to fine-tuning processes or application-specific model customizations.\n\n4. Assess the threat prioritization framework, confirming that attack vectors are ranked based on application architecture and user interaction patterns.\n\n5. Verify implementation of monitoring systems for detecting application-level attack indicators.\n\n6. Review testing procedures for application-specific defenses against prioritized threats.\n\n7. Examine coordination processes with upstream providers on shared threat mitigations.\n\n8. Verify mechanisms for communicating relevant threat information to end users.\n\n9. Review processes for updating threat assessments when application features change or new attack techniques emerge.\n\n10. Assess how adversarial threat assessments influence security controls implemented in applications.",
+    "cloud_service_provider": "1. Review network security controls in place to protect hosted AI models from adversarial attacks. \n\n2. Assess intrusion detection and prevention systems specific to detecting AI-related attacks. \n\n3. Verify logging and monitoring of network traffic for suspicious activity related to model interaction. \n\n4. Evaluate security measures to protect APIs used for accessing hosted models. \n\n5. Assess procedures for incident response to detected adversarial attacks. \n\n6. Review procedures for patching vulnerabilities related to adversarial attacks."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-06"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--20242327-7618-4cd5-9cb3-140dc7d8a360",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Secure Model Format",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-13",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Adopt secure model formats and processes for AI model serialization where applicable.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Design, Guardrails",
+    "evaluation_validation": "Validation/Red Teaming",
+    "deployment": "Orchestration, AI Services supply chain",
+    "delivery": "Maintenance",
+    "service_retirement": "Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (OSP-AP)]\n1. Verify compliance of models with secure formats before loading them into production systems.\n\n2. Apply security controls to models before deployment, ensuring they do not contain malicious code or deserialization vulnerabilities.",
+    "model_provider": "[Model Provider (MP)]\n1. Adopt Secure formats (e.g. SafeTensor) for the serialization of model files. \n\n2. Implement procedures to ensure model security during serialization and deserialization.",
+    "orchestrated_service_provider": "[Shared Responsibilities (OSP-AP)]\n1. Verify compliance of models with secure formats before loading them into production systems.\n\n2. Apply security controls to models before deployment, ensuring they do not contain malicious code or deserialization vulnerabilities.",
+    "application_provider": "[Shared Responsibilities (OSP-AP)]\n1. Verify compliance of models with secure formats before loading them into production systems.\n\n2. Apply security controls to models before deployment, ensuring they do not contain malicious code or deserialization vulnerabilities.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "1. Deploy robust and encrypted storage solutions purpose-built for housing serialized \nmodel files along with their associated metadata, ensuring long-term protection and \ncontrolled access.\n\n2. Implement comprehensive monitoring and audit logging features to track access \npatterns, usage history, and any changes made to serialized models, supporting \naccountability and forensic readiness."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine implementation of secure practices when loading serialized models. \n\n2. Verify that appropriate validation and sanitization are performed when handling serialized model data. \n\n3. Assess adherence to security guidelines provided by MPs and OSPs regarding safe handling of serialized models. \n\n4. Review testing procedures for serialization-related vulnerabilities in the application context. \n\n5. Confirm documentation of serialization formats supported by the application and their security implications. For secure handling of different serialization formats for LLM models, focus on both integrity and confidentiality throughout the model lifecycle. Always verify the source of serialized model files and use cryptographic signatures to detect tampering. Avoid loading models from untrusted or unauthenticated sources, as serialized files may contain malicious payloads, especially if using formats like Python pickle (`.pkl`) or PyTorch's `.pt`, which can execute arbitrary code. Use sandboxed environments or restricted deserialization methods where possible. Encrypt serialized models at rest and in transit using strong, up-to-date encryption protocols, and enforce strict access control to limit exposure. Logging and auditing all model load operations adds an additional layer of accountability in production systems.",
+    "orchestrated_service_provider": "1. Examine documentation of serialization formats supported in the orchestration environment. \n\n2. Verify implementation of validation procedures when loading serialized models from MPs. \n\n3. Assess security measures applied during any format conversions performed for orchestration purposes. \n\n4. Review processes for maintaining the security properties of serialized models throughout the orchestration lifecycle. \n\n5. Confirm that security guidelines from MPs regarding serialization are followed. \n\n6. Verify that serialization security information is appropriately communicated to APs.",
+    "model_provider": "Guidelines focus on the OSP's responsibility to maintain serialization security during orchestration:\n\n1. Format documentation verification ensures transparency about supported serialization approaches.\n\n2. Validation implementation assessment addresses protections when loading external models.\n\n3. Conversion security review addresses the critical risk point of format transformations.\n\n4. Lifecycle security verification ensures consistent protection throughout orchestration processes.\n\n5. MP guideline adherence confirmation ensures alignment with model-specific security requirements.\n\n6. Communication verification addresses proper knowledge transfer to downstream consumers.",
+    "ai_customer": "1. Examine implementation of secure practices when loading serialized models. \n\n2. Verify that appropriate validation and sanitization are performed when handling serialized model data. \n\n3. Assess adherence to security guidelines provided by MPs and OSPs regarding safe handling of serialized models. \n\n4. Review testing procedures for serialization-related vulnerabilities in the application context. \n\n5. Confirm documentation of serialization formats supported by the application and their security implications.",
+    "cloud_service_provider": "1. Verify the CSP's processes ensure that the models' security during transfer, storage, and deployment, for customer's use. \n\n2. Assess security measures applied to secure formats during deployment and transit from the source of the models. \n\n3. Examine encryption protocols, access controls, and data integrity checks and if they're adequately secured."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-13"
+    }
+  ]
+}

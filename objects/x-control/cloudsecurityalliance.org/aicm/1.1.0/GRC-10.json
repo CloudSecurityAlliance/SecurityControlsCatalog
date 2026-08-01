@@ -1,0 +1,72 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--3e059f6c-e896-4a71-8524-4660f0b627f8",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "AI Impact Assessment",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "GRC-10",
+  "domain": "Governance, Risk and Compliance",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish, document, and communicate to all relevant stakeholders an AI Impact Assessment process and its criteria to regularly evaluate the ethical, societal, operational, legal, and security impacts of the AI system throughout its lifecycle.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Customer (AIC)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Owned by the Customer (AIC)"
+  },
+  "stack_components": [
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Guardrails",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming",
+    "deployment": "Orchestration, AI Services supply chain",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Conduct a comprehensive impact assessment, for example using the guidance provided in ISO/IEC 42005:2025 on how to conduct AI Impact Assessments before deploying AI systems that process sensitive data, affect individuals, or are used in high-risk contexts.\n\n2. Define the scope of the assessment to include intended use, affected users or communities, risk scenarios, and mitigations.\n\n3. Document potential harms, legal/regulatory implications, fairness concerns, and system limitations.\n\n4. Establish a review and sign-off process involving legal, compliance, risk, and technical stakeholders.\n\n5. Update assessments periodically or when the system’s purpose, data sources, or deployment context changes.",
+    "model_provider": "1. Perform AI impact assessments as part of model development lifecycle, including fairness, robustness, and explainability risks.\n\n2. Document potential downstream misuse and include mitigations in model cards or technical documentation.\n\n3. Evaluate dataset bias and assess impact on demographic groups.\n\n4. Collaborate with legal and risk teams to assess implications of model deployment.\n\n5. Maintain versioned impact assessments tied to model versions.\n\n[All Actors]\n1. Conduct a comprehensive impact assessment, for example using the guidance provided in ISO/IEC 42005:2025 on how to conduct AI Impact Assessments before deploying AI systems that process sensitive data, affect individuals, or are used in high-risk contexts.\n\n2. Define the scope of the assessment to include intended use, affected users or communities, risk scenarios, and mitigations.\n\n3. Document potential harms, legal/regulatory implications, fairness concerns, and system limitations.\n\n4. Establish a review and sign-off process involving legal, compliance, risk, and technical stakeholders.\n\n5. Update assessments periodically or when the system’s purpose, data sources, or deployment context changes.",
+    "orchestrated_service_provider": "1. Evaluate whether orchestration introduces systemic risks due to automation, scale, or configuration drift.\n\n2. Document risks related to runtime failure, rollback failure, or excessive privilege in deployment pipelines.\n\n3. Assess impact of auto-scaling, multi-region deployment, or resource exhaustion on service reliability.\n\n4. Include orchestration risk in integrated AI impact assessment templates.\n\n5. Ensure alignment with model-level risk documentation.\n\n[All Actors]\n1. Conduct a comprehensive impact assessment, for example using the guidance provided in ISO/IEC 42005:2025 on how to conduct AI Impact Assessments before deploying AI systems that process sensitive data, affect individuals, or are used in high-risk contexts.\n\n2. Define the scope of the assessment to include intended use, affected users or communities, risk scenarios, and mitigations.\n\n3. Document potential harms, legal/regulatory implications, fairness concerns, and system limitations.\n\n4. Establish a review and sign-off process involving legal, compliance, risk, and technical stakeholders.\n\n5. Update assessments periodically or when the system’s purpose, data sources, or deployment context changes.",
+    "application_provider": "1. Document risks posed by AI-driven decisions on end-users, including personalization, recommendations, or predictive outputs.\n\n2. Assess how UX and UI could amplify or reduce AI risks (e.g., automation bias, lack of transparency).\n\n3. Include impact of AI-driven features in product release documentation.\n\n4. Flag user-facing scenarios requiring disclaimers or explainability prompts.\n\n5. Review impact across demographic or accessibility contexts.\n\n[All Actors]\n1. Conduct a comprehensive impact assessment, for example using the guidance provided in ISO/IEC 42005:2025 on how to conduct AI Impact Assessments before deploying AI systems that process sensitive data, affect individuals, or are used in high-risk contexts.\n\n2. Define the scope of the assessment to include intended use, affected users or communities, risk scenarios, and mitigations.\n\n3. Document potential harms, legal/regulatory implications, fairness concerns, and system limitations.\n\n4. Establish a review and sign-off process involving legal, compliance, risk, and technical stakeholders.\n\n5. Update assessments periodically or when the system’s purpose, data sources, or deployment context changes.",
+    "ai_customer": "1. Request completed AI impact assessments from providers during onboarding or before activating new features.\n\n2. Perform internal risk assessments for downstream integration of AI outputs into customer workflows.\n\n3. Use AI impact assessments to guide procurement, internal usage policies, and exception approvals.\n\n4. Ensure that legal and ethics teams participate in high-impact deployment reviews.\n\n5. Map provider risk assessments to internal risk appetite and escalation protocols.\n\n[All Actors]\n1. Conduct a comprehensive impact assessment, for example using the guidance provided in ISO/IEC 42005:2025 on how to conduct AI Impact Assessments before deploying AI systems that process sensitive data, affect individuals, or are used in high-risk contexts.\n\n2. Define the scope of the assessment to include intended use, affected users or communities, risk scenarios, and mitigations.\n\n3. Document potential harms, legal/regulatory implications, fairness concerns, and system limitations.\n\n4. Establish a review and sign-off process involving legal, compliance, risk, and technical stakeholders.\n\n5. Update assessments periodically or when the system’s purpose, data sources, or deployment context changes.",
+    "cloud_service_provider": "[All Actors]\n1. Conduct a comprehensive impact assessment, for example using the guidance provided in ISO/IEC 42005:2025 on how to conduct AI Impact Assessments before deploying AI systems that process sensitive data, affect individuals, or are used in high-risk contexts.\n\n2. Define the scope of the assessment to include intended use, affected users or communities, risk scenarios, and mitigations.\n\n3. Document potential harms, legal/regulatory implications, fairness concerns, and system limitations.\n\n4. Establish a review and sign-off process involving legal, compliance, risk, and technical stakeholders.\n\n5. Update assessments periodically or when the system’s purpose, data sources, or deployment context changes.\n\nOffer documentation on CSP-hosted model architectures, training data usage, and AI behavior boundaries.\n\nProvide tools for explainable AI (e.g., SHAP, LIME integrations) within AI service offerings where applicable.\n\nDisclose service-level explainability limitations and provide interpretability tooling guidance.\n\nEnable logging of model inputs/outputs to support traceability and post-hoc analysis.\n\nAllow enterprise customers to apply their own explainability frameworks over hosted models."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that an approved AI Impact assessment process exists. The process should include how the methodology/criteria evaluates AI systems on a regular basis as per company's policy.\n\n2. Verify that the evaluation process is integrated with the AI system lifecycle (e.g., design, development, deployment and monitoring phases).\n\n3. Verify the evaluation criteria and scoring mechanism exists across all the dimensions such as ethical, societal, legal, operational, and security.\n\n4. Assess how the impact assessment methodology evaluates differential impacts across various customer segments or usage patterns within the multi-tenant service environment.\n\n5. Verify the process to identify various stakeholders (both internal and external) and how they communicate and engage stakeholders to communicate impact assessment process, evaluation procedures, impact/risk scores and most importantly how they collect and incorporate their feedback.",
+    "orchestrated_service_provider": "1. Verify that an approved impact assessment process exists for AI models and ecosystem around it such as infrastructure, platforms, API integrations that are aligned with global AI standards.\n\n2. Verify that the evaluation process is integrated within the AI ecosystem (e.g., design, development, deployment Integration and monitoring phases).\n\n3. Verify the evaluation criteria and scoring mechanism exists and ensure scoring covers OSP specific risks across all the dimensions such as ethical, societal, legal, operational, and security.\n\n4. Assess how the impact assessment methodology evaluates differential impacts across various customer segments or usage patterns within the multi-tenant service environment.\n\n5. Verify the process to identify various stakeholders (both internal and external) and how they communicate and engage stakeholders to communicate impact assessment process, evaluation procedures, impact/risk scores, and, most importantly, how they collect and incorporate their feedback.",
+    "model_provider": "1. Verify that an approved AI Impact assessment process exists. Process includes methodology/criteria to evaluate foundational models aligned with global standards. \n\n2. Verify that the evaluation process exists and is integrated into model pre-training, fine-tuning, release and post deployment monitoring.\n\n3. Verify the model evaluation criteria and scoring mechanism exists across all the dimensions such as ethical, societal, legal, operational, and security.\n\n4. Assess how the impact assessment methodology evaluates differential impacts across various downstream applications across  all customer segments or usage patterns.\n\n5. Verify the process to identify various stakeholders (both internal and external) and how they communicate and engage stakeholders to communicate impact assessment process, evaluation procedures, impact/risk scores and most importantly how they collect and incorporate their feedback.",
+    "ai_customer": "1. Verify that the model provider, OSP’s, AIC have a documented AIIA process and assess its alignment with your organization’s risk tolerance and regulatory obligations.\n\n2. Verify that there is an evaluation criteria to choose a model provider, OSP or AIC based on the organizations requirements.\n\n3. Verify the model evaluation criteria and scoring mechanism tailored to the organization’s risk dimensions such as ethical, societal, legal, operational, and security.\n\n4. Assess how the impact assessment methodology evaluates differential impacts across various downstream applications with in the organization.\n\n5. Verify the process to identify various stakeholders (both internal and external) and how they communicate and engage stakeholders to communicate impact assessment process, evaluation procedures, impact/risk scores and most importantly how they collect and incorporate their feedback.",
+    "cloud_service_provider": "1. Verify that an approved AI Impact assessment process exists. The process should include how the methodology/criteria evaluates AI systems on a regular basis as per company's policy.\n\n2. Verify that the evaluation process in integrated with the AI system lifecycle (e.g., design, development, deployment and monitoring phases).\n\n3. Verify the evaluation criteria and scoring mechanism exists across all the dimensions such as ethical, societal, legal, operational, and security.\n\n4. Assess how the impact assessment methodology evaluates differential impacts across various customer segments or usage patterns within the multi-tenant service environment.\n\n5. Verify the process to identify various stakeholders (both internal and external) and how they communicate and engage stakeholders to communicate impact assessment process, evaluation procedures, impact/risk scores ,and most importantly how they collect and incorporate their feedback."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#GRC-10"
+    }
+  ]
+}

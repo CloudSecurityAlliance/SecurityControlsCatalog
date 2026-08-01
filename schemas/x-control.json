@@ -68,14 +68,16 @@
     },
     "stack_components": {
       "type": "array",
+      "description": "Architectural layers the control applies to, carried as the layers that apply rather than a map of every layer to true or false. Omitted when none apply: STIX prohibits empty lists, so an empty array and an absent property are the same thing on the wire and the schema rejects the empty form rather than letting it mean something it cannot mean.",
       "items": {
         "type": "string"
       },
+      "uniqueItems": true,
       "minItems": 1
     },
     "lifecycle_relevance": {
       "type": "object",
-      "description": "Lifecycle phases in which the control applies, each mapped to the sub-phases that apply within it. A phase with no sub-phases may be null. Phase names are the publisher's.",
+      "description": "Lifecycle phases in which the control applies, each mapped to the sub-phases that apply within it. A phase with no named sub-phases may be null. Phase names are the publisher's. Carried as the phases that apply, and omitted when none do: STIX prohibits empty dictionaries, so the schema rejects the empty form.",
       "minProperties": 1,
       "propertyNames": {
         "type": "string",
@@ -105,11 +107,12 @@
     },
     "threat_category": {
       "type": "array",
-      "description": "Threat categories the control addresses, from the publisher's own threat taxonomy. Carried as the categories that apply rather than a map of every category to true or false, which is lossless and filterable. These are a taxonomy applied to the control, not objects in the catalog, so they are a property rather than relationships — if threats become first-class objects, mitigates relationships would complement this.",
+      "description": "Threat categories the control addresses, from the publisher's own threat taxonomy. Carried as the categories that apply rather than a map of every category to true or false, which is lossless and filterable. Omitted when none apply, since STIX prohibits empty lists. These are a taxonomy applied to the control, not objects in the catalog, so they are a property rather than relationships — if threats become first-class objects, mitigates relationships would complement this.",
       "items": {
         "type": "string"
       },
-      "uniqueItems": true
+      "uniqueItems": true,
+      "minItems": 1
     },
     "typical_control_applicability_and_ownership": {
       "type": "object",

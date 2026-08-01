@@ -1,0 +1,80 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--dc82661a-03d8-48ab-866b-a820cdb74bc6",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Event Triage Processes",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "SEF-06",
+  "domain": "Security Incident Management, E-Discovery, & Cloud Forensics",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement and evaluate processes, procedures and technical measures supporting business processes to triage security-related events.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared across the supply chain",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data storage",
+    "development": "Guardrails",
+    "evaluation_validation": "Re-evaluation",
+    "deployment": "AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring, Continuous improvement",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Define a standardized triage playbook to guide classification, prioritization, and routing of security events.\n\n2. Ensure initial triage criteria include impact assessment, asset criticality, threat severity, and confidence score.\n\n3. Automate event enrichment using contextual data (e.g., asset tags, threat intelligence, user behavior) to improve triage accuracy.\n\n4. Align event tagging and prioritization with MITRE ATT&CK, NIST CSF, or equivalent frameworks to drive consistency.\n\n5. Establish centralized coordination between all stakeholder teams (MP, OSP, AP, AIC, CSP) for synchronized triage actions and escalation procedures.\n\n6. Perform regular cross-stakeholder triage simulations and post-mortems to refine playbooks and improve responsiveness.",
+    "model_provider": "1. Classify AI-specific events such as model drift, training data poisoning, or abnormal inference behavior.\n\n2. Establish automated alerting for anomalous output patterns or prompt injection indicators.\n\n[All Actors]\n1. Define a standardized triage playbook to guide classification, prioritization, and routing of security events.\n\n2. Ensure initial triage criteria include impact assessment, asset criticality, threat severity, and confidence score.\n\n3. Automate event enrichment using contextual data (e.g., asset tags, threat intelligence, user behavior) to improve triage accuracy.\n\n4. Align event tagging and prioritization with MITRE ATT&CK, NIST CSF, or equivalent frameworks to drive consistency.\n\n5. Establish centralized coordination between all stakeholder teams (MP, OSP, AP, AIC, CSP) for synchronized triage actions and escalation procedures.\n\n6. Perform regular cross-stakeholder triage simulations and post-mortems to refine playbooks and improve responsiveness.",
+    "orchestrated_service_provider": "1. Triage failures in deployment pipelines, policy violations, and suspicious system behavior across orchestrated components.\n\n2. Enable fine-grained logging for service handoffs and model promotion events.\n\n[All Actors]\n1. Define a standardized triage playbook to guide classification, prioritization, and routing of security events.\n\n2. Ensure initial triage criteria include impact assessment, asset criticality, threat severity, and confidence score.\n\n3. Automate event enrichment using contextual data (e.g., asset tags, threat intelligence, user behavior) to improve triage accuracy.\n\n4. Align event tagging and prioritization with MITRE ATT&CK, NIST CSF, or equivalent frameworks to drive consistency.\n\n5. Establish centralized coordination between all stakeholder teams (MP, OSP, AP, AIC, CSP) for synchronized triage actions and escalation procedures.\n\n6. Perform regular cross-stakeholder triage simulations and post-mortems to refine playbooks and improve responsiveness.",
+    "application_provider": "1. Filter front-end anomalies that may indicate deeper model or API issues, such as increased user complaints or failed model invocations.\n\n2. Provide contextual metadata (e.g., model version) to aid backend investigation.\n\n[All Actors]\n1. Define a standardized triage playbook to guide classification, prioritization, and routing of security events.\n\n2. Ensure initial triage criteria include impact assessment, asset criticality, threat severity, and confidence score.\n\n3. Automate event enrichment using contextual data (e.g., asset tags, threat intelligence, user behavior) to improve triage accuracy.\n\n4. Align event tagging and prioritization with MITRE ATT&CK, NIST CSF, or equivalent frameworks to drive consistency.\n\n5. Establish centralized coordination between all stakeholder teams (MP, OSP, AP, AIC, CSP) for synchronized triage actions and escalation procedures.\n\n6. Perform regular cross-stakeholder triage simulations and post-mortems to refine playbooks and improve responsiveness.",
+    "ai_customer": "1. Establish intake procedures for AI-generated anomalies and route them into existing security event management workflows.\n\n2. Work with providers to ensure shared triage protocols are aligned.\n\n[All Actors]\n1. Define a standardized triage playbook to guide classification, prioritization, and routing of security events.\n\n2. Ensure initial triage criteria include impact assessment, asset criticality, threat severity, and confidence score.\n\n3. Automate event enrichment using contextual data (e.g., asset tags, threat intelligence, user behavior) to improve triage accuracy.\n\n4. Align event tagging and prioritization with MITRE ATT&CK, NIST CSF, or equivalent frameworks to drive consistency.\n\n5. Establish centralized coordination between all stakeholder teams (MP, OSP, AP, AIC, CSP) for synchronized triage actions and escalation procedures.\n\n6. Perform regular cross-stakeholder triage simulations and post-mortems to refine playbooks and improve responsiveness.",
+    "cloud_service_provider": "1. Enable customers to integrate AI telemetry into native security monitoring services.\n\n2. Offer event prioritization tools and tagging capabilities to streamline triage in multi-tenant environments.\n\n[All Actors]\n1. Define a standardized triage playbook to guide classification, prioritization, and routing of security events.\n\n2. Ensure initial triage criteria include impact assessment, asset criticality, threat severity, and confidence score.\n\n3. Automate event enrichment using contextual data (e.g., asset tags, threat intelligence, user behavior) to improve triage accuracy.\n\n4. Align event tagging and prioritization with MITRE ATT&CK, NIST CSF, or equivalent frameworks to drive consistency.\n\n5. Establish centralized coordination between all stakeholder teams (MP, OSP, AP, AIC, CSP) for synchronized triage actions and escalation procedures.\n\n6. Perform regular cross-stakeholder triage simulations and post-mortems to refine playbooks and improve responsiveness.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThe implementation responsibility between the CSP and the CSC is typically both shared and dependent, as collaboration is necessary for effective triage of a security event. Triage is used for identifying, evaluating, prioritizing and responding to security events (and potential incidents) that impact both parties. The CSP can provide valuable insights into potential sources or root causes of the security event, while the CSC can contribute information specific to their data, configuration, applications, and user activity. This joint effort helps to identify the event’s scope and potential impact, leading to a more targeted and efficient response. \n\nFor example, a security incident occurring in the platform layer for an IaaS infrastructure should be driven jointly by the CSC and the CSP to determine if it originated in the CSC’s environment or the CSP’s environment.\nThis may involve containment measures implemented by the CSP, such as isolating affected resources, while the CSC can take steps like user account suspension or data recovery, depending on the specific event.\n\nImplementation Guidelines.\nApplicable to all service models:\nA fully documented and annually reviewed and approved triage management process should be in operation to ensure that all security events are investigated and evaluated in a timely manner.\n\nThe CSP should perform a triage process for all supporting infrastructure, virtual elastic compute, server operating systems, storage, and networking, but also middleware, development tools, BI services, database management systems, and applications configured for use by the CSC. The CSP should have visibility into the triage process to ensure the security incident management process is followed as contractually agreed.\n\nImplementation best practices for security events triaging include (but not limited to):\na. Stakeholders Collaboration: \ni. Roles and responsibilities should be established for internal security teams, CSC support, and any external partners involved in incident response, as per contractual agreements\nii. A communication plan should be established for notifying relevant stakeholders, including internal teams, impacted CSCs, and regulatory bodies (if necessary)\nb. Events Classification Scheme: A standardized method for classifying security events based on severity, potential impact, and urgency should be defined, to support events prioritization. A multi-tiered approach can be considered:\ni. Tier 1.Low-risk events might involve automated containment and basic investigation (e.g., suspicious login attempts)\nii. Tier 2.Medium-risk events require deeper investigation and potential CSC notification (e.g., potential malware infection)\niii. Tier 3.High-risk events necessitate immediate action, full investigation, and potential regulatory reporting (e.g., confirmed data breach)\nc. Standardized Playbook: A documented playbook outlining steps for each tier, should be developed, including:\ni. Procedures for an initial assessment and gathering initial details about the event, including source, timeframe, and potential indicators of compromise (IOCs)\nii. Measures should be implemented for containment and to prevent further damage (e.g., isolating compromised systems or limiting user access)\niii. A thorough investigation should be conducted to determine the root cause, scope of the incident, and potential data loss (e.g., log analysis, threat intelligence feeds, and security tools)\niv. Actions should be implemented to eradicate the threat, recover affected systems, and prevent future occurrences"
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the Application Provider (AP) documented triage procedures clearly define event categorization and prioritization.\n\n2. Confirm triage processes efficiently differentiate between critical and non-critical events.\n\n3. Confirm design supports information collection to support triage (e.g., MLops process, application and environmental logs).\n\n4. Understand triage models from suppliers and partners (e.g., OSP, CSP, MP, AIC).\n\n5. Check regular training provided on event triage methods and appropriate resources.\n\n6. Ensure continuous improvement through periodic review and update of triage processes.\n\n7. Confirm clear accountability assigned for triaging security events.",
+    "orchestrated_service_provider": "1. Verify the OSP has documented triage procedures clearly define event categorization and prioritization.\n\n2. Confirm triage processes efficiently differentiate between critical and non-critical events.\n\n3. Confirm design supports information collection to support triage (e.g., logging for containers, services, APIs and data flows).\n\n4. Understand triage models from suppliers and partners (e.g., APM, CSP, MP, AIC).\n\n5. Understand any cascading impacts of orchestrated events on overall triage.\n\n6. Check regular training provided on event triage methods.\n\n7. Ensure continuous improvement through periodic review and update of triage processes.\n\n8. Confirm clear accountability assigned for triaging security events.",
+    "model_provider": "1. Verify MP has documented triage procedures clearly define event categorization and prioritization.\n\n2. Confirm triage processes efficiently differentiate between critical and non-critical events.\n\n3. Confirm design supports information collection to support triage (e.g., model performance, data flow, model configuration).\n\n4. Understand triage models from suppliers and partners (e.g., OSP, CSP, AP, AIC).\n\n5. Check regular training provided on event triage methods, for the model. \n\n6. Ensure continuous improvement through periodic review and update of triage processes.\n\n7. Confirm clear accountability assigned for triaging security events.",
+    "ai_customer": "1. Verify IAC documented triage procedures clearly define event categorization and prioritization.\n\n2. Confirm triage processes efficiently differentiate between critical and non-critical events.\n\n3. Confirm design supports information collection to support triage (e.g., user interactions, use model use, and data flow logs).\n\n4. Understand triage models from suppliers and partners (e.g., OSP, CSP, MP, AP).\n\n5. Check regular training provided on event triage methods for the context the operation of the model. \n\n6. Ensure continuous improvement through periodic review and update of triage processes.\n\n7. Confirm clear accountability assigned for triaging security events.",
+    "cloud_service_provider": "1. Verify CSP has documented triage procedures clearly define event categorization and prioritization.\n\n2. Confirm triage processes efficiently differentiate between critical and non-critical events for the cloud solution. \n\n3. Confirm design supports information collection to support triage (e.g., AWS Cloud Trails, AWS Cloud Watch, Microsoft Cloud Defender).\n\n4. Understand triage models from suppliers and partners (e.g., OSP, AP, MP, AIC).\n\n5. Check regular training provided on event triage methods.\n\n6. Ensure continuous improvement through periodic review and update of triage processes.\n\n7. Confirm clear accountability assigned for triaging security events.\n\nFrom CCM v4.1:\n1. Verify if operational processes that help the organization to prepare for, identify, detect, protect, respond to and recover from information security incidents in a step-by-step manner exist.\n2. Verify if tools that support these organizational procedures to triage security related events complement the ability of the teams to detect, review, monitor and quickly decide upon the context and the possible impact of the incident as it happens and over time."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#SEF-06"
+    }
+  ]
+}

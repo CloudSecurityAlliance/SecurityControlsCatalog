@@ -1,0 +1,77 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--010220d2-6ad8-4160-92cd-3984c5a526e6",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Open Model Risk Assessment",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-12",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish a process to evaluate risk associated with open models. Periodically review these risk factors, and implement a process to monitor and mitigate any determined vulnerabilities.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "model_manipulation",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Resource provisioning, Team and expertise",
+    "development": "Training, Guardrails",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming",
+    "deployment": "AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous improvement",
+    "service_retirement": "Archiving, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (OSP, AP, AIC)]\n1. Continuous Monitoring and Updating: Regularly monitor the model for new vulnerabilities and update it accordingly.\n\n2. Community and Peer Review: Eventually engage with the broader AI community for peer reviews and feedback.",
+    "model_provider": "Not Applicable",
+    "orchestrated_service_provider": "[Shared Responsibilities (OSP, AP, AIC)]\n1. Continuous Monitoring and Updating: Regularly monitor the model for new vulnerabilities and update it accordingly.\n\n2. Community and Peer Review: Eventually engage with the broader AI community for peer reviews and feedback.",
+    "application_provider": "[Application Provider (AP)]\n1. Threat Modeling:\nIdentify potential threats and vulnerabilities specific to open weight models.\n\n2. Trustworthiness Assessment of the Model Source:\nEvaluate the reliability and trustworthiness of the model's source by verifying its origin, reviewing its documentation, and assessing the integrity of its parameters and training data. This includes validating security assurances provided by the model provider, checking for transparency in model lineage, and ensuring compliance with industry standards and security best practices.\n\n3. Adversarial Testing:\nConduct automated penetration testing using adversarial attack tools to identify and exploit potential model vulnerabilities, assessing its exposure to security risks and overall robustness. The evaluation should be performed based on predefined risk thresholds aligned with the organization's risk appetite, ensuring that identified threats are measured and mitigated accordingly.\n\n4. Static and Dynamic Analysis:\nPerform both static analysis (examining the model’s code and weights without executing it) with Vulnerability Scanner, SAST and SCA tools, and dynamic analysis (observing the model’s behavior during execution) in isolated environments (e.g. Sandbox) to uncover vulnerabilities.\n\n5. Vulnerability Analysis and Remediation Actions Identification:\nAssess identified vulnerabilities based on severity, likelihood, and exploitability, prioritizing remediation efforts accordingly. Implement mitigation strategies such as security patches, access controls, or model retraining, ensuring alignment with organizational security policies and compliance standards.\n\n[Shared Responsibilities (OSP, AP, AIC)]\n1. Continuous Monitoring and Updating: Regularly monitor the model for new vulnerabilities and update it accordingly.\n\n2. Community and Peer Review: Eventually engage with the broader AI community for peer reviews and feedback.",
+    "ai_customer": "1. Define the organization's risk tolerance and security requirements for open weight models.\n\n2. Conduct periodic audits and assessments to validate the effectiveness of risk management \nprocesses across the AI supply chain\n\n[Shared Responsibilities (OSP, AP, AIC)]\n1. Continuous Monitoring and Updating: Regularly monitor the model for new vulnerabilities \nand update it accordingly.\n\n2. Community and Peer Review: Eventually engage with the broader AI community for peer \nreviews and feedback.",
+    "cloud_service_provider": "Not Applicable"
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine risk evaluation procedures for incorporating open weight models into applications. \n\n2. Verify implementation of application-level protections against potential exploits targeting open weights. \n\n3. Review alignment of application usage with security guidelines provided by the MP or OSP. \n\n4. Assess monitoring mechanisms for detecting indications of weight exploitation within the application context. \n\n5. Confirm documentation of secure integration practices specific to open weight models. \n\n6. Verify testing procedures that validate application security when using open weight models.",
+    "orchestrated_service_provider": "1. Examine orchestration-level security controls specific to open weight models. \n\n2. Verify risk assessment procedures conducted when integrating open weight models into service offerings. \n\n3. Review monitoring mechanisms for detecting suspicious activities that might exploit open weights during operation. \n\n4. Assess implementation of appropriate access controls and authentication mechanisms for accessing model weights. \n\n5. Confirm regular review and update of security measures based on emerging threats. \n\n6. Verify that security guidance from MPs is appropriately implemented in the orchestration environment.",
+    "model_provider": "1. Examine documented risk assessment methodology specific to open weight models. \n\n2. Verify comprehensive identification and cataloging of potential vulnerabilities associated with exposed model weights. \n\n3. Review implementation of model-level mitigations such as weight obfuscation, defensive distillation, or architectural hardening. \n\n4. Assess the process for regularly reviewing and updating risk assessments as new vulnerabilities emerge. \n\n5. Verify that clear guidance is provided to downstream consumers on secure usage of open weight models. \n\n6. Confirm that security testing includes scenarios specific to open weight model vulnerabilities.",
+    "ai_customer": "1. Examine risk evaluation procedures for incorporating open weight models into applications. \n\n2. Verify implementation of application-level protections against potential exploits targeting open weights. \n\n3. Review alignment of application usage with security guidelines provided by the MP or OSP. \n\n4. Assess monitoring mechanisms for detecting indications of weight exploitation within the application context. \n\n5. Confirm documentation of secure integration practices specific to open weight models. \n\n6. Verify testing procedures that validate application security when using open weight models.",
+    "cloud_service_provider": "1. Verify that the CSP offers infrastructure security measures to protect open weight models from unauthorized access. \n\n2. Review processes conducted when integrating open weight models into service offerings, regarding the potential security flaws. \n\n3. Assess the monitoring of potential vulnerabilities as part of the CSP integration security testing.\n\n4. Confirm CSP security requirements comply with any security rules and guidance from the government or industry regulation."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-12"
+    }
+  ]
+}

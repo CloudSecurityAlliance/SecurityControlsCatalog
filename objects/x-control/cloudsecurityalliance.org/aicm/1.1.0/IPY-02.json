@@ -1,0 +1,73 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--61ba721a-9366-4946-a8df-1a7794dff9f5",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Application Interface Availability",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "IPY-02",
+  "domain": "Interoperability & Portability",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Provide application interface(s) to service  customers so that they programmatically  retrieve their data to enable interoperability  and portability.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data storage",
+    "development": "Design, Guardrails",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance, Continuous monitoring",
+    "service_retirement": "Data deletion"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. API Design & Provision: a) Develop/maintain robust, documented APIs for AI service customer (AIC) data retrieval. b) Ensure APIs cover relevant AI service customer data scopes. c) Follow API design best practices. d) Follow applicable industry standards for interoperability. \n\n2. Security & Access Control: a) Implement secure authentication/authorization for AI service customer specific data access. b) Ensure data segregation. \n\n3. Performance & Reliability: a) Design for performance/scalability. b) Monitor availability/latency/errors. c) Implement rate limiting. \n\n4. Documentation & Support: a) Provide comprehensive, current API documentation. b) Offer support channels. c) Communicate API changes/versioning proactively.",
+    "model_provider": "1. Provide APIs for AI service customers to retrieve their submitted training/validation data, generated model artifacts (if applicable per contract), model metadata, and experiment logs associated with their usage.\n\n[All Actors]\n1. API Design & Provision: a) Develop/maintain robust, documented APIs for AI service customer (AIC) data retrieval. b) Ensure APIs cover relevant AIC data scopes. c) Follow API design best practices. d) Follow applicable industry standards for interoperability. \n\n2. Security & Access Control: a) Implement secure authentication/authorization for AI service customer specific data access. b) Ensure data segregation. \n\n3. Performance & Reliability: a) Design for performance/scalability. b) Monitor availability/latency/errors. c) Implement rate limiting. \n\n4. Documentation & Support: a) Provide comprehensive, current API documentation. b) Offer support channels. c) Communicate API changes/versioning proactively.",
+    "orchestrated_service_provider": "1. Offer APIs for AI service customers (AICs) to retrieve and configure platform usage data, billing info, operational logs, monitoring metrics, deployment status, and relevant configuration data tied to their account.\n\n[All Actors]\n1. API Design & Provision: a) Develop/maintain robust, documented APIs for AI service customer data retrieval. b) Ensure APIs cover relevant AI service customer data scopes. c) Follow API design best practices. d) Follow applicable industry standards for interoperability. \n\n2. Security & Access Control: a) Implement secure authentication/authorization for AI service customer specific data access. b) Ensure data segregation. \n\n3. Performance & Reliability: a) Design for performance/scalability. b) Monitor availability/latency/errors. c) Implement rate limiting. \n\n4. Documentation & Support: a) Provide comprehensive, current API documentation. b) Offer support channels. c) Communicate API changes/versioning proactively.",
+    "application_provider": "1. Ensure APIs allow client applications to retrieve data generated/processed by the AI service within that application's context \n(subject to authorization). \n\n2. Provide APIs to manage application-specific settings related to the AI service.\n\n[All Actors]\n1. API Design & Provision: a) Develop/maintain robust, documented APIs for AI service customer (AIC) data retrieval. b) Ensure APIs cover relevant AI service customer data scopes. c) Follow API design best practices. d) Follow applicable industry standards for interoperability. \n\n2. Security & Access Control: a) Implement secure authentication/authorization for AI service customer specific data access. b) Ensure data segregation. \n\n3. Performance & Reliability: a) Design for performance/scalability. b) Monitor availability/latency/errors. c) Implement rate limiting. \n\n4. Documentation & Support: a) Provide comprehensive, current API documentation. b) Offer support channels. c) Communicate API changes/versioning proactively.",
+    "ai_customer": "1. Utilize provided APIs for programmatic data retrieval as needed for interoperability or portability.  \n\n2. Verify that the scope and format of data available via APIs meet requirements.  \n\n3. Adhere to API usage policies (e.g., rate limits, authentication)\n\n[All Actors]\n1. API Design & Provision: a) Develop/maintain robust, documented APIs for AI service customer (AIC) data retrieval. b) Ensure APIs cover relevant AI service customer (AIC) data scopes. c) Follow API design best practices. d) Follow applicable industry standards for interoperability. \n\n2. Security & Access Control: a) Implement secure authentication/authorization for AI service customer specific data access. b) Ensure data segregation. \n\n3. Performance & Reliability: a) Design for performance/scalability. b) Monitor availability/latency/errors. c) Implement rate limiting. \n\n4. Documentation & Support: a) Provide comprehensive, current API documentation. b) Offer support channels. c) Communicate API changes/versioning proactively.",
+    "cloud_service_provider": "[All Actors]\n1. API Design & Provision: a) Develop/maintain robust, documented APIs for AI service customer (AIC) data retrieval. b) Ensure APIs cover relevant AI service customer (AIC) data scopes. c) Follow API design best practices. d) Follow applicable industry standards for interoperability. \n\n2. Security & Access Control: a) Implement secure authentication/authorization for AI service customer specific data access. b) Ensure data segregation. \n\n3. Performance & Reliability: a) Design for performance/scalability. b) Monitor availability/latency/errors. c) Implement rate limiting. \n\n4. Documentation & Support: a) Provide comprehensive, current API documentation. b) Offer support channels. c) Communicate API changes/versioning proactively.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThe CSP is responsible for providing the CSC with secure APIs that utilize universally recognized and standardized guidelines and protocols that are tested for security, availability, and usability. The CSP should make documentation available to the CSC.\n\nImplementation Guidelines.\nApplicable to all service models:\nThe CSP should ensure that its APIs are interoperable and facilitate the secure migration of applications and data between environments. \n\nThe APIs should be secure by design and in accordance with standardized guidelines and protocols universally recognized to enable the CSC to use for distributed cloud deployments, and to remove data securely from the environment. \n\nThe CSP should provide the CSC with accurate documentation and communicate planned changes and updates. Documentation should support API functionality, be updated regularly, and given to customers with new API versions. Furthermore, security issues should be considered during development and updates."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Review available documentation to verify that the AP has clearly specified the application interface capabilities, endpoints, and usage guidelines. \n\n2. Examine the documentation describing security measures implemented to protect the API, including but not limited to authentication, encryption, and rate limiting.\n\n3. Verify that API security measures align with industry standards (e.g., OWASP).\n\n4. Verify processes for onboarding service customers and facilitating their understanding of API usage.",
+    "orchestrated_service_provider": "1. Examine the documentation provided by the Orchestrated Service Provider (OSP) detailing the application interfaces that enable AI service customers to programmatically retrieve their data. \n\n2. Confirm that the application interfaces are designed to be highly available and performant. This may involve reviewing Service Level Agreements (SLAs) to ensure the interfaces meet expected performance and availability thresholds.\n\n3. Investigate whether the application interfaces have appropriate security measures in place to protect service customer data during transmission. This includes verifying the implementation of encryption protocols, authentication processes, and access controls aligned with industry best practices and relevant compliance requirements.\n\n4. Verify that the OSP provides adequate support and resources to enable service customers to effectively use the interface for data retrieval. This includes reviewing the availability of user guides, API documentation, technical support channels, and any training materials. Assess that there are feedback mechanisms for service customers to report issues or request improvements.",
+    "model_provider": "1. Verify that the Model Provider has established clear policies governing application interface availability, and that functional APIs are implemented to allow AI service customers to retrieve data from models (e.g., predictions, outputs) under defined conditions.\n\n2. Verify that the policies clearly define the categories of users (e.g., service customers, internal personnel) who are subject to guidelines with respect to scope and applicability of application interfaces (APIs).\n\n3. Evaluate that the policies explicitly specify what constitutes acceptable and prohibited use of the application interfaces.\n\n4. Ensure that these policies are up-to-date, reflecting the latest technological standards and regulatory requirements.",
+    "ai_customer": "1. Verify whether comprehensive documentation for the application interfaces (APIs) is available, up-to-date, and accessible to relevant parties and contains information related to technical details for integration, data retrieval processes, and usage instructions.\n\n2. Ensure that the APIs cover all necessary functionalities required by AI service customers to retrieve their data fully.\n\n3. Verify that there are adequate security controls in place for accessing and using the APIs, including but not limited to authentication, authorization, and encryption. \n\n4. Verify that the policy governing API availability and usage is reviewed and updated on a periodic basis by the respective owner.",
+    "cloud_service_provider": "1. Verify that the CSP provides complete, up-to-date API documentation covering integration, data handling, and usage. Confirm that the CSP ensures reliable API operation through uptime monitoring, incident response procedures, and service customer notifications during disruptions.\n\n2. Ensure that the APIs cover all necessary functionalities required by AI service customers to retrieve their data fully.\n\n3. Verify that there are adequate security controls in place for accessing and using the APIs, including but not limited to authentication, authorization, and encryption. \n\n4. Verify that the policy governing API availability and usage is reviewed and updated on a periodic basis by the respective owner.\n\nFrom CCM v4.1:\n1. Examine the list of Application Programming Interfaces (API) available to Cloud Service Consumers.\n2. Determine if such list and usable documentation is made available to Cloud Service Consumers."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#IPY-02"
+    }
+  ]
+}

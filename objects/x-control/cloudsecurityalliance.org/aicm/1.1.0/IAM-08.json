@@ -1,0 +1,78 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--6cbf9114-cd46-48bc-b7ba-b904f3a88f5f",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Access Review",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "IAM-08",
+  "domain": "Identity & Access Management",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Review and revalidate identity access for least privilege and  separation of duties with a frequency that is commensurated  with organizational risk tolerance and at least annually, or  upon significant changes.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "model_manipulation",
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_theft",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared across the supply chain",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Owned by the Orchestrated Service Provider (OSP)",
+    "application": "Shared Application Provider-AI Customer (Shared AP-AIC)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data storage, Resource provisioning, Team and expertise, Data curation",
+    "development": "Training, Guardrails, Supply Chain",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "Orchestration, AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors]\n1. Conduct periodic reviews (e.g., quarterly) of all identity access rights for appropriateness and necessity.\n\n2. Validate least-privilege and segregation-of-duties; document explicit rationale for any persistent or elevated access.\n\n3. Use automated tooling to generate review reports, detect orphan / unused accounts, and route tasks to resource owners for sign-off.\n\n4. Require certification and reconciliation; access that is unapproved, stale or in conflict with role definitions must be revoked or remediated promptly.\n\n5. Track outcomes and evidence of each review cycle, with timestamps and approver IDs, to satisfy audit and compliance needs.",
+    "model_provider": "1. Review access to model registries, feature stores, training datasets, and deployment environments.\n\n2. Flag and remediate persistent privileged access beyond required roles (e.g., long-standing root access).\n\n3. Cross-check entitlements against active project timelines to prevent lingering access after model hand-off.\n\n[All Actors]\n1. Conduct periodic reviews (e.g., quarterly) of all identity access rights for appropriateness and necessity.\n\n2. Validate least-privilege and segregation-of-duties; document explicit rationale for any persistent or elevated access.\n\n3. Use automated tooling to generate review reports, detect orphan / unused accounts, and route tasks to resource owners for sign-off.\n\n4. Require certification and reconciliation; access that is unapproved, stale or in conflict with role definitions must be revoked or remediated promptly.\n\n5. Track outcomes and evidence of each review cycle, with timestamps and approver IDs, to satisfy audit and compliance needs.",
+    "orchestrated_service_provider": "1. Audit access to orchestrator components such as pipeline runners, deployment systems, and secrets managers.\n\n2. Support scheduled access certification campaigns and policy-driven revocation based on review results.\n\n[All Actors]\n1. Conduct periodic reviews (e.g., quarterly) of all identity access rights for appropriateness and necessity.\n\n2. Validate least-privilege and segregation-of-duties; document explicit rationale for any persistent or elevated access.\n\n3. Use automated tooling to generate review reports, detect orphan / unused accounts, and route tasks to resource owners for sign-off.\n\n4. Require certification and reconciliation; access that is unapproved, stale or in conflict with role definitions must be revoked or remediated promptly.\n\n5. Track outcomes and evidence of each review cycle, with timestamps and approver IDs, to satisfy audit and compliance needs.",
+    "application_provider": "1. Integrate access review tasks into security operations or compliance workflows.\n\n2. Flag discrepancies between assigned access and documented roles or responsibilities.\n\n[All Actors]\n1. Conduct periodic reviews (e.g., quarterly) of all identity access rights for appropriateness and necessity.\n\n2. Validate least-privilege and segregation-of-duties; document explicit rationale for any persistent or elevated access.\n\n3. Use automated tooling to generate review reports, detect orphan / unused accounts, and route tasks to resource owners for sign-off.\n\n4. Require certification and reconciliation; access that is unapproved, stale or in conflict with role definitions must be revoked or remediated promptly.\n\n5. Track outcomes and evidence of each review cycle, with timestamps and approver IDs, to satisfy audit and compliance needs.",
+    "ai_customer": "1. Review access to AI models, training environments, and evaluation dashboards as part of broader IT audits.\n\n2. Include contractor and vendor access in review cycles, especially for shared workspaces or repositories.\n\n3. Use automated workflows for multi-approver access review processes.\n\n4. Maintain documented evidence of reviews for regulators, auditors, and third-party assurance.\n\n[All Actors]\n1. Conduct periodic reviews (e.g., quarterly) of all identity access rights for appropriateness and necessity.\n\n2. Validate least-privilege and segregation-of-duties; document explicit rationale for any persistent or elevated access.\n\n3. Use automated tooling to generate review reports, detect orphan / unused accounts, and route tasks to resource owners for sign-off.\n\n4. Require certification and reconciliation; access that is unapproved, stale or in conflict with role definitions must be revoked or remediated promptly.\n\n5. Track outcomes and evidence of each review cycle, with timestamps and approver IDs, to satisfy audit and compliance needs.",
+    "cloud_service_provider": "Role based:\n1. Provide customers with built-in tools to automate periodic access reviews and remediation actions.\n\n2. Offer prebuilt reports showing current access configurations by user, group, and service.\n\n3. Enable review enforcement through policy-based access expiration or workflow integration.\n\n4. Support compliance requirements like SOX, ISO 27001, and HIPAA through templated access review modules.\n\n[All Actors]\n1. Conduct periodic reviews (e.g., quarterly) of all identity access rights for appropriateness and necessity.\n\n2. Validate least-privilege and segregation-of-duties; document explicit rationale for any persistent or elevated access.\n\n3. Use automated tooling to generate review reports, detect orphan / unused accounts, and route tasks to resource owners for sign-off.\n\n4. Require certification and reconciliation; access that is unapproved, stale or in conflict with role definitions must be revoked or remediated promptly.\n\n5. Track outcomes and evidence of each review cycle, with timestamps and approver IDs, to satisfy audit and compliance needs.\n\nFrom CCM v4.1:\nControl Ownership Rationale.\nThis control’s implementation responsibility is “Shared (Independent)” since CSP and CSC are individually responsible for managing the processes and procedures related to periodic review of access by supervisors for personnel (employees and contractors) in their respective environments. The CSP owns the control in relation to the entities whose access to the cloud environment the CSP provisions and maintains, including its internal users, external users (vendors and customers), applications, and services.\n\nImplementation Guidelines.\nApplicable to all service models:\nThe CSP is responsible for classifying the access type by the risk they pose to their organization and facilitating the review of user's access periodically (frequency determined based on risk level) or when certain specific events occur such as personnel termination or transfer.\n\nTo effectively review and validate user access for least privilege and separation of duties, CSPs should implement a comprehensive approach that encompasses implementation best practices, and a risk-based frequency for such reviews:\na. Access Management and Reviews: \ni. Access management processes and records should be centralized to facilitate easier identity access review and reduce the risk of inconsistencies across different cloud systems\nii. Access reviews should be conducted for remediating obsolete, excessive or unnecessary access, to ensure that access rights adhere to roles and responsibilities, least privilege and SoD principles\niii. Access reviews should be automated, if possible, using automated tools and scripts\niv. Reviews of high-risk access configurations, such as administrator accounts and access to sensitive data should be prioritized for scheduling\nv. Access reviews should result to a re-approval of the PoLP, SoD or other entitlements that each identity continues to need to fulfill their job responsibilities or denial of any conflicting combinations of entitlements based on the current and future job responsibilities of the user's role\nb. Access Reviews Frequency: The frequency of identity access reviews should be commensurate with the organization's risk tolerance and the sensitivity of the data and systems being protected. For high-risk environments, reviews may be conducted on a daily or weekly basis, while less sensitive systems may be reviewed monthly or quarterly\nc. Access Review Documentation: The results of access reviews should be documented and records maintained for audit purposes\nd. Audit and Logging: Audit and logging capabilities should be implemented to track identity access activities and generate records of who accessed, what resources, and when, facilitating investigations and identifying any suspicious activity\ne. Continuous Monitoring and Evaluation: Continuous monitoring solutions should be implemented to scan for unauthorized or anomalous activities and to detect changes in access patterns, privilege escalation, and other potential security breaches\nf. Access Certification: An access certification process should be implemented that requires users to periodically justify their access privileges to ensure that access is still necessary and relevant for their current roles."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that policies require periodic user access reviews, including defined frequency, scope, and responsible roles.\n\n2. Confirm that documented evidence of completed access reviews exists, and that the review includes validation of user roles, entitlements, and justification.\n\n3. Ensure that discrepancies identified during access reviews are documented and resolved, and that follow-up actions are completed in a timely manner.\n\n4. Verify that responsibilities for conducting access reviews are formally assigned, and that escalation paths for unresolved issues are documented.\n\n5. Confirm that audit trails are maintained for all access review activities, including reviewer identity, review outcomes, and remediation logs.\n\n6. If automated tools are used, verify that they are configured to support periodic and risk-based access reviews effectively, including report generation and alerting.",
+    "orchestrated_service_provider": "1. Confirm that the OSP maintains a schedule for reviewing access rights across orchestration platforms.\n\n2. Verify that service accounts and inter-service permissions are reviewed separately.\n\n3. Check evidence of review results and adjustments made to access controls.\n\n4. Validate that high-privilege access is subject to heightened review frequency.\n\n5. Ensure cross-team participation in access reviews for collaborative services.\n\n6. Confirm that access reviews are aligned with changes in orchestration architecture.",
+    "model_provider": "1. Check that access to training datasets, model artifacts, and inference pipelines are reviewed periodically.\n\n2. Ensure identity-based audit logs are reviewed to confirm authorized model access.\n\n3. Validate that outdated or stale access to model deployment infrastructure is revoked.\n\n4. Confirm that research staff and operational users are segmented in access reviews.\n\n5. Review change logs to verify adjustments in access rights post-review.",
+    "ai_customer": "1. Verify that end-user access to AI features is reviewed periodically based on license level or SLA.\n\n2. Confirm access rights of AI integration APIs are audited.\n\n3. Ensure system administrators review delegated rights to third-party consultants or users.\n\n4. Check compliance with contractually defined access scopes.\n\n5. Review logs showing evidence of revoked or modified user access.",
+    "cloud_service_provider": "1. Confirm the CSP conducts role-based access reviews for cloud infrastructure components.\n\n2. Check reviews include both manual roles and programmatic access (e.g., service accounts).\n\n3. Ensure mechanisms are in place to detect unused or excessive permissions.\n\n4. Validate the CSP’s audit logs for evidence of review-driven changes.\n\n5. Confirm periodic access reviews are included in SOC 2 or similar compliance audits.\n\nFrom CCM v4.1:\n1. Determine if the required frequency for review of accounts is established.\n2. Determine if accounts are reviewed for compliance, including the level of access and conflicting access, following the principle of least privilege and consideration of separation of duties.\n3. Determine if accounts are reviewed at the organization-defined frequency."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#IAM-08"
+    }
+  ]
+}

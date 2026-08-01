@@ -1,0 +1,74 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--3f2186df-3cd7-4938-8ef1-ccdf1e2319b1",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Off-Site Transfer Authorization Policy and Procedures",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-03",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Establish, document, approve, communicate, apply, evaluate and maintain policies and procedures for the relocation or transfer of hardware, software, or data/information to an offsite or alternate location. The relocation or transfer request requires the written or cryptographically verifiable authorization. Review and update the policies and procedures at least annually, or upon significant changes.",
+  "control_type": "Cloud & AI Related",
+  "threat_category": [
+    "sensitive_data_disclosure",
+    "model_theft",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Shared Orchestrated Service Provider-Application Provider (Shared OSP-AP)"
+  },
+  "stack_components": [
+    "physical",
+    "network",
+    "compute",
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Data storage, Resource provisioning",
+    "deployment": "AI Services supply chain, AI applications",
+    "delivery": "Operations, Maintenance",
+    "service_retirement": "Archiving, Data deletion, Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly documented processes and procedures for the relocation or transfer of hardware, software, or data/information to an offsite or alternate location, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third-party datacenter vendors, ensure they have these procedures in place.",
+    "model_provider": "Role Specific\n1. Providers should ensure that they have robust and clearly documented processes and procedures for the relocation or transfer of hardware, software, or data/information to an offsite or alternate location, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third party datacenter vendors, ensure they have these procedures in place.\n\n2. Apply cryptographic protection for models in transit with key management separation and having a multi-step/party approval workflow which requires technical and security stakeholders to authorize such transfers.\n\n[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly documented processes and procedures for the relocation or transfer of hardware, software, or data/information to an offsite or alternate location, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third-party datacenter vendors, ensure they have these procedures in place.",
+    "orchestrated_service_provider": "Role Specific\n1. Providers should ensure that they have robust and clearly documented processes and procedures for the relocation or transfer of hardware, software, or data/information to an offsite or alternate location, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third party datacenter vendors, ensure they have these procedures in place.\n\n2. Implement service dependency mapping to ensure complete transfer packages with Pre and Post validations to verify system integrity.\n\n[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly documented processes and procedures for the relocation or transfer of hardware, software, or data/information to an offsite or alternate location, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third-party datacenter vendors, ensure they have these procedures in place.",
+    "application_provider": "Role Specific\n1. Providers should ensure that they have robust and clearly documented processes and procedures for the relocation or transfer of hardware, software, or data/information to an offsite or alternate location, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third party datacenter vendors, ensure they have these procedures in place.\n\n2. Implement staging environments to validate transfers before production deployment.\n\n3. Establish transfer authorization tied to application release management processes and have a rollback plan in place for recovery from a failed transfer.\n\n[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly documented processes and procedures for the relocation or transfer of hardware, software, or data/information to an offsite or alternate location, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third-party datacenter vendors, ensure they have these procedures in place.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "Role Specific\nThe CSP owns this control as it operates the datacenters and infrastructure that host customer cloud services and data. \n\nCSPs should implement robust security measures to protect hardware,\nsoftware, and data/information during relocation or transfer.Policies should include (but not limited to) provisions on the following : \n\na. Requirement for the written or cryptographically verifiable authorization from the CSC before initiating the relocation or transfer of any hardware, software, or data/information. This authorization should clearly specify the scope of the relocation or transfer, including the assets involved, the destination location, and the timeframe\n\nb. Procedures to promptly notify the AIC of the initiation of the relocation or transfer process and provide regular updates on the progress and completion of the\nrelocation or transfer\n\nc. Chain of custody procedures to track the movement and handling of hardware and software components throughout the entire relocation process, maintaining a secure and auditable record\n\nd. Procedures that establish an inventory of hardware/software components slated for relocation, including servers, networking equipment, and storage devices. Document their current configuration, and update it post-relocation for audit purposes\n\ne. A process for access control to restrict access to data/information during the relocation or transfer process supported by logging of all access attempts,\nmodifications, and transfers.\n\nf. Secure transportation methods for physical relocation of hardware or data storage devices. Tamper-proof packaging, secure tracking mechanisms, and physical security measures should be employed during transit\n\ng. Requirements for establishing data classification and tagging practices for the sensitivity data/information involved in the relocation or transfer and implementing additional security measures for highly sensitive data (e.g., encryption, DLP measures)\n\nh. Obfuscation or de-identification techniques should be employed to obscure sensitive data like personal data during transmission\n\ni. Encryption requirements for data during the transfer process from the cloud environment to the offsite location. \n\nj. Use strong encryption algorithms (e.g., AES-256) and manage encryption keys securely (refer to CEK-03)\n\nk. Protect data storage at the offsite location, emphasizing the use of encryption and access controls to protect data once it reaches the destination.\n\nl. Cryptographic keys, passwords, or other credentials that should be used for encryption or data obfuscation during transfer are properly managed and restricted to authorized personnel\n\nm. Requirements to assess adherence to relevant regulatory standards and data\nprotection laws during the hardware, software and data/information relocation or transfer, obtain and verify necessary app\n\nn.  Approval requirements and senior management involvement to ensure alignment with the organization's strategic goals and risk appetite\n\no.  An approval process should be established for any changes or modifications to the policy and procedures\n\np.  A documented record of approvals (including dates, names of approvers, and any relevant comments or discussions) should be maintained\n\nq.  Effective communication of the policy and procedures should be facilitated to all relevant cloud stakeholders\n\nr. Data center and hardware, software relocation and data transfer security policies and procedures should be documented, reviewed and updated at least annually to ensure alignment with evolving cloud security landscape and to reflect changes in cloud technology, regulations, and risks\n\n[All Actors except AIC]\n1. Providers should ensure that they have robust and clearly documented processes and procedures for the relocation or transfer of hardware, software, or data/information to an offsite or alternate location, including devices that handle model development, data processing, or inference tasks. These include but not limited to the procedures listed for the CSP. If using third-party datacenter vendors, ensure they have these procedures in place."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify the AP's data governance policy includes authorization procedures for transferring application data between cloud regions or to a different CSP.\n\n2. Confirm that such transfers are logged and require approval from a designated data owner or steward.",
+    "orchestrated_service_provider": "1. Verify the OSP has a policy for authorizing the transfer of orchestration configurations or multi-tenant data between different cloud environments.\n\n2. Review change management records to ensure cross-region or cross-cloud data transfers are documented and approved.",
+    "model_provider": "1. Verify the MP has a documented policy requiring authorization for transferring model artifacts or large training datasets to off-site locations or different cloud providers.\n\n2. Check for cryptographic verification (e.g., checksums, signatures) of assets upon transfer.",
+    "ai_customer": "1. Verify that the AIC’s data handling policy requires explicit authorization for transferring sensitive data to any third-party AI service or external location.\n\n2. Review contracts with providers to ensure they are required to seek authorization before relocating customer data.",
+    "cloud_service_provider": "1. Examine the organization's policy and procedures related to relocation, transfer or retirement of assets.\n\n2. Determine if policy has been approved, communicated, and reviewed.\n\n3. Determine if the policy requires recorded authorisation of movements.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-03"
+    }
+  ]
+}

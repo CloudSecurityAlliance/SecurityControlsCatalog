@@ -1,0 +1,74 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--6b167cf0-547d-4580-b986-9a7d441feacf",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Model Documentation",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "MDS-03",
+  "domain": "Model Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Define, implement, enforce, approve, document, communicate, maintain and evaluate processes and procedures for model documentation. Regularly review and update the model documentation.",
+  "control_type": "AI-Specific",
+  "threat_category": [
+    "data_poisoning",
+    "sensitive_data_disclosure",
+    "model_service_failure_malfunctioning",
+    "insecure_supply_chain",
+    "insecure_apps_plugins",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Shared Cloud Service Provider-Model Provider (Shared CSP-MP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "storage",
+    "app",
+    "data"
+  ],
+  "lifecycle_relevance": {
+    "preparation": "Team and expertise",
+    "development": "Design, Supply Chain",
+    "evaluation_validation": "Evaluation, Validation/Red Teaming, Re-evaluation",
+    "deployment": "AI Services supply chain, AI applications",
+    "delivery": "Operations, Continuous improvement",
+    "service_retirement": "Model disposal"
+  },
+  "implementation_guidelines": {
+    "shared": "[Shared Responsibilities (Applicable to MP, AP)]\n1. Review and Approval Process: Organizations should establish a review process involving relevant stakeholders to review the model card and determine approval for use, based on fit and risk level. The review process and decisions made should be documented.\n\n2. Access and Communication: Access controls should be defined for model cards, and version control should be implemented.\n\n3. Auditing and Compliance: Model cards should be periodically audited for compliance with organizational standards and any relevant governmental regulations. The model card should be verified for completion and adherence to security standards, and the information included should be verified as accurate where applicable.",
+    "model_provider": "Role Specific:\n1. Elaborate the standard model card document with essential details about the model to be implemented.\n\n2. Evaluation and Maintenance: Model cards and the associated models should be periodically reviewed, based on risk. Model performance should be measured against metrics documented in the model card to prevent against drift and poisoning. Model cards should be constantly updated based on operational feedback.\n\n[Shared Responsibilities (Applicable to MP, AP)]\n1. Review and Approval Process: Organizations should establish a review process involving relevant stakeholders to review the model card and determine approval for use, based on fit and risk level. The review process and decisions made should be documented.\n\n2. Access and Communication: Access controls should be defined for model cards, and version control should be implemented.\n\n3. Auditing and Compliance: Model cards should be periodically audited for compliance with organizational standards and any relevant governmental regulations. The model card should be verified for completion and adherence to security standards, and the information included should be verified as accurate where applicable.",
+    "orchestrated_service_provider": "Not Applicable",
+    "application_provider": "[Shared Responsibilities (Applicable to MP, AP)]\n1. Review and Approval Process: Organizations should establish a review process involving relevant stakeholders to review the model card and determine approval for use, based on fit and risk level. The review process and decisions made should be documented.\n\n2. Access and Communication: Access controls should be defined for model cards, and version control should be implemented.\n\n3. Auditing and Compliance: Model cards should be periodically audited for compliance with organizational standards and any relevant governmental regulations. The model card should be verified for completion and adherence to security standards, and the information included should be verified as accurate where applicable.",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "1. Establish secure, role-based storage systems for housing documentation artifacts such as Model Cards, ensuring that access is tightly governed and limited to permitted stakeholders.\n\n2. Integrate change tracking and audit capabilities within documentation storage workflows, allowing for full visibility into edits, authorship, and historical versions over time.\n\n3. Provide trusted collaboration workspaces that enable controlled joint editing and distribution of model-related documentation, facilitating teamwork while preserving security and integrity.\n\n4. Implement reliable data protection strategies, including regular backups and continuity planning, to preserve and recover Model Card data in the event of system issues or unforeseen disruptions."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Examine procedures for verifying signatures of models or services received from upstream providers. \n\n2. Verify implementation of signature verification before model deployment in applications. \n\n3. Assess application-level mechanisms for verifying signatures when models are loaded during operation. \n\n4. Review documentation of signature verification results and frequency. \n\n5. Confirm procedures for responding to signature verification failures, including appropriate incident response steps. \n\n6. Verify security controls for any application-specific signing keys if extending the provenance chain.",
+    "orchestrated_service_provider": "1. Review OSP processes for managing model documentation (e.g., Model Cards) provided by MPs or APs, focusing on storage, access control, and transmission.\n\n2. Assess the technical measures implemented by the OSP to maintain the integrity of and control access to the stored model documentation.\n\n3. Audit the communication and coordination mechanisms between the OSP, MP, and AP regarding the availability, updates, and secure transfer of model documentation.\n\n4. Verify procedures for the secure hand-over or provision of model documentation as part of the orchestrated service.\n\n5. Review documentation maintenance procedures to keep data artifacts up to date.\n\n6. If the OSP has no role in handling model documentation, document this as Not Applicable.",
+    "model_provider": "1. Review the MP's defined processes for creating standardized model documentation, such as Model Cards. This should include information about model details, intended uses, limitations, and performance metrics.\n\n2. Verify the existence and application of a formal approval process for all model documentation before it is finalized and communicated.\n\n3. Audit the implementation of the documentation process by examining a sample of actual Model Cards for completeness, accuracy, and consistency.\n\n4. Assess the MP's procedures for evaluating the ongoing accuracy of model documentation and maintaining it throughout the model lifecycle, including version control, such as data versioning for different iterations of a model.\n\n5. Check defined methods for communicating model documentation to relevant stakeholders (e.g., OSP, AP, internal teams).\n\n6. Verify procedures for the secure hand-over of model documentation.\n\n7. Review processes that track if documentation is created or is being used by team members.",
+    "ai_customer": "1. Review the AIC's processes for requesting and receiving model documentation (e.g., Model Cards) from the Application Provider (AP) or other relevant providers in the supply chain.\n\n2. Assess how the AIC utilizes the information within received model documentation for its risk assessment, compliance checks, and understanding of the AI service's capabilities and limitations.\n\n3. Audit the due diligence performed by the AIC on the AP regarding the provision, completeness, and perceived accuracy of the model documentation.\n\n4. Check whether the AIC appropriately maintains received model documentation for its records and usage context, as appropriate.",
+    "cloud_service_provider": "1. Assess the CSP's controls for storing and managing model documentation provided by customers or third parties. \n\n2. Verify that documentation is accessible only to authorized personnel. \n\n3. Review procedures for maintaining the integrity and confidentiality of model documentation. \n\n4. Evaluate data retention policies related to model documentation. \n\n5. Confirm that documentation is properly backed up and protected from loss or damage."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-03"
+    }
+  ]
+}

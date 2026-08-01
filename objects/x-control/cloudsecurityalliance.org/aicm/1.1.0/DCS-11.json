@@ -1,0 +1,64 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--bdea9dde-5b3c-4843-84c4-e523064cd02c",
+  "created": "2026-08-01T02:55:43.000Z",
+  "modified": "2026-08-01T02:55:43.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "Surveillance System",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm",
+  "framework_version": "1.1.0",
+  "control_identifier": "DCS-11",
+  "domain": "Datacenter Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Implement, maintain, and operate datacenter surveillance systems at the external perimeter and at all the ingress and egress points to  detect unauthorized ingress and egress attempts.",
+  "control_type": "Cloud-Specific",
+  "threat_category": [
+    "model_theft",
+    "denial_of_service",
+    "loss_of_governance_compliance"
+  ],
+  "typical_control_applicability_and_ownership": {
+    "cloud_ai_processing_infrastructure": "Owned by the Cloud Service Provider (CSP)",
+    "model": "Owned by the Model Provider (MP)",
+    "orchestrated_services": "Shared Model Provider-Orchestrated Service Provider (Shared MP-OSP)",
+    "application": "Owned by the Application Provider (AP)"
+  },
+  "stack_components": [
+    "physical"
+  ],
+  "lifecycle_relevance": {
+    "delivery": "Operations"
+  },
+  "implementation_guidelines": {
+    "shared": "[All Actors except AIC,AP,OSP]\n1. Providers should implement and maintain surveillance around data centres that perform tasks related to data processing, inference, etc. \n\n2. Full coverage of DC with no blind spots. Establish formal chain of custody procedures for access recordings.\n\n3. Maintain comprehensive access logs for all entry and exit events including maintenance activities performed on surveillance systems for regulatory compliance reviews.",
+    "model_provider": "Role Specific\nProviders should  implement and maintain surveillance around model related tasks and their hosting in data centres that perform tasks related to data processing, inference etc .\n\n[All Actors except AIC,AP,OSP]\n1. Providers should implement and maintain surveillance around data centres that perform tasks related to data processing, inference, etc. \n\n2. Full coverage of DC with no blind spots. Establish formal chain of custody procedures for access recordings.\n\n3. Maintain comprehensive access logs for all entry and exit events including maintenance activities performed on surveillance systems for regulatory compliance reviews.",
+    "orchestrated_service_provider": "Role Specific and Shared\n1. Providers should  implement and maintain surveillance around data centres that perform tasks related to data processing, inference etc .",
+    "application_provider": "Role Specific and Shared\n1. Providers should  implement and maintain surveillance around data centres that perform tasks related to data processing, inference etc .",
+    "ai_customer": "Not Applicable",
+    "cloud_service_provider": "Role Specific\nFor the CSPs to effectively implement, maintain, and operate datacenter surveillance systems for unauthorized ingress and egress detection, implementation best practices should include (but not limited to):\n a. Physical Access Control Systems (PACS): PACS should be implemented to control access to the datacenter perimeter (e.g., entry points, server rooms, and restricted areas). PACS can utilize various authentication methods, such as multi-factor authentication (MFA) and using key cards, biometrics, etc.\n b. Video Surveillance: High-resolution cameras with night vision capabilities, motion detection, and analytics to capture clear images and identify suspicious activities should be deployed around the data center perimeter (e.g., entry points, fencing, and parking areas). Technologies include (but not limited to):\n i. Thermal imaging cameras to detect heat signatures, providing surveillance even in low-light or obscured conditions\n ii. License Plate Recognition implemented at vehicle entry points to capture and identify license plates, enabling monitoring of authorized and unauthorized vehicles\n iii. AI-powered surveillance systems to enhance threat detection and analysis, enabling real-time identification of potential threats\n c. Perimeter Intrusion Detection Systems (PIDS): PIDS sensors should be deployed to detect unauthorized intrusions into the data center perimeter (e.g., motion sensors, infrared beams, and fiber optic sensors, ground penetrating radar)\n d. Perimeter Intrusion Prevention Systems (PIPS): PIPS should be deployed along the perimeter to actively prevent unauthorized intrusions (e.g., electrified fencing, retractable bollards, and sonic deterrents)\n e. Video Analytics: Video analytics software should be utilized to analyze surveillance footage and automatically detect suspicious activities (e.g., loitering, unauthorized access, and unusual behavior)\n f. Continuous Monitoring and Evaluation: The effectiveness of datacenter surveillance systems should be continuously monitored and security measures adapted to ensure they are properly configured, maintained, and up-to-date based on evolving threats and vulnerabilities.\n\n[All Actors except AIC,AP,OSP]\n1. Providers should implement and maintain surveillance around data centres that perform tasks related to data processing, inference, etc. \n\n2. Full coverage of DC with no blind spots. Establish formal chain of custody procedures for access recordings.\n\n3. Maintain comprehensive access logs for all entry and exit events including maintenance activities performed on surveillance systems for regulatory compliance reviews."
+  },
+  "auditing_guidelines": {
+    "application_provider": "1. Verify that the AP's due diligence process includes confirming that their CSP implements and maintains surveillance systems at all data centers hosting the application.\n\n2. Review the CSP’s SOC 2 report or other audits for evidence of surveillance system controls.",
+    "orchestrated_service_provider": "1. Verify the OSP’s vendor assurance program requires all underlying infrastructure providers to have surveillance systems in their data centers.\n\n2. Confirm the OSP has a process to review evidence of these controls from its providers.",
+    "model_provider": "1. Verify the MP’s due diligence process confirms that CSPs hosting their sensitive model training and inference workloads have adequate surveillance systems.\n\n2. Review the MP's internal policies for surveillance of any on-premises research facilities.",
+    "ai_customer": "1. Verify the AIC’s procurement policy requires that AI providers host their services in facilities with industry-standard surveillance systems.\n\n2. Check provider contracts or security documentation for attestations regarding physical surveillance.",
+    "cloud_service_provider": "1. Examine the policy relating to datacenter surveillance.\n\n2. Determine if the policy includes ingress, egress and external perimeter to detect unauthorized access.\n\n3. Determine if procedures include activities and actions against unauthorized personnel in the premises.\n\n4. Review and determine if items identified in surveillance system logs for the premises have been actioned in accordance with policy and procedures.\n\n5. Determine if logs are maintained and reviewed appropriately.\n\n(The above auditing guidelines from CCM v4.1 apply here as well.)."
+  },
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm@1.1.0#DCS-11"
+    }
+  ]
+}
