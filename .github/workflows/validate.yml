@@ -158,16 +158,22 @@ jobs:
                   bad.append(f"{path}: id does not start with its own type")
               if p.parts[1] != obj["type"]:
                   bad.append(f"{path}: sits under {p.parts[1]}, but is a {obj['type']}")
-              if obj["type"] != "x-control":
+              if obj["type"] == "x-control":
+                  want = (obj["framework_namespace"], obj["framework"],
+                          obj["framework_version"], obj["control_identifier"])
+                  got = (*p.parts[2:5], p.stem)
+                  expected = "secid:control/{}/{}@{}#{}".format(*want)
+              elif obj["type"] == "x-regulation":
+                  want = (obj["regulation_namespace"], obj["regulation"],
+                          obj["clause_identifier"])
+                  got = (*p.parts[2:4], p.stem)
+                  expected = "secid:regulation/{}/{}#{}".format(*want)
+              else:
                   continue
-              want = (obj["framework_namespace"], obj["framework"],
-                      obj["framework_version"], obj["control_identifier"])
-              got = (*p.parts[2:5], p.stem)
               if got != want:
                   bad.append(f"{path}: path says {got}, properties say {want}")
               secids = [r["external_id"] for r in obj.get("external_references", [])
                         if r.get("source_name") == "secid"]
-              expected = "secid:control/{}/{}@{}#{}".format(*want)
               if secids != [expected]:
                   bad.append(f"{path}: SecID is {secids}, expected [{expected!r}]")
           print("\n".join(bad) if bad
@@ -221,6 +227,48 @@ jobs:
                                  f"is a questionnaire framework — is it reversed?")
           print("\n".join(bad) if bad
                 else f"{checked} references across {len(objs)} objects all resolve")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Quarantined claims are not also published
+        # A held-back claim that also has a published object is the failure this
+        # whole mechanism exists to prevent: it would mean a verdict was published
+        # over the targets that happened to parse, which asserts something the
+        # publisher never assessed. The generators cannot run here — the source
+        # data lives outside this repository — so the invariant is checked against
+        # what is committed.
+        run: |
+          python3 - <<'PY'
+          import glob, json, pathlib, sys
+          bad, files = [], sorted(glob.glob("quarantine/*.json"))
+          if not files:
+              print("no quarantine files")
+              sys.exit(0)
+          controls = {json.load(open(p))["control_identifier"]
+                      for p in glob.glob("objects/x-control/**/*.json", recursive=True)}
+          for path in files:
+              q = json.load(open(path))
+              held = [e["control"] for e in q["entries"]]
+              if len(held) != q["controls_held"]:
+                  bad.append(f"{path}: says {q['controls_held']} held, lists {len(held)}")
+              if sum(len(e["unparsed"]) for e in q["entries"]) != q["references_unparsed"]:
+                  bad.append(f"{path}: references_unparsed does not match the entries")
+              if len(set(held)) != len(held):
+                  bad.append(f"{path}: a control is listed more than once")
+              mappings = pathlib.Path(q["mappings"])
+              published = {p.stem for p in mappings.glob("*.json")}
+              for control in held:
+                  if control in published:
+                      bad.append(f"{path}: {control} is quarantined but {mappings}/"
+                                 f"{control}.json was published anyway")
+                  if control not in controls:
+                      bad.append(f"{path}: {control} is not a committed control")
+              if len(published) != q["controls_mapped"]:
+                  bad.append(f"{path}: says {q['controls_mapped']} mapped, "
+                             f"{mappings} holds {len(published)}")
+              print(f"{path}: {q['controls_mapped']} published, {len(held)} held, "
+                    f"{q['references_unparsed']} unparsed references")
+          print("\n".join(bad) if bad else "quarantine and published claims are disjoint")
           sys.exit(1 if bad else 0)
           PY
 

@@ -112,8 +112,10 @@ python3 tools/validate.py --self-test        # check the schemas themselves
 python3 tools/validate.py bundle.json        # check catalog objects against schemas/
 python3 tools/generate_aicm_controls.py --self-test    # text is carried untouched
 python3 tools/generate_aicm_caiq.py --self-test        # same, for questions
+python3 tools/generate_aicm_eu_mappings.py --self-test # citation grammar
 python3 tools/generate_aicm_controls.py <aicm.json>    # regenerate AICM controls
 python3 tools/generate_aicm_caiq.py <aicm-caiq.json>   # regenerate CAIQ questions + links
+python3 tools/generate_aicm_eu_mappings.py <aicm.json> # regenerate EU AI Act provisions + mappings
 ```
 
 The generator is idempotent: it reads back committed objects, preserves their
