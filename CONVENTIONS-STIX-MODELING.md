@@ -491,6 +491,33 @@ other publisher.
 Referencing a clause by identifier is always available and is the default. See
 `CONTRIBUTING.md` § "Sources and third-party content".
 
+### Reproduced text is carried exactly as published
+
+Where text may be reproduced, it is reproduced **byte for byte**. No whitespace
+normalisation, no unwrapping of line breaks, no smartening or straightening of
+quotes, no spelling or grammar correction, no trimming of a stray double space.
+
+The reason is not fastidiousness. Editing a requirement changes what the catalog
+asserts the publisher requires, and the edit that looks safest is the one most
+likely to change meaning: a line break inside a list, a double space separating two
+clauses that a reader parses as a boundary, a hyphen that is doing work. Published
+control text is often not clean — AICM 1.1.0 carries spreadsheet artefacts
+throughout — but the catalog's job is to carry what the publisher said, not a
+tidier version of it. A consumer diffing a catalog object against the source must
+find them identical, and an assessment made against the catalog's wording must be
+an assessment against the publisher's wording.
+
+Source data quality will improve over time. That is the publisher's correction to
+make and the catalog's to pick up on the next generation run, which is why
+generators are idempotent and re-runnable rather than one-shot imports. It is not a
+licence to clean up in transit.
+
+Errors in a source are raised with the publisher — as an issue against the dataset
+where one exists — and the objects continue to carry the text as published until
+the publisher fixes it. Silently correcting one hides it from the only party who
+can fix it properly, and leaves two versions of the same requirement in
+circulation.
+
 ## Open questions
 
 Unsettled conventions. Raise an issue rather than deciding any of these in

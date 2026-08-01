@@ -47,6 +47,7 @@ No build system or package manager. Validation exists (needs `jsonschema`):
 
 - `python3 tools/validate.py --self-test`: check the schemas in `schemas/` themselves.
 - `python3 tools/validate.py bundle.json`: check catalog objects against those schemas.
+- `python3 tools/generate_aicm_controls.py --self-test`: check that a publisher's text is carried through untouched.
 - `python3 tools/generate_aicm_controls.py <aicm.json>`: regenerate AICM controls from a published release. Idempotent — it preserves committed identifiers and rewrites nothing when the source is unchanged.
 - `stix2_validator --schemas ./schemas/ --enforce-refs bundle.json`: full STIX 2.1 conformance plus catalog field rules, via the OASIS validator. Install it from a **recursive clone**, not PyPI — the published wheel omits its bundled JSON schemas and fails on every object, including standard ones.
 

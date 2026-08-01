@@ -110,7 +110,8 @@ Validation exists; there is still no package manager or build step.
 ```sh
 python3 tools/validate.py --self-test        # check the schemas themselves
 python3 tools/validate.py bundle.json        # check catalog objects against schemas/
-python3 tools/generate_aicm_controls.py <aicm.json>   # regenerate AICM controls
+python3 tools/generate_aicm_controls.py --self-test    # text is carried untouched
+python3 tools/generate_aicm_controls.py <aicm.json>    # regenerate AICM controls
 ```
 
 The generator is idempotent: it reads back committed objects, preserves their
