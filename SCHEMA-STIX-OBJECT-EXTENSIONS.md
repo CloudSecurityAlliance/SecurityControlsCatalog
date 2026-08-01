@@ -11,7 +11,7 @@ tags: [security-controls-catalog, stix, schema, oscal, secid, sdo]
 
 # STIX Object Extensions for the CSA Security Controls Catalog (CSA-CC)
 
-This document defines six custom STIX 2.1 object types — `x-control`,
+This document defines the catalog's custom STIX 2.1 object types — `x-control`,
 `x-regulation`, `x-gap-mapping`, `x-control-implementation`, `x-capability`, and
 `x-control-assessment` — designed to represent and operate the CSA Security
 Controls Catalog (CSA-CC) in a machine-readable, graph-relational format. It also
@@ -49,8 +49,8 @@ competing with it, and every type and property below is provisional.
 
 ## The object model at a glance
 
-The five types form a layered chain from requirement to product feature, plus
-assessment:
+The types form a layered chain from requirement to product feature, with mapping
+and assessment attached to it:
 
 ```
 x-regulation                 GDPR Art. 32(1)(a)          what the law requires
@@ -126,7 +126,7 @@ CCM view" is a property filter rather than a separate export.
 
 ## How these objects extend STIX 2.1
 
-The five types are declared through STIX 2.1's **extension-definition** mechanism,
+The custom types are declared through STIX 2.1's **extension-definition** mechanism,
 not as bare custom objects.
 
 STIX 2.0 introduced new object types by using an `x-`-prefixed `type` value and
@@ -151,7 +151,7 @@ Three practical gains follow, and the third is the reason this matters most:
 
 ### One extension-definition per type
 
-Each of the five types has its own `extension-definition` object rather than
+Each custom type has its own `extension-definition` object rather than
 sharing one. Nothing in STIX requires this — an instance carries its own `type`
 property, so a single shared definition would still leave consumers able to tell
 the types apart. The reason is **change isolation**.
@@ -161,11 +161,11 @@ research-grade and expected to change. Suppose implementation experience shows
 `x-control-implementation` should be absorbed into `x-capability`:
 
 - With separate definitions, that one definition is retired with a migration note.
-  The other four are untouched, and their consumers are unaffected.
+  Every other definition is untouched, and their consumers are unaffected.
 - With a shared definition, the choice is to bump `version` on a definition
-  covering four types that did not change — misinforming those consumers about what
+  covering types that did not change — misinforming those consumers about what
   moved — or to mint a replacement and invalidate the references on every object of
-  all five types.
+  every type.
 
 A shared definition couples the stability of unrelated types together. Per-type
 definitions also give targeted discovery, since `name`, `description`, and `schema`
@@ -205,7 +205,7 @@ Every instance of an extended type then carries:
 }
 ```
 
-**The five definition identifiers are minted and are now permanent.** They live as
+**The definition identifiers are minted and are now permanent.** They live as
 committed objects in [`objects/extension-definition/`](objects/extension-definition/),
 and instance data must reference the real values shown in the examples below — a
 consumer that has ingested catalog content keys off them, so changing one is a
@@ -227,7 +227,7 @@ shift under objects already ingested. See [Open questions](#open-questions).
 
 Standard STIX objects the catalog uses — `relationship`, `identity`,
 `marking-definition`, `attack-pattern` — are **not** extended and carry no
-`extensions` property. Only the five custom types do.
+`extensions` property. Only the catalog's custom types do.
 
 Because a consumer cannot interpret an instance without its definition, **the
 extension-definition objects must travel with the content** in every published
@@ -369,7 +369,7 @@ The custom properties `gap_level` and `bidirectional` are declared by a
 **`toplevel-property-extension`** rather than added bare. `relationship` is a
 standard STIX type, so an undeclared custom property on it could collide with
 another producer's property of the same name; the extension scopes them. This is the
-same mechanism the five SDOs use, with a different `extension_type`.
+same mechanism the custom SDOs use, with a different `extension_type`.
 
 `relationship_type` carries the methodology, so no separate field does. A future
 `nist-ir-8477-mapping` would be a sibling type with its own properties rather than

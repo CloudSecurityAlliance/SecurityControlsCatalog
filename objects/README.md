@@ -21,7 +21,7 @@ Type first, then the source's SecID path within it:
 ```
 objects/extension-definition/x-control.json
 objects/identity/cloud-security-alliance.json
-objects/x-control/cloudsecurityalliance.org/aicm/1.0/MDS-01.json
+objects/x-control/cloudsecurityalliance.org/aicm/1.1.0/MDS-01.json
 objects/x-regulation/europa.eu/ai-act/art-15-1.json
 ```
 
@@ -49,7 +49,6 @@ definition through `extensions`.
 | `x-control-implementation` | `extension-definition--1690104a-d3f2-4716-a334-252356f338dc` |
 | `x-capability` | `extension-definition--43f8f73f-45e2-4d06-bdc0-46bdd5cb3e81` |
 | `x-control-assessment` | `extension-definition--c2b74dc8-5ea7-4d9c-ade0-85474e5f70b4` |
-
 | `x-gap-mapping` | `extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682` |
 
 One retired definition is kept rather than deleted, so the record of what was declared
@@ -84,7 +83,7 @@ instead — the object carries its SecID and CSA's CVE Numbering Authority short
 Once published, consumers key off them. Changing one is a breaking change requiring a
 migration path, not an edit. That is why they are minted deliberately and committed
 rather than generated at publish time, and why there is one definition per type: a
-breaking change to one type then leaves the other four untouched.
+breaking change to one type then leaves the others untouched.
 
 CI enforces that every identifier here also appears in
 [`../SCHEMA-STIX-OBJECT-EXTENSIONS.md`](../SCHEMA-STIX-OBJECT-EXTENSIONS.md), so the

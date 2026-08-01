@@ -29,11 +29,11 @@ infrastructure; catalog content is being prepared. The root contains:
 - `README.md`: public overview of the Security Controls Catalog.
 - `DESIGN-RATIONALE-STIX-EXTENSIONS.md`: *why* STIX 2.1 — format choice and publication formats.
 - `CONVENTIONS-STIX-MODELING.md`: *how* we use STIX — modeling idioms binding all objects.
-- `SCHEMA-STIX-OBJECT-EXTENSIONS.md`: *what* each object carries — field-level schemas for the five custom SDOs.
+- `SCHEMA-STIX-OBJECT-EXTENSIONS.md`: *what* each object carries — field-level schemas for the custom SDOs.
 - `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`: contributor docs.
 - `LICENSE.txt`: CSA publication terms for the published catalog.
 - `objects/`: STIX objects committed as data — the extension definitions and the CSA publisher identity, with permanent identifiers. See `objects/README.md`.
-- `schemas/`: JSON Schemas for the five custom types — the `schema` targets referenced by each `extension-definition`.
+- `schemas/`: JSON Schemas for the custom types — the `schema` targets referenced by each `extension-definition`.
 - `tools/`: `validate.py`, which checks catalog objects against those schemas.
 - `.github/`: CLA workflow, CODEOWNERS, PR and issue templates.
 
@@ -49,7 +49,7 @@ No build system or package manager. Validation exists (needs `jsonschema`):
 - `python3 tools/validate.py bundle.json`: check catalog objects against those schemas.
 - `stix2_validator --schemas ./schemas/ --enforce-refs bundle.json`: full STIX 2.1 conformance plus catalog field rules, via the OASIS validator. Install it from a **recursive clone**, not PyPI — the published wheel omits its bundled JSON schemas and fails on every object, including standard ones.
 
-`tools/validate.py` covers only the five custom types, not STIX conformance — run both. Bundle-level rules are not yet checked: that an `extension-definition` travels with the instances referencing it, that licence-constrained fields match the source's recorded terms, and that `revoked` was not used to mean retired.
+`tools/validate.py` covers only the custom types, not STIX conformance — run both. Bundle-level rules are not yet checked: that an `extension-definition` travels with the instances referencing it, that licence-constrained fields match the source's recorded terms, and that `revoked` was not used to mean retired.
 
 - `git ls-files`: list tracked files quickly.
 - `git status --short`: check local changes before editing or committing.
@@ -68,7 +68,7 @@ group). Likewise avoid restating version numbers or identifiers that live in
 config or upstream, revision dates of documents that carry their own frontmatter
 dates, and counts that shift as scope moves. Cite the location, not the content.
 
-Keep Markdown concise, with sentence-case prose and descriptive headings. Use fenced code blocks for examples and backticks for file names, object types, and commands. Preserve project vocabulary: CSA Security Controls Catalog (CSA-CC), STIX 2.1, OSCAL, SecID, and the five object types — `x-control`, `x-regulation`, `x-control-implementation`, `x-capability`, and `x-control-assessment`.
+Keep Markdown concise, with sentence-case prose and descriptive headings. Use fenced code blocks for examples and backticks for file names, object types, and commands. Preserve project vocabulary: CSA Security Controls Catalog (CSA-CC), STIX 2.1, OSCAL, SecID, and the object types — `x-control`, `x-regulation`, `x-gap-mapping`, `x-control-implementation`, `x-capability`, and `x-control-assessment`.
 
 **Before writing or generating any structured data, read the modeling conventions in [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md)** — how relationships are expressed, how new object types are declared, how identifiers and SecIDs work, when a custom property is permitted, and what may be reproduced from an external source. They are not summarized here, because a second copy drifts out of step with the first. The principles behind them are defined once in [`DESIGN-RATIONALE-STIX-EXTENSIONS.md` § Design principles](DESIGN-RATIONALE-STIX-EXTENSIONS.md#design-principles).
 

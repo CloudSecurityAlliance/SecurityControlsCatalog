@@ -7,6 +7,7 @@ on:
       - "tools/**"
       - "objects/**"
       - "**.json"
+      - "**.md"
       - ".github/workflows/validate.yml"
   push:
     branches: [main]
@@ -77,6 +78,56 @@ jobs:
           if ident["id"] not in doc:
               bad.append(f"identity {ident['id']} not referenced in the schema document")
           print("\n".join(bad) if bad else "all minted ids appear in the schema document")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Docs name every custom type
+        # Adding a type is not done until the docs that enumerate the model say so.
+        # CONVENTIONS-STIX-MODELING.md is excluded on purpose: it states rules that
+        # bind all objects and names a type only when one illustrates a rule, so
+        # requiring the full set there would force filler.
+        run: |
+          python3 - <<'PY'
+          import glob, json, os, sys
+          docs = ["README.md", "AGENTS.md", "CLAUDE.md", "schemas/README.md",
+                  "objects/README.md", "SCHEMA-STIX-OBJECT-EXTENSIONS.md",
+                  "DESIGN-RATIONALE-STIX-EXTENSIONS.md"]
+          types = []
+          for path in sorted(glob.glob("objects/extension-definition/*.json")):
+              obj = json.load(open(path))
+              # A retired definition is a record of what was withdrawn, not part of
+              # the model any document is obliged to describe.
+              if not obj.get("revoked"):
+                  types.append(os.path.basename(path)[:-len(".json")])
+          if not types:
+              sys.exit("no live extension definitions found — check the glob")
+          bad = [f"{d}: never mentions {t}" for d in docs
+                 for t in types if t not in open(d).read()]
+          print("\n".join(bad) if bad
+                else f"all {len(docs)} docs name every live type: {', '.join(types)}")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: Docs do not count the custom types
+        # "the five types" was written into ~20 sentences and every one of them went
+        # wrong the day a sixth was added. A count in prose is a copy of something
+        # objects/extension-definition/ already states, so prefer "the custom types".
+        # A genuine local count can opt out with a trailing <!-- count-ok --> marker.
+        run: |
+          python3 - <<'PY'
+          import glob, re, sys
+          COUNT = re.compile(
+              r"(?<![\w.])(one|two|three|four|five|six|seven|eight|nine|ten|\d+)(?![\w.])\s+"
+              r"((?:custom|other|STIX|object|SDO|extension|definition|specific)\s+){0,3}"
+              r"(types|SDOs|definitions|identifiers)\b", re.I)
+          bad = []
+          for path in sorted(set(glob.glob("*.md")) | set(glob.glob("*/*.md"))):
+              for n, line in enumerate(open(path), 1):
+                  if "<!-- count-ok -->" in line:
+                      continue
+                  for m in COUNT.finditer(line):
+                      bad.append(f"{path}:{n}: counts the types: {m.group(0)!r}")
+          print("\n".join(bad) if bad else "no prose counts the custom types")
           sys.exit(1 if bad else 0)
           PY
 

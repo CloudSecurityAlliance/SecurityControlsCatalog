@@ -45,10 +45,11 @@ The *modeling rules* that follow from these principles — how relationships are
 
 ## 2. The format choice: STIX 2.1 with custom SDOs
 
-The proposed back-end representation for catalog content is **STIX 2.1**, with five custom STIX Domain Object types, named to mirror the SecID type vocabulary:
+The proposed back-end representation for catalog content is **STIX 2.1**, with a small set of custom STIX Domain Object types, named to mirror the SecID type vocabulary:
 
 - **`x-control`** — control definitions from any publisher (domain, identifier, specification, ownership, lifecycle relevance, implementation and audit guidance), including CSA's own catalog and the frameworks it harmonizes with.
 - **`x-regulation`** — clauses of legally binding law (GDPR, the EU AI Act, NIS2, HIPAA). Standards and control frameworks are `x-control`, not regulations.
+- **`x-gap-mapping`** — a CSA gap mapping: one control or regulation assessed against a set of targets elsewhere, carrying the `No Gap` / `Partial Gap` / `Full Gap` verdict.
 - **`x-control-implementation`** — technology-agnostic approaches to fulfilling a control, independent of any product or vendor.
 - **`x-capability`** — specific product or service security features, with their configuration, audit, and remediation detail.
 - **`x-control-assessment`** — outcomes of self-assessments, audits, or STAR/CAIQ-style evaluations of a specific control.
@@ -141,7 +142,7 @@ Additional formats worth consideration in subsequent releases include CAIQ outpu
 
 ## 6. Status, scope, and what this document is not
 
-The catalog's data model is **exploratory and research-grade**. The five custom SDOs and the recommendations in this document are provisional. Implementation experience may inform revisions. Implementers who can satisfy their needs with standard STIX constructs alone are encouraged to do so and to treat the `x-*` SDOs as optional, research-grade extensions to be adopted selectively.
+The catalog's data model is **exploratory and research-grade**. The custom SDOs and the recommendations in this document are provisional. Implementation experience may inform revisions. Implementers who can satisfy their needs with standard STIX constructs alone are encouraged to do so and to treat the `x-*` SDOs as optional, research-grade extensions to be adopted selectively.
 
 This document does not:
 

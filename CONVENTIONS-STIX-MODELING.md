@@ -24,7 +24,7 @@ It is the middle of three documents, and the division is deliberate:
 | **What** properties each object carries | [`SCHEMA-STIX-OBJECT-EXTENSIONS.md`](SCHEMA-STIX-OBJECT-EXTENSIONS.md) |
 
 The rationale answers a question that was settled once. The schema answers a
-question about five specific types. This document answers the question that
+question about specific types. This document answers the question that
 recurs every time someone models something new — and that otherwise gets
 re-litigated in each pull request.
 
@@ -224,7 +224,7 @@ change rather than an edit.
 Standard STIX objects the catalog uses — `relationship`, `identity`,
 `marking-definition` — are not extended and carry no `extensions` property.
 
-The five definitions are minted and committed under
+The definitions are minted and committed under
 [`objects/extension-definition/`](objects/extension-definition/). Instance data
 references those real identifiers; do not mint new ones.
 
