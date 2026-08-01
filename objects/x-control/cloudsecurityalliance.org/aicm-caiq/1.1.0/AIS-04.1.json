@@ -1,0 +1,31 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--5615707b-35a7-421d-94f6-15023a00bc22",
+  "created": "2026-08-01T03:20:18.000Z",
+  "modified": "2026-08-01T03:20:18.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "AICM-CAIQ 1.1.0 AIS-04.1",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm-caiq",
+  "framework_version": "1.1.0",
+  "control_identifier": "AIS-04.1",
+  "domain": "Application & Interface Security",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Is a secure SDLC process for application requirements analysis, planning, design, development, testing, deployment, and operation, defined and implemented in accordance with security requirements?",
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm-caiq@1.1.0#AIS-04.1"
+    }
+  ]
+}
