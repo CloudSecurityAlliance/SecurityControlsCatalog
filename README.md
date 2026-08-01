@@ -61,6 +61,7 @@ through STIX's standard `extension-definition` mechanism:
 |---|---|
 | `x-control` | A security control, from any publisher — CSA's own, CCM, AICM, ISO 27001, NIST 800-53, PCI DSS. CAIQ questions are controls too, in a `*-caiq` framework |
 | `x-regulation` | A clause of binding law (GDPR, the EU AI Act, HIPAA) |
+| `x-gap-mapping` | One control or regulation assessed against a **set** of targets elsewhere, with a `No Gap` / `Partial Gap` / `Full Gap` verdict |
 | `x-control-implementation` | A technology-agnostic way of fulfilling a control |
 | `x-capability` | A specific product or service feature that provides an implementation |
 | `x-control-assessment` | The outcome of an assessment or audit against a control |
@@ -80,7 +81,7 @@ security.
 
 ## How the custom types are declared
 
-The five types are declared through STIX 2.1's standard `extension-definition`
+The custom types are declared through STIX 2.1's standard `extension-definition`
 mechanism, not by convention on the `type` string. Each has a published definition
 object pointing at a machine-readable JSON Schema, and every instance references its
 definition. Two things follow that matter if you consume the catalog:

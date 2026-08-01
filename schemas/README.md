@@ -1,6 +1,6 @@
 # JSON Schemas for the CSA-CC custom STIX types
 
-Machine-readable schemas for the five custom STIX 2.1 object types. These are the
+Machine-readable schemas for the catalog's custom STIX 2.1 object types. These are the
 `schema` targets referenced by each type's `extension-definition` object, and they
 are what a validator checks instance data against.
 
@@ -72,7 +72,7 @@ non-boolean maps stay objects, because flattening them would lose the pairing.
 **One boundary is enforced structurally.** `x-control-implementation` rejects
 `platform`, `product`, `vendor_namespace`, and `config_snippet`. Those belong to
 `x-capability`, and an implementation approach carrying them has drifted into being
-a capability — the conflation the two types exist to prevent.
+a capability — the conflation the boundary exists to prevent.
 
 **Two schemas cover a standard type.** `derived-from.json` and `superseded-by.json`
 validate `relationship` objects by their `relationship_type`; `tools/validate.py`

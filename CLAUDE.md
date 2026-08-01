@@ -17,7 +17,7 @@ Reference:
 
 ## Repository state
 
-This is a public CSA repository with its contribution infrastructure in place — `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, `.github/CODEOWNERS`, and the CLA-enforcement workflow (`.github/workflows/cla.yml`). `objects/` holds STIX objects committed as data — the five extension definitions and the CSA publisher identity, whose identifiers are **permanent** and referenced rather than re-minted. `schemas/` holds the JSON Schemas for the five custom types and `tools/` the validator. Catalog content — STIX bundles and instance data — is still being prepared, so there is no committed instance data yet, and the layout for it is not settled. Do not assume directory conventions — read the current tree before writing files, and propose layout to the maintainer rather than inventing one.
+This is a public CSA repository with its contribution infrastructure in place — `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, issue/PR templates, `.github/CODEOWNERS`, and the CLA-enforcement workflow (`.github/workflows/cla.yml`). `objects/` holds STIX objects committed as data — the extension definitions and the CSA publisher identity, whose identifiers are **permanent** and referenced rather than re-minted. `schemas/` holds the JSON Schemas for the custom types and `tools/` the validator. Catalog content — STIX bundles and instance data — is still being prepared, so there is no committed instance data yet, and the layout for it is not settled. Do not assume directory conventions — read the current tree before writing files, and propose layout to the maintainer rather than inventing one.
 
 Schemas are **exploratory / research status** and explicitly provisional. Do not treat any schema sketch (including the one summarized below) as normative. Always consult the in-repo design documentation (see below) before editing or generating instance data.
 
@@ -34,12 +34,13 @@ Two tracked context files: this one and `AGENTS.md` (the generic-agent equivalen
 
 ## Data model (provisional)
 
-The catalog is being designed as a graph of five custom STIX 2.1 SDO types, related via the standard STIX `relationship` SRO so the data flows unchanged through existing STIX/TAXII servers, CTI platforms, and graph stores. **The types mirror SecID's type vocabulary**, which classifies by what an artifact *is* rather than who published it:
+The catalog is being designed as a graph of custom STIX 2.1 SDO types, related via the standard STIX `relationship` SRO so the data flows unchanged through existing STIX/TAXII servers, CTI platforms, and graph stores. **The types mirror SecID's type vocabulary**, which classifies by what an artifact *is* rather than who published it:
 
 | Object | SecID type | Role |
 |---|---|---|
 | `x-control` | `control` | A security control from **any** publisher — CSA, CCM, AICM, ISO 27001, NIST 800-53, CIS, PCI DSS, SOC 2 — distinguished by decomposed source-provenance properties, not by object type |
 | `x-regulation` | `regulation` | A clause of legally binding law (GDPR, EU AI Act, NIS2, HIPAA). Standards are **not** regulations |
+| `x-gap-mapping` | — | One control or regulation assessed against a **set** of targets, carrying a `No Gap` / `Partial Gap` / `Full Gap` verdict |
 | `x-control-implementation` | — | Technology-agnostic approach to fulfilling a control ("enforce encryption at rest for object storage") |
 | `x-capability` | `capability` | A specific product/service feature providing an implementation (S3 SSE-KMS, Bedrock Guardrails) |
 | `x-control-assessment` | — | Outcome of a self-assessment, audit, or STAR/CAIQ evaluation |
@@ -111,7 +112,7 @@ python3 tools/validate.py --self-test        # check the schemas themselves
 python3 tools/validate.py bundle.json        # check catalog objects against schemas/
 ```
 
-Needs `jsonschema`. `tools/validate.py` checks **only** the five custom types — it is
+Needs `jsonschema`. `tools/validate.py` checks **only** the custom types — it is
 not a STIX conformance checker. For that, layer the OASIS validator on top:
 
 ```sh
