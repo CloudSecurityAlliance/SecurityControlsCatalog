@@ -1,0 +1,26 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--20349790-f36e-4a37-89ae-4641ee6ab5f9",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--f7a9cd0a-520d-459d-a5d7-1902a8fbd6f4",
+  "target_refs": [
+    "x-regulation--2972d067-2f50-4e4d-b896-6f198a6bba87",
+    "x-regulation--51d821ac-3781-4000-82b9-991aefef3e1b",
+    "x-regulation--8075f0cd-e662-4fb0-bbc4-f947ef5162bc",
+    "x-regulation--f92d804e-d385-4ea8-84a4-e845c0f438b3"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Specific technical and procedural requirements that define full compliance with the Separation of Duties control.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

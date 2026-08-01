@@ -1,0 +1,27 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f75324d4-7ba6-448e-a5bf-182f5e1d314d",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--68aae598-f560-41b0-9615-4331ff3c7b44",
+  "target_refs": [
+    "x-regulation--2972d067-2f50-4e4d-b896-6f198a6bba87",
+    "x-regulation--51d821ac-3781-4000-82b9-991aefef3e1b",
+    "x-regulation--f92d804e-d385-4ea8-84a4-e845c0f438b3",
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f",
+    "x-regulation--bca62fe1-78ca-40bd-af4e-9ef7df57aa98"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "MFA Requirement, Digital Certificate Guidance, Authentication Governance, Credential Lifecycle Controls, System-to-System Authentication, Evaluation/Audit of Authentication Controls",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

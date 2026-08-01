@@ -1,0 +1,29 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--d47a72c6-a7a6-41e8-a8d2-a90b9df81a91",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--b711b8ea-8327-4486-8e78-369cdd29d280",
+  "target_refs": [
+    "x-regulation--2972d067-2f50-4e4d-b896-6f198a6bba87",
+    "x-regulation--51d821ac-3781-4000-82b9-991aefef3e1b",
+    "x-regulation--9e62a6b5-944c-46a4-9a50-c4f60aed3e2f",
+    "x-regulation--e73ebb49-d103-44bd-b681-2288283da717",
+    "x-regulation--f92d804e-d385-4ea8-84a4-e845c0f438b3",
+    "x-regulation--a3e581d1-f31e-409c-95b9-62c59c691308",
+    "x-regulation--bca62fe1-78ca-40bd-af4e-9ef7df57aa98"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Add concrete technical and procedural controls to fully meet the privileged access management control. This includes: defining and limiting privileges, enforcing time-based access, preventing role overlap, and auditing privileged activity.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

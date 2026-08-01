@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--516ed649-c730-432a-b61b-229d03f3909a",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--3f3ed2e3-a664-410f-9192-692090bcf69f",
+  "target_refs": [
+    "x-regulation--8be1e015-0c99-4321-9d74-cd7326b57b96",
+    "x-regulation--f92d804e-d385-4ea8-84a4-e845c0f438b3"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Privacy protection is required, but there is no specific mention of \"differential privacy and federated learning,\" so specific technologies are not detailed.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

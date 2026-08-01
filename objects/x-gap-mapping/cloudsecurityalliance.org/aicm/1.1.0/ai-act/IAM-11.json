@@ -1,0 +1,26 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--8a5cefe1-86d5-4622-8ae1-dae4fba4dc4a",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--06b28db1-11e9-4bb0-bbb6-37d935218a83",
+  "target_refs": [
+    "x-regulation--2972d067-2f50-4e4d-b896-6f198a6bba87",
+    "x-regulation--51d821ac-3781-4000-82b9-991aefef3e1b",
+    "x-regulation--4c626d0d-adf5-4d2b-8b55-64c9836c194a",
+    "x-regulation--bca62fe1-78ca-40bd-af4e-9ef7df57aa98"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "1. Evidence of Consumer Approval: Verify that consumer approval was obtained for AI provider requests requiring elevated permissions, particularly for training or deploying sensitive models.\n2. Include procedural or contractual linkage to external party access governance.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

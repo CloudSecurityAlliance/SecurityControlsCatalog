@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--e989eb3f-66c1-434d-b05e-e95145672727",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--4e995477-8aa8-4513-bd3b-95452741f147",
+  "target_refs": [
+    "x-regulation--9593bf3e-254a-489e-8838-5a5f9b450b78"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Contrarily to the AICM control that provides an increased level of detail, the EU AI Act establishes more general security principles and requirements that encompass the aspects tackled in the control.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

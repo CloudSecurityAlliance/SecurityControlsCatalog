@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f4c1093e-23e0-4f67-9a2e-2b1be5235096",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--692e8a5a-4ced-4569-b5d8-2e6c8c8d040c",
+  "target_refs": [
+    "x-regulation--a3f572c9-0932-4bb0-a34c-79029b069f30",
+    "x-regulation--d6fdfc65-9ae7-4f85-a619-be2654f1e479"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Degree of explainability needed and specific documentation requirements for explainability levels.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

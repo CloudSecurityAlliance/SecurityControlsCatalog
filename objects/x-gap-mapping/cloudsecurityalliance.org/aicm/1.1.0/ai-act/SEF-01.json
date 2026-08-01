@@ -1,0 +1,27 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--ce9b89d1-481f-420e-a2eb-8a09acbcdfff",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--5a58af9b-a0a6-49ae-90d4-d2d0a860a7cb",
+  "target_refs": [
+    "x-regulation--f92d804e-d385-4ea8-84a4-e845c0f438b3",
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f",
+    "x-regulation--855c1786-3f1a-4449-8b4d-63dd489c9ffd",
+    "x-regulation--f0c3e62e-e842-4176-8dff-b33c87712842",
+    "x-regulation--7bf94b89-40d9-475c-83c3-1e3c9dae64dc"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Approval, communication, or scheduled review of security-related procedures; requirement to establish, operate, and maintain formal response programs; support for legal discovery, investigation workflows, or digital evidence integrity; identify policy ownership, designate roles, or tie responsibilities to leadership or specific stakeholders.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

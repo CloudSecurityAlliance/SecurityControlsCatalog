@@ -1,0 +1,26 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--bc9b5a1c-1b2c-40e4-987e-0479a701553e",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--71298801-d34a-43d4-8d6f-4c029e2e3aa1",
+  "target_refs": [
+    "x-regulation--4c626d0d-adf5-4d2b-8b55-64c9836c194a",
+    "x-regulation--1fc9af36-4dcf-44d3-b4c6-240a015ec1ce",
+    "x-regulation--8a81e69b-3dc6-4932-b880-d70a5dc123e3",
+    "x-regulation--8ce9bb3d-8b20-4cb4-bb4e-65143e6b520e"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "While EU AI Act covers supply chain responsibilities and transparency, specific timing requirement for \"prior to initiation\" is missing.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

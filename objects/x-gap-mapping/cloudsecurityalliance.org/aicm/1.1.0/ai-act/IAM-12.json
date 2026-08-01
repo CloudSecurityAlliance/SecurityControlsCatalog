@@ -1,0 +1,27 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--95718760-5e4f-49fd-b8a5-6b2ad12c4463",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--215ddc49-a1a6-4a6b-a3e8-68285b8241bb",
+  "target_refs": [
+    "x-regulation--2972d067-2f50-4e4d-b896-6f198a6bba87",
+    "x-regulation--8075f0cd-e662-4fb0-bbc4-f947ef5162bc",
+    "x-regulation--f92d804e-d385-4ea8-84a4-e845c0f438b3",
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f",
+    "x-regulation--bca62fe1-78ca-40bd-af4e-9ef7df57aa98"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Add a requirement for: unique user IDs, restrictions on shared accounts, identity traceability in audit logs, or identity lifecycle governance.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

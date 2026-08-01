@@ -1,0 +1,32 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--8173cf12-cbb8-4ec5-9c1f-cc42260f10f1",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--26d79c99-1b3a-4dcf-864f-211d18376a64",
+  "target_refs": [
+    "x-regulation--af3c4544-3ded-4b04-8b6d-6a56d6f1a2e2",
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f",
+    "x-regulation--de4f54b7-954f-448d-a748-7ec45cda8770",
+    "x-regulation--4c626d0d-adf5-4d2b-8b55-64c9836c194a",
+    "x-regulation--1fc9af36-4dcf-44d3-b4c6-240a015ec1ce",
+    "x-regulation--8a81e69b-3dc6-4932-b880-d70a5dc123e3",
+    "x-regulation--855c1786-3f1a-4449-8b4d-63dd489c9ffd",
+    "x-regulation--0a8c9ac4-df18-4f70-b071-329190513973",
+    "x-regulation--4f558d70-c83e-448d-a6bf-b56b78f27b85",
+    "x-regulation--cfd120d2-5be8-4799-a426-f117fb70cf82"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Contractual Clauses in Supplier Agreements, Extend Internal QMS/Risk Programs to Suppliers, Mandate Third-Party Compliance With Standards, Create a Third-Party Governance Policy, Monitor and Enforce Compliance.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

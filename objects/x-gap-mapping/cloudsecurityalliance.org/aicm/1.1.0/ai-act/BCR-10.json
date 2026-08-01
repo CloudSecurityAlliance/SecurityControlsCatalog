@@ -1,0 +1,27 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--fc54070b-dd4a-45e8-9512-673964827db9",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--8b0f746b-f65a-47ab-b8d3-9d9fc0dde4a1",
+  "target_refs": [
+    "x-regulation--906b3d4a-8707-4ec9-89c6-c284c03b4608",
+    "x-regulation--690ad711-77ac-4a95-a2be-fbc7df97e1dc",
+    "x-regulation--453a3340-918b-4eba-b148-ec2a5486db2d",
+    "x-regulation--00aacc42-75b3-42a7-88d2-39d0f76059c1",
+    "x-regulation--2397ba1e-6e8d-4677-8535-fd9529eb1230"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Exercise the disaster response plan annually or upon significant changes, including, if possible, local emergency authorities.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

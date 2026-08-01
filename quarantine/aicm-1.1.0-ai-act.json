@@ -1,0 +1,478 @@
+{
+  "source": "AICM 1.1.0, scope_applicability_mappings.eu_ai_act",
+  "mappings": "objects/x-gap-mapping/cloudsecurityalliance.org/aicm/1.1.0/ai-act",
+  "why": "These references do not parse under the catalog's citation grammar. They are held back rather than normalised, because a guessed reference becomes a permanent identifier. Quarantine is per control: a gap verdict is assessed against the whole set of provisions, so publishing it over a subset would assert something the publisher never assessed.",
+  "controls_mapped": 123,
+  "controls_held": 40,
+  "references_unparsed": 67,
+  "entries": [
+    {
+      "control": "A&A-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Article 43 (1), (2 - 4)",
+        "Annex VI (1 - 4)",
+        "Annex VII (1 -5)"
+      ],
+      "parsed": [
+        "Recital 81",
+        "Recital 123",
+        "Recital 125",
+        "Article 17 (1) (a)"
+      ]
+    },
+    {
+      "control": "AIS-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Article 53 and Annex XI"
+      ],
+      "parsed": [
+        "Article 11",
+        "Article 15 (1)",
+        "Article 55"
+      ]
+    },
+    {
+      "control": "AIS-03",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Article 53 and Annex XI"
+      ],
+      "parsed": [
+        "Article 15 (2)",
+        "Article 15 (3)",
+        "Article 55",
+        "Article 74",
+        "Article 75"
+      ]
+    },
+    {
+      "control": "AIS-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Annex XI (Section 1) (2)",
+        "Annex XI (Section 2)"
+      ],
+      "parsed": [
+        "Article 9 (6)",
+        "Article 9 (7)",
+        "Article 9 (8)",
+        "Article 17 (1)"
+      ]
+    },
+    {
+      "control": "AIS-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Annex XI (Section 1) (2)",
+        "Annex XI (Section 2)"
+      ],
+      "parsed": [
+        "Article 17 (d)",
+        "Article 17 (h)",
+        "Article 53",
+        "Article 54",
+        "Article 55",
+        "Article 60"
+      ]
+    },
+    {
+      "control": "AIS-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Article 53 and Annex XI"
+      ],
+      "parsed": [
+        "Article 9 (6)",
+        "Article 9 (7)",
+        "Article 9 (8)",
+        "Article 26",
+        "Article 50",
+        "Article 55"
+      ]
+    },
+    {
+      "control": "AIS-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Article 53 and Annex XI"
+      ],
+      "parsed": [
+        "Article 15 (5)",
+        "Article 55"
+      ]
+    },
+    {
+      "control": "AIS-12",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex IV 1 (a)",
+        "Annex IV 1 (c)"
+      ],
+      "parsed": [
+        "Article 17 (1) (c)",
+        "Article 17 (1) (d)"
+      ]
+    },
+    {
+      "control": "BCR-01",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 15 (4),",
+        "Article 17,"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "BCR-04",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 9 (risk management),",
+        "Article 15 (technical robustness),",
+        "Article 17 (quality system),",
+        "Article 16 (organizational responsibility),",
+        "Article 93 (post-market monitoring)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "BCR-07",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 17 (i) (procedures for reporting serious incidents)",
+        "Article 55 (c) (reporting serious incidents)",
+        "Article 73 (reporting serious incidents)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "BCR-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 15 (4) (accuracy, robustness, and cybersecurity)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "BCR-11",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 15 (4) (accuracy, robustness, and cybersecurity)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-03",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Recital 69, page 20/144"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Recital 69, page 20/144"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-07",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 9 (2) (a), (b), (c), (d)"
+      ],
+      "parsed": [
+        "Article 9 (1)"
+      ]
+    },
+    {
+      "control": "CEK-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex VII 5.3"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-05",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 9 (Risk Management)"
+      ],
+      "parsed": [
+        "Article 15"
+      ]
+    },
+    {
+      "control": "GRC-01",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 9 (Risk Management System)",
+        "Article 16 (Obligations of Providers)",
+        "Article 17 (Quality Management System)",
+        "Article 19 (QMS Documentation)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-02",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 17 (1[g])",
+        "Article 17(1[m])"
+      ],
+      "parsed": [
+        "Article 9",
+        "Article 15 (4)",
+        "Article 15 (5)",
+        "Article 16 (c)",
+        "Article 27 (1)",
+        "Article 27 (3)"
+      ]
+    },
+    {
+      "control": "GRC-15",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Article 14",
+        "Article 15"
+      ],
+      "parsed": [
+        "Article 17"
+      ]
+    },
+    {
+      "control": "IAM-02",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex IV,",
+        "Article 8,",
+        "Article 9,"
+      ],
+      "parsed": [
+        "Article 15"
+      ]
+    },
+    {
+      "control": "IPY-01",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex IV (1) (b)",
+        "Annex XI (2) (3)"
+      ],
+      "parsed": [
+        "Article 11 (1)",
+        "Article 50 (2)",
+        "Article 53 (1) (b)"
+      ]
+    },
+    {
+      "control": "IPY-04",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex XI Section 1 (1) (e)",
+        "Annex XII (1) (g)"
+      ],
+      "parsed": [
+        "Article 11 (1)",
+        "Annex IV",
+        "Article 17 (1) (f)",
+        "Article 25 (4)",
+        "Article 50 (2)",
+        "Article 53 (1) (b)",
+        "Annex XII"
+      ]
+    },
+    {
+      "control": "STA-02",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex VII (5.3)"
+      ],
+      "parsed": [
+        "Article 17 (1) (l)",
+        "Article 25"
+      ]
+    },
+    {
+      "control": "STA-04",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 13(1)"
+      ],
+      "parsed": [
+        "Article 13 (2)",
+        "Article 13 (3)",
+        "Article 25 (4)"
+      ]
+    },
+    {
+      "control": "STA-06",
+      "gap_level": "Full Gap",
+      "unparsed": [
+        "Annex IV (2) (f)",
+        "Annex VII (5.3)"
+      ],
+      "parsed": [
+        "Article 15",
+        "Article 17",
+        "Article 28"
+      ]
+    },
+    {
+      "control": "STA-07",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article(s) 16 to 27 (Section 3)",
+        "Annex VI, VII"
+      ],
+      "parsed": [
+        "Article 15",
+        "Article 17"
+      ]
+    },
+    {
+      "control": "STA-11",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Article 13 & Annex IV"
+      ],
+      "parsed": [
+        "Article 9",
+        "Article 15",
+        "Article 17",
+        "Article 25 (4)",
+        "Article 53 (1) (e)"
+      ]
+    },
+    {
+      "control": "STA-13",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex VII 5.3"
+      ],
+      "parsed": [
+        "Article 9 (2)",
+        "Article 17"
+      ]
+    },
+    {
+      "control": "STA-15",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex VII 5.3"
+      ],
+      "parsed": [
+        "Article 17",
+        "Article 25 (1)",
+        "Article 28 (1)"
+      ]
+    },
+    {
+      "control": "STA-16",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex VII 5.3"
+      ],
+      "parsed": [
+        "Article 15",
+        "Article 17"
+      ]
+    },
+    {
+      "control": "TVM-04",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex IV (2) (f)"
+      ],
+      "parsed": [
+        "Article 9 (1)",
+        "Article 9 (2)",
+        "Article 15 (1)"
+      ]
+    },
+    {
+      "control": "TVM-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Annex IV (1) (c)"
+      ],
+      "parsed": [
+        "Article 15"
+      ]
+    },
+    {
+      "control": "TVM-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Annex IV (3)"
+      ],
+      "parsed": [
+        "Article 9 (2)",
+        "Article 72"
+      ]
+    },
+    {
+      "control": "TVM-12",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Annex IV (2) (g) (3) (9)",
+        "Annex XI (2) (1)"
+      ],
+      "parsed": [
+        "Article 72",
+        "Article 15 (1)",
+        "Article 15 (2)",
+        "Article 15 (3)"
+      ]
+    },
+    {
+      "control": "UEM-04",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Annex IV (1), (4)"
+      ],
+      "parsed": [
+        "Article 11"
+      ]
+    },
+    {
+      "control": "UEM-08",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Recital 69 (pg.20)"
+      ],
+      "parsed": [
+        "Article 10",
+        "Article 15",
+        "Article 17"
+      ]
+    },
+    {
+      "control": "UEM-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Recital 76 (pg.22)"
+      ],
+      "parsed": [
+        "Article 15"
+      ]
+    },
+    {
+      "control": "UEM-10",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Recital 76 (pg.22)",
+        "Article 9 (Risk management)",
+        "Article 17 (Quality management)",
+        "Annex IV (Technical documentation)"
+      ],
+      "parsed": [
+        "Article 15"
+      ]
+    }
+  ]
+}

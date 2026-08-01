@@ -1,0 +1,32 @@
+{
+  "type": "x-regulation",
+  "spec_version": "2.1",
+  "id": "x-regulation--2397ba1e-6e8d-4677-8535-fd9529eb1230",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--a72496a3-08f8-43fb-88c9-479bb94e5e02": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "EU AI Act Article 93",
+  "regulation_namespace": "europa.eu",
+  "regulation": "ai-act",
+  "clause_identifier": "art-93",
+  "publication_id": "Regulation (EU) 2024/1689",
+  "jurisdiction": "EU",
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:regulation/europa.eu/ai-act#art-93"
+    },
+    {
+      "source_name": "EUR-Lex",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+    }
+  ]
+}

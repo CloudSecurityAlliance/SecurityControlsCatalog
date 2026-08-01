@@ -1,0 +1,28 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--5508e4cb-697f-4d06-b9ce-fe1435a56947",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--5c81a36b-4e57-4608-9512-5180f4a48df4",
+  "target_refs": [
+    "x-regulation--906b3d4a-8707-4ec9-89c6-c284c03b4608",
+    "x-regulation--690ad711-77ac-4a95-a2be-fbc7df97e1dc",
+    "x-regulation--89713267-234a-4a29-8f8b-bc9ed0ead104",
+    "x-regulation--eff6948c-0897-41ae-9d8e-fa347213f05c",
+    "x-regulation--2397ba1e-6e8d-4677-8535-fd9529eb1230",
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Include structured, procedural, or independent assurance mechanisms.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

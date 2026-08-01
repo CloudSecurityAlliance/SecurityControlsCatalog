@@ -1,0 +1,31 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--76fd8440-33fb-4fae-bee6-2c851aef77c2",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--0cd2a2b4-31af-47eb-ad86-18222d4465e5",
+  "target_refs": [
+    "x-regulation--453a3340-918b-4eba-b148-ec2a5486db2d",
+    "x-regulation--a7fbe942-9b9e-46d5-8271-19c492777b7f",
+    "x-regulation--01212307-9f37-4e4d-9ecd-e07f62bff137",
+    "x-regulation--13faa727-b02f-4161-888e-a6c17651cb6d",
+    "x-regulation--d02fe851-8a80-4ad7-8b19-b5c8d208566a",
+    "x-regulation--9593bf3e-254a-489e-8838-5a5f9b450b78",
+    "x-regulation--2f5a9a34-c267-4c7c-a5e3-17a8ef8e409c",
+    "x-regulation--ca7ed55e-5989-4d16-921a-712f430bfd93",
+    "x-regulation--01a1dfe7-fa19-44d6-a6e4-1c08ecfa9e2f"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "At least annual review of policies and procedures by the organization.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

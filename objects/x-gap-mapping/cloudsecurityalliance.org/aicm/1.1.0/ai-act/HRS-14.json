@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--d71ed6fd-da5f-4817-ab52-4d367966e826",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--531cc50b-23db-4ff3-8d3b-cd6221058789",
+  "target_refs": [
+    "x-regulation--0d617976-1222-4f90-abe2-7b00d4f2e30a",
+    "x-regulation--f7fd5d58-38bc-4a42-aafd-46b4038ea290"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "The EU AI Act does not mandate organizations to establish, document, or update formal training programs.\nIt applies only to high-risk AI system personnel, not all relevant personnel.\nIt does not include requirements to establish or maintain a formal AI training program.\nNo documentation, communication, or evaluation of training programs is required.\nNo cadence (e.g., regular updates) is prescribed.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

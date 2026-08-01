@@ -1,0 +1,28 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--9c6b6dbd-85a5-4b75-a2e8-73cbc0411530",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--27b55695-0ebd-45d4-a3a6-3360032896c3",
+  "target_refs": [
+    "x-regulation--453a3340-918b-4eba-b148-ec2a5486db2d",
+    "x-regulation--906b3d4a-8707-4ec9-89c6-c284c03b4608",
+    "x-regulation--690ad711-77ac-4a95-a2be-fbc7df97e1dc",
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f",
+    "x-regulation--bca62fe1-78ca-40bd-af4e-9ef7df57aa98",
+    "x-regulation--8936c397-cda6-469e-b5d4-6d2a4689eff4"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Periodically backup data stored in the cloud. Ensure the confidentiality, integrity, and availability of the backup, and verify data restoration from backup for resiliency.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}
