@@ -1,0 +1,31 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--111e0fe8-766c-4c60-997e-d43b243f1dde",
+  "created": "2026-08-01T03:20:18.000Z",
+  "modified": "2026-08-01T03:20:18.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "AICM-CAIQ 1.1.0 LOG-13.1",
+  "framework_namespace": "cloudsecurityalliance.org",
+  "framework": "aicm-caiq",
+  "framework_version": "1.1.0",
+  "control_identifier": "LOG-13.1",
+  "domain": "Logging and Monitoring",
+  "status": "live",
+  "valid_from": "2026-06-22T00:00:00.000Z",
+  "specification": "Is physical access logged and monitored using an auditable access control system?",
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/cloudsecurityalliance.org/aicm-caiq@1.1.0#LOG-13.1"
+    }
+  ]
+}

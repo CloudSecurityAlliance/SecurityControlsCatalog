@@ -1,0 +1,14 @@
+{
+  "type": "relationship",
+  "spec_version": "2.1",
+  "id": "relationship--b5ccd0b5-0c5d-4bf9-8d30-3dc4d9afc117",
+  "created": "2026-08-01T03:20:18.000Z",
+  "modified": "2026-08-01T03:20:18.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "relationship_type": "derived-from",
+  "source_ref": "x-control--2f5f525e-a86f-4e84-ba28-c94de094ce1f",
+  "target_ref": "x-control--352fcf07-dc0c-4bf2-ba42-66208b829ac6"
+}

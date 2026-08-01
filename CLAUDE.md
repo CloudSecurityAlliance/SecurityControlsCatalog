@@ -111,7 +111,9 @@ Validation exists; there is still no package manager or build step.
 python3 tools/validate.py --self-test        # check the schemas themselves
 python3 tools/validate.py bundle.json        # check catalog objects against schemas/
 python3 tools/generate_aicm_controls.py --self-test    # text is carried untouched
+python3 tools/generate_aicm_caiq.py --self-test        # same, for questions
 python3 tools/generate_aicm_controls.py <aicm.json>    # regenerate AICM controls
+python3 tools/generate_aicm_caiq.py <aicm-caiq.json>   # regenerate CAIQ questions + links
 ```
 
 The generator is idempotent: it reads back committed objects, preserves their
@@ -137,10 +139,16 @@ is an opt-in warning about non-spec `type` values, so `x-*` objects pass without
 Both layers matter: without `--schemas`, the validator accepts unknown types against
 the core schema alone, so catalog field rules go unchecked.
 
-Not yet covered, because JSON Schema sees one object at a time: that an
-`extension-definition` travels with the instances referencing it, that
+Referential integrity is checked in CI rather than by either validator. The OASIS
+`--enforce-refs` resolves references within a bundle, and catalog objects are
+committed one per file, so it has nothing to resolve against — a dangling
+`target_ref` passes it silently. The CI check resolves every `*_ref`, `*_refs`, and
+`extensions` key against the committed objects, which also covers the rule that an
+`extension-definition` travels with the instances referencing it.
+
+Still not covered, because JSON Schema sees one object at a time: that
 licence-constrained fields match the source's recorded terms, and that `revoked` was
-not used to mean retired. Those need bundle-level checks.
+not used to mean retired.
 
 Orientation commands:
 
