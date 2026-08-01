@@ -1,0 +1,29 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--1ca9e5b2-ec39-44ed-bf94-51d7f14fed3a",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--fde2e1e9-5750-4c8a-a1ec-88f9b578efbf",
+  "target_refs": [
+    "x-control--b5d4e6b9-84cf-4498-b889-b57b44f5d4b9",
+    "x-control--6ab3d7a4-aebd-441e-ac1c-5b9457845589",
+    "x-control--35c3b457-d8d8-4c48-a939-8027c6bfe5b6",
+    "x-control--08e62ed9-2762-4dc2-a0ec-b7af8e67aa3a",
+    "x-control--e929236c-a12c-40ea-aee8-baf9001e5c31",
+    "x-control--9c6322d6-3acc-45ad-8194-ff5dbab641cd",
+    "x-control--0b732d74-3e96-4070-9022-101107bccc3c"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Reviewing data flow diagrams at defined intervals at least annually and after any change should be introduced in ISO 42001.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

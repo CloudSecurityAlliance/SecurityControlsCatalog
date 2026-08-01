@@ -1,0 +1,26 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f4aedab7-1ec3-4d93-933b-37ce79c7ee1e",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--dc82661a-03d8-48ab-866b-a820cdb74bc6",
+  "target_refs": [
+    "x-control--837bed08-2d69-411e-a03b-2d96d031c9d9",
+    "x-control--07b7cb2d-91c4-4c21-b1d3-947804432307",
+    "x-control--32fa26d4-31ae-4cdf-b313-75c4d670cc66",
+    "x-control--8ca11081-0d62-49c7-a43a-ef25d3b3fdd2"
+  ],
+  "gap_level": "Full Gap",
+  "description": "Require structured triage of AI-related security events, including assessment, classification, and escalation.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--e47f8e5c-51c9-4e7c-ae75-75d081210b80",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--5ff5ece5-6b75-4d5e-b55c-5298aa93e47b",
+  "target_refs": [
+    "x-control--a4d86ae1-67b4-4820-a870-48e98c2bc5c3"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "The ISO 42001 does not cover the LOG-07 topic of documenting which systems are to be logged and does not cover reviewing the list of logged items annually.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

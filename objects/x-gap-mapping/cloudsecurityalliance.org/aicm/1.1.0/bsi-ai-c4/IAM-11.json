@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f941baec-b46e-4775-830d-dc15c84975be",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--06b28db1-11e9-4bb0-bbb6-37d935218a83",
+  "target_refs": [
+    "x-control--ff6ece5c-ed1e-44ee-a5a1-e7e1a4893d94"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "No C4 control speaks to IAM-11 topic of customer access.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

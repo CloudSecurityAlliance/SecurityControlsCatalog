@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--9dfa9fdc-8ffa-40dc-9692-09a3473c11e2",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--95effcc1-c888-4399-a32b-e9530de8960c",
+  "target_refs": [
+    "x-control--fafbfa64-6fed-4c48-ac43-df0007b6784d",
+    "x-control--b5e09d3b-445d-443f-92d0-9c959b6da6a5"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "A control requiring clear distinction and protection mechanisms between system-level prompts, user inputs, and AI configuration\nPrompt injection testing, monitoring, and failure recovery mechanisms\nDesign-time separation of concerns enforced through interfaces, APIs, or instruction schema.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

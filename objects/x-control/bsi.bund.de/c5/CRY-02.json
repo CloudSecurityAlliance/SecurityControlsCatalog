@@ -1,0 +1,27 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--542f6d55-3723-4fe5-927f-2588d685f936",
+  "created": "2026-08-01T04:10:06.000Z",
+  "modified": "2026-08-01T04:10:06.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "BSI C5 CRY-02",
+  "framework_namespace": "bsi.bund.de",
+  "framework": "c5",
+  "control_identifier": "CRY-02",
+  "status": "live",
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/bsi.bund.de/c5#CRY-02"
+    }
+  ]
+}

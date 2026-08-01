@@ -1,0 +1,28 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--18b86a37-884c-4e51-97ee-bed120e15ce9",
+  "created": "2026-08-01T04:10:06.000Z",
+  "modified": "2026-08-01T04:10:06.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "ISO/IEC 42001:2023 A.5.4",
+  "framework_namespace": "iso.org",
+  "framework": "42001",
+  "framework_version": "2023",
+  "control_identifier": "A.5.4",
+  "status": "live",
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/iso.org/42001@2023#A.5.4"
+    }
+  ]
+}

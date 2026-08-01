@@ -1,0 +1,27 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--498c5949-2244-4ef3-8093-5abf37f0c825",
+  "created": "2026-08-01T04:10:06.000Z",
+  "modified": "2026-08-01T04:10:06.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "BSI AIC4 DQ-01",
+  "framework_namespace": "bsi.bund.de",
+  "framework": "ai-c4",
+  "control_identifier": "DQ-01",
+  "status": "live",
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/bsi.bund.de/ai-c4#DQ-01"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--ff59b02d-75d1-481a-93ed-c3cb3c2067d4",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--c4d1d24d-73ba-4d39-9595-efb0bb7e3dc8",
+  "target_refs": [
+    "x-control--09663595-6fcb-4cf0-a61a-5c92713d4a62",
+    "x-control--6d39d2e9-9200-445e-b9d4-75ccbc58e7ed",
+    "x-control--fafbfa64-6fed-4c48-ac43-df0007b6784d",
+    "x-control--34b290d2-b0ac-42b3-81d5-21e8279250c2",
+    "x-control--162d3c23-be4d-4b5f-811f-50cbd7f3925c",
+    "x-control--17414bb8-8f0c-4fe7-af43-5f72b6ca0f02",
+    "x-control--9d8ba278-6979-4b4a-b015-424e2ec62a20",
+    "x-control--2258965c-c523-451b-af18-c6303dba2358"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "New or revised controls would need to:\n\nDefine what constitutes an “agent” in AI \nsystems\nRequire clear separation and monitoring \nbetween agents\nEnforce isolation, access control, and \ncommunication boundaries",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

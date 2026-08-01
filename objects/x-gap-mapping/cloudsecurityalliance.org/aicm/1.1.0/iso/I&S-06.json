@@ -1,0 +1,32 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--aee0d618-c271-4a43-a34a-32c810b441c7",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--8db025e2-9c5f-43d5-a849-28b608a453b1",
+  "target_refs": [
+    "x-control--853764bc-f4d5-4e53-b4a6-9ea89212cd85",
+    "x-control--c9573689-1035-4442-b361-12435778ee60",
+    "x-control--7cfb5258-cc3f-4a22-aa74-6cf89889bb3d",
+    "x-control--e608a1a2-11ca-4b01-ae16-4fdc5ef7d764",
+    "x-control--b5e09d3b-445d-443f-92d0-9c959b6da6a5",
+    "x-control--920d90b9-398c-44bb-9bba-f7bd95900571",
+    "x-control--b795fe17-1164-4928-8b5d-5d9c4531d660",
+    "x-control--3de5572c-7546-4841-be36-e1be06ed690f",
+    "x-control--4e9a36be-fd9e-4edd-8b99-be7af8c72bfa",
+    "x-control--dbde6f0f-04c5-4f1a-91a7-1788ef2074fa"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "ISO 42001 doesn't directly focus on tenant isolation or infrastructure-level enforcement, assumes these are handled via ISO 27001-style controls.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

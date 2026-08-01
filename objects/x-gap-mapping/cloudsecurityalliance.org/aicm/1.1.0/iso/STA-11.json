@@ -1,0 +1,35 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--b8a98d73-39b9-40ad-bbdc-e07646ed750c",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--6824d782-0413-4c39-8bd0-5f59fb5611f7",
+  "target_refs": [
+    "x-control--944b63a7-a6b4-412d-9910-a552c93b361a",
+    "x-control--ab8b2f8d-c6c3-4880-bf22-1cc22e4ddedf",
+    "x-control--74962409-56dd-4fde-8ee5-59358ffb0397",
+    "x-control--1763c228-88d6-4b9a-9839-a4a65fa56773",
+    "x-control--b5f1dd20-0d7b-4820-89e9-772063b7b82d",
+    "x-control--6688d91c-2f97-4ba2-808a-6ae76eb59dc1",
+    "x-control--384de56c-9271-47f8-b6e8-3ed209a0f6e3",
+    "x-control--b80a65a4-a0a0-48b5-9969-8416d21e3297",
+    "x-control--735c952a-9b52-420a-ab3c-e15faadcd8f5",
+    "x-control--863bcfa3-7e76-44d2-9cac-aa5100778be7",
+    "x-control--781a1e2b-7201-4143-87c7-4984f7098ed2",
+    "x-control--9762d8ae-ab58-40a0-8698-db4459cbb5cc",
+    "x-control--26db5fcc-6bb4-4b2f-b74f-861f4f19abf6"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Supplier/service agreement controls\nContractual clause requirements\nAudit and accountability expectations\nPortability and data ownership \nsafeguards\n\n(Currently these are included in 27001 \nand 27002)",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

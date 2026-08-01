@@ -1,0 +1,1219 @@
+{
+  "source": "AICM 1.1.0, scope_applicability_mappings.bsi_ai_c4",
+  "mappings": "objects/x-gap-mapping/cloudsecurityalliance.org/aicm/1.1.0/bsi-ai-c4",
+  "why": "These references cannot be resolved to a specific control in a specific standard, so they are held back rather than guessed at. Quarantine is per control: a gap verdict is assessed against the whole set of targets, so publishing it over a subset would assert something the publisher never assessed.",
+  "controls_mapped": 119,
+  "controls_held": 125,
+  "references_unparsed": 294,
+  "entries": [
+    {
+      "control": "A&A-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COM-02",
+        "SP-01",
+        "SP-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "A&A-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COM-03",
+        "OIS-01 Additional Criteria"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "A&A-03",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "COM-02",
+        "COM-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "A&A-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COM-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "A&A-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COM-02",
+        "COM-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "A&A-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COM-03",
+        "COM-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-01",
+        "DEV-03",
+        "OPS-04",
+        "OPS-06",
+        "OPS-10",
+        "OPS-11",
+        "OPS-18",
+        "PS-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-01",
+        "DEV-03",
+        "OPS-04",
+        "OPS-06",
+        "OPS-10",
+        "OPS-11",
+        "OPS-18",
+        "OPS-23",
+        "PS-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-03",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "COM-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-01",
+        "DEV-03",
+        "DEV-06",
+        "PSS-02",
+        "PSS-05",
+        "PSS-09",
+        "PSS-10"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-01",
+        "DEV-03",
+        "DEV-08",
+        "DEV-09",
+        "PSS-02",
+        "PSS-05",
+        "PSS-09",
+        "PSS-10"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-07",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PSS-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DQ-01",
+        "DQ-03",
+        "DQ-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "SR-05",
+        "SR-06",
+        "RE-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-11",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "C4 PF-4"
+      ],
+      "parsed": [
+        "C5 PSS-08"
+      ]
+    },
+    {
+      "control": "AIS-12",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "SR-01",
+        "DEV-03"
+      ],
+      "parsed": [
+        "C4 DM-01",
+        "C5 DEV-01"
+      ]
+    },
+    {
+      "control": "AIS-13",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "SR-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "BCR-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "C5  SP-02"
+      ],
+      "parsed": [
+        "C4 PC-02",
+        "C5 BCM-02"
+      ]
+    },
+    {
+      "control": "BCR-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "SR-02",
+        "SR-03"
+      ],
+      "parsed": [
+        "C4 PC-01",
+        "C5 BCM-02"
+      ]
+    },
+    {
+      "control": "BCR-03",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "BCM-03"
+      ],
+      "parsed": [
+        "C4 PC-01",
+        "C5 BCM-02"
+      ]
+    },
+    {
+      "control": "BCR-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "BCM-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "BCR-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "BCM-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "BCR-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "BCM-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "BCR-07",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "BCM-01",
+        "BCM-03"
+      ],
+      "parsed": [
+        "C4 PC-01"
+      ]
+    },
+    {
+      "control": "BCR-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "OPS-07",
+        "OPS-08"
+      ],
+      "parsed": [
+        "C4 RE-06",
+        "C5 OPS-06"
+      ]
+    },
+    {
+      "control": "BCR-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "BCM-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "BCR-11",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PS-02",
+        "PS-06",
+        "OPS-09"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CCC-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-02",
+        "DEV-03"
+      ],
+      "parsed": [
+        "C4 PC-02",
+        "C5 DEV-01"
+      ]
+    },
+    {
+      "control": "CCC-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-05",
+        "DEV-06",
+        "DEV-07",
+        "DEV-08",
+        "DEV-09",
+        "DEV-10"
+      ],
+      "parsed": [
+        "C4 PF-06",
+        "C5 DEV-03"
+      ]
+    },
+    {
+      "control": "CCC-03",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "DEV-05"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CCC-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-07",
+        "DEV-09",
+        "DEV-10",
+        "AM-03",
+        "AM-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CCC-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-03",
+        "DEV-09"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CCC-07",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "OPS-23 Additional Criteria",
+        "DEV-07",
+        "DEV-08"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CCC-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-03",
+        "SIM-01",
+        "DEV-08",
+        "SP-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CCC-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-08"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-01",
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-04",
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-03",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-02",
+        "CRY-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-04",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "CRY-01",
+        "CRY-02",
+        "CRY-03",
+        "COS-08"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-01",
+        "CRY-04",
+        "DEV-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-06",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "CRY-01",
+        "CRY-04",
+        "DEV-03",
+        "DEV-07"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-07",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-01",
+        "CRY-04",
+        "OIS-06",
+        "OIS-07"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-01",
+        "CRY-04",
+        "OIS-06",
+        "OIS-07"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-02",
+        "CRY-03",
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-11",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-12",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-13",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-14",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-04",
+        "AM-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-15",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-16",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-17",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-18",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-01",
+        "CRY-04",
+        "PSS-08"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-19",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-01",
+        "CRY-03",
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-20",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "OIS-06",
+        "CRY-04",
+        "OPS-18"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-21",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "CRY-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "AM-02",
+        "AM-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-03",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "AM-02",
+        "AM-04",
+        "AM-05"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "AM-02",
+        "PS-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "AM-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "AM-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-07",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "AM-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PS-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "AM-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PS-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-11",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PS-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-12",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-13",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PS-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-14",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PS-07"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-15",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PS-06",
+        "BCM-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DCS-16",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PS-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COS-08",
+        "AM-06",
+        "SP-02",
+        "AM-02",
+        "OPS-10",
+        "OPS-11",
+        "COM-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PI-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-03",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DM-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COS-08",
+        "AM-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DM-03",
+        "DM-04",
+        "PC-02",
+        "BC-05"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DM-03",
+        "DM-04",
+        "PC-02",
+        "BC-05"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-07",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DEV-01",
+        "SR-06",
+        "PC-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "BC-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COS-08"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-11",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "COM-01",
+        "COM-04",
+        "IDM-01",
+        "AM-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-12",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "OPS-10",
+        "OPS-11"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-13",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "SSO-01",
+        "SSO-02",
+        "BC-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-14",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "SSO-01",
+        "SSO-02",
+        "BC-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-15",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "BC-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-16",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COM-01",
+        "PI-03",
+        "OPS-09",
+        "OPS-10",
+        "OPS-12"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-17",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "AM-02",
+        "AM-05",
+        "AM-06",
+        "CRY-02",
+        "CRY-03",
+        "OPS-12",
+        "OPS-14",
+        "PI-03",
+        "PSS-09",
+        "PSS-12"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-18",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "INQ-01",
+        "INQ-02",
+        "INQ-03",
+        "INQ-04",
+        "BC-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-19",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PSS-12"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-20",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "BC-05",
+        "DM-03",
+        "DQ-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-21",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PF-01",
+        "PF-02",
+        "DQ-03",
+        "SR-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-22",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "SR-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-23",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DQ-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "DSP-24",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "DQ-01",
+        "DQ-02",
+        "DQ-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "SP-01",
+        "SP-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-02",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "OIS-06",
+        "OIS-07",
+        "SSO-02",
+        "BCM-02"
+      ],
+      "parsed": [
+        "C4 PC-02",
+        "C5 OIS-01"
+      ]
+    },
+    {
+      "control": "GRC-03",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "SP-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "SP-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "OIS-01",
+        "OIS-02",
+        "COM-01",
+        "COM-02",
+        "COM-03",
+        "COM-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-07",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "COM-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "OIS-05"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "PF-10",
+        "SR-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "BC-03",
+        "PF-01",
+        "PF-02",
+        "PF-05"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-11",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "BI-01",
+        "DQ-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-12",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "BI-01",
+        "BI-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-13",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "EX-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-14",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "EX-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "GRC-15",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "RE-01",
+        "RE-04"
+      ],
+      "parsed": [
+        "C4 PC-02",
+        "C5 PSS-03"
+      ]
+    },
+    {
+      "control": "HRS-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-02",
+        "AM-05"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "AM-02",
+        "PS-01",
+        "SSO-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "AM-05"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-05"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-07",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-02"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-02",
+        "HR-03",
+        "AM-05",
+        "AM-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-06"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-11",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-03",
+        "DEV-04"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-12",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "HRS-13",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "HR-03"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "IAM-18",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "DM-02"
+      ],
+      "parsed": [
+        "C4 DM-01"
+      ]
+    },
+    {
+      "control": "MDS-12",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "SR-01",
+        "SR-02",
+        "SR-03",
+        "SR-06",
+        "PF-07"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "STA-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "C4 BC-01 (4th bullet)"
+      ],
+      "parsed": [
+        "C5 SSO-03"
+      ]
+    },
+    {
+      "control": "STA-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "BC-01",
+        "DM-03",
+        "PF-05",
+        "PF-10",
+        "EX-01"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "STA-13",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "C4 Section 4 (4.4.2.1)"
+      ],
+      "parsed": [
+        "C4 PC-01",
+        "C5 SSO-04",
+        "C5 COM-02",
+        "C5 COM-03"
+      ]
+    }
+  ]
+}

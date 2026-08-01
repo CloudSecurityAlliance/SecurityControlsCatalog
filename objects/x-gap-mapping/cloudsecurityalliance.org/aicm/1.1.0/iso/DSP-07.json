@@ -1,0 +1,50 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--82163228-f087-49fe-83ef-e1e59c5fcbcc",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--71675668-324f-4847-b813-6ab59a3747be",
+  "target_refs": [
+    "x-control--944b63a7-a6b4-412d-9910-a552c93b361a",
+    "x-control--09663595-6fcb-4cf0-a61a-5c92713d4a62",
+    "x-control--6d39d2e9-9200-445e-b9d4-75ccbc58e7ed",
+    "x-control--34b290d2-b0ac-42b3-81d5-21e8279250c2",
+    "x-control--162d3c23-be4d-4b5f-811f-50cbd7f3925c",
+    "x-control--08e62ed9-2762-4dc2-a0ec-b7af8e67aa3a",
+    "x-control--9c6322d6-3acc-45ad-8194-ff5dbab641cd",
+    "x-control--514db900-f439-4b61-ae7f-7cba8f05a783",
+    "x-control--2e2a51c4-14d6-4ed2-829e-d58fb2bf0e59",
+    "x-control--f1c9d738-29d5-4afc-84cf-5b8c71db2c28",
+    "x-control--aa3ff5a9-6297-4bff-a7ed-a46ca07b23c4",
+    "x-control--b5e09d3b-445d-443f-92d0-9c959b6da6a5",
+    "x-control--0f8405af-ab6d-4a72-9f88-f470bab6719c",
+    "x-control--a13fbb58-619c-4762-a8ff-cc148ede71dc",
+    "x-control--863bcfa3-7e76-44d2-9cac-aa5100778be7",
+    "x-control--f5f6d3cf-7939-4dd2-b493-5e59cf23b6b1",
+    "x-control--10d9ccd8-8dfd-4d66-ac83-e2e40a09e016",
+    "x-control--6a55b06e-039d-4f84-8f8a-f8a8db6af2b8",
+    "x-control--f05b5d9c-c00f-4992-adb7-9381c7cab40b",
+    "x-control--96ab6516-7cfb-4fe6-8894-fa65e255a95a",
+    "x-control--c55b7e80-ff02-4ff5-9435-3c1ac452d629",
+    "x-control--4685b4aa-fe82-4c1d-9889-62c42512889c",
+    "x-control--8deaccc5-6ae4-44fd-821b-264b37994fca",
+    "x-control--920d90b9-398c-44bb-9bba-f7bd95900571",
+    "x-control--f5981e09-2aee-4ea2-9af2-59c6c7001d94",
+    "x-control--63735055-23ac-40fb-95e5-12e439eccdd3",
+    "x-control--2134b518-6951-4f56-8540-80487cb72d92",
+    "x-control--573adf7f-b150-4e6e-b565-fb458f6f1ae5",
+    "x-control--32fae3cd-ecd8-432b-819e-113ece96c629"
+  ],
+  "gap_level": "No Gap",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

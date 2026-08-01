@@ -1,0 +1,26 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f8a653c5-9967-48bd-b338-94f2d8aa6b08",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--47554cce-3c81-4dec-ae08-38b46f7124a5",
+  "target_refs": [
+    "x-control--6ab3d7a4-aebd-441e-ac1c-5b9457845589",
+    "x-control--8afdef53-7c16-4c83-afdf-df5f6138f27f",
+    "x-control--b48369dc-3391-4440-adba-8cc83e82d56f",
+    "x-control--fe5dc2ee-5364-4104-9929-2f6f811b7e14"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Include  control that directly establishes business continuity strategies for AI systems or services:\n\nInclude clause requiring fallback models, AI failover planning, or recovery testing.\nInclude mention of AI-specific disruptions (e.g., failure of models, pipelines, APIs) impacting business continuity.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

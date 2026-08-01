@@ -1,0 +1,27 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--ff6ece5c-ed1e-44ee-a5a1-e7e1a4893d94",
+  "created": "2026-08-01T04:10:06.000Z",
+  "modified": "2026-08-01T04:10:06.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "BSI C5 IMD-06",
+  "framework_namespace": "bsi.bund.de",
+  "framework": "c5",
+  "control_identifier": "IMD-06",
+  "status": "live",
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/bsi.bund.de/c5#IMD-06"
+    }
+  ]
+}

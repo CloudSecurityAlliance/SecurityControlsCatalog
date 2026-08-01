@@ -1,0 +1,31 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--9a4fe2ee-a649-442e-9095-3d40a8d33998",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--f3617f2a-4863-459e-9ba9-c14fc3619996",
+  "target_refs": [
+    "x-control--f56d2a2c-eeb1-47c0-b31d-c01c4e7049b1",
+    "x-control--c755774a-c128-4f74-95e3-bc5ee5486c49",
+    "x-control--88ce984f-2ec7-4f8e-b11a-c0530c9e6be1",
+    "x-control--ee1f9cab-8ee5-4f1d-bfff-10b35908c186",
+    "x-control--1ffb4ecb-0190-4ea7-8876-65cdc98aad06",
+    "x-control--f0974329-6bb8-4f1c-895e-99e23204bfc4",
+    "x-control--e1b1e609-f2b0-4675-ad3f-d5cb737729f1",
+    "x-control--aa3ff5a9-6297-4bff-a7ed-a46ca07b23c4",
+    "x-control--b5e09d3b-445d-443f-92d0-9c959b6da6a5"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Introduce explicit technical protections for inference-time memory and cache data.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

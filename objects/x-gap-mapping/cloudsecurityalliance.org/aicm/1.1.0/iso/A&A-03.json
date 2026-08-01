@@ -1,0 +1,31 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--68a27e8b-e48f-4c96-89e7-5839d69fd77a",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--5c81a36b-4e57-4608-9512-5180f4a48df4",
+  "target_refs": [
+    "x-control--f3b4dd25-78bc-4685-b983-2df54aa3ae61",
+    "x-control--5a2c0899-e9b5-4627-a014-a477c97e855e",
+    "x-control--b1b5abe2-1093-4ab4-89c1-2764ae73d07d",
+    "x-control--ceafcb60-2558-4442-8333-39c4a8c86370",
+    "x-control--d9342f23-8934-4f76-9c89-23d2a4a28580",
+    "x-control--81e5391d-aacb-49a6-9e2e-43c690c07bc9",
+    "x-control--3fba0711-17c8-46fa-afbf-919d4c65827e",
+    "x-control--ee249b68-d346-4401-af8a-1dc3a582a3b9",
+    "x-control--8d5b5a42-bea7-4d34-a5f6-af2b0969a6c4"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Add:\nA dedicated control requiring independent review or assurance\nA clause mandating risk-triggered audits (not just scheduled ones)\nA direct link between the audit program and AI-specific risk assessments.\n\nUntil these enhancements are added, 42001 on its own presents a Partial Gap, which is closed when supplemented by ISO/IEC 27001 and 27002.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--cf1c8053-530f-488c-b034-2c221d68940e",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--61ba721a-9366-4946-a8df-1a7794dff9f5",
+  "target_refs": [
+    "x-control--143e7604-8d95-462a-93bb-b6fa0c92cb7f"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "AICM ensures that interfaces remain available for data interactions. ISO 42001 focuses on transparency, ensuring users receive relevant system information.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

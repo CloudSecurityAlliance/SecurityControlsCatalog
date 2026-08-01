@@ -1,0 +1,1019 @@
+{
+  "source": "AICM 1.1.0, scope_applicability_mappings.iso_iec_42001_2023",
+  "mappings": "objects/x-gap-mapping/cloudsecurityalliance.org/aicm/1.1.0/iso",
+  "why": "These references cannot be resolved to a specific control in a specific standard, so they are held back rather than guessed at. Quarantine is per control: a gap verdict is assessed against the whole set of targets, so publishing it over a subset would assert something the publisher never assessed.",
+  "controls_mapped": 177,
+  "controls_held": 67,
+  "references_unparsed": 131,
+  "entries": [
+    {
+      "control": "A&A-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: 8.2.1(a) Compliance with legal and regulatory requirements",
+        "27001: A 5.31 Legal statutory regulatory and contractual requirements"
+      ],
+      "parsed": [
+        "42001: 9.2.1 General",
+        "27001: 9.2.1 General",
+        "27002: 5.31 Legal statutory regulatory and contractual requirements"
+      ]
+    },
+    {
+      "control": "A&A-06",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: 10.2: Non-conformity and Corrective action"
+      ],
+      "parsed": [
+        "42001: 9.2.1 General",
+        "42001: 9.2.2 Internal audit programme",
+        "42001: 9.3.2 Management Review Inputs",
+        "42001: 9.3.3 Management Review Results",
+        "27001: 9.2.2 Internal audit programme",
+        "27001: 10.2 Nonconformity and corrective action"
+      ]
+    },
+    {
+      "control": "AIS-01",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: Clause A.6"
+      ],
+      "parsed": [
+        "42001: B.6.1.3",
+        "42001: A.6.2.1",
+        "27001: A.5.1",
+        "27001: A.8.25"
+      ]
+    },
+    {
+      "control": "AIS-03",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "27701: 5.7.1"
+      ],
+      "parsed": [
+        "42001: 9.1",
+        "42001: B.6.2.6",
+        "27001: 9.1"
+      ]
+    },
+    {
+      "control": "AIS-05",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "27002: A.8.29 & A.8.33"
+      ],
+      "parsed": [
+        "42001: B.6.2.4",
+        "27001: A.8.29",
+        "27001: A.8.26",
+        "27001: A.8.33",
+        "27001: A.5.10"
+      ]
+    },
+    {
+      "control": "AIS-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001:  A.6.2.4 / B.6.2.4 – AI system verification and validation",
+        "42001: A.7.4 / B.7.4 – Quality of data for AI systems",
+        "42001: A7.6 – Data preparation",
+        "42001: B6.2.3 Technical measures for AI reliability and resilience",
+        "42001: A8.26 – Application security requirements"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "AIS-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: A.6.2.4 / B.6.2.4 - AI system verification and validation",
+        "42001: A.7.4 / B.7.4 - Quality of data for AI systems"
+      ],
+      "parsed": [
+        "42001: A.6.2.6 – AI system operation and monitoring",
+        "42001: B.6.2.6 – Monitoring and evaluation",
+        "42001: B.6.2.1 – Technical robustness & security",
+        "27001: A.8.11 Data masking",
+        "27001: A.8.26 – Application security requirements",
+        "27001: A.8.29 – Security testing"
+      ]
+    },
+    {
+      "control": "AIS-12",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: A 6.2.3 - AI system design",
+        "42001: A 6.2.4 - AI system verification and validation"
+      ],
+      "parsed": [
+        "42001: A.4.4 - Tooling resources",
+        "27001: A.5.18 - Access rights",
+        "27001: A.8.4 - Access to source code",
+        "27001: A.8.25 - Secure development life cycle",
+        "27001: A.8.28 - Secure coding"
+      ]
+    },
+    {
+      "control": "AIS-13",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: A 6.2.2"
+      ],
+      "parsed": [
+        "42001: 5.2 - AI policy",
+        "42001: A.6.2.3",
+        "42001: B.6.2.5 - AI system deployment",
+        "42001: B.6.2.6 - AI system operation and monitoring",
+        "27001: A.8.9 - Configuration management",
+        "27001: A.5.15 - Access control",
+        "27001: A.8.8 - Management of technical vulnerabilities",
+        "27001: A.8.15 - Logging",
+        "27001: A.8.16 - Monitoring activities",
+        "27001: A.8.31 - Separation of development test and production environments"
+      ]
+    },
+    {
+      "control": "BCR-02",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: All A.10 (to ensure feedback of stakeholders on risks)"
+      ],
+      "parsed": [
+        "42001: A.2.2 AI policy",
+        "42001: A.2.3 Alignment with other organizational policies",
+        "42001: A.2.4 Review of the AI policy",
+        "42001: 5.1 Leadership and commitment",
+        "42001: 7.1 Resources",
+        "42001: 8.2 AI risk assessment"
+      ]
+    },
+    {
+      "control": "BCR-07",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "All 42001: A.8.5",
+        "All 42001: A.10"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CCC-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: Clause 6.3 Planning changes",
+        "42001: Clause 8.1 Operational planning and control"
+      ],
+      "parsed": [
+        "42001: A.6.2.3 Documentation of AI system design and development",
+        "42001: B.6 AI system life cycle",
+        "42001: B.6.1.3 Processes for responsible design and development of AI systems",
+        "42001: B.6.2.7 AI system technical documentation",
+        "42001: A.6.2.6 AI system operation and monitoring",
+        "27001: A.5.1 Policies for information security",
+        "27001: A.8.32 Change management"
+      ]
+    },
+    {
+      "control": "CCC-03",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: Clause 6.3 Planning of changes",
+        "42001: Clause 8.1 Operational planning and control"
+      ],
+      "parsed": [
+        "42001: A.10.2 Allocating responsibilities"
+      ]
+    },
+    {
+      "control": "CCC-04",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: Clause 8.1 Operational planning and control"
+      ],
+      "parsed": [
+        "42001: A.10.2 Allocating responsibilities",
+        "27001: A.5.15 Access control",
+        "27001: A.7.2 Physical entry",
+        "27001: A.8.9 Configuration management",
+        "27001: A.8.19 Installation of software on operational systems",
+        "27001: A.8.20 Networks security",
+        "27001: A.8.32 Change management"
+      ]
+    },
+    {
+      "control": "CCC-05",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: Clause 8.1 Operational planning and control"
+      ],
+      "parsed": [
+        "42001: A.10.2 Allocating responsibilities",
+        "42001: A.10.4 Customers"
+      ]
+    },
+    {
+      "control": "CCC-06",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: Clause 6.3 Planning of changes",
+        "42001: Clause 8.1 Operational planning and control"
+      ],
+      "parsed": [
+        "42001: A.6.2.2 AI system requirements and specification",
+        "42001: 6.2.3 – Risk treatment",
+        "42001: 6.2.6 – Operation & monitoring",
+        "27001: A.8.32 Change management",
+        "27001: A.8.9 Configuration Management"
+      ]
+    },
+    {
+      "control": "CCC-07",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: Clause 9.1 - monitoring including deviating changes from baseline",
+        "42001: Clause 7.4 - for notification of deviated changes"
+      ],
+      "parsed": [
+        "42001: A.6.2.6 AI system operation and monitoring",
+        "42001: B.7.1.1 - Monitoring and review of AI system behavior",
+        "27001: A.8.32 Change management",
+        "27001: A.8.9 Establish & maintain baseline configuration"
+      ]
+    },
+    {
+      "control": "CCC-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: Clause 6.3 Planning of changes",
+        "42001: Clause 8.1 Operational planning and control",
+        "42001: Clause 10.2 Nonconformity and corrective action"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CCC-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: Clause 6.3 Planning of changes",
+        "42001: Clause 8.1 Operational planning and control",
+        "42001: Clause 10.2 Nonconformity and corrective action"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-01",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "27001: Annex A Control A.8.24"
+      ],
+      "parsed": [
+        "27001: A.8.24"
+      ]
+    },
+    {
+      "control": "CEK-02",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "8.24"
+      ],
+      "parsed": [
+        "ISO 27002: 5.2"
+      ]
+    },
+    {
+      "control": "CEK-05",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "8.24"
+      ],
+      "parsed": [
+        "ISO 27001: A.8.32",
+        "ISO 27002: 8.32"
+      ]
+    },
+    {
+      "control": "CEK-06",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "8.24"
+      ],
+      "parsed": [
+        "ISO 27001: A.8.32",
+        "ISO 27002: 8.32"
+      ]
+    },
+    {
+      "control": "CEK-07",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Clause 6.1",
+        "5.1",
+        "5.7"
+      ],
+      "parsed": [
+        "ISO 27001: A.8.24",
+        "ISO 27002: 8.24"
+      ]
+    },
+    {
+      "control": "CEK-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "A.12.7.1",
+        "Clause 9.2",
+        "12.7.1",
+        "8.34"
+      ],
+      "parsed": [
+        "ISO 27001: A.8.24",
+        "ISO 27002: 8.24"
+      ]
+    },
+    {
+      "control": "CEK-12",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "ISO 27001: No Mapping",
+        "ISO 27002: Control 8.24"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "CEK-18",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "A.8.2.1",
+        "8.4"
+      ],
+      "parsed": [
+        "ISO 27001: A.8.24",
+        "ISO 27002: 8.24"
+      ]
+    },
+    {
+      "control": "CEK-20",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "Clause 6.1.2",
+        "5.7"
+      ],
+      "parsed": [
+        "ISO 27001: A.8.24",
+        "ISO 27002: 8.24"
+      ]
+    },
+    {
+      "control": "CEK-21",
+      "gap_level": "Full Gap",
+      "unparsed": [
+        "A.12.4.1",
+        "12.4.1"
+      ],
+      "parsed": [
+        "ISO 27001: A.8.24",
+        "ISO 27002: 8.24"
+      ]
+    },
+    {
+      "control": "DCS-03",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "27001: A7.13 Equipment maintenance",
+        "27001: A7.14 Secure disposal or re-use of equipment"
+      ],
+      "parsed": [
+        "42001: A.2.3 Alignment with other organizational policies",
+        "42001: A.4.2 Resource Documentation",
+        "27001: 5.1 Leadership and Commitment",
+        "27001: 5.2 Policy",
+        "27001: 7.3 Awareness",
+        "27001: 7.4 Communication",
+        "27001: 7.5 (7.5.1 to 7.5.3) Documentation Information",
+        "27001: 9.1 Monitoring measurement analysis and evaluation",
+        "27001: 9.3 Management review",
+        "27001: A.5.1 Policies for information security",
+        "27001: A.5.4 Management responsibilities",
+        "27001: A.5.14 Information transfer",
+        "27001: A.5.36 Compliance with policies rules and standards for information security",
+        "27001: A.5.37 Documented operating procedures",
+        "27001: A.7.8 Equipment siting and protection",
+        "27001: A.7.9 Security of assets off-premises",
+        "27001: A.7.10 Storage media",
+        "27002: 5.1 Policies for information security",
+        "27002: 5.4 Management responsibilities",
+        "27002: 5.14 Information transfer",
+        "27002: 5.36 Compliance with policies rules and standards for information security",
+        "27002: 5.37 Documented operating procedures",
+        "27002: 7.8 Equipment siting and protection",
+        "27002: 7.9 Security of assets off-premises",
+        "27002: 7.10 Storage media",
+        "27002: 7.13 Equipment maintenance",
+        "27002: 7.14 Secure disposal or re-use of equipment"
+      ]
+    },
+    {
+      "control": "DCS-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: 42001: 8.1 Operational Planning and Control"
+      ],
+      "parsed": [
+        "42001: A.2.3 Alignment with other organizational policies",
+        "27001: A.7.1 Physical security perimeters",
+        "27001: A.7.2 - Physical entry",
+        "27001: A.7.3 Securing offices rooms and facilities",
+        "27001: A.7.4 Physical security monitoring",
+        "27002: 7.1 Physical Security perimeters",
+        "27002: 7.2 (a b) - Physical entry",
+        "27002: 7.3 Securing offices rooms and facilities",
+        "27002: 7.4 Physical security monitoring"
+      ]
+    },
+    {
+      "control": "DCS-15",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Measurement",
+        "Analysis and Evaluation"
+      ],
+      "parsed": [
+        "42001: 8.1 Operational Planning and Control",
+        "42001: 8.2 AI Risk Assessment",
+        "42001: 8.3 AI Risk Treatment",
+        "42001: 8.4 AI System Impact Assessment",
+        "42001: 9.1 Monitoring",
+        "42001: A.4.5 System and computing resources",
+        "42001: A.2.3 Alignment with other organizational policies",
+        "27001: A.7.11 Supporting utilities",
+        "27002: 7.11 Supporting utilities"
+      ]
+    },
+    {
+      "control": "DSP-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "ISO 42001 A7.6 (Data preparation)"
+      ],
+      "parsed": [
+        "42001: A.2.2 AI Policy",
+        "42001: A.2.4 Review of AI Policy",
+        "42001: A.2.3 Alignment with other organizational policies",
+        "42001: A.4.3 Data Resources",
+        "42001: A.7.2 Data for development and enhancement of AI system",
+        "42001: A.7.2 Acquisition of data",
+        "27001: 5.1 Policies for information security",
+        "27001: 7.3 Awareness",
+        "27001: 7.4 Communication",
+        "27001: 7.5 Documented Information (7.5.1 to 7.5.3)",
+        "27001: 9.1 Monitoring measurement analysis and evaluation",
+        "27001: 9.3 Management review (9.3.1 to 9.3.3)",
+        "27001: A.5.1 Policies for information security",
+        "27001: A.5.4 - Management responsibilities",
+        "27001: A.5.10 - Acceptable use of information and other associated assets",
+        "27001: A.5.12 - Classification of information",
+        "27001: A.5.34 - Privacy and protection of personal identifiable information",
+        "27001: A.5.37 - Documented operating procedures",
+        "27002: 5.1 - Policies for information security",
+        "27002: 5.4 - Management responsibilities",
+        "27002: 5.10 - Acceptable use of information and other associated assets",
+        "27002: 5.12 - Classification of information",
+        "27002: 5.34 - Privacy and protection of personal identifiable information",
+        "27002: 5.37 - Documented operating procedures"
+      ]
+    },
+    {
+      "control": "DSP-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: A.2.4. Review of AI Policy"
+      ],
+      "parsed": [
+        "42001: A.2.2 AI Policy",
+        "42001: A.2.3 Alignment with other organizational policies",
+        "42001: A.7.3 Acquisition of data",
+        "27001: A.5.1 Policies for information security",
+        "27001: A.5.14 - Information transfer",
+        "27001: A.5.36 - Monitor Compliance",
+        "27001: A.5.37 Documented operating procedures",
+        "27001: A.7.10 - Storage media",
+        "27002: 5.1 Policies for information security",
+        "27002: 5.14 - Information transfer",
+        "27002: 5.37 Documented operating procedures",
+        "27002: 7.10 - Storage media"
+      ]
+    },
+    {
+      "control": "GRC-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001; B.2.4 (Review of the AI policy)"
+      ],
+      "parsed": [
+        "42001: B.2.2 (AI policy)",
+        "42001: A.2.2 (AI policy)",
+        "42001: A.2.4 (Review of the AI policy)",
+        "42001: 5.2 (Assessing impacts of AI systems)"
+      ]
+    },
+    {
+      "control": "GRC-05",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: D.2 (Integration of AI management system with other management system standards)",
+        "42001: C.2.10 (Security)"
+      ],
+      "parsed": [
+        "42001: B.6.1.2 (Objectives for responsible development of AI system)",
+        "42001: B.9.3 (Objectives for responsible use of AI system)",
+        "42001: B.8.4 (Communication of incidents)"
+      ]
+    },
+    {
+      "control": "HRS-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "27001: A5.1 Policies for information security",
+        "27001: A5.2 Policy"
+      ],
+      "parsed": [
+        "42001: A.2.2 AI Policy",
+        "42001: A.2.3 Alignment with other organizational policies",
+        "42001: A.2.4 Review of AI Policy",
+        "27001: 5.1 Leadership and commitment",
+        "27001: 7.3 Awareness",
+        "27001: 7.4 Communication",
+        "27001: 7.5 Documented Information",
+        "27001: 9.1 Monitoring measurement analysis and evaluation",
+        "27001: 9.3 Management Review",
+        "27001: A.5.1 Policies for information security",
+        "27001: A.5.4 Management responsibilities",
+        "27001: A.5.10 Acceptable use of information and other associated assets",
+        "27001: A.5.37 Documented operating procedures",
+        "27001: A.6.1 Screening",
+        "27001: A.5.1 Policies for information security",
+        "27002: 5.4 Management responsibilities",
+        "27001: 5.10 Acceptable use of information and other associated assets",
+        "27001: 5.37 Documented operating procedures",
+        "27001: 6.1 Screening"
+      ]
+    },
+    {
+      "control": "HRS-13",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "Responsibilities and Authorities"
+      ],
+      "parsed": [
+        "42001: A.2.3 Alignment with other organizational policies",
+        "42001: 5.3 Roles responsibilities and authorities",
+        "42001: 7.3 Awareness",
+        "42001: A.3.2 AI Roles and responsibilities",
+        "42001: A.4.6 Human Resource",
+        "27001: 5.1 Leadership Commitment",
+        "27001: 5.3 Organization Roles",
+        "27001: 7.3 Awareness",
+        "27001: A.5.4 Management responsibilities",
+        "27001: A.6.2 Terms and conditions of employment",
+        "27001: A.6.3 Information security awareness education and training",
+        "27002: 5.4 Management responsibilities",
+        "27002: 6.2 Terms and conditions of employment",
+        "27002: 6.3 Information security awareness education and training"
+      ]
+    },
+    {
+      "control": "I&S-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "B.2.4",
+        "A.8.27",
+        "A.8.9"
+      ],
+      "parsed": [
+        "ISO/IEC 42001:2023 - B.2.2",
+        "ISO/IEC 42001:2023 - 8.3.1",
+        "ISO/IEC 42001:2023 - 9.1",
+        "ISO/IEC 42001:2023 - 10.1",
+        "ISO/IEC 27001:2022 - A.5.1",
+        "ISO/IEC 27002 - 8.28"
+      ]
+    },
+    {
+      "control": "I&S-03",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "A.8.24",
+        "A.8.27",
+        "A.5.35",
+        "8.7",
+        "9.4",
+        "5.17",
+        "10.1"
+      ],
+      "parsed": [
+        "ISO/IEC 27001: A.5.15",
+        "ISO/IEC 27002: 8.28"
+      ]
+    },
+    {
+      "control": "I&S-05",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "ISO/IEC 42001:2023 - No mapping"
+      ],
+      "parsed": [
+        "ISO/IEC 27001:2022 - A.8.31",
+        "ISO/IEC 27001:2022 - 8.27",
+        "ISO/IEC 27002 - 8.28"
+      ]
+    },
+    {
+      "control": "I&S-08",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "ISO/IEC 42001:2023 Clause 6.1.2;"
+      ],
+      "parsed": [
+        "ISO/IEC 42001:2023 - B.6.2.3",
+        "27001 A.8.9",
+        "27002 5.9",
+        "27002 8.28",
+        "27002 5.17"
+      ]
+    },
+    {
+      "control": "I&S-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "A.8.20"
+      ],
+      "parsed": [
+        "ISO/IEC 27001:2022 - A.8.16"
+      ]
+    },
+    {
+      "control": "IAM-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "27001.A.8.18 - Use of privileged utility programs"
+      ],
+      "parsed": [
+        "42001: A.2.3 - Alignment with other organizational policies",
+        "42001: A.2.4 - Review of the AI policy",
+        "27001: A.5.1 - Policies for information security",
+        "27001: A.5.18 - Access rights",
+        "27001:A.8.2 - Privileged access rights",
+        "27001:A.8.3 - Information access restriction",
+        "27001:A.8.4 - Access to source code"
+      ]
+    },
+    {
+      "control": "IAM-10",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "27001.A.8.18 - Use of privileged utility programs"
+      ],
+      "parsed": [
+        "42001: A.2.3 - Alignment with other organizational policies",
+        "42001: A.2.4 - Review of the AI policy",
+        "27001: A.5.1 - Policies for information security",
+        "27001: A.8.2 - Privileged access rights"
+      ]
+    },
+    {
+      "control": "IAM-17",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001:  A.3.2 / B.3.2",
+        "42001:  A.2.4 / B.2.4"
+      ],
+      "parsed": [
+        "27001: A.5.18",
+        "27001: A.8.3",
+        "27001: A.8.32"
+      ]
+    },
+    {
+      "control": "IPY-03",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: Annex A"
+      ],
+      "parsed": [
+        "42001: A.7",
+        "42001: B.7.3"
+      ]
+    },
+    {
+      "control": "MDS-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "IOS 42001 B.6.1.2 - Objectives for responsible development of AI system",
+        "IOS 42001 B.6.1.3 Processes for responsible design and development of AI system",
+        "IOS 42001 B.6.2.3 Documentation of AI system design and development"
+      ],
+      "parsed": [
+        "ISO 42001 A.6.1.2 - Objectives for responsible development of AI system",
+        "ISO 42001 A.6.1.3 - Processes for responsible AI system design and development"
+      ]
+    },
+    {
+      "control": "MDS-05",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: A.2.2 - AI Policy and A.6.2.1 - AI System Requirements"
+      ],
+      "parsed": [
+        "42001: A.6.2.4 - AI System Verification and Validation",
+        "42001: A.4.2 - Resource Documentation"
+      ]
+    },
+    {
+      "control": "SEF-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "27002: 5"
+      ],
+      "parsed": [
+        "42001: 5.2",
+        "42001: A.2.2",
+        "42001: A.2.3",
+        "42001: A.2.4",
+        "42001: B.2.1",
+        "42001: B.2.2",
+        "42001: B.2.3",
+        "42001: B.2.4",
+        "42001: B.6.2.6 AI system operation and monitoring",
+        "42001: B.8.4 Communication of incidents",
+        "42001: A.8.4 Communication of incidents",
+        "27001: 5.1",
+        "27001: 5.2",
+        "27001: 7.3",
+        "27001: 7.4",
+        "27001: 7.5",
+        "27001: 9.1",
+        "27001: 9.3"
+      ]
+    },
+    {
+      "control": "SEF-02",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "27002: 5",
+        "27001: A.16.1.2",
+        "27001: A.16.1.5"
+      ],
+      "parsed": [
+        "42001: 5.2",
+        "42001: A.2.2",
+        "42001: A.2.3",
+        "42001: A.2.4",
+        "42001: A.8.4",
+        "42001: B.2.1",
+        "42001: B.2.2",
+        "42001: B.2.3",
+        "42001: B.2.4",
+        "42001: B.8.4",
+        "27001: 5.1",
+        "27001: 5.2",
+        "27001: 7.3",
+        "27001: 7.4",
+        "27001: 7.5",
+        "27001: 9.1",
+        "27001: 9.3",
+        "27001: A.5",
+        "27002: 16.1.2",
+        "27002: 16.1.5"
+      ]
+    },
+    {
+      "control": "SEF-03",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "27001: A.16.1.2",
+        "27001: A.16.1.5"
+      ],
+      "parsed": [
+        "42001: B.8.4",
+        "27001: A.5.24",
+        "27002: 16.1.2 and 16.1.5"
+      ]
+    },
+    {
+      "control": "SEF-04",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "ISO 27001 A.5.24,"
+      ],
+      "parsed": [
+        "ISO 27001 A.5.30"
+      ]
+    },
+    {
+      "control": "SEF-05",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "27001: Clause 9.3"
+      ],
+      "parsed": [
+        "42001: A.6.2.6",
+        "42001: B.6.2.6",
+        "27001: A.5.24",
+        "27001: A.5.27",
+        "27002: 5.24 (b)"
+      ]
+    },
+    {
+      "control": "SEF-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "ISO 27701 A.5.28",
+        "ISO 27001 Clause 10.2",
+        "ISO 42001 Full Gap (out of scope)"
+      ],
+      "parsed": [
+        "ISO 27001 A.5.27",
+        "ISO 27001 A.5.24"
+      ]
+    },
+    {
+      "control": "STA-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "42001: D.2 - Integration of AI management system with other management system standards"
+      ],
+      "parsed": [
+        "42001: B.10.3 - Suppliers",
+        "27001: A.5.19 - Information security in supplier relationships",
+        "27001: A.5.21 - Managing information security in the information and communication technology (ICT) supply chain",
+        "27001: A.5.1 - Policies for information security"
+      ]
+    },
+    {
+      "control": "STA-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "27001: A 5.23 Information security for use of cloud services"
+      ],
+      "parsed": [
+        "42001: A.2.2 AI Policy",
+        "42001: A.2.3 Alignment with other organizational policies",
+        "42001: A.2.4 Review of AI Policy",
+        "42001: A.10.2 Allocating Responsibilities",
+        "27001: 5.1 Leadership Commitment",
+        "27001: 5.2 Policy",
+        "27001: 5.3 Organizational roles responsibilities and authorities",
+        "27001: 7.3 Awareness",
+        "27001: 7.4 Communication",
+        "27001: 7.5 Documented Information",
+        "27001: 9.1 Monitoring measurement analysis and evaluation",
+        "27001: 9.3 Management Review",
+        "27001: A.5.1 Policies for information security",
+        "27001: A.5.2 Information security roles and responsibilities",
+        "27001: A.5.19 Information security in supplier relationships",
+        "27001: A.5.20 Addressing information security within supplier agreements",
+        "27001: A.5.22 Monitoring review and change management of supplier services",
+        "27001: A.5.37 Documented operating procedures",
+        "27001: 5.1 Policies for information security",
+        "27002: 5.2 Information security roles and responsibilities",
+        "27002: 5.19 Information security in supplier relationships",
+        "27002: 5.20 Addressing information security within supplier agreements",
+        "27002: 5.22 Monitoring review and change management of supplier services",
+        "27002: 5.23 Information security for use of cloud services",
+        "27002: 5.37 Documented operating procedures"
+      ]
+    },
+    {
+      "control": "STA-03",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "27001: A 5.23 Information security for use of cloud services"
+      ],
+      "parsed": [
+        "42001: A.2.3 Alignment with other organizational policies",
+        "42001: A.10.2 Allocating Responsibilities",
+        "27001: A.5.2 Information security roles and responsibilities",
+        "27001: A.5.19 Information security in supplier relationships",
+        "27001: A.5.20 Addressing information security within supplier agreements",
+        "27001: A.5.22 Monitoring review and change management of supplier services",
+        "27002: 5.2 Information security roles and responsibilities",
+        "27002: 5.19 Information security in supplier relationships",
+        "27002: 5.20 Addressing information security within supplier agreements",
+        "27002: 5.22 Monitoring review and change management of supplier services",
+        "27002: 5.23 Information security for use of cloud services"
+      ]
+    },
+    {
+      "control": "STA-09",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: D.2 - Integration of AI management system with other management system standards"
+      ],
+      "parsed": [
+        "42001: B.10.3 - Suppliers",
+        "27001: A.5.20 - Addressing information security within supplier agreements",
+        "27001: A.5.22 - Monitoring review and change management of supplier services"
+      ]
+    },
+    {
+      "control": "STA-12",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: A 10.3 Supply Chain"
+      ],
+      "parsed": [
+        "42001: A.2.3 Alignment with other organizational policies",
+        "27001: A.5.19 Information security in supplier relationships",
+        "27001: A.5.20 Addressing information security within supplier agreements",
+        "27001: A.5.22 Monitoring review and change management of supplier services",
+        "27002: 5.20 Addressing information security within supplier agreements",
+        "27002: 5.22 Monitoring review and change management of supplier services"
+      ]
+    },
+    {
+      "control": "TVM-01",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "A.2.4 Review of AI Policy (42001)",
+        "6.1.1 General (42001 - Actions to address risks and opportunities)",
+        "6.1.3 AI risk treatment (42001)",
+        "7.4 Communication (42001)",
+        "7.5 Documented Information (42001)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "TVM-02",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "5.2 AI Policy (42001)",
+        "A.5.2.1 Policies for information security (27001)",
+        "6.1.2 AI risk Assessment (42001)",
+        "A.8.7 Protection against Malware (27001)",
+        "7.5 Documented information (42001)",
+        "8.1 Operational planning and control (42001)",
+        "9.1 Monitoring measurement .... (42001)",
+        "10.1 Continual improvement ... (42001)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "TVM-04",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: A.6.2.3/B.6.2.3 - Documentation of AI system design and development",
+        "42001: A/6.2.6/B.6.2.6 - AI system operation and monitoring",
+        "42001: A.7.2/B.7.2 - Data for development and enhancement of AI system"
+      ],
+      "parsed": [
+        "27001: A.5.7 - Threat intelligence"
+      ]
+    },
+    {
+      "control": "TVM-07",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "6. Planning  (27001)",
+        "9. Performance Evaluation (27001)",
+        "A.8.8 Management of technical vulnerabilities (27001)",
+        "A.6.2.6 AI System Operation and Monitoring (42001)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "TVM-08",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "8.8 Management of technical vulnerabilities (27001)",
+        "A.6.2.6 AI system operation and monitoring (42001)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "TVM-09",
+      "gap_level": "No Gap",
+      "unparsed": [
+        "8.8 Management of technical vulnerabilities (27001)",
+        "A.6.2.6 AI system Operation and monitoring (42001)"
+      ],
+      "parsed": []
+    },
+    {
+      "control": "TVM-11",
+      "gap_level": "Partial Gap",
+      "unparsed": [
+        "42001: A.6.1 / A.6.3.2 Risk and control planning",
+        "27002: 5.7: Threat intelligence"
+      ],
+      "parsed": [
+        "42001: A.6.2.6 AI system operation and monitoring",
+        "42001: A.8.4 Reporting and stakeholder notification",
+        "27001: 5.26 Response to information sec. inc",
+        "27001: 8.8 Management of technical vulnerabilities",
+        "27002: 8.8 Technical vulnerability management"
+      ]
+    }
+  ]
+}

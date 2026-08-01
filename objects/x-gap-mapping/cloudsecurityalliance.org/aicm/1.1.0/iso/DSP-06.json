@@ -1,0 +1,28 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--0aabccbd-b8ea-4ace-99d5-bbaeda872b65",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--f3f0aacd-3b97-4f12-8e48-1669329534a2",
+  "target_refs": [
+    "x-control--b5d4e6b9-84cf-4498-b889-b57b44f5d4b9",
+    "x-control--35c3b457-d8d8-4c48-a939-8027c6bfe5b6",
+    "x-control--944b63a7-a6b4-412d-9910-a552c93b361a",
+    "x-control--fbbd275c-7b2e-4204-8da8-768d37eac730",
+    "x-control--53e054de-4b44-4e8e-b71b-4ce389173178",
+    "x-control--3de5572c-7546-4841-be36-e1be06ed690f"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "ISO 42001 should require documenting and updating ownership and stewardship of all documented personal and sensitive data at defined intervals.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

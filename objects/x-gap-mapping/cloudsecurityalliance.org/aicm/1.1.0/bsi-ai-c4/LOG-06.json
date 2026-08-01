@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--8abed32f-72c1-4653-baf6-1b2acc48779a",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--efc6c73b-c56f-4c1b-b8ae-65bd9c13df16",
+  "target_refs": [
+    "x-control--7bd8533f-544f-429d-b073-19d260beebaa",
+    "x-control--05ee615a-2c45-417e-a371-a88e146de30b"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "No C4 control speaks to LOG-06 topic of time source across infrastructure.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

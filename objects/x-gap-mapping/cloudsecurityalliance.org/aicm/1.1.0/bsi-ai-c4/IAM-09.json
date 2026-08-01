@@ -1,0 +1,29 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--2b89bb7f-1529-4693-b2c6-320cb12d1ba1",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--34bf6368-e741-429f-acf3-49c00584b9be",
+  "target_refs": [
+    "x-control--3b67c4be-fa70-49ac-81d2-a12d67d496d2",
+    "x-control--90e60e8c-ae83-4909-9872-dfda8ed6e41c",
+    "x-control--4d567cd2-c7d6-4ad3-a4f2-76cbcf624eaf",
+    "x-control--1e27c444-40c4-4d56-9296-ccee5a57d564",
+    "x-control--05ee615a-2c45-417e-a371-a88e146de30b",
+    "x-control--ac935898-cc41-4f19-99fd-6a03d20fe314",
+    "x-control--ed4fb26d-ebbb-4f46-889a-16d620e88a59"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "No C4 control speaks to IAM-09 topic of \nkey management.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

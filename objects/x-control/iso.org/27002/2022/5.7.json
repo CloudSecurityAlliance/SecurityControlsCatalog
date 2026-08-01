@@ -1,0 +1,28 @@
+{
+  "type": "x-control",
+  "spec_version": "2.1",
+  "id": "x-control--f30ecb4f-d088-4a29-8f06-98057e541a29",
+  "created": "2026-08-01T04:10:06.000Z",
+  "modified": "2026-08-01T04:10:06.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "name": "ISO/IEC 27002:2022 5.7",
+  "framework_namespace": "iso.org",
+  "framework": "27002",
+  "framework_version": "2022",
+  "control_identifier": "5.7",
+  "status": "live",
+  "external_references": [
+    {
+      "source_name": "secid",
+      "external_id": "secid:control/iso.org/27002@2022#5.7"
+    }
+  ]
+}

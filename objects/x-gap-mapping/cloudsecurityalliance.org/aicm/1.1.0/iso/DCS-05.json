@@ -1,0 +1,43 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--c2d2ea6a-9007-490a-bf93-118ff08dc67d",
+  "created": "2026-08-01T04:11:38.000Z",
+  "modified": "2026-08-01T04:11:38.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--01c45b55-88f0-4358-b45a-dcfc1bb536e1",
+  "target_refs": [
+    "x-control--944b63a7-a6b4-412d-9910-a552c93b361a",
+    "x-control--6ab3d7a4-aebd-441e-ac1c-5b9457845589",
+    "x-control--c23d5e0b-fa9f-4414-b41f-92d103ac84b5",
+    "x-control--ebb7174e-a8b0-4825-8618-9a34b150cfd7",
+    "x-control--cc8b7dab-7ebe-4a6b-bf92-33c82dab071c",
+    "x-control--0ba1bccb-2e26-4f48-91a0-36ffba8dd40a",
+    "x-control--3cf6018a-ba75-4659-9ccb-ef193adc1b22",
+    "x-control--2004ea09-f535-485f-b5a8-e15f5262a1f0",
+    "x-control--51348688-ea24-4e8f-9603-d7737d93d1ef",
+    "x-control--fbbd275c-7b2e-4204-8da8-768d37eac730",
+    "x-control--0988f95e-b964-4511-9630-8fd8246d05d8",
+    "x-control--879e49ce-9048-4783-b7e2-30e15acdfc3b",
+    "x-control--3fba0711-17c8-46fa-afbf-919d4c65827e",
+    "x-control--68ce29c2-5ea0-4318-83ff-dff1490b42df",
+    "x-control--83d54176-0c31-4fcd-813a-9ffdfebae3d7",
+    "x-control--6c743e7e-2478-47fe-8665-037347bcb172",
+    "x-control--de424c9a-38ee-46cb-8410-30b801b7b8f7",
+    "x-control--8d5b5a42-bea7-4d34-a5f6-af2b0969a6c4",
+    "x-control--2bd3b3c7-c84b-4ce5-acc0-cab7db880b37",
+    "x-control--95bf6313-0f98-4fb1-9a91-4e25a70739a0",
+    "x-control--c2ff4fe5-d795-4889-94f4-f64b4da32e0a"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Include a dedicated control on physical media \ntransportation and handling (mirroring 27001 \nA.7.10 / 27002 7.10)\nOperational-level guidance on securing physical \nAI-related data in transit\nReview and monitoring expectations for \nthese procedures.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}
