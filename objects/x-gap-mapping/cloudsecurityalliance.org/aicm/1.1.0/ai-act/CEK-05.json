@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f8ea7f96-6cf0-4020-a0f4-17cfb77e387a",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--772c9595-6303-4f45-87d5-89349d91fafb",
+  "target_refs": [
+    "x-regulation--341a9e2c-1eed-48ca-b9ef-53bf4b86af05"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "There is no EU AI Act coverage for \"cryptographic, encryption, and key management technology changes.\"",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

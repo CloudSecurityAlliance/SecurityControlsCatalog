@@ -1,0 +1,27 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--8bcf88f9-53ed-420d-9b9c-e27775883c86",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--9c6044b5-222d-469c-86dc-a36955dc9b7a",
+  "target_refs": [
+    "x-regulation--51d821ac-3781-4000-82b9-991aefef3e1b",
+    "x-regulation--af3c4544-3ded-4b04-8b6d-6a56d6f1a2e2",
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f",
+    "x-regulation--8ce9bb3d-8b20-4cb4-bb4e-65143e6b520e",
+    "x-regulation--90066318-0bc3-4306-8dd0-ec5d06687cbe"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "The EU AI Act covers data governance and risk management broadly but doesn't specifically address environment-specific risk management and non-production environment data usage is not specifically addressed.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

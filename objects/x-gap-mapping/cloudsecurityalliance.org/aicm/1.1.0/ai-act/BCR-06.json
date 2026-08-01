@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--815c0aa9-e496-4348-8c4b-fc0330c0d2a6",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--031a129c-ee9a-4857-99b0-bbfea7274658",
+  "target_refs": [
+    "x-regulation--2972d067-2f50-4e4d-b896-6f198a6bba87",
+    "x-regulation--f92d804e-d385-4ea8-84a4-e845c0f438b3"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Develop business continuity and operational resilience plans, conduct regular and event-driven exercises, include these in the QMS and technical documentation, and track lessons learned and updates.\nAdd explicit requirements for testing continuity mechanisms.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

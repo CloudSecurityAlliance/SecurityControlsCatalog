@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--13c74adb-a2f2-44ba-9d95-2fdef7efc9f7",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--378bd3f7-2d82-4740-83ec-f298250477b5",
+  "target_refs": [
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Cryptographic, encryption, and key management roles and responsibilities.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

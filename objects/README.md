@@ -40,6 +40,13 @@ object carrying it.
 |---|---|---|
 | AICM 1.1.0 controls | 247 `x-control` | [`tools/generate_aicm_controls.py`](../tools/generate_aicm_controls.py) |
 | AI-CAIQ 1.1.0 questions | 320 `x-control` in the `aicm-caiq` framework, plus 320 `derived-from` relationships to the controls they assess | [`tools/generate_aicm_caiq.py`](../tools/generate_aicm_caiq.py) |
+| AICM 1.1.0 → EU AI Act | 106 `x-regulation` provisions, plus 123 `x-gap-mapping` verdicts | [`tools/generate_aicm_eu_mappings.py`](../tools/generate_aicm_eu_mappings.py) |
+
+The EU AI Act is `x-regulation` rather than `x-control`: it is binding law, and the
+catalog files standards and control frameworks separately from what they help you
+comply with. 40 of the 163 controls with EU references are held back rather than
+mapped, because a reference that does not parse cannot be guessed at once its
+identifier is permanent — see [`../quarantine/`](../quarantine/).
 
 A CAIQ question is an `x-control` in a questionnaire framework rather than a type of
 its own, so `framework` separates questions from controls and both are one property
@@ -60,8 +67,8 @@ content. The generator reads the committed objects back, preserves their `id` an
 against an unchanged source writes nothing, and re-running it against a corrected
 source produces a diff of exactly what the correction touched.
 
-AICM's mappings are not here yet. Their targets have unresolved source-data
-questions —
+AICM's BSI AI C4 and ISO/IEC 42001 mappings are not here yet. Their targets have
+unresolved source-data questions —
 see issues [#16](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/16),
 [#17](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/17),
 and [#18](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/18).

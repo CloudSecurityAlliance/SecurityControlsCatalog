@@ -1,0 +1,25 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--0e5d9648-8224-4c5c-8209-b1d1e6ef8647",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--29d4562b-a16f-4546-9fd2-c7206615ebe6",
+  "target_refs": [
+    "x-regulation--65ecc949-e9d2-4df0-8140-c0aef2606095",
+    "x-regulation--148fd6d9-71e5-4051-a505-6ab9443a56a0",
+    "x-regulation--2a4634c4-da54-42ce-a744-4f6c648f1c6e"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Coverage on organization-wide policies on acceptable use of managed assets, and requirements for communication, role-based enforcement, and annual review cycles.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

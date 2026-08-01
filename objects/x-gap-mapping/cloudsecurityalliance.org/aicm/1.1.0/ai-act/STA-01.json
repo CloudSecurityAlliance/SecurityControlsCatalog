@@ -1,0 +1,28 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--c83b6b00-3b5c-409e-bd5c-20fc82cdf2ca",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--e68505ba-fc1c-4425-b4fb-a193150fe9b8",
+  "target_refs": [
+    "x-regulation--0f6b98b6-3a90-4c0f-b302-2d7b6ec90002",
+    "x-regulation--8a81e69b-3dc6-4932-b880-d70a5dc123e3",
+    "x-regulation--0a8c9ac4-df18-4f70-b071-329190513973",
+    "x-regulation--cfd120d2-5be8-4799-a426-f117fb70cf82",
+    "x-regulation--01a1dfe7-fa19-44d6-a6e4-1c08ecfa9e2f",
+    "x-regulation--f0c3e62e-e842-4176-8dff-b33c87712842"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Formal, leadership-backed governance program, and mandate policy review schedules or approval workflows.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

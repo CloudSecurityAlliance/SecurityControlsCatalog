@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--bce610c0-30e4-43c4-852c-39ae5e7c2abc",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--1361c152-00b5-4db7-b75d-b48c0db0c1fa",
+  "target_refs": [
+    "x-regulation--49a7efd6-b4b0-48e0-a767-9aed277c9bdb"
+  ],
+  "gap_level": "No Gap",
+  "description": "Very similar controls. No change needed.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

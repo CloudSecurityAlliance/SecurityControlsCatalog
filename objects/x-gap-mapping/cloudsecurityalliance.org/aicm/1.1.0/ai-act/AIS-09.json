@@ -1,0 +1,30 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--d97ebc8c-2c4b-4be0-9d4c-45df58e51e1f",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--d02c17df-30c8-4f27-9079-dcbad142029d",
+  "target_refs": [
+    "x-regulation--8a351964-2fd9-4805-8e5e-81fff9be1079",
+    "x-regulation--bf5f45c8-0f40-410d-8056-b1148c384405",
+    "x-regulation--906b3d4a-8707-4ec9-89c6-c284c03b4608",
+    "x-regulation--45d24afc-aab2-4058-ba15-d19d3fa32ed9",
+    "x-regulation--8be1e015-0c99-4321-9d74-cd7326b57b96",
+    "x-regulation--ea347f18-9afd-46b1-a77a-91f5213b3396",
+    "x-regulation--2c86e0c2-25dd-469d-a3b0-f46a4d4ebc86",
+    "x-regulation--f92d804e-d385-4ea8-84a4-e845c0f438b3"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Input validation pipelines: schema checks, whitelisting, input filtering\n\nAdversarial pattern detection: anomaly detection, adversarial example mitigation\n\nLive input blocking: reject-on-failure logic, policy-based access control\n\nMonitoring for prompt injection / model exploitation attempts\n\nPost-deployment input auditing and update procedures\n\nThe technical solutions for AI should include measures to prevent, detect, and respond to threats such as data poisoning, model poisoning, adversarial inputs, confidentiality attacks, and other model flaws.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

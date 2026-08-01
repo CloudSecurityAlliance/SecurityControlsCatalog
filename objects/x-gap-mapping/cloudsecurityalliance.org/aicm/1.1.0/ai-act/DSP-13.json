@@ -1,0 +1,25 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--c2388b57-86e5-4a6b-8c46-069890df5be6",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--6a4a4386-349c-4a54-bff5-99069966fb2d",
+  "target_refs": [
+    "x-regulation--51d821ac-3781-4000-82b9-991aefef3e1b",
+    "x-regulation--4c626d0d-adf5-4d2b-8b55-64c9836c194a",
+    "x-regulation--1fc9af36-4dcf-44d3-b4c6-240a015ec1ce"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Supply chain responsibilities are covered but sub-processing procedures are not detailed.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

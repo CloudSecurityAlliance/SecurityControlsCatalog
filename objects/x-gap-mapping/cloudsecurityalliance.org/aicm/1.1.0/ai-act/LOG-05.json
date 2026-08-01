@@ -1,0 +1,25 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f533e768-eb80-4abc-a8f5-e3afb7aaaf85",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--1b3506c3-cacb-490c-9544-8e272aa180e9",
+  "target_refs": [
+    "x-regulation--e73ebb49-d103-44bd-b681-2288283da717",
+    "x-regulation--ef206cb5-3116-403f-abfd-7e75b51b0ffc",
+    "x-regulation--f3051ce0-2dd4-487d-acb9-5d95edc3cdba"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Contrarily to the AICM control that provides an increased level of detail, the EU AI Act establishes more general requirements that encompass the aspects tackled in the control. Some aspects detailed in the control are not explicitly mentioned in the European regulation (e.g., monitoring of security audit logs, establishment and implementation of a defined process to review and timely detect anomalies on AI systems).",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

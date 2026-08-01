@@ -1,0 +1,30 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--31fb4ae7-ed0d-40b2-94e2-85b24f34c20f",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--9514cfb4-6e2e-4c0f-83c6-1227fc8daf2d",
+  "target_refs": [
+    "x-regulation--82d8eaca-5364-4998-ab44-d6fc32371899",
+    "x-regulation--993f5726-bfb8-400b-95a4-5eca15b7c150",
+    "x-regulation--aefa7f29-e8b7-46e4-a992-b71d274eef14",
+    "x-regulation--3b2d2c22-bb2e-42ed-a772-48603fda90eb",
+    "x-regulation--23d1511c-b122-4f4e-9618-c056b262bbcc",
+    "x-regulation--9609de24-6a3c-4777-997b-a03c5806857f",
+    "x-regulation--11c1181d-4638-47f0-8059-f2e4824ce506",
+    "x-regulation--e5cff0f9-b9a2-4017-9ba7-2712802869c8"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Require establishing comprehensive processes for security breach notifications as outlined in the 'Security Breach Notification' control, particularly regarding coordination with internal and external stakeholders and public communication aspects.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

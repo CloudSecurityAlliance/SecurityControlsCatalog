@@ -1,0 +1,27 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--b7073c4f-dc2f-4b23-899d-c2ee005c5892",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--91dee4d5-7169-4c0c-93d1-d85290c4d097",
+  "target_refs": [
+    "x-regulation--49a7efd6-b4b0-48e0-a767-9aed277c9bdb",
+    "x-regulation--a3f572c9-0932-4bb0-a34c-79029b069f30",
+    "x-regulation--8a81e69b-3dc6-4932-b880-d70a5dc123e3",
+    "x-regulation--aac5ce82-6b6f-4cab-bb16-284e0dd8a3fb",
+    "x-regulation--d6fdfc65-9ae7-4f85-a619-be2654f1e479"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "There is currently no formal definition of a Bill of Material (BoM), obligation for mandatory BoM creation process, enforcement mechanisms for a BoM process, lifecycle review/update requirement, visibility of all subcomponents or third-party software/services, or inclusion of a component inventory or BoM.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

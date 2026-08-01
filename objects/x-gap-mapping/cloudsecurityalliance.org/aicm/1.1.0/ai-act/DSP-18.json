@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--2b9f57a0-6ea9-486e-a2ea-1529df2ffad2",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--e2899b26-f951-4a01-b2c2-14bc3ae324b0",
+  "target_refs": [
+    "x-regulation--bf36acaa-aa57-4987-9658-3196d66d9b1a",
+    "x-regulation--a8f69ce5-e8e8-4cb9-8fc1-e615440fc3b9"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Law enforcement disclosure is covered but CSP-to-AIC notification is not detailed.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

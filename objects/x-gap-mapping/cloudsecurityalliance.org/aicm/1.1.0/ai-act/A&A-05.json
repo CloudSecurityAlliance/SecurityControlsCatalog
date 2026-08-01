@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--8bf08fdc-8d79-4c44-8e15-cbe82243a8c8",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--c41cacd0-347d-41fa-8e31-d7742d116940",
+  "target_refs": [
+    "x-regulation--9593bf3e-254a-489e-8838-5a5f9b450b78",
+    "x-regulation--d0a227ba-82cc-4ad3-8aa2-e49bc30456da"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Mandate that providers and deployers of high-risk AI systems establish a documented audit management process aligned with recognized standards. Require organizations to develop an annual (or more frequent) audit plan, aligned to risk priorities and operational needs. Require that audits are planned based on risk analysis outcomes, ensuring higher scrutiny where risk exposure is greatest. Require that the audit process includes evaluation of both security controls and compliance measures, covering both operational and technical aspects. Mandate that findings are addressed with corrective actions and follow-up audits or checks are performed to ensure remediation is effective. Require formal, documented audit reports and management reviews of past reports and evidence to ensure continual improvement. Clarify that the audit management process is part of the Quality Management System (Article 17) and that evidence is recorded in the technical documentation.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

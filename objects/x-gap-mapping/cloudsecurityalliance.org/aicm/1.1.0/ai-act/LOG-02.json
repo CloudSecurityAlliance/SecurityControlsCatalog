@@ -1,0 +1,25 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--1c9b4177-56b1-4ce5-9ad7-23b369362db4",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--74c664a1-7159-4855-bbb1-69dae2beb9d5",
+  "target_refs": [
+    "x-regulation--f36dac5e-4f5f-455e-98cd-5877469c368d",
+    "x-regulation--a3f572c9-0932-4bb0-a34c-79029b069f30",
+    "x-regulation--855c1786-3f1a-4449-8b4d-63dd489c9ffd"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "The EU AI Act merely states that \"providers of high-risk AI systems shall keep [...] logs [...] to the extent such logs are under their control,\" and sets, among others, guidelines for logs' retention. Nevertheless, the European regulation does not delve into the specific requirement of defining, implementing, and evaluating policies and procedures in the domain of logging security and retention.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

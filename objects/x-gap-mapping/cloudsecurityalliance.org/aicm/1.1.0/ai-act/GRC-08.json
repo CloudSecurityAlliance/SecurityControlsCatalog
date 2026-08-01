@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--9b377068-1e6b-4a06-975d-c39297315339",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--a480cd18-3e62-49a7-af92-5c1e81e30b57",
+  "target_refs": [
+    "x-regulation--f0c3e62e-e842-4176-8dff-b33c87712842"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Establish and maintain contact with cloud-related special interest groups, in line with business context and proactive engagement requirements with industry groups.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

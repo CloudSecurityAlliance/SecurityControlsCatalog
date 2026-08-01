@@ -1,0 +1,26 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--dc2d50b6-3e30-4f76-9fed-d5496fb641c8",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--c610d587-999c-4a9e-93a2-d84722194c8e",
+  "target_refs": [
+    "x-regulation--cb2b90b3-ed3a-4ad2-99d1-751675e7a47d",
+    "x-regulation--0deb2225-bae4-4b6c-a302-c81089ac7714",
+    "x-regulation--7237c041-4fef-4dd2-8982-c99cbb631264",
+    "x-regulation--7307a02a-ac90-43c3-b07b-f01645896a2e"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Require annual audits, independent post-market monitoring, reference to recognized audit or assurance standards.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

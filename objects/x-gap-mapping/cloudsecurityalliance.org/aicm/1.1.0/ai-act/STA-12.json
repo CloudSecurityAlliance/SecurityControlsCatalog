@@ -1,0 +1,26 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--71ebe788-6240-462a-b0b0-b434f6200318",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--3abc0ac1-5db6-4da7-b7c6-1ad2dc0b342b",
+  "target_refs": [
+    "x-regulation--690ad711-77ac-4a95-a2be-fbc7df97e1dc",
+    "x-regulation--af3c4544-3ded-4b04-8b6d-6a56d6f1a2e2",
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f",
+    "x-regulation--8a81e69b-3dc6-4932-b880-d70a5dc123e3"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Implement a formal process to review AI supplier agreements annually or when major changes occur.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

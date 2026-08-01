@@ -1,0 +1,25 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--8b3e5008-3fde-46f8-afe1-cfe91f8be289",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--243e7499-ecf9-4bdd-8196-280e77943ccc",
+  "target_refs": [
+    "x-regulation--19d49d43-9e2c-4de2-8ec8-82e8403ba5db",
+    "x-regulation--2972d067-2f50-4e4d-b896-6f198a6bba87",
+    "x-regulation--51d821ac-3781-4000-82b9-991aefef3e1b"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Add operational identity management requirements.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

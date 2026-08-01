@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--bdbca225-d002-4ef9-914d-d88ed51b3fca",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--c05946b7-25ee-499e-8688-41e738580a2a",
+  "target_refs": [
+    "x-regulation--6d221844-e69f-4d12-90be-803b87ec5a1f",
+    "x-regulation--8a81e69b-3dc6-4932-b880-d70a5dc123e3"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Assess third-party risk, implement SSRM controls end-to-end across supply chains, maintain shared documentation and governance of SSRM practices, and include oversight or auditability of how SSRM responsibilities are fulfilled throughout the chain.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

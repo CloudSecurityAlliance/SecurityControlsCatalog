@@ -9,9 +9,10 @@ working group.
 > **Status: early-stage / research-grade.** The data model and schemas in
 > this repository are **exploratory and provisional** and may change as
 > implementation experience accumulates. Treat the custom STIX extensions as
-> research-status, not a stable specification. The AICM 1.1.0 controls and the
-> AI-CAIQ 1.1.0 questions are committed under [`objects/`](objects/); AICM's
-> mappings to other frameworks are not there yet.
+> research-status, not a stable specification. The AICM 1.1.0 controls, the
+> AI-CAIQ 1.1.0 questions, and AICM's mappings to the EU AI Act are committed
+> under [`objects/`](objects/); the BSI AI C4 and ISO/IEC 42001 mappings are not
+> there yet.
 
 ## Why this exists
 

@@ -1,0 +1,25 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--02e071a4-ec8e-4326-a68f-b09cde63db02",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--d5593408-7f7e-447e-aa11-ce27be8c089c",
+  "target_refs": [
+    "x-regulation--32919311-a0cd-46ef-812c-528f597811fc",
+    "x-regulation--76bfaeb6-c8e7-4085-8d22-8d3af44fda6e",
+    "x-regulation--0a8c9ac4-df18-4f70-b071-329190513973"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Business-driven requirements and comprehensive archiving is not covered.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

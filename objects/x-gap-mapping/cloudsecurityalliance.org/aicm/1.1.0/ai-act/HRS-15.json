@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--b5853a89-78c5-4f3b-91fc-4be992ba7883",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--ff78f34f-3dec-4126-833a-f93e6ba13149",
+  "target_refs": [
+    "x-regulation--49a7efd6-b4b0-48e0-a767-9aed277c9bdb",
+    "x-regulation--65ecc949-e9d2-4df0-8140-c0aef2606095"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "No organization-wide acceptable use policies or their communication to all personnel.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

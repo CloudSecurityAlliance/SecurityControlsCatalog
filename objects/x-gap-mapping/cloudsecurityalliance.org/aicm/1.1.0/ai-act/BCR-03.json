@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--f6b906fe-d864-4c67-b13e-a6ed1d3da557",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--47554cce-3c81-4dec-ae08-38b46f7124a5",
+  "target_refs": [
+    "x-regulation--7355cd0e-6d5f-4fe3-af3a-4922999e3212",
+    "x-regulation--4263949d-1087-4fe1-933b-4f2e81001565"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Continuity strategy.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

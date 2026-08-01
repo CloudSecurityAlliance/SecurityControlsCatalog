@@ -1,0 +1,23 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--b54917f9-62c6-43a9-a193-f715be0b6f35",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--39e8ef00-0cc6-4b37-8431-7c733f080947",
+  "target_refs": [
+    "x-regulation--8a81e69b-3dc6-4932-b880-d70a5dc123e3"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Amend Article 25, or issue a technical annex, to mandate clear, enforceable security requirements for third-party endpoints.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

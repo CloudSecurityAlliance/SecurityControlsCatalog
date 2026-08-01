@@ -1,0 +1,24 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--80536244-38a6-435e-a685-5b4fd0478328",
+  "created": "2026-08-01T03:52:30.000Z",
+  "modified": "2026-08-01T03:52:30.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--23f70b60-1794-4a33-995f-ba6179df29be",
+  "target_refs": [
+    "x-regulation--1415185b-cc7d-403d-9b28-46ee97f36c32",
+    "x-regulation--4c626d0d-adf5-4d2b-8b55-64c9836c194a"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Data transfer is mentioned but specific technical protection measures for data transfer are missing.",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}
