@@ -128,6 +128,65 @@ def build(control, version, published, now):
     return {k: obj[k] for k in KEY_ORDER if k in obj}
 
 
+def self_test():
+    """Confirm the generator carries a publisher's text through untouched.
+
+    Published control text is not clean — AICM 1.1.0 carries spreadsheet artefacts
+    throughout — and tidying it in transit would change what the catalog asserts a
+    publisher requires. The edit that looks safest is the one most likely to matter:
+    a double space separating two clauses, a line break inside a list. See
+    CONVENTIONS-STIX-MODELING.md section 10.
+    """
+    messy = ("Establish, document, approve  and maintain policies.\r\n"
+            "\t1. Review annually.\n\n2. Retain “records” for 3–5 years. ")
+    control = {
+        "control_id": "TST-01",
+        "control_title": "  Padded   Title  ",
+        "control_domain": "Audit & Assurance",
+        "control_specification": messy,
+        "control_type": "Cloud & AI Related",
+        "typical_control_applicability_and_ownership": {"model": messy},
+        "architectural_relevance_ai_stack_components": {"compute": True},
+        "lifecycle_relevance": {"development": messy, "delivery": None},
+        "threat_category": {"model_theft": True},
+        "implementation_guidelines": {"shared": messy},
+        "auditing_guidelines": {"ai_customer": messy},
+    }
+    obj = build(control, "1.1.0", "2026-06-22T00:00:00.000Z",
+                "2026-01-15T00:00:00.000Z")
+    checks = [
+        ("name", obj["name"], control["control_title"]),
+        ("specification", obj["specification"], messy),
+        ("domain", obj["domain"], control["control_domain"]),
+        ("implementation_guidelines", obj["implementation_guidelines"]["shared"], messy),
+        ("auditing_guidelines", obj["auditing_guidelines"]["ai_customer"], messy),
+        ("lifecycle_relevance", obj["lifecycle_relevance"]["development"], messy),
+        ("applicability", obj["typical_control_applicability_and_ownership"]["model"], messy),
+    ]
+    bad = 0
+    for label, got, want in checks:
+        ok = got == want
+        bad += not ok
+        print(f"  {'ok  ' if ok else 'FAIL'} {label} carried verbatim")
+        if not ok:
+            print(f"       published {want!r}\n       carried   {got!r}")
+
+    # A blank cell means the row does not apply and is dropped; a cell holding only
+    # whitespace is blank. Neither is a licence to edit a cell that has content.
+    ok = "delivery" not in obj["lifecycle_relevance"]
+    bad += not ok
+    print(f"  {'ok  ' if ok else 'FAIL'} blank lifecycle phase dropped rather than carried as null")
+
+    # Round-tripping through the file format must not touch the text either.
+    ok = json.loads(json.dumps(obj, ensure_ascii=False))["specification"] == messy
+    bad += not ok
+    print(f"  {'ok  ' if ok else 'FAIL'} text survives the JSON round-trip")
+
+    total = len(checks) + 2
+    print(f"\n{total - bad}/{total} generator self-tests passed")
+    return 1 if bad else 0
+
+
 def reconcile(fresh, path):
     """Carry an already-published object's identity onto a regenerated one."""
     if not path.exists():
@@ -143,12 +202,18 @@ def reconcile(fresh, path):
 
 def main(argv):
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("source", help="the AICM JSON distribution")
+    ap.add_argument("source", nargs="?", help="the AICM JSON distribution")
+    ap.add_argument("--self-test", action="store_true",
+                    help="check that a publisher's text is carried untouched")
     ap.add_argument("--out", default="objects",
                     help="objects directory (default: objects)")
     ap.add_argument("--now", help="timestamp for newly minted objects "
                                   "(default: the current UTC time)")
     args = ap.parse_args(argv)
+    if args.self_test:
+        return self_test()
+    if not args.source:
+        ap.error("a source is required unless --self-test is given")
 
     now = args.now or datetime.datetime.now(
         datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
