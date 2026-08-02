@@ -1,0 +1,26 @@
+{
+  "type": "x-gap-mapping",
+  "spec_version": "2.1",
+  "id": "x-gap-mapping--8d20c96b-a6eb-45e1-9d02-4bbd9b05390f",
+  "created": "2026-08-02T20:05:44.000Z",
+  "modified": "2026-08-02T20:05:44.000Z",
+  "object_marking_refs": [
+    "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
+  ],
+  "extensions": {
+    "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682": {
+      "extension_type": "new-sdo"
+    }
+  },
+  "created_by_ref": "identity--51f9d480-d80b-4415-93c7-507cde4d1e85",
+  "source_ref": "x-control--b6057fe3-977c-41fb-8f36-6249b96a6aa9",
+  "target_refs": [
+    "x-control--aa6210d6-442d-405d-abb4-980ebcc8314d",
+    "x-control--57daa3be-b1aa-4377-b019-91e276bea3c1",
+    "x-control--fc000aaa-3c56-4fec-9a82-085012390e87",
+    "x-control--06cb116a-d084-4431-b280-d8809040199a"
+  ],
+  "gap_level": "Partial Gap",
+  "description": "Missing mention to penetration test \nperformed by a third party",
+  "valid_from": "2026-06-22T00:00:00.000Z"
+}

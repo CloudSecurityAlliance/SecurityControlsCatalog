@@ -2,9 +2,88 @@
   "source": "AICM 1.1.0, scope_applicability_mappings.iso_iec_42001_2023",
   "mappings": "objects/x-gap-mapping/cloudsecurityalliance.org/aicm/1.1.0/iso",
   "why": "These references cannot be resolved to a specific control in a specific standard, so they are held back rather than guessed at. Quarantine is per control: a gap verdict is assessed against the whole set of targets, so publishing it over a subset would assert something the publisher never assessed.",
-  "controls_mapped": 177,
-  "controls_held": 67,
-  "references_unparsed": 131,
+  "controls_mapped": 181,
+  "controls_held": 63,
+  "references_unparsed": 111,
+  "not_errors": {
+    "note": "Recorded so they are not mistaken for defects. Neither is a mistake by the publisher; both are things this conversion cannot yet carry.",
+    "scoped_no_mapping_dropped": [
+      "BCR-11",
+      "CEK-01",
+      "CEK-02",
+      "CEK-03",
+      "CEK-04",
+      "CEK-05",
+      "CEK-06",
+      "CEK-07",
+      "CEK-08",
+      "CEK-09",
+      "CEK-10",
+      "CEK-11",
+      "CEK-12",
+      "CEK-13",
+      "CEK-14",
+      "CEK-15",
+      "CEK-16",
+      "CEK-17",
+      "CEK-18",
+      "CEK-19",
+      "CEK-20",
+      "CEK-21",
+      "I&S-04",
+      "I&S-07",
+      "I&S-09",
+      "LOG-04",
+      "LOG-05",
+      "LOG-06",
+      "LOG-11",
+      "LOG-12",
+      "LOG-13",
+      "MDS-02",
+      "MDS-08",
+      "MDS-09",
+      "SEF-06",
+      "UEM-05",
+      "UEM-06",
+      "UEM-08",
+      "UEM-09",
+      "UEM-10",
+      "UEM-11",
+      "UEM-12",
+      "UEM-13"
+    ],
+    "scoped_no_mapping_meaning": "These cells state that one named standard has no mapping while others in the same cell do. The catalog carries one verdict per cell, so the per-standard verdict is lost. Open question, not a source defect.",
+    "continuation_lines_held": [
+      "CEK-02: 8.24",
+      "CEK-05: 8.24",
+      "CEK-06: 8.24",
+      "CEK-07: 5.1",
+      "CEK-07: 5.7",
+      "CEK-07: Clause 6.1",
+      "CEK-09: 12.7.1",
+      "CEK-09: 8.34",
+      "CEK-09: A.12.7.1",
+      "CEK-09: Clause 9.2",
+      "CEK-18: 8.4",
+      "CEK-18: A.8.2.1",
+      "CEK-20: 5.7",
+      "CEK-20: Clause 6.1.2",
+      "CEK-21: 12.4.1",
+      "CEK-21: A.12.4.1",
+      "I&S-01: A.8.27",
+      "I&S-01: A.8.9",
+      "I&S-01: B.2.4",
+      "I&S-03: 10.1",
+      "I&S-03: 5.17",
+      "I&S-03: 8.7",
+      "I&S-03: 9.4",
+      "I&S-03: A.5.35",
+      "I&S-03: A.8.24",
+      "I&S-03: A.8.27",
+      "I&S-09: A.8.20"
+    ],
+    "continuation_meaning": "A bare clause following a line that named a standard reads as a continuation of it. Held rather than converted because that is inferred from position, not stated. Confirm the convention and these convert."
+  },
   "entries": [
     {
       "control": "A&A-04",
@@ -933,31 +1012,20 @@
       ]
     },
     {
-      "control": "TVM-01",
-      "gap_level": "No Gap",
-      "unparsed": [
-        "A.2.4 Review of AI Policy (42001)",
-        "6.1.1 General (42001 - Actions to address risks and opportunities)",
-        "6.1.3 AI risk treatment (42001)",
-        "7.4 Communication (42001)",
-        "7.5 Documented Information (42001)"
-      ],
-      "parsed": []
-    },
-    {
       "control": "TVM-02",
       "gap_level": "No Gap",
       "unparsed": [
+        "A.5.2.1 Policies for information security (27001)"
+      ],
+      "parsed": [
         "5.2 AI Policy (42001)",
-        "A.5.2.1 Policies for information security (27001)",
         "6.1.2 AI risk Assessment (42001)",
         "A.8.7 Protection against Malware (27001)",
         "7.5 Documented information (42001)",
         "8.1 Operational planning and control (42001)",
         "9.1 Monitoring measurement .... (42001)",
         "10.1 Continual improvement ... (42001)"
-      ],
-      "parsed": []
+      ]
     },
     {
       "control": "TVM-04",
@@ -970,35 +1038,6 @@
       "parsed": [
         "27001: A.5.7 - Threat intelligence"
       ]
-    },
-    {
-      "control": "TVM-07",
-      "gap_level": "Partial Gap",
-      "unparsed": [
-        "6. Planning  (27001)",
-        "9. Performance Evaluation (27001)",
-        "A.8.8 Management of technical vulnerabilities (27001)",
-        "A.6.2.6 AI System Operation and Monitoring (42001)"
-      ],
-      "parsed": []
-    },
-    {
-      "control": "TVM-08",
-      "gap_level": "No Gap",
-      "unparsed": [
-        "8.8 Management of technical vulnerabilities (27001)",
-        "A.6.2.6 AI system operation and monitoring (42001)"
-      ],
-      "parsed": []
-    },
-    {
-      "control": "TVM-09",
-      "gap_level": "No Gap",
-      "unparsed": [
-        "8.8 Management of technical vulnerabilities (27001)",
-        "A.6.2.6 AI system Operation and monitoring (42001)"
-      ],
-      "parsed": []
     },
     {
       "control": "TVM-11",
