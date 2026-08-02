@@ -5,6 +5,13 @@
   "controls_mapped": 119,
   "controls_held": 125,
   "references_unparsed": 294,
+  "not_errors": {
+    "note": "Recorded so they are not mistaken for defects. Neither is a mistake by the publisher; both are things this conversion cannot yet carry.",
+    "scoped_no_mapping_dropped": [],
+    "scoped_no_mapping_meaning": "These cells state that one named standard has no mapping while others in the same cell do. The catalog carries one verdict per cell, so the per-standard verdict is lost. Open question, not a source defect.",
+    "continuation_lines_held": [],
+    "continuation_meaning": "A bare clause following a line that named a standard reads as a continuation of it. Held rather than converted because that is inferred from position, not stated. Confirm the convention and these convert."
+  },
   "entries": [
     {
       "control": "A&A-01",

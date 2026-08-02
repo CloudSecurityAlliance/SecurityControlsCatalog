@@ -45,13 +45,42 @@ cannot be stated without the rest.
 the number that matters for cleanup, and is usually larger, since one control can
 carry several unreadable references.
 
+## What is *not* in here, and why that distinction matters
+
+A quarantine file lists what could not be converted. It is not a defect list, and
+conflating the two is the failure mode this section exists to prevent.
+
+An unfamiliar convention is indistinguishable from a mistake to a parser that does
+not know it. An early pass over the ISO column reported nineteen references as
+"no standard named" — they were the same reference with the standard written at the
+end of the line instead of the start, used consistently across a whole domain. That
+was a gap in the parser reported as a gap in the data, and it was published as a
+defect report before anyone noticed.
+
+**Consistency is the signature of a convention.** A shape that repeats across a
+domain is house style; a shape that appears once is a typo. Before anything here is
+described to a publisher as an error, cluster it: repeated shapes get a question
+("is this a convention we should support?"), singletons get a defect report.
+
+Each file therefore carries a `not_errors` section for things the conversion drops
+or holds that are **not** the publisher's fault:
+
+- **`scoped_no_mapping_dropped`** — cells stating that one named standard has no
+  mapping while others in the same cell do. That is a per-standard verdict, and an
+  `x-gap-mapping` carries one verdict for the whole target set, so it cannot be
+  represented. A modelling gap on this side, recorded rather than silently lost.
+- **`continuation_lines_held`** — a bare clause following a line that named a
+  standard, which reads as continuing it. Held rather than converted because it is
+  inferred from position rather than stated on the line. Confirm the convention and
+  these convert with no other change.
+
 ## Files
 
 | File | Source column | Held |
 |---|---|---|
 | `aicm-1.1.0-ai-act.json` | AICM 1.1.0 `scope_applicability_mappings.eu_ai_act` | 40 of 163 controls |
 | `aicm-1.1.0-bsi-ai-c4.json` | AICM 1.1.0 `scope_applicability_mappings.bsi_ai_c4` | 125 of 244 controls |
-| `aicm-1.1.0-iso.json` | AICM 1.1.0 `scope_applicability_mappings.iso_iec_42001_2023` | 67 of 244 controls |
+| `aicm-1.1.0-iso.json` | AICM 1.1.0 `scope_applicability_mappings.iso_iec_42001_2023` | 63 of 244 controls |
 
 The BSI column is the worst of the three, and for a different reason than the others.
 It is not formatting: 288 of its 692 lines carry a bare control code with no standard

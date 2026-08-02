@@ -48,11 +48,25 @@ MAPPING_KEYS = [
     "description", "valid_from",
 ]
 
-# Sentinels. Both columns use several spellings, and the ISO column scopes one to a
-# single standard ("No Mapping for ISO 42001") inside a cell that still cites others.
-# None is a reference; a cell holding only sentinels yields no mapping object at all.
-SENTINEL = re.compile(
-    r"^(no mapping( for iso 42001)?|no iso 42001 mapping\.?|not applicable|n/a)$", re.I)
+# Two sentinels with two different meanings, not one sentinel spelled several ways.
+#
+# WHOLE_CELL says nothing maps at all. In AICM 1.1.0 it appears alone in its cell,
+# always, and always on a Full Gap control (5 instances across both columns).
+#
+# SCOPED says one named standard has no mapping while others in the same cell do —
+# "No Mapping for ISO 42001" followed by 27001 and 27002 references. It appears
+# accompanied by real references in all 43 of its instances and never alone. It is
+# a per-standard verdict, and the catalog currently cannot carry it: the cell has
+# one gap_level covering the union of targets, so "42001 has no coverage but 27001
+# does" collapses into one verdict. Dropping the line is lossy, and the loss is
+# recorded in the quarantine file rather than left implicit. See the open question
+# in SCHEMA-STIX-OBJECT-EXTENSIONS.md.
+WHOLE_CELL = re.compile(r"^(no mapping|not applicable|n/a)$", re.I)
+SCOPED = re.compile(r"^no (mapping for iso 42001|iso 42001 mapping)\.?$", re.I)
+
+
+def is_sentinel(line):
+    return bool(WHOLE_CELL.match(line) or SCOPED.match(line))
 
 BSI = re.compile(r"^C(4|5) ([A-Z]{2,4}-\d{2})$")
 ISO = re.compile(r"^(?:ISO/IEC |ISO )?(42001|27001|27002)(?::(20\d\d))?\s*[:\-–]?\s*"
@@ -64,6 +78,20 @@ ISO = re.compile(r"^(?:ISO/IEC |ISO )?(42001|27001|27002)(?::(20\d\d))?\s*[:\-�
 # falsification this design exists to prevent, so the whole line is rejected.
 SECOND_CLAUSE = re.compile(r"(?<![\w.])(?:A|B)\.\d+(?:\.\d+)*(?![\w.])"
                            r"|(?<!\d)(?:42001|27001|27002)(?!\d)")
+
+# The same reference with the standard at the other end of the line:
+# "A.2.4 Review of AI Policy (42001)". Used consistently through the TVM domain.
+# This is not a defect and not a guess — the standard is named outright, just in a
+# different position — so it parses. An earlier pass counted 19 of these as
+# references with no standard, which was a failure of this parser rather than of
+# the source. Consistency is the signature of a convention; a shape that repeats
+# across a whole domain is house style, not nineteen mistakes.
+ISO_SUFFIX = re.compile(r"^(?:Clause )?((?:A|B)\.\d+(?:\.\d+)*|\d+(?:\.\d+)*)\.?\s+"
+                        r"([^()]*)\((42001|27001|27002)[^)]*\)\s*$")
+
+# A bare clause with no standard anywhere on the line. Only meaningful when a
+# previous line established one — see run_column.
+CONTINUATION = re.compile(r"^(?:Clause )?((?:A|B)\.\d+(?:\.\d+)*|\d+(?:\.\d+)+)\s*$")
 
 
 def bsi_target(line):
@@ -102,11 +130,19 @@ def iso_target(line):
     recorded here rather than buried.
     """
     m = ISO.match(line)
-    if not m:
-        return None
-    if SECOND_CLAUSE.search(line[m.end(3):]):
-        return None
-    standard, stated, clause = m.group(1), m.group(2), m.group(3)
+    if m:
+        if SECOND_CLAUSE.search(line[m.end(3):]):
+            return None
+        standard, stated, clause = m.group(1), m.group(2), m.group(3)
+    else:
+        m = ISO_SUFFIX.match(line)
+        if not m:
+            return None
+        # Only the title is checked for a second clause; the trailing parenthesis
+        # holds the standard by construction and is not a stray reference.
+        if SECOND_CLAUSE.search(m.group(2)):
+            return None
+        standard, stated, clause = m.group(3), None, m.group(1)
     if standard == "42001":
         return ("iso.org", "42001", stated or "2023", clause)
     if stated:
@@ -227,9 +263,22 @@ def self_test():
         ("27002: 8.24", ("iso.org", "27002", "2022", "8.24")),
         ("27001: 9.3 Management Review", ("iso.org", "27001", "2022", "9.3")),
         ("27001: A.16.1.2", None),           # 3-part Annex A: 2013 structure, issue 17
-        ("A.12.7.1", None),                  # no standard named at all
+        # The suffix convention: the standard is named at the end of the line
+        # rather than the start. Unambiguous, so it parses. Used throughout TVM.
+        ("8.8 Management of technical vulnerabilities (27001)",
+         ("iso.org", "27001", "2022", "8.8")),
+        ("A.2.4 Review of AI Policy (42001)", ("iso.org", "42001", "2023", "A.2.4")),
+        ("6.1.1 General (42001 - Actions to address risks and opportunities)",
+         ("iso.org", "42001", "2023", "6.1.1")),
+        ("A.5.2.1 Policies for information security (27001)", None),  # 3-part: 2013
+        ("6. Planning  (27001)", ("iso.org", "27001", "2022", "6")),
+        # Held, not errors: a bare clause reads as continuing the standard above it,
+        # but that is inferred from position rather than stated on the line.
+        ("A.12.7.1", None),
+        ("8.24", None),
+        # Genuinely broken.
         ("Measurement", None),               # a title fragment from a wrapped line
-        ("8.8 Management of technical vulnerabilities (27001)", None),
+        ("IOS 42001 B.6.1.2 - Objectives for responsible development", None),
         ("42001: A.2.2 - AI Policy and A.6.2.1 - AI System Requirements", None),
         ("42001: A.6.2.4 / B.6.2.4 - AI system verification and validation", None),
     ]
@@ -241,11 +290,18 @@ def self_test():
         print(f"  {'ok  ' if ok else 'FAIL'} {line!r} -> {got}")
         if not ok:
             print(f"       expected {want}")
-    for line in ["No Mapping", "No mapping", "Not Applicable",
-                 "No Mapping for ISO 42001", "No ISO 42001 mapping."]:
-        ok = bool(SENTINEL.match(line))
+    # The two sentinels mean different things. Whole-cell says nothing maps;
+    # scoped says one named standard has none while others in the cell do.
+    for line, whole, scoped in [("No Mapping", True, False),
+                                ("No mapping", True, False),
+                                ("Not Applicable", True, False),
+                                ("No Mapping for ISO 42001", False, True),
+                                ("No ISO 42001 mapping.", False, True)]:
+        ok = (bool(WHOLE_CELL.match(line)) == whole
+              and bool(SCOPED.match(line)) == scoped)
         bad += not ok
-        print(f"  {'ok  ' if ok else 'FAIL'} sentinel {line!r}")
+        kind = "scoped to one standard" if scoped else "whole cell"
+        print(f"  {'ok  ' if ok else 'FAIL'} sentinel {line!r} -> {kind}")
     names = COLUMNS["iso_iec_42001_2023"]["names"]
     checks = [
         (citation(("iso.org", "27001", "2022", "A.5.1"), names),
@@ -257,7 +313,7 @@ def self_test():
         ok = got == want
         bad += not ok
         print(f"  {'ok  ' if ok else 'FAIL'} citation -> {got!r}")
-    total = len(cases) + 5 + len(checks)
+    total = len(cases) + 5 + len(checks)  # 5 sentinel cases
     print(f"\n{total - bad}/{total} generator self-tests passed")
     return 1 if bad else 0
 
@@ -265,14 +321,31 @@ def self_test():
 def run_column(column, spec, data, controls, args, now, published, version):
     parse, names = spec["parse"], spec["names"]
     clean, held, targets, duplicated = [], [], set(), []
+    scoped_dropped, continuation = [], []
     for control in data["controls"]:
         cell = control["scope_applicability_mappings"][column]
         lines = [l.strip() for l in (cell["control_mapping"] or "").split("\n")
                  if l.strip()]
-        real = [l for l in lines if not SENTINEL.match(l)]
+        if any(SCOPED.match(l) for l in lines):
+            # A per-standard verdict the single gap_level cannot express.
+            scoped_dropped.append(control["control_id"])
+        real = [l for l in lines if not is_sentinel(l)]
         if not real:
             continue
         parsed = {l: parse(l) for l in real}
+        # A bare clause following a line that named a standard reads as a
+        # continuation of it — "ISO 27002: 5.2" then "8.24" is 27002 section 8.24,
+        # and the semantics check out. It is still positional inference rather than
+        # something the line states, so it is held rather than converted, and
+        # counted here so the ask to the publisher is "confirm the convention"
+        # rather than "fix these errors".
+        established = None
+        for line in real:
+            target = parsed[line]
+            if target:
+                established = target[1]
+            elif established and CONTINUATION.match(line):
+                continuation.append(f"{control['control_id']}: {line}")
         if all(parsed.values()):
             # The same clause can be cited twice in one cell under different
             # titles — the source gives 104 clauses more than one title, so
@@ -326,6 +399,23 @@ def run_column(column, spec, data, controls, args, now, published, version):
         "controls_mapped": len(clean),
         "controls_held": len(held),
         "references_unparsed": sum(len(h["unparsed"]) for h in held),
+        "not_errors": {
+            "note": "Recorded so they are not mistaken for defects. Neither is a "
+                    "mistake by the publisher; both are things this conversion "
+                    "cannot yet carry.",
+            "scoped_no_mapping_dropped": sorted(scoped_dropped),
+            "scoped_no_mapping_meaning":
+                "These cells state that one named standard has no mapping while "
+                "others in the same cell do. The catalog carries one verdict per "
+                "cell, so the per-standard verdict is lost. Open question, not a "
+                "source defect.",
+            "continuation_lines_held": sorted(continuation),
+            "continuation_meaning":
+                "A bare clause following a line that named a standard reads as a "
+                "continuation of it. Held rather than converted because that is "
+                "inferred from position, not stated. Confirm the convention and "
+                "these convert.",
+        },
         "entries": sorted(held, key=lambda h: h["control"]),
     }, indent=2, ensure_ascii=False) + "\n")
     print(f"  quarantine -> {qpath}: {len(clean)} mapped, {len(held)} held")

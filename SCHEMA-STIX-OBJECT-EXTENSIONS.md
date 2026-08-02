@@ -977,10 +977,28 @@ raise an issue rather than assume an answer.
    carrying a set-theory relation as an additional property is probably needed before
    OSCAL output is meaningful. Deferred deliberately — CSA's own vocabulary comes
    first.
-3. **How the annual *Top Threats to Cloud Computing* list is referenced.** Whether
+3. **A verdict per target standard, where one source cell covers several.** An
+   `x-gap-mapping` carries one `gap_level` over its whole `target_refs` set, which is
+   correct when the set was assessed as a set. AICM's ISO column is not that: it
+   names ISO/IEC 42001, 27001, and 27002 in one cell and, in 43 controls, states
+   outright that one of them has no mapping while the others do — *"No Mapping for
+   ISO 42001"* on the line above two 27001 and 27002 references, under a single
+   `Partial Gap`. The publisher is giving a verdict per standard; the catalog can
+   only record one for the union, so the per-standard detail is dropped. The dropped
+   verdicts are listed in [`quarantine/`](quarantine/) rather than left implicit.
+
+   Three possible answers, none chosen: emit one mapping per target framework (loses
+   the fact that a single assessment covered them together); add an optional
+   per-target verdict alongside the set-level one (more faithful, more complex, and
+   only some sources supply it); or treat it as a source-schema problem to fix
+   upstream, since a column that needs three verdicts probably wants to be three
+   columns. The last is the ask that has been made of the publisher; the modelling
+   question stays open regardless of the answer, because other sources will do this
+   too.
+4. **How the annual *Top Threats to Cloud Computing* list is referenced.** Whether
    each threat becomes an `attack-pattern`, a `grouping`, or another object type,
    and how a given report year is identified.
-4. **Vocabularies are deliberately not enumerated.** `status` is an enum because its
+5. **Vocabularies are deliberately not enumerated.** `status` is an enum because its
    values are settled. `control_type`, `threat_category`, `stack_components`, the role
    keys in the guidance objects, the layer keys in
    `typical_control_applicability_and_ownership`, the phase keys in
@@ -990,11 +1008,11 @@ raise an issue rather than assume an answer.
    taxonomies differ. Enumerating any of them would lock the property to one framework.
    Whether the catalog should define a unifying vocabulary and map the frameworks onto
    it, or keep each framework's own terms, is unsettled.
-5. **Cardinality and optionality are unspecified**, beyond the STIX-required
+6. **Cardinality and optionality are unspecified**, beyond the STIX-required
    common properties (`type`, `spec_version`, `id`, `created`, `modified`).
-6. **`score` semantics.** The range, scale, and meaning of
+7. **`score` semantics.** The range, scale, and meaning of
    `x-control-assessment.score` are undefined.
-7. **Whether an SCC control and its source-framework controls are one object or
+8. **Whether an SCC control and its source-framework controls are one object or
    two.** A unified catalog control harmonizing CCM CEK-03 and an AICM equivalent
    could be a distinct `x-control` in the `scc` namespace related by `x-gap-mapping`, or
    the CCM object could simply gain SCC properties. The first keeps provenance
