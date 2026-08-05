@@ -82,6 +82,68 @@ The catalog is designed to **interoperate with — not replace — OSCAL**, and 
 align with CSA's wider control and assurance work, including STAR/CAIQ and IoT
 security.
 
+## What's in the catalog
+
+<!-- coverage:summary:start -->
+| STIX type | Objects |
+|---|---|
+| `x-control` | 987 |
+| `x-gap-mapping` | 423 |
+| `relationship` | 320 |
+| `x-regulation` | 106 |
+| `extension-definition` | 7 |
+| `identity` | 1 |
+| `marking-definition` | 1 |
+| **Total** | **1845** |
+<!-- coverage:summary:end -->
+
+Objects are committed one per file under `objects/<stix-type>/<secid-path>.json`, so
+a diff is reviewable and every object has a stable path:
+
+```
+objects/x-control/cloudsecurityalliance.org/aicm/1.1.0/MDS-01.json
+objects/x-control/cloudsecurityalliance.org/aicm-caiq/1.1.0/MDS-01.1.json
+objects/x-control/iso.org/27001/2022/A.5.1.json
+objects/x-regulation/europa.eu/ai-act/art-17.1.a.json
+objects/x-gap-mapping/cloudsecurityalliance.org/aicm/1.1.0/ai-act/MDS-01.json
+```
+
+Everything is generated from published source releases by the scripts in
+[`tools/`](tools/) and committed rather than built at publish time, because the
+identifiers have to be stable across releases. The generators are idempotent: run one
+against an unchanged source and it writes nothing; run it against a corrected source
+and the diff is exactly what the correction touched.
+
+**Mapping coverage is partial, and the gap is documented rather than hidden.** A
+reference that cannot be resolved to a specific control in a specific standard is held
+back instead of guessed at, because a guessed reference becomes a permanent identifier.
+Everything withheld is listed per control, in the publisher's own strings, under
+[`quarantine/`](quarantine/).
+
+### Checking it yourself
+
+```sh
+pip install jsonschema
+python3 tools/validate.py --self-test                     # the schemas
+find objects -name '*.json' | xargs python3 tools/validate.py
+python3 tools/coverage.py                                 # what is here, counted
+```
+
+Full STIX 2.1 conformance needs the OASIS validator, installed from a recursive clone
+rather than PyPI — the published wheel omits its bundled schemas:
+
+```sh
+git clone --recursive https://github.com/oasis-open/cti-stix-validator.git
+pip install -e cti-stix-validator
+find objects -name '*.json' | xargs python3 -m stix2validator.scripts.stix2_validator \
+  --schemas ./schemas/ --enforce-refs --disable 302
+```
+
+CI runs both on every pull request, plus checks that each object agrees with its own
+path and SecID, that every reference resolves to a committed object, and that nothing
+held in quarantine was also published. See
+[`.github/workflows/validate.yml`](.github/workflows/validate.yml).
+
 ## How the custom types are declared
 
 The custom types are declared through STIX 2.1's standard `extension-definition`

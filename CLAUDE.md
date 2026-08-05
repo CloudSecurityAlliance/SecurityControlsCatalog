@@ -118,6 +118,8 @@ python3 tools/generate_aicm_controls.py <aicm.json>    # regenerate AICM control
 python3 tools/generate_aicm_caiq.py <aicm-caiq.json>   # regenerate CAIQ questions + links
 python3 tools/generate_aicm_eu_mappings.py <aicm.json> # regenerate EU AI Act provisions + mappings
 python3 tools/generate_aicm_standard_mappings.py <aicm.json>  # BSI + ISO targets and mappings
+python3 tools/coverage.py                              # what the catalog holds
+python3 tools/coverage.py --check                      # documented counts are current
 ```
 
 The generator is idempotent: it reads back committed objects, preserves their

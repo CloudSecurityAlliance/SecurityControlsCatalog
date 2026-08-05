@@ -76,18 +76,31 @@ or holds that are **not** the publisher's fault:
 
 ## Files
 
-| File | Source column | Held |
-|---|---|---|
-| `aicm-1.1.0-ai-act.json` | AICM 1.1.0 `scope_applicability_mappings.eu_ai_act` | 40 of 163 controls |
-| `aicm-1.1.0-bsi-ai-c4.json` | AICM 1.1.0 `scope_applicability_mappings.bsi_ai_c4` | 125 of 244 controls |
-| `aicm-1.1.0-iso.json` | AICM 1.1.0 `scope_applicability_mappings.iso_iec_42001_2023` | 63 of 244 controls |
+<!-- coverage:files:start -->
+| File | Source column | Mapped | Held |
+|---|---|---|---|
+| [`aicm-1.1.0-ai-act.json`](aicm-1.1.0-ai-act.json) | `eu_ai_act` | 123 | **40** |
+| [`aicm-1.1.0-bsi-ai-c4.json`](aicm-1.1.0-bsi-ai-c4.json) | `bsi_ai_c4` | 119 | **125** |
+| [`aicm-1.1.0-iso.json`](aicm-1.1.0-iso.json) | `iso_iec_42001_2023` | 181 | **63** |
+<!-- coverage:files:end -->
 
 The BSI column is the worst of the three, and for a different reason than the others.
 It is not formatting: 288 of its 692 lines carry a bare control code with no standard
 attached, in a column whose two standards number their controls in overlapping ways.
 Nothing in those rows says which standard is meant.
 
-Filed with the publisher as
-[issue #18](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/18).
-When a release fixes a reference, re-running the generator moves it out of
-quarantine and into the catalog, and both changes show up together.
+Each column's open questions are filed separately:
+[#16](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/16)
+(BSI attribution),
+[#18](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/18)
+(EU AI Act citation form),
+[#17](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/17)
+and [#26](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/26)
+(ISO editions and column contents),
+[#27](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/27)
+(text artefacts), and
+[#28](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog/issues/28)
+(per-standard verdicts).
+
+When a release resolves one, re-running the generator moves the affected controls
+out of quarantine and into the catalog, and both changes appear in the same diff.
