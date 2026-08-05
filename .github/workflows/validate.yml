@@ -139,6 +139,12 @@ jobs:
           sys.exit(1 if bad else 0)
           PY
 
+      - name: Documented counts match the committed objects
+        # A stale count in a document that exists to be trusted is worse than no
+        # count at all, so the tables are generated from the objects rather than
+        # typed. If this fails, run: python3 tools/coverage.py --write
+        run: python3 tools/coverage.py --check
+
       - name: Objects agree with their path, identifier, and SecID
         # The schemas check one object at a time and cannot see that a file sits
         # in the wrong directory, that its SecID contradicts its own provenance
