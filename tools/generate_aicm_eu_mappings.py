@@ -30,10 +30,8 @@ import re
 import sys
 import uuid
 
-from catalog import CSA_IDENTITY, NAMESPACE, TLP_WHITE, emit, order, report
-
-REGULATION_EXT = "extension-definition--a72496a3-08f8-43fb-88c9-479bb94e5e02"
-MAPPING_EXT = "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682"
+from catalog import (CSA_IDENTITY, KEY_ORDER, MAPPING_EXT, NAMESPACE,
+                     REGULATION_EXT, TLP_WHITE, emit, order, report)
 
 COLUMN = "eu_ai_act"
 REG_NAMESPACE = "europa.eu"
@@ -104,12 +102,7 @@ def build_regulation(clause, now):
              "external_id": f"secid:regulation/{REG_NAMESPACE}/{REGULATION}#{clause}"},
             {"source_name": "EUR-Lex", "url": EURLEX},
         ],
-    }, [
-        "type", "spec_version", "id", "created", "modified", "object_marking_refs",
-        "extensions", "created_by_ref", "name", "regulation_namespace",
-        "regulation", "clause_identifier", "publication_id", "jurisdiction",
-        "external_references",
-    ])
+    }, KEY_ORDER["x-regulation"])
 
 
 def build_mapping(source_ref, target_refs, gap_level, addendum, published, now):
@@ -129,11 +122,7 @@ def build_mapping(source_ref, target_refs, gap_level, addendum, published, now):
     }
     if addendum and addendum.strip():
         obj["description"] = addendum
-    return order(obj, [
-        "type", "spec_version", "id", "created", "modified", "object_marking_refs",
-        "extensions", "created_by_ref", "source_ref", "target_refs", "gap_level",
-        "description", "valid_from",
-    ])
+    return order(obj, KEY_ORDER["x-gap-mapping"])
 
 
 def read_column(controls):
