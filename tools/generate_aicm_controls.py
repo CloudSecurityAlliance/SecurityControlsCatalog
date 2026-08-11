@@ -18,10 +18,13 @@ generating them belongs in their own change.
 """
 
 import argparse
+import contextlib
 import datetime
+import io
 import json
 import pathlib
 import sys
+import tempfile
 import uuid
 
 from catalog import (CONTROL_EXT, CSA_IDENTITY, KEY_ORDER, NAMESPACE, TLP_WHITE,
@@ -167,9 +170,100 @@ def self_test():
     bad += not ok
     print(f"  {'ok  ' if ok else 'FAIL'} text survives the JSON round-trip")
 
-    total = len(checks) + 2
+    bad += idempotency_checks()
+
+    total = len(checks) + 2 + IDEMPOTENCY_CHECK_COUNT
     print(f"\n{total - bad}/{total} generator self-tests passed")
     return 1 if bad else 0
+
+
+IDEMPOTENCY_CHECK_COUNT = 5
+
+
+def idempotency_checks():
+    """Exercise the claim the rest of the repository depends on.
+
+    The README and CLAUDE.md both state that a generator run against an unchanged
+    source writes nothing, that identifiers and created timestamps survive
+    regeneration, and that a corrected source produces exactly the diff the
+    correction touched. Every downstream promise rests on it: a re-minted
+    identifier breaks every reference a consumer holds.
+
+    CI cannot run a generator against a real release, because the source data lives
+    outside this repository — so the claim was asserted in prose and never executed.
+    This runs it against a fixture instead. The fixture is inline rather than
+    committed because it is a test input, not catalog content, and a committed one
+    invites being mistaken for a source.
+    """
+    source = {
+        "specification_version": "9.9.9",
+        "published": "2026-01-01",
+        "controls": [
+            {
+                "control_id": f"TST-0{n}",
+                "control_title": f"Test control {n}",
+                "control_domain": "Test Domain",
+                "control_specification": f"Requirement {n}.",
+                "control_type": "Cloud & AI Related",
+                "typical_control_applicability_and_ownership": {"model": "Owned"},
+                "architectural_relevance_ai_stack_components": {"compute": True},
+                "lifecycle_relevance": {"development": "Training"},
+                "threat_category": {"model_theft": True},
+                "implementation_guidelines": {"shared": f"Implement {n}."},
+                "auditing_guidelines": {"shared": f"Audit {n}."},
+            }
+            for n in (1, 2, 3)
+        ],
+    }
+
+    def run(src, out, now):
+        """One generator run, with its report suppressed to keep the log readable."""
+        with contextlib.redirect_stdout(io.StringIO()):
+            main([str(src), "--out", str(out), "--now", now])
+
+    def snapshot(out):
+        return {p.name: p.read_text() for p in sorted(out.rglob("*.json"))}
+
+    bad = 0
+
+    def ok(label, condition):
+        nonlocal bad
+        bad += not condition
+        print(f"  {'ok  ' if condition else 'FAIL'} {label}")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = pathlib.Path(tmp)
+        src, out = tmp / "aicm.json", tmp / "objects"
+        src.write_text(json.dumps(source))
+
+        run(src, out, "2026-01-15T00:00:00.000Z")
+        first = snapshot(out)
+        ok("a first run emits one object per source control", len(first) == 3)
+
+        # A second run mints fresh UUIDs and passes a later timestamp. Neither may
+        # reach disk: reconcile has to recognise the content as unchanged.
+        run(src, out, "2026-08-11T00:00:00.000Z")
+        second = snapshot(out)
+        ok("regenerating an unchanged source writes nothing", second == first)
+
+        before = json.loads(first["TST-02.json"])
+        source["controls"][1]["control_specification"] = "Requirement 2, corrected."
+        src.write_text(json.dumps(source))
+        run(src, out, "2026-09-01T00:00:00.000Z")
+        third = snapshot(out)
+
+        changed = {name for name in third if third[name] != second[name]}
+        ok("a corrected source rewrites only the control it touched",
+           changed == {"TST-02.json"})
+
+        after = json.loads(third["TST-02.json"])
+        ok("the corrected object keeps its identifier and created timestamp",
+           after["id"] == before["id"] and after["created"] == before["created"])
+        moved = {k for k in set(before) | set(after) if before.get(k) != after.get(k)}
+        ok("only the corrected property and modified moved",
+           moved == {"specification", "modified"})
+
+    return bad
 
 
 def main(argv):
