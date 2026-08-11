@@ -120,6 +120,33 @@ back instead of guessed at, because a guessed reference becomes a permanent iden
 Everything withheld is listed per control, in the publisher's own strings, under
 [`quarantine/`](quarantine/).
 
+### Reading and correcting an object without reading STIX
+
+Committed objects are STIX JSON, which is what consumers need and not what a person
+should have to read to check whether a control's audit guidance is right. `tools/yaml_view.py`
+renders any object as YAML with the machinery removed, and takes an edited rendering
+back to the exact JSON:
+
+```sh
+pip install pyyaml
+python3 tools/yaml_view.py objects/x-control/cloudsecurityalliance.org/aicm/1.1.0/MDS-01.json
+python3 tools/yaml_view.py --write edited.yaml     # writes the JSON object back
+python3 tools/yaml_view.py --check                 # round-trips every committed object
+```
+
+The view withholds only the properties that were never authored by hand — the
+identifier, the timestamps, the TLP marking, the publisher identity, the extension
+reference — and restores them from the committed object, so an edit changes the property
+you edited and `modified`, and nothing else. `--check` requires the round trip to be
+byte-identical for every object in the catalog and runs in CI, because a view that
+silently loses a carriage return in a publisher's text would be worse than no view.
+
+It corrects committed objects; it does not author new ones. Identifiers are minted once,
+and catalog content comes from published source releases through the generators in
+[`tools/`](tools/). Reasoning: see
+[`DESIGN-RATIONALE-STIX-EXTENSIONS.md`](DESIGN-RATIONALE-STIX-EXTENSIONS.md) § "Why the
+committed form is JSON".
+
 ### Checking it yourself
 
 ```sh

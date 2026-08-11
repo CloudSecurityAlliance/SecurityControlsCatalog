@@ -27,22 +27,16 @@ import pathlib
 import sys
 import uuid
 
-from catalog import (CONTROL_EXT, CSA_IDENTITY, NAMESPACE, TLP_WHITE, emit,
-                     order, report)
+from catalog import (CONTROL_EXT, CSA_IDENTITY, KEY_ORDER, NAMESPACE, TLP_WHITE,
+                     emit, order, report)
 
 FRAMEWORK = "aicm-caiq"
 PARENT_FRAMEWORK = "aicm"
 
-QUESTION_KEYS = [
-    "type", "spec_version", "id", "created", "modified", "object_marking_refs",
-    "extensions", "created_by_ref", "name", "framework_namespace", "framework",
-    "framework_version", "control_identifier", "domain", "status", "valid_from",
-    "specification", "external_references",
-]
-LINK_KEYS = [
-    "type", "spec_version", "id", "created", "modified", "object_marking_refs",
-    "created_by_ref", "relationship_type", "source_ref", "target_ref",
-]
+# A question carries fewer properties than a control, not different ones, so both
+# order against the one x-control list — see catalog.KEY_ORDER.
+QUESTION_KEYS = KEY_ORDER["x-control"]
+LINK_KEYS = KEY_ORDER["relationship"]
 
 
 def build_question(q, version, published, now):

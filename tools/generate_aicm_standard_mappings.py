@@ -33,20 +33,11 @@ import re
 import sys
 import uuid
 
-from catalog import CONTROL_EXT, CSA_IDENTITY, NAMESPACE, TLP_WHITE, emit, order, report
+from catalog import (CONTROL_EXT, CSA_IDENTITY, KEY_ORDER, MAPPING_EXT, NAMESPACE,
+                     TLP_WHITE, emit, order, report)
 
-MAPPING_EXT = "extension-definition--b1d89841-2dc0-4559-af18-380ecd4c1682"
-
-CONTROL_KEYS = [
-    "type", "spec_version", "id", "created", "modified", "object_marking_refs",
-    "extensions", "created_by_ref", "name", "framework_namespace", "framework",
-    "framework_version", "control_identifier", "status", "external_references",
-]
-MAPPING_KEYS = [
-    "type", "spec_version", "id", "created", "modified", "object_marking_refs",
-    "extensions", "created_by_ref", "source_ref", "target_refs", "gap_level",
-    "description", "valid_from",
-]
+CONTROL_KEYS = KEY_ORDER["x-control"]
+MAPPING_KEYS = KEY_ORDER["x-gap-mapping"]
 
 # Two sentinels with two different meanings, not one sentinel spelled several ways.
 #

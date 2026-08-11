@@ -24,26 +24,14 @@ import pathlib
 import sys
 import uuid
 
-from catalog import (CONTROL_EXT, CSA_IDENTITY, NAMESPACE, TLP_WHITE, emit,
-                     order, report)
+from catalog import (CONTROL_EXT, CSA_IDENTITY, KEY_ORDER, NAMESPACE, TLP_WHITE,
+                     emit, order, report)
 
 FRAMEWORK = "aicm"
 
 # Taxonomy columns the source answers for every control. Omitted when the answer
 # is "none" — see prune_empty.
 TAXONOMY_PROPERTIES = ("threat_category", "stack_components", "lifecycle_relevance")
-
-# Order the properties as SCHEMA-STIX-OBJECT-EXTENSIONS.md presents them, so a
-# generated object and a documented example read the same way in a diff.
-KEY_ORDER = [
-    "type", "spec_version", "id", "created", "modified", "object_marking_refs",
-    "extensions", "created_by_ref", "name", "framework_namespace", "framework",
-    "framework_version", "control_identifier", "domain", "status", "valid_from",
-    "specification", "control_type", "threat_category",
-    "typical_control_applicability_and_ownership", "stack_components",
-    "lifecycle_relevance", "implementation_guidelines", "auditing_guidelines",
-    "external_references",
-]
 
 
 def flags_to_list(mapping):
@@ -122,7 +110,7 @@ def build(control, version, published, now):
                  "implementation_guidelines", "auditing_guidelines"):
         if not obj[prop]:
             sys.exit(f"{cid}: {prop} is empty in the source; refusing to emit")
-    return order(prune_empty(obj), KEY_ORDER)
+    return order(prune_empty(obj), KEY_ORDER["x-control"])
 
 
 def self_test():

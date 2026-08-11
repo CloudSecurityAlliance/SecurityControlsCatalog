@@ -17,6 +17,7 @@ This document outlines the technical rationale behind the format and distributio
 1. Why STIX 2.1 with custom STIX Domain Object (SDO) extensions as the back-end representation?
 2. Why not OSCAL — or CSAF, OSV, RDF, or a purpose-built custom format?
 3. What formats and channels should the catalog be published through?
+4. Why the committed form is JSON rather than YAML, and how a person reads and corrects it.
 
 The arguments here are technical. Specific deliverables, sequencing, and governance are out of scope.
 
@@ -140,7 +141,96 @@ Additional formats worth consideration in subsequent releases include CAIQ outpu
 
 **CSA MCP server** at `https://cloudsecurityalliance.org/mcp` is planned as a complementary AI-agent channel for direct catalog queries. Until it ships, the SecID MCP server is the AI-agent path.
 
-## 6. Status, scope, and what this document is not
+## 6. Why the committed form is JSON, and how a person reads and corrects it
+
+The catalog's committed form is STIX 2.1 JSON. YAML was proposed for that role and
+not adopted. Both halves of that decision need stating, because "JSON is canonical"
+answers only half of the question anyone actually has, which is *how do I review
+this?*
+
+### Why YAML is not the canonical form
+
+Four reasons, in order of weight:
+
+**It is not what the format is.** STIX 2.1 is defined as JSON. A YAML canon would
+mean the catalog's authoritative artifact is not STIX, and every consumer — TAXII
+server, CTI platform, graph store, the OASIS validator — would need a conversion step
+before it could read anything. That is precisely the *Maximum compatibility* principle
+(§1) failing: a design that requires a consumer to special-case the catalog before it
+can parse the data is the wrong design.
+
+**Representation ambiguity.** YAML 1.1 and 1.2 disagree about how scalars resolve, and
+implementations differ within each. `status: live` is unambiguous; an unquoted `no`,
+`yes`, `on`, `off`, `null`, `~`, a leading zero, a bare version number, or a
+colon-containing string are not, and different loaders will hand you different values
+for identical bytes. A control catalog carries clause identifiers, version strings, and
+free prose — exactly the value shapes where this bites. JSON has one reading.
+
+**Weak schema support.** The catalog's contract is JSON Schema, enforced in CI against
+every object, and the OASIS STIX validator layers on top. Both take JSON. Validating
+YAML means converting to JSON first, which makes JSON the real contract and the YAML a
+lossy front end to it.
+
+**Fragility under hand-editing** — and this is the reason worth being careful about,
+because it cuts against the usual argument for YAML. YAML's significant indentation
+means a whitespace error is a *semantic* error, and the failure is often silent: a
+mis-indented key attaches to the wrong parent and still parses. The catalog carries
+published control text with carriage returns, tabs, trailing spaces, and typographic
+punctuation, which [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md)
+section 10 forbids tidying in transit — and YAML block scalars cannot represent several
+of those at all. A format chosen *for* hand-editing turns out to be the one that
+quietly loses the bytes a human was trying to protect.
+
+### The question that actually matters
+
+None of the above says a person should have to read UUIDs and escaped prose to check
+whether a control's audit guidance is right. That is a real objection and it deserved
+a real answer rather than a restatement of the format decision. The answer is that
+**the form data is stored in and the form a person works in are separate concerns**,
+and the second one has to be built rather than asserted.
+
+So it is built. [`tools/yaml_view.py`](tools/) renders any committed object as YAML
+with the machinery removed, and takes an edited rendering back to the exact JSON:
+
+```sh
+python3 tools/yaml_view.py objects/x-control/cloudsecurityalliance.org/aicm/1.1.0/MDS-01.json
+python3 tools/yaml_view.py --write edited.yaml
+python3 tools/yaml_view.py --check     # every committed object, round-tripped
+```
+
+Three properties of that tool are what make it an answer rather than a gesture:
+
+**The view drops only what was never authored.** The properties it withholds —
+`spec_version`, `id`, `created`, `modified`, `object_marking_refs`, `extensions`,
+`created_by_ref` — are each either constant across the whole catalog or minted once and
+permanent. `catalog.reconcile` exists so that regenerating an object does not disturb
+them. The UUIDs and timestamps that make the JSON unpleasant to read are bookkeeping,
+not content a reviewer has an opinion about, and they are restored mechanically from
+the type and the committed object.
+
+**Write-back produces a minimal diff.** Correcting a domain name in the view and
+writing it back changes that property and `modified`, and nothing else. The identifier
+is preserved, so no consumer's reference breaks.
+
+**Losslessness is enforced, not claimed.** `--check` renders every committed object,
+reads it back, and requires byte equality with the file on disk; it runs in CI. The
+writer uses a readable block scalar only where that is provably lossless and falls back
+to a quoted scalar otherwise — which is the YAML fragility above, handled by a tool
+instead of by a contributor's care.
+
+What the view deliberately does *not* do is author new objects. An object's identifier
+is minted once (conventions section 3), and catalog content comes from published source
+releases through the generators in `tools/`. The view is for reviewing and correcting
+what is already committed — which is what a contributor actually does — not for adding
+a control by hand.
+
+**The consequence for contribution.** A contributor does not need to read or write STIX
+to correct catalog content: they read a YAML rendering, edit it, and write it back, and
+CI checks the result against the schemas. The tooling is a convenience for contributors,
+not a dependency for consumers — the published catalog stays plain JSON, and nothing is
+required to consume it.
+
+## 7. Status, scope, and what this document is not
 
 The catalog's data model is **exploratory and research-grade**. The custom SDOs and the recommendations in this document are provisional. Implementation experience may inform revisions. Implementers who can satisfy their needs with standard STIX constructs alone are encouraged to do so and to treat the `x-*` SDOs as optional, research-grade extensions to be adopted selectively.
 

@@ -120,7 +120,20 @@ python3 tools/generate_aicm_eu_mappings.py <aicm.json> # regenerate EU AI Act pr
 python3 tools/generate_aicm_standard_mappings.py <aicm.json>  # BSI + ISO targets and mappings
 python3 tools/coverage.py                              # what the catalog holds
 python3 tools/coverage.py --check                      # documented counts are current
+python3 tools/yaml_view.py <object.json>               # read an object as YAML
+python3 tools/yaml_view.py --write <view.yaml>         # write an edited view back
+python3 tools/yaml_view.py --self-test                 # messy text, edits, refusals
+python3 tools/yaml_view.py --check                     # every object round-trips exactly
 ```
+
+The YAML view is a review surface over the committed JSON, not a second canonical
+form: it withholds the properties that are minted or constant (`id`, the timestamps,
+the marking, the identity, the extension) and restores them mechanically, so an edit
+touches only what was edited. It corrects committed objects and deliberately cannot
+author new ones — identifiers are minted once, and content comes from published
+releases through the generators. Reasoning and the YAML-as-canon decision:
+[`DESIGN-RATIONALE-STIX-EXTENSIONS.md`](DESIGN-RATIONALE-STIX-EXTENSIONS.md) § "Why the
+committed form is JSON".
 
 The generator is idempotent: it reads back committed objects, preserves their
 identifiers and `created` timestamps, and rewrites nothing when the source has not
