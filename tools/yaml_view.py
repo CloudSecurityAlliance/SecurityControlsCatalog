@@ -195,6 +195,21 @@ def to_yaml(obj, source=None):
     return header + body
 
 
+def resolve_target(source):
+    """The committed object a view writes to, refusing anything outside objects/.
+
+    `source` names the file this view writes to, and it arrives inside the file
+    rather than on the command line. An absolute path replaces ROOT outright and a
+    `..` walks out of it, so an unchecked value could name any writable path on the
+    machine. A view may only correct a committed object.
+    """
+    objects_dir = (ROOT / "objects").resolve()
+    target = (ROOT / source).resolve()
+    if not target.is_relative_to(objects_dir):
+        raise SystemExit(f"source must name a file under objects/, not {source!r}")
+    return target
+
+
 def coercions(view):
     """Values YAML resolved to something other than a string.
 
@@ -394,6 +409,19 @@ def self_test():
         ok(f"editing {prop} is refused — it names a different object",
            refuses(lambda p=prop: restore(dict(view, **{p: "other"}), control, "now")))
 
+    # `source` decides which file gets written and arrives inside the view, so it is
+    # the one field that could point the tool at something it has no business editing.
+    ok("an absolute source path is refused",
+       refuses(lambda: resolve_target("/tmp/evil.json")))
+    ok("a traversing source path is refused",
+       refuses(lambda: resolve_target("../../../tmp/evil.json")))
+    ok("escaping and re-entering the repo is refused",
+       refuses(lambda: resolve_target("objects/../README.md")))
+    ok("a path inside the repo but outside objects/ is refused",
+       refuses(lambda: resolve_target("schemas/x-control.json")))
+    ok("a path under objects/ is accepted",
+       resolve_target("objects/x-control/a.json").name == "a.json")
+
     # YAML's scalar resolution is the trap the format brings with it.
     ok("an unquoted `no` is caught as a boolean, not written as one",
        coercions({"status": False}) != [])
@@ -474,7 +502,7 @@ def main(argv):
     target = view.get("source")
     if not target:
         sys.exit("the view has no `source:` line saying which object it edits")
-    target = ROOT / target
+    target = resolve_target(target)
     if not target.exists():
         sys.exit(f"{target} does not exist. The view corrects a committed object; "
                  "a new object comes from a generator in this directory.")
