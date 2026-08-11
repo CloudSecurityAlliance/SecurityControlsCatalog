@@ -1012,7 +1012,38 @@ raise an issue rather than assume an answer.
    common properties (`type`, `spec_version`, `id`, `created`, `modified`).
 7. **`score` semantics.** The range, scale, and meaning of
    `x-control-assessment.score` are undefined.
-8. **Whether an SCC control and its source-framework controls are one object or
+8. **Whether a framework release and a domain are objects, so that framework-level
+   facts have somewhere to live.** Today a control names its framework as three
+   properties (`framework_namespace`, `framework`, `framework_version`) and its
+   domain as a plain string. That is deliberate for identity — those are the
+   components of the object's SecID, decomposed so provenance is queryable
+   (conventions § 3), and they have to stay on the instance for it to remain
+   readable when it is pulled out of a bundle on its own. But identity is not the
+   only thing a framework has. A framework release also has a title, a publisher,
+   attribution and redistribution terms, and **controlled vocabularies** — the set
+   of valid domains, the set of valid responsibility-ownership values — and there
+   is currently no object to attach any of that to. Adding a fact at framework
+   level means adding a property to every control in the framework, which is the
+   wrong shape for a fact that is true once.
+
+   Two consequences of the absence are already tracked here rather than open: the
+   free-text `domain` (open question 1, `additionalProperties` and open
+   vocabularies) is now guarded by a CI check that a framework's control-identifier
+   prefixes and domain names stay one-to-one, which catches a mistyped domain
+   without a vocabulary file; and whether the catalog should define unifying
+   vocabularies at all is open question 5.
+
+   What stays genuinely undecided is the object-shaped answer. Note that neither
+   `framework` nor `domain` is a type in SecID's vocabulary, so introducing them
+   would be a deliberate divergence rather than the alignment the rest of the type
+   set follows — permissible (conventions § 3: the two projects co-evolve and
+   neither is subordinate), but it is a decision to make explicitly, and it would
+   mint permanent identifiers. The likely shape if adopted is **additive**: keep
+   the flat provenance properties for identity and self-containment, add optional
+   references alongside them, and have CI require the two to agree. Raised from
+   review of the AICM conversion.
+
+9. **Whether an SCC control and its source-framework controls are one object or
    two.** A unified catalog control harmonizing CCM CEK-03 and an AICM equivalent
    could be a distinct `x-control` in the `scc` namespace related by `x-gap-mapping`, or
    the CCM object could simply gain SCC properties. The first keeps provenance

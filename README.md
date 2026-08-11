@@ -177,8 +177,11 @@ find objects -name '*.json' | xargs python3 -m stix2validator.scripts.stix2_vali
 ```
 
 CI runs both on every pull request, plus checks that each object agrees with its own
-path and SecID, that every reference resolves to a committed object, and that nothing
-held in quarantine was also published. See
+path and SecID, that every reference resolves to a committed object, that no committed
+object carries a property its schema does not define (so a typo cannot silently drop
+the text it was meant to hold), that a framework's domain names and control-identifier
+prefixes stay one-to-one (so a mistyped domain cannot quietly become a second real
+one), and that nothing held in quarantine was also published. See
 [`.github/workflows/validate.yml`](.github/workflows/validate.yml).
 
 ## How the custom types are declared

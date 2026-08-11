@@ -49,9 +49,20 @@ STIX-required common properties plus `extensions` are required — and, on
 optional, because per-property optionality is an open question in the narrative
 document. A schema that guessed would silently settle it.
 
-**`additionalProperties` is not restricted.** The model is research-grade and STIX
-permits custom properties, so an unknown property is not an error yet. The trade-off
-is that typos pass. Worth tightening once the model stabilises.
+**`additionalProperties` is not restricted, and tightening it here would be the wrong
+fix.** The model is research-grade and STIX 2.1 permits custom properties, so an
+unknown property is not an error in a *published contract* — setting
+`additionalProperties: false` would make these schemas stricter than STIX and reject a
+consumer's legitimate extension, which is the maximum-compatibility principle failing
+in the other direction.
+
+The trade-off it buys is that a typo passes: `speification` instead of `specification`
+silently drops the specification text and every per-object check reports no problem,
+because there is nothing to compare one object against. That is mitigated where it can
+be, without touching the contract — **CI holds what the catalog itself commits to the
+properties these schemas define**, since what a consumer may add and what the catalog
+may publish are different questions and only the second is ours to enforce. See
+[`../.github/workflows/validate.yml`](../.github/workflows/validate.yml).
 
 **Vocabularies are mostly unconstrained, on purpose.** `status` and `gap_level` are
 enums because their values are settled. Everything else is open — `control_type`,

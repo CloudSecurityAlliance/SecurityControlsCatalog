@@ -236,6 +236,127 @@ jobs:
           sys.exit(1 if bad else 0)
           PY
 
+      - name: Committed objects carry no property the schemas do not know
+        # The same typo class as the domain check below, one level up: `speification`
+        # instead of `specification` is individually valid, because the schemas leave
+        # `additionalProperties` unrestricted and a per-object check has nothing to
+        # compare against.
+        #
+        # The fix is not to restrict the schemas. STIX 2.1 permits custom properties,
+        # so `additionalProperties: false` would make the published contract stricter
+        # than STIX and reject a consumer's legitimate extension — the maximum
+        # compatibility principle failing in the other direction. The schemas stay
+        # permissive for consumers, and what the catalog *commits* is held to the
+        # properties its own schemas define. Those are different questions and only
+        # the second one is ours to enforce.
+        run: |
+          python3 - <<'PY'
+          import collections, glob, json, sys
+          # STIX 2.1 common properties (spec section 3.2). The schemas describe only
+          # what each custom type adds, so a common property is legitimate anywhere.
+          COMMON = {"type", "spec_version", "id", "created_by_ref", "created", "modified",
+                    "revoked", "labels", "confidence", "lang", "external_references",
+                    "object_marking_refs", "granular_markings", "extensions"}
+          # A relationship SRO's own required and optional properties.
+          REL = COMMON | {"relationship_type", "source_ref", "target_ref",
+                          "start_time", "stop_time", "description"}
+
+          defined = {}
+          for path in sorted(glob.glob("schemas/*.json")):
+              schema = json.load(open(path))
+              defined[schema["title"]] = set(schema.get("properties", {}))
+          if not defined:
+              sys.exit("no schemas found — check the glob")
+
+          bad, checked, skipped = [], 0, 0
+          for path in sorted(glob.glob("objects/**/*.json", recursive=True)):
+              obj = json.load(open(path))
+              stix_type = obj.get("type")
+              # A relationship is keyed by relationship_type, matching validate.py.
+              key = obj.get("relationship_type") if stix_type == "relationship" else stix_type
+              if key not in defined:
+                  # Standard STIX types the catalog does not extend — identity,
+                  # marking-definition, extension-definition, plain relationships.
+                  # The OASIS validator owns those.
+                  skipped += 1
+                  continue
+              checked += 1
+              allowed = defined[key] | (REL if stix_type == "relationship" else COMMON)
+              for prop in sorted(set(obj) - allowed):
+                  bad.append(f"{path}: {key} has no property {prop!r} in "
+                             f"schemas/{key}.json — a typo, or a schema change that "
+                             f"was not made")
+          print("\n".join(bad) if bad
+                else f"{checked} objects carry only properties their schema defines "
+                     f"({skipped} standard STIX objects skipped)")
+          sys.exit(1 if bad else 0)
+          PY
+
+      - name: A framework's domain names and control identifiers agree
+        # `domain` is free text, so a typo silently mints a second domain that looks
+        # like a real one — the failure mode you cannot see in a per-object schema
+        # check, because each object is individually valid.
+        #
+        # No vocabulary file is needed to catch it. Within a framework version the
+        # control-identifier prefix and the domain name are a bijection: MDS-01 is in
+        # Model Security and everything in Model Security is MDS-nn. Currently 18
+        # prefixes to 18 domains in both AICM and its questionnaire, exactly. So a
+        # mistyped domain breaks the bijection the moment it lands — that prefix now
+        # names two domains — and mistyping the *prefix* instead lands the control in
+        # a domain whose other members disagree with it.
+        #
+        # This checks the source data's internal consistency, which is the property
+        # a normalized domain object would have been introduced to guarantee. Whether
+        # the catalog should also carry framework- and domain-level objects, to give
+        # framework-level facts somewhere to live, is a separate and open question —
+        # see SCHEMA-STIX-OBJECT-EXTENSIONS.md.
+        run: |
+          python3 - <<'PY'
+          import collections, glob, json, sys
+          frameworks = collections.defaultdict(lambda: collections.defaultdict(set))
+          for path in sorted(glob.glob("objects/x-control/**/*.json", recursive=True)):
+              obj = json.load(open(path))
+              # Citation-only objects carry no domain: another publisher's structure is
+              # not restated here, so there is nothing to be consistent with.
+              if not obj.get("domain"):
+                  continue
+              key = (obj["framework_namespace"], obj["framework"],
+                     obj.get("framework_version"))
+              prefix = obj["control_identifier"].split("-")[0]
+              frameworks[key][prefix].add((obj["domain"], path))
+
+          bad = []
+          for key, prefixes in sorted(frameworks.items()):
+              label = "/".join(str(k) for k in key)
+              domains = collections.defaultdict(set)
+              for prefix, seen in prefixes.items():
+                  # Report the minority spellings against the majority one: a typo is
+                  # one object disagreeing with its domain, and naming every file that
+                  # got it right buries which file got it wrong.
+                  spellings = collections.defaultdict(list)
+                  for name, path in seen:
+                      spellings[name].append(path)
+                  if len(spellings) > 1:
+                      majority = max(spellings, key=lambda n: len(spellings[n]))
+                      for name, paths in sorted(spellings.items()):
+                          if name == majority:
+                              continue
+                          bad.append(
+                              f"{label}: {prefix} is {majority!r} in "
+                              f"{len(spellings[majority])} objects but {name!r} in "
+                              f"{', '.join(sorted(paths))}")
+                  for name in spellings:
+                      domains[name].add(prefix)
+              for name, used_by in sorted(domains.items()):
+                  if len(used_by) > 1:
+                      bad.append(f"{'/'.join(str(k) for k in key)}: domain {name!r} spans "
+                                 f"identifier prefixes {sorted(used_by)}")
+              print(f"{label}: {len(prefixes)} identifier prefixes, {len(domains)} domains")
+          print("\n".join(bad) if bad
+                else "every framework's domain names and control identifiers agree")
+          sys.exit(1 if bad else 0)
+          PY
+
       - name: References resolve to committed objects
         # The OASIS validator's --enforce-refs resolves references within a bundle.
         # Catalog objects are committed one per file and validated as a file list,
