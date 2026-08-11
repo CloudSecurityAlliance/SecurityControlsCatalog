@@ -13,6 +13,7 @@ home for that too.
 """
 
 import json
+import pathlib
 
 CONTROL_EXT = "extension-definition--8905b9e8-0738-435f-8989-83ea731db5ea"
 REGULATION_EXT = "extension-definition--a72496a3-08f8-43fb-88c9-479bb94e5e02"
@@ -66,6 +67,69 @@ KEY_ORDER = {
         "created_by_ref", "relationship_type", "source_ref", "target_ref",
     ],
 }
+
+
+# Which generator produces each committed object, keyed by the provenance a caller
+# can read off the object and its path.
+#
+# This exists because every object under objects/ is generated, without exception.
+# Nothing here is hand-authored content, so an edit made directly to a committed
+# object — including one made through the YAML view — is overwritten the next time
+# its generator runs. reconcile() preserves `id` and `created` and takes everything
+# else from the generator, by design.
+#
+# A tool that writes to a committed object therefore owes the caller the name of the
+# generator that will overwrite it, and the remedy. Keyed coarsely on purpose: the
+# useful answer is "which generator, and is the fix upstream or in the conversion",
+# not a per-property provenance table that would drift against the generators.
+#
+# CI requires every committed object to resolve through this map, so adding a
+# generator without adding its entry fails rather than silently reporting nothing.
+GENERATED_BY = {
+    ("x-control", "cloudsecurityalliance.org", "aicm"):
+        "tools/generate_aicm_controls.py",
+    ("x-control", "cloudsecurityalliance.org", "aicm-caiq"):
+        "tools/generate_aicm_caiq.py",
+    ("x-control", "iso.org", None): "tools/generate_aicm_standard_mappings.py",
+    ("x-control", "bsi.bund.de", None): "tools/generate_aicm_standard_mappings.py",
+    ("x-regulation", "europa.eu", None): "tools/generate_aicm_eu_mappings.py",
+    ("x-gap-mapping", None, "ai-act"): "tools/generate_aicm_eu_mappings.py",
+    ("x-gap-mapping", None, "iso"): "tools/generate_aicm_standard_mappings.py",
+    ("x-gap-mapping", None, "bsi-ai-c4"): "tools/generate_aicm_standard_mappings.py",
+}
+
+
+def provenance_key(obj, path):
+    """The (type, namespace, name) a GENERATED_BY lookup is keyed on.
+
+    A control and a regulation carry their provenance as properties. A gap mapping
+    does not — its own identity is the claim, not a framework — so its target comes
+    from the committed path, which CI already requires to agree with the object.
+    """
+    stix_type = obj.get("type")
+    if stix_type == "x-control":
+        return (stix_type, obj.get("framework_namespace"), obj.get("framework"))
+    if stix_type == "x-regulation":
+        return (stix_type, obj.get("regulation_namespace"), obj.get("regulation"))
+    if stix_type == "x-gap-mapping":
+        parts = pathlib.PurePath(path).parts
+        # objects/x-gap-mapping/<namespace>/<framework>/<version>/<target>/<id>.json
+        return (stix_type, None, parts[5] if len(parts) > 6 else None)
+    return (stix_type, None, None)
+
+
+def generated_by(obj, path):
+    """The generator that will overwrite this object, or None if it is not known.
+
+    Falls back to a namespace-wide entry, so a new ISO edition or BSI standard is
+    covered without touching the map.
+    """
+    stix_type, namespace, name = provenance_key(obj, path)
+    for key in ((stix_type, namespace, name), (stix_type, namespace, None),
+                (stix_type, None, name)):
+        if key in GENERATED_BY:
+            return GENERATED_BY[key]
+    return None
 
 
 def order(obj, key_order):

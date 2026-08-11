@@ -143,7 +143,17 @@ silently loses a carriage return in a publisher's text would be worse than no vi
 
 It corrects committed objects; it does not author new ones. Identifiers are minted once,
 and catalog content comes from published source releases through the generators in
-[`tools/`](tools/). Reasoning: see
+[`tools/`](tools/).
+
+**An edit written back here is not durable, and the tool says so.** Nothing under
+`objects/` is hand-authored — every object is generated, and a regeneration takes all
+content from the generator — so a write names the generator that will overwrite it and
+where the durable fix belongs: **upstream** if the published source is wrong (the catalog
+does not tidy a publisher's data in transit), or in the **generator** if the conversion
+is wrong. The view is for reading, reviewing, and seeing a correction; it is not a place
+to hold one.
+
+Reasoning: see
 [`DESIGN-RATIONALE-STIX-EXTENSIONS.md`](DESIGN-RATIONALE-STIX-EXTENSIONS.md) § "Why the
 committed form is JSON".
 

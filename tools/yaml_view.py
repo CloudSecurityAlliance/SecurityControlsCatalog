@@ -64,6 +64,26 @@ Afterwards it prints which properties were added, changed, or removed. A removal
 legal — the schemas require few properties — but it is the edit most easily made by
 accident, and an unreported one looks identical to no edit at all.
 
+## An edit here is not durable, and a write says so
+
+**Nothing under `objects/` is hand-authored.** Every committed object is produced by a
+generator in this directory, and `catalog.reconcile` preserves only `id` and `created`
+while taking all content from the generator. So an edit written back through this tool
+is overwritten the next time its generator runs — silently, and looking exactly like no
+edit at all.
+
+That makes the view a **second writer** with no precedence over the first, which is a
+real source-of-truth problem rather than a cosmetic one: a contributor who corrects a
+typo and watches it vanish a release later has been misled by this tool, which is worse
+than not having it.
+
+So every write names the generator that will overwrite it and both remedies — the fix
+is upstream if the publisher's data is wrong (the catalog does not tidy a publisher's
+data in transit, see CONVENTIONS-STIX-MODELING.md section 10), and in the generator if
+the conversion is wrong. Editing here stays useful for seeing the corrected object and
+for checking what a generator change should produce; it is not a way to hold a
+correction.
+
 ## Why --check is the load-bearing part
 
 A view that loses anything is worse than no view, and the risk is not
@@ -92,7 +112,7 @@ except ImportError:
     sys.exit("needs PyYAML: pip install pyyaml")
 
 from catalog import (CSA_IDENTITY, EXTENSION_FOR_TYPE, KEY_ORDER, TLP_WHITE,
-                     order, reconcile)
+                     generated_by, order, reconcile)
 from validate import load_schemas, validate_objects
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -431,6 +451,20 @@ def self_test():
     ok("a null is caught", coercions({"domain": None}) != [])
     ok("ordinary text is not flagged", coercions({"name": "Training Pipeline Security"}) == [])
 
+    # An edit here is never durable on its own, and a tool that lets it look durable
+    # has misled the person using it.
+    note = durability_note(control, "objects/x-control/cloudsecurityalliance.org/"
+                                    "aicm/1.1.0/TST-01.json")
+    ok("a write says the edit will be overwritten", "overwritten" in note)
+    ok("a write names the generator that will overwrite it",
+       "tools/generate_aicm_controls.py" in note)
+    ok("a write gives both remedies, upstream and conversion",
+       "upstream" in note and "fix the generator" in note)
+    unknown = durability_note(dict(control, framework_namespace="nowhere.example"),
+                              "objects/x-control/nowhere.example/x/1/A.json")
+    ok("an unmapped framework still warns, without naming a generator",
+       "a generator in tools/" in unknown)
+
     # The schema is the contract, and --write applies it before writing.
     schemas = load_schemas()
     ok("a value the schema rejects is refused before writing",
@@ -531,7 +565,38 @@ def main(argv):
             print(f"  added   {prop}")
         else:
             print(f"  changed {prop}")
+    print()
+    print(durability_note(obj, target))
     return 0
+
+
+def durability_note(obj, path):
+    """Why this edit is not durable on its own, and where the durable fix is.
+
+    Every object under objects/ is generated. reconcile() preserves `id` and
+    `created` and takes all content from the generator, so an edit made here is
+    overwritten the next time that generator runs — silently, and looking exactly
+    like no edit at all. A contributor who corrects a typo and watches it vanish a
+    release later has been misled by this tool, which is worse than not having it.
+
+    So a write says so. The two remedies are genuinely different and only the caller
+    knows which applies: if the publisher's data is wrong the fix is upstream, and
+    the catalog deliberately does not tidy a publisher's data in transit
+    (CONVENTIONS-STIX-MODELING.md section 10); if the conversion is wrong the fix is
+    the generator.
+    """
+    generator = generated_by(obj, os.path.relpath(path, ROOT))
+    named = f"by {generator}" if generator else "by a generator in tools/"
+    return (
+        f"NOTE: this object is generated {named}, and an edit here is overwritten\n"
+        f"the next time that generator runs. Nothing under objects/ is hand-authored.\n"
+        f"To make this correction durable:\n"
+        f"  - if the published source is wrong, raise it there — the catalog does not\n"
+        f"    tidy a publisher's data in transit (conventions section 10), so the fix\n"
+        f"    belongs upstream and the conversion follows it;\n"
+        f"  - if the conversion is wrong, fix the generator and regenerate.\n"
+        f"Editing here is still useful for seeing the corrected object, and for\n"
+        f"checking what a generator change should produce.")
 
 
 if __name__ == "__main__":

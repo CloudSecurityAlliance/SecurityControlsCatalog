@@ -224,6 +224,23 @@ releases through the generators in `tools/`. The view is for reviewing and corre
 what is already committed — which is what a contributor actually does — not for adding
 a control by hand.
 
+**And a correction made here is not durable, which the tool states on every write.**
+Nothing under `objects/` is hand-authored: every object is generated, and
+`catalog.reconcile` preserves only `id` and `created` while taking all content from the
+generator. A view that can write is therefore a **second writer with no precedence over
+the first** — a genuine single-source-of-truth problem, and one introduced by the view
+itself rather than by the model it renders. The authoritative source for catalog content
+is the published release the generator reads; the view is a rendering of the derived
+copy.
+
+Leaving that implicit would be the worse failure: a contributor who fixes a typo and
+watches it disappear a release later has been misled by the tool. So a write names the
+generator that will overwrite it and both remedies — **upstream** if the publisher's data
+is wrong (section 10 forbids tidying it in transit, so the fix belongs there and the
+conversion follows), or **the generator** if the conversion is wrong. Whether the catalog
+should instead be able to *hold* a correction across regeneration — an overlay carried
+separately from the derived objects — is a real design question and is tracked as one.
+
 **The consequence for contribution.** A contributor does not need to read or write STIX
 to correct catalog content: they read a YAML rendering, edit it, and write it back, and
 CI checks the result against the schemas. The tooling is a convenience for contributors,
