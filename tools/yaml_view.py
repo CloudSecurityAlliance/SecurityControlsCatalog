@@ -41,6 +41,29 @@ control by hand.
 It also refuses a property the type's schema does not define. A new property is a
 schema change and belongs in a schema change, not in an edited view.
 
+## What --write checks before it writes anything
+
+The point of the view is that a person edits it, so the edit is exactly where a bad
+value enters. Nothing is written until all of these pass:
+
+- the file parses as YAML — reported with line and column, because indentation is
+  significant and a whitespace slip is a syntax error rather than a cosmetic one;
+- no value was resolved to a non-string by YAML's scalar rules. This is the trap the
+  format brings with it: `no`, `on`, `null`, `~`, a bare version number, an unquoted
+  timestamp are each plain text to the person typing and a bool, None, float, or date
+  to the loader. Reported in the terms that fix it (quote it), because *"True is not
+  of type 'string'"* does not help someone who typed `no`;
+- the view's `type` matches the object committed at that path;
+- no property that decides the object's path or SecID has changed — editing one names
+  a *different* object, which a generator mints with its own identifier rather than a
+  view producing by renaming this one;
+- the rebuilt object satisfies its JSON Schema, checked with the same code path as
+  `tools/validate.py`.
+
+Afterwards it prints which properties were added, changed, or removed. A removal is
+legal — the schemas require few properties — but it is the edit most easily made by
+accident, and an unreported one looks identical to no edit at all.
+
 ## Why --check is the load-bearing part
 
 A view that loses anything is worse than no view, and the risk is not
@@ -70,6 +93,7 @@ except ImportError:
 
 from catalog import (CSA_IDENTITY, EXTENSION_FOR_TYPE, KEY_ORDER, TLP_WHITE,
                      order, reconcile)
+from validate import load_schemas, validate_objects
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SCHEMA_DIR = ROOT / "schemas"
@@ -93,6 +117,18 @@ STIX_COMMON = frozenset((
 # the identity, marking-definition, and extension-definition objects are machinery
 # with one instance each.
 VIEWABLE = tuple(EXTENSION_FOR_TYPE)
+
+# The properties that decide an object's path and its SecID. Editing one does not
+# correct an object, it names a different one — and that object has to be minted by
+# a generator, with its own identifier, rather than produced by renaming this one.
+# So a view may change content and must not change these. x-gap-mapping has no such
+# tuple: its path derives from the control it is asserted about.
+IDENTITY_PROPERTIES = {
+    "x-control": ("framework_namespace", "framework", "framework_version",
+                  "control_identifier"),
+    "x-regulation": ("regulation_namespace", "regulation", "clause_identifier"),
+    "x-gap-mapping": ("source_ref",),
+}
 
 
 def schema_properties(stix_type):
@@ -159,16 +195,60 @@ def to_yaml(obj, source=None):
     return header + body
 
 
-def restore(view, committed, now):
+def coercions(view):
+    """Values YAML resolved to something other than a string.
+
+    This is the failure the format invites. `no`, `yes`, `on`, `off`, `null`, `~`, a
+    leading-zero number, a bare version, an unquoted timestamp — each is a plain
+    string to the person typing it and a bool, None, int, float, or date to the
+    loader. The schema does reject most of them, but "True is not of type 'string'"
+    does not tell someone who typed `no` what to do, so they are reported here in
+    the terms that fix them.
+    """
+    found = []
+    for key, value in sorted(view.items()):
+        if isinstance(value, bool) or value is None or isinstance(value, (int, float)):
+            found.append(f"{key}: {value!r} — YAML read this as "
+                         f"{type(value).__name__}; quote it to keep it text")
+        elif isinstance(value, datetime.date):
+            found.append(f"{key}: {value!r} — YAML read this as a date; "
+                         "quote it to keep the published timestamp exactly")
+    return found
+
+
+def restore(view, committed, now, schemas=None):
     """Rebuild the full STIX object from a view plus the committed object it edits.
 
     The generated properties come back from three places: constants for the whole
     catalog, the type for the extension, and the committed file for the identity
     and timestamps. Nothing about them is inferred from the view.
+
+    Pass `schemas` to validate the result before it is returned. --write always
+    does; the round-trip check does not, because it compares against a committed
+    object that CI validates separately.
     """
     stix_type = view.get("type")
     if stix_type not in VIEWABLE:
         raise SystemExit(f"view has type {stix_type!r}; expected one of {', '.join(VIEWABLE)}")
+    if committed.get("type") != stix_type:
+        raise SystemExit(
+            f"the view says type {stix_type!r} but {committed.get('type')!r} is "
+            f"committed at that path. A view corrects one object; it cannot turn it "
+            f"into another type — that object is minted by a generator.")
+
+    changed = [p for p in IDENTITY_PROPERTIES.get(stix_type, ())
+               if view.get(p) != committed.get(p)]
+    if changed:
+        raise SystemExit(
+            f"{stix_type}: the view changes {changed}, which decide this object's path "
+            f"and SecID. Changing one names a different object, and that object is "
+            f"minted by a generator with its own identifier rather than by renaming "
+            f"this one.")
+
+    wrong_type = coercions(view)
+    if wrong_type:
+        raise SystemExit("YAML resolved these to non-text values:\n  "
+                         + "\n  ".join(wrong_type))
 
     defined = schema_properties(stix_type)
     if defined is not None:
@@ -191,7 +271,14 @@ def restore(view, committed, now):
         "extensions": {EXTENSION_FOR_TYPE[stix_type]: {"extension_type": "new-sdo"}},
         "created_by_ref": CSA_IDENTITY,
     })
-    return order(obj, KEY_ORDER[stix_type])
+    obj = order(obj, KEY_ORDER[stix_type])
+
+    if schemas is not None:
+        _, _, failures = validate_objects([obj], schemas, "edited view")
+        if failures:
+            raise SystemExit("the edited view does not satisfy "
+                             f"schemas/{stix_type}.json:\n" + "\n".join(failures))
+    return obj
 
 
 def check(paths):
@@ -298,6 +385,32 @@ def self_test():
        refuses(lambda: project({"type": "relationship", "id": "relationship--x"})))
     ok("an unknown type is refused",
        refuses(lambda: restore({"type": "x-nonesuch"}, control, "now")))
+    ok("a view whose type contradicts the committed object is refused",
+       refuses(lambda: restore(dict(view, type="x-regulation"), control, "now")))
+
+    # Editing a property that decides the path and SecID renames the object, which
+    # would write one object's content over another's identifier.
+    for prop in ("framework", "framework_version", "control_identifier"):
+        ok(f"editing {prop} is refused — it names a different object",
+           refuses(lambda p=prop: restore(dict(view, **{p: "other"}), control, "now")))
+
+    # YAML's scalar resolution is the trap the format brings with it.
+    ok("an unquoted `no` is caught as a boolean, not written as one",
+       coercions({"status": False}) != [])
+    ok("an unquoted timestamp is caught as a date",
+       coercions({"valid_from": datetime.date(2026, 6, 22)}) != [])
+    ok("a bare number is caught", coercions({"framework_version": 1.1}) != [])
+    ok("a null is caught", coercions({"domain": None}) != [])
+    ok("ordinary text is not flagged", coercions({"name": "Training Pipeline Security"}) == [])
+
+    # The schema is the contract, and --write applies it before writing.
+    schemas = load_schemas()
+    ok("a value the schema rejects is refused before writing",
+       refuses(lambda: restore(dict(view, status="alive"), control, "now", schemas=schemas)))
+    ok("a valid edit passes the schema",
+       restore(dict(view, domain="Logging and Monitoring"), control,
+               "2026-08-11T00:00:00.000Z", schemas=schemas)["domain"]
+       == "Logging and Monitoring")
 
     bad = [label for label, passed in results if not passed]
     for label, passed in results:
@@ -347,7 +460,17 @@ def main(argv):
         print(to_yaml(json.loads(path.read_text()), source=path), end="")
         return 0
 
-    view = yaml.safe_load(path.read_text())
+    try:
+        view = yaml.safe_load(path.read_text())
+    except yaml.YAMLError as err:
+        # Indentation is significant, so a whitespace slip is a syntax error rather
+        # than a cosmetic one. Report where, since that is the whole difficulty.
+        where = getattr(err, "problem_mark", None)
+        sys.exit(f"{path} is not valid YAML"
+                 + (f" at line {where.line + 1}, column {where.column + 1}" if where else "")
+                 + f":\n{getattr(err, 'problem', err)}")
+    if not isinstance(view, dict):
+        sys.exit(f"{path} does not hold a single object")
     target = view.get("source")
     if not target:
         sys.exit("the view has no `source:` line saying which object it edits")
@@ -359,12 +482,27 @@ def main(argv):
     committed = json.loads(target.read_text())
     now = args.now or datetime.datetime.now(
         datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
-    obj, state = reconcile(restore(view, committed, now), target)
+    # Validated against the schema before anything is written: the point of the view
+    # is that a person edits it, so the edit is exactly where a bad value enters.
+    rebuilt = restore(view, committed, now, schemas=load_schemas())
+    obj, state = reconcile(rebuilt, target)
     if state == "unchanged":
         print(f"{os.path.relpath(target, ROOT)}: unchanged")
         return 0
     target.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n")
     print(f"{os.path.relpath(target, ROOT)}: {state}")
+    # Say what moved. A property can be legitimately removed — the schema requires
+    # few of them — but a removal is the edit most easily made by accident, and an
+    # unreported one looks identical to no edit at all.
+    for prop in sorted(set(committed) | set(obj)):
+        if prop == "modified" or committed.get(prop) == obj.get(prop):
+            continue
+        if prop not in obj:
+            print(f"  removed {prop}")
+        elif prop not in committed:
+            print(f"  added   {prop}")
+        else:
+            print(f"  changed {prop}")
     return 0
 
 
