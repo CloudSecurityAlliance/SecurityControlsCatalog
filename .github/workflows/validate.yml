@@ -236,6 +236,62 @@ jobs:
           sys.exit(1 if bad else 0)
           PY
 
+      - name: Committed objects carry no property the schemas do not know
+        # The same typo class as the domain check below, one level up: `speification`
+        # instead of `specification` is individually valid, because the schemas leave
+        # `additionalProperties` unrestricted and a per-object check has nothing to
+        # compare against.
+        #
+        # The fix is not to restrict the schemas. STIX 2.1 permits custom properties,
+        # so `additionalProperties: false` would make the published contract stricter
+        # than STIX and reject a consumer's legitimate extension — the maximum
+        # compatibility principle failing in the other direction. The schemas stay
+        # permissive for consumers, and what the catalog *commits* is held to the
+        # properties its own schemas define. Those are different questions and only
+        # the second one is ours to enforce.
+        run: |
+          python3 - <<'PY'
+          import collections, glob, json, sys
+          # STIX 2.1 common properties (spec section 3.2). The schemas describe only
+          # what each custom type adds, so a common property is legitimate anywhere.
+          COMMON = {"type", "spec_version", "id", "created_by_ref", "created", "modified",
+                    "revoked", "labels", "confidence", "lang", "external_references",
+                    "object_marking_refs", "granular_markings", "extensions"}
+          # A relationship SRO's own required and optional properties.
+          REL = COMMON | {"relationship_type", "source_ref", "target_ref",
+                          "start_time", "stop_time", "description"}
+
+          defined = {}
+          for path in sorted(glob.glob("schemas/*.json")):
+              schema = json.load(open(path))
+              defined[schema["title"]] = set(schema.get("properties", {}))
+          if not defined:
+              sys.exit("no schemas found — check the glob")
+
+          bad, checked, skipped = [], 0, 0
+          for path in sorted(glob.glob("objects/**/*.json", recursive=True)):
+              obj = json.load(open(path))
+              stix_type = obj.get("type")
+              # A relationship is keyed by relationship_type, matching validate.py.
+              key = obj.get("relationship_type") if stix_type == "relationship" else stix_type
+              if key not in defined:
+                  # Standard STIX types the catalog does not extend — identity,
+                  # marking-definition, extension-definition, plain relationships.
+                  # The OASIS validator owns those.
+                  skipped += 1
+                  continue
+              checked += 1
+              allowed = defined[key] | (REL if stix_type == "relationship" else COMMON)
+              for prop in sorted(set(obj) - allowed):
+                  bad.append(f"{path}: {key} has no property {prop!r} in "
+                             f"schemas/{key}.json — a typo, or a schema change that "
+                             f"was not made")
+          print("\n".join(bad) if bad
+                else f"{checked} objects carry only properties their schema defines "
+                     f"({skipped} standard STIX objects skipped)")
+          sys.exit(1 if bad else 0)
+          PY
+
       - name: A framework's domain names and control identifiers agree
         # `domain` is free text, so a typo silently mints a second domain that looks
         # like a real one — the failure mode you cannot see in a per-object schema
