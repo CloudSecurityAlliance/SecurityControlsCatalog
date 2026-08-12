@@ -115,7 +115,7 @@ python3 tools/generate_aicm_controls.py --self-test    # text is carried untouch
 python3 tools/generate_aicm_caiq.py --self-test        # same, for questions
 python3 tools/generate_aicm_eu_mappings.py --self-test # citation grammar
 python3 tools/generate_aicm_standard_mappings.py --self-test  # BSI/ISO citation grammar
-python3 tools/generate_aicm_controls.py <aicm.json>    # regenerate AICM controls
+python3 tools/generate_aicm_controls.py <aicm.json>    # regenerate AICM controls (see below for <aicm.json>)
 python3 tools/generate_aicm_caiq.py <aicm-caiq.json>   # regenerate CAIQ questions + links
 python3 tools/generate_aicm_eu_mappings.py <aicm.json> # regenerate EU AI Act provisions + mappings
 python3 tools/generate_aicm_standard_mappings.py <aicm.json>  # BSI + ISO targets and mappings
@@ -139,7 +139,19 @@ committed form is JSON".
 The generator is idempotent: it reads back committed objects, preserves their
 identifiers and `created` timestamps, and rewrites nothing when the source has not
 changed. An identifier is minted once and then permanent — never re-mint one a
-committed file already holds.
+committed file already holds. Verified in `generate_aicm_controls.py --self-test`
+against a fixture rather than asserted, since CI cannot reach a real release.
+
+**Where `<aicm.json>` comes from.** It is the normalised extraction committed in
+[`CloudSecurityAlliance-DataSets/dataset-public-laws-regulations-standards`](https://github.com/CloudSecurityAlliance-DataSets/dataset-public-laws-regulations-standards)
+under `control/cloudsecurityalliance.org/aicm/<version>/`, alongside the upstream
+workbook, the extraction scripts, and metadata recording the source URL and licence.
+**That repository owns extraction; this one owns the STIX rendering** — a problem in how
+the workbook was read belongs there, a problem in how an object was built belongs here.
+Note that two different AICM datasets are published upstream as "v1.1", distinguishable
+only by workbook filename and a cell-A1 stamp; this catalog is built from the one
+stamping **1.1.0**, which is why every SecID carries `aicm@1.1.0` rather than `@1.1`.
+See the README there before assuming a version alias resolves.
 
 Needs `jsonschema`. `tools/validate.py` checks **only** the custom types — it is
 not a STIX conformance checker. For that, layer the OASIS validator on top:
