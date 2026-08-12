@@ -48,7 +48,7 @@ No build system or package manager. Validation exists (needs `jsonschema`):
 - `python3 tools/validate.py --self-test`: check the schemas in `schemas/` themselves.
 - `python3 tools/validate.py bundle.json`: check catalog objects against those schemas.
 - `python3 tools/generate_aicm_controls.py --self-test`: check that a publisher's text is carried through untouched.
-- `python3 tools/generate_aicm_controls.py <aicm.json>`: regenerate AICM controls from a published release. Idempotent — it preserves committed identifiers and rewrites nothing when the source is unchanged.
+- `python3 tools/generate_aicm_controls.py <aicm.json>`: regenerate AICM controls from a published release. The `<aicm.json>` is the normalised extraction committed in [`dataset-public-laws-regulations-standards`](https://github.com/CloudSecurityAlliance-DataSets/dataset-public-laws-regulations-standards) under `control/cloudsecurityalliance.org/aicm/<version>/` — that repository owns extraction from the upstream workbook, this one owns the STIX rendering. Idempotent — it preserves committed identifiers and rewrites nothing when the source is unchanged.
 - `python3 tools/generate_aicm_caiq.py <aicm-caiq.json>`: regenerate the CAIQ questions and their `derived-from` links. Run it after the matching controls exist, since each link names a committed control.
 - `python3 tools/generate_aicm_eu_mappings.py <aicm.json>`: regenerate the EU AI Act provisions and AICM's gap mappings to them. Rewrites `quarantine/` with whatever it could not convert.
 - `python3 tools/generate_aicm_standard_mappings.py <aicm.json>`: the same for the BSI and ISO columns, whose targets are citation-only `x-control` objects.

@@ -108,7 +108,7 @@ objects/x-regulation/europa.eu/ai-act/art-17.1.a.json
 objects/x-gap-mapping/cloudsecurityalliance.org/aicm/1.1.0/ai-act/MDS-01.json
 ```
 
-Everything is generated from published source releases by the scripts in
+Everything is generated from a published source extraction by the scripts in
 [`tools/`](tools/) and committed rather than built at publish time, because the
 identifiers have to be stable across releases. The generators are idempotent: run one
 against an unchanged source and it writes nothing; run it against a corrected source
@@ -156,6 +156,44 @@ to hold one.
 Reasoning: see
 [`DESIGN-RATIONALE-STIX-EXTENSIONS.md`](DESIGN-RATIONALE-STIX-EXTENSIONS.md) § "Why the
 committed form is JSON".
+
+### Where the source comes from
+
+Objects are generated from a **specific published extraction**, and every step is public,
+so the whole chain is reproducible without anything from CSA that you cannot download:
+
+```
+CSA artifact page  ->  AICM workbook (.xlsx)
+      |
+      |   parse_aicm.py / parse_caiq.py        <- dataset-public-laws-regulations-standards
+      v
+  aicm-1.1.0.json  (normalised, ~5.5 MB)
+      |
+      |   tools/generate_aicm_*.py             <- this repository
+      v
+  objects/
+```
+
+The normalised JSON the generators read is committed in
+[`CloudSecurityAlliance-DataSets/dataset-public-laws-regulations-standards`](https://github.com/CloudSecurityAlliance-DataSets/dataset-public-laws-regulations-standards)
+under `control/cloudsecurityalliance.org/aicm/1.1.0/`, alongside the upstream workbook it
+was extracted from, the extraction scripts, a changelog, and a metadata file recording the
+source URL and the licence terms. **That repository owns extraction; this one owns the STIX
+rendering** — so a problem in how the workbook was read belongs there, and a problem in how
+an object was built belongs here.
+
+**The version matters more than it looks.** Two different AICM datasets are published
+upstream under the label "v1.1", distinguishable only by the workbook filename and a stamp
+in cell A1 of every worksheet — see that repository's
+`control/cloudsecurityalliance.org/aicm/README.md` for the details. This catalog is built
+from the extraction that stamps **1.1.0**, and every object says so in its SecID:
+
+```
+secid:control/cloudsecurityalliance.org/aicm@1.1.0#MDS-01
+```
+
+A bare "AICM v1.1" does not identify an extraction. `aicm@1.1.0` does, which is what makes
+a mapping claim in this catalog resolvable to the exact data it was derived from.
 
 ### Checking it yourself
 
