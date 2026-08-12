@@ -12,12 +12,19 @@ tags: [security-controls-catalog, stix, oscal, format, design-rationale]
 
 ## 1. Purpose and scope
 
-This document outlines the technical rationale behind the format and distribution choices proposed for the CSA Security Controls Catalog ([CloudSecurityAlliance/SecurityControlsCatalog](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog)). It addresses three questions:
+This document outlines the technical rationale behind the format and distribution choices proposed for the CSA Security Controls Catalog ([CloudSecurityAlliance/SecurityControlsCatalog](https://github.com/CloudSecurityAlliance/SecurityControlsCatalog)). It addresses these questions, in the order they depend on each other:
 
-1. Why STIX 2.1 with custom STIX Domain Object (SDO) extensions as the back-end representation?
-2. Why not OSCAL — or CSAF, OSV, RDF, or a purpose-built custom format?
-3. What formats and channels should the catalog be published through?
-4. Why the committed form is JSON rather than YAML, and how a person reads and corrects it.
+1. Why the catalog has a **back-end representation** at all, distinct from the formats it publishes.
+2. Why STIX 2.1 with custom STIX Domain Object (SDO) extensions fills that role.
+3. Why not OSCAL — or plain JSON/YAML, CSAF, OSV, RDF, or a purpose-built custom format?
+4. What formats and channels should the catalog be published through?
+5. Why the committed form is JSON rather than YAML, and how a person reads and corrects it.
+
+**Question 1 is the one that matters most and was previously assumed rather than
+argued.** Every other answer here is downstream of it, and a reader who takes STIX to
+be *one of* the catalog's output formats — rather than the source the outputs are
+generated from — will find the rest of this document arbitrary. Section 2 states the
+case.
 
 The arguments here are technical. Specific deliverables, sequencing, and governance are out of scope.
 
@@ -27,6 +34,7 @@ The catalog's data model is exploratory and research-grade. Schemas described in
 
 These are the principles the catalog's design answers to, and that contributions must respect — violating one is a category error rather than a style nit. **This section is the single home for them**; the other design documents and the repository's context files point here rather than restating them.
 
+- **One canonical representation; every published format is a projection of it.** The catalog holds its content once, in a form chosen to be a **superset of what any output needs**, and each published format is generated from that one source. This is the principle the rest of the design hangs on, and the one most easily lost: a format that *carries* the catalog is not the same kind of thing as a format the catalog is *published in*. Adding an output must be a projection — cheap, mechanical, and lossless in the direction it flows — never a second place where content is authored or semantics are decided. A design in which two formats are both authoritative has no canonical layer at all, and every pair of formats then needs its own conversion and its own answer to what a control or a mapping *means*.
 - **Minimal invention.** Introduce new object types or properties only where CSA-CC concepts cannot reasonably be expressed with existing STIX 2.1 objects, vocabularies, or relationships. Standard STIX is preferred over bespoke structures, even at the cost of some CSA-specific convenience.
 - **Alignment over replacement.** This work does not replace existing control-modeling efforts — OSCAL in particular — and is not a universal GRC schema. It is an interoperability layer. Do not propose designs that compete with OSCAL; propose ones that interoperate with it.
 - **Maximum compatibility with existing tools.** Catalog objects are valid STIX 2.1 and are intended to flow unchanged through existing STIX/TAXII servers, CTI platforms, graph databases, and analysis pipelines. Nothing changes the STIX wire format, versioning model, or transport. If a design would require a consumer to special-case the catalog before it can parse or route the data, the design is wrong.
@@ -44,7 +52,56 @@ These are the principles the catalog's design answers to, and that contributions
 
 The *modeling rules* that follow from these principles — how relationships are expressed, how new types are declared, how identifiers work — are conventions rather than principles, and live in [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md).
 
-## 2. The format choice: STIX 2.1 with custom SDOs
+## 2. Why a back-end representation at all
+
+Before *which* format, the prior question: why does the catalog have a representation
+that is not one of the formats it ships?
+
+Because the catalog's job is to serve audiences that want incompatible things. A GRC
+team wants a spreadsheet. An auditor wants OSCAL. A CTI platform wants a STIX graph it
+can join to ATT&CK. A developer wants plain JSON with a schema. A reviewer wants
+something readable in a pull request. A STAR submission wants a CAIQ workbook. Those
+are not variations of one file; they are genuinely different shapes.
+
+There are two ways to serve them.
+
+**Without a canonical layer**, each output is produced from whatever source is nearest
+— usually the authoring artifact, sometimes another output. Every output path then has
+to answer the modelling questions independently: what identifies a control, what a
+mapping asserts, how a framework version relates to its predecessor. Consistency
+between outputs becomes a matter of care rather than construction, and the number of
+conversions to maintain grows with the number of *pairs* of formats rather than with
+the number of formats.
+
+**With a canonical layer**, content is held once in a representation chosen to be a
+superset of what every output needs, and each output is a projection of it. The
+modelling questions are answered once, in one place, and every format inherits the
+answers. Adding a format costs one projection. Correcting a control corrects it
+everywhere at once, because there is only one place it exists.
+
+The observable symptom of the first arrangement is that **some outputs carry less than
+others, and the gaps are not deliberate**. When a body of control content is published
+in several machine-readable formats and one of them is missing the mappings while the
+others have them, that is not a decision about audiences — it is one output path having
+hit a modelling question the others did not have to answer, with no shared layer in
+which to answer it once.
+
+This is also why the back end has to be a **superset**, not a compromise. If the
+canonical form can express less than an output needs, that output either loses
+information or acquires its own extensions — and it becomes a second authoring surface,
+which is the thing being avoided. A back-end format is therefore chosen for expressive
+headroom and for whether its semantics can carry the *union* of what the outputs
+require, not for whether it is the most convenient format to read.
+
+**The practical consequence, and the one most often mistaken:** the back-end format
+being *also* published is incidental. Publishing STIX is useful, because a real
+ecosystem consumes STIX directly and it costs nothing to offer the source form. But
+STIX's role here is not "one of the output formats, which happens to be first." Treating
+it as one candidate output among peers — an alternative to OSCAL or to YAML — is a
+different design: it removes the canonical layer and puts every format back to solving
+the modelling questions on its own.
+
+## 3. The format choice: STIX 2.1 with custom SDOs
 
 The proposed back-end representation for catalog content is **STIX 2.1**, with a small set of custom STIX Domain Object types, named to mirror the SecID type vocabulary:
 
@@ -85,9 +142,9 @@ The catalog uses that mechanism rather than the STIX 2.0-era practice of inventi
 
 **AI-consumable.** STIX is JSON-native, schema-published, and every object is identifiable by a globally unique ID. AI agents and graph stores can parse and reason about STIX content without bespoke adapters.
 
-## 3. Why not OSCAL as the back-end format?
+## 4. Why not OSCAL as the back-end format?
 
-**OSCAL is a first-class publication format for the catalog.** Section 5 includes OSCAL output as one of the recommended publication formats. OSCAL is excellent at what it was designed for: machine-readable system security plans, component definitions, assessment results, and profile tailoring. Compliance and audit consumers should receive OSCAL.
+**OSCAL is a first-class publication format for the catalog.** Section 6 includes OSCAL output as one of the recommended publication formats. OSCAL is excellent at what it was designed for: machine-readable system security plans, component definitions, assessment results, and profile tailoring. Compliance and audit consumers should receive OSCAL.
 
 OSCAL is not, however, the right choice as the catalog's back-end representation. Three reasons:
 
@@ -99,7 +156,7 @@ OSCAL is not, however, the right choice as the catalog's back-end representation
 
 This is the application of *Alignment over replacement*: the catalog's data model does not replace OSCAL. It serves as an interoperability layer that can produce OSCAL output for compliance audiences while remaining queryable by CTI tools, threat-intelligence platforms, and AI agents.
 
-## 4. Why not a purpose-built custom format?
+## 5. Why not a purpose-built custom format?
 
 A custom format would offer total flexibility — and discard every advantage that comes with using a standard:
 
@@ -112,19 +169,46 @@ The *Minimal invention* principle (§1) rules this out: where standard STIX SDOs
 
 Other formats that have been considered and not adopted as the back-end representation:
 
+- **Plain JSON or YAML with a published schema** — the most frequently proposed
+  alternative, and the one this section previously failed to address. It is entirely
+  adequate as a *publication* format, and is listed as one in section 6. It is not a
+  candidate for the canonical layer, because **a serialization is not a model.** JSON
+  and YAML supply syntax and, with a schema, field validation; they supply no
+  relationship primitive, no identity scheme, no mechanism for declaring a new object
+  type so a consumer can discover what it means, and no versioning model. Each of those
+  would have to be invented — at which point the result is a purpose-built custom
+  format wearing a familiar syntax, and every cost listed above applies. The distinction
+  is not JSON-versus-STIX: STIX 2.1 *is* JSON. It is whether the catalog also inherits a
+  standards-body model, or re-derives one.
+
+  Two consequences are worth stating plainly, because they are the ones a schema does
+  not fix. Relationships in a bare-schema design end up as identifier strings inside
+  objects, which cannot carry the rationale, confidence, or authorship a contestable
+  mapping claim needs, and which no generic tool recognises as edges — see
+  [`CONVENTIONS-STIX-MODELING.md`](CONVENTIONS-STIX-MODELING.md) section 1. And a new
+  object type is announced only by prose, so two producers emitting the same type name
+  are indistinguishable to a consumer, where an `extension-definition` keeps them apart
+  by identifier.
 - **CSAF** — purpose-built for vulnerability advisories, not control catalogs. Its deployed publisher base is also far narrower than STIX's, which matters for content that needs to flow unchanged through existing infrastructure.
 - **OSV** — optimized for open-source-package vulnerability metadata. Wrong domain.
 - **CVE JSON** — the canonical CVE record format. Universal, but a vulnerability-record format, not a control-catalog format.
 - **CVRF** — largely supplanted by CSAF; same domain mismatch.
 - **RDF, JSON-LD, OWL, and related semantic-web formats** — powerful but heavy. The SecID identifier system already provides graph identity; STIX SROs handle relationships. RDF would be duplicate-purpose for the catalog's needs without commensurate benefit.
 
-## 5. Recommended publication formats and channels
+## 6. Recommended publication formats and channels
 
 ### Formats
 
-The catalog should be published in the following formats, listed by audience:
+**The source form, which is also published.** STIX 2.1 is the canonical representation
+every other format below is generated from (section 2). It is offered for download as
+well, because a deployed ecosystem consumes STIX directly and publishing the source form
+costs nothing — but it is listed apart from the others deliberately. It is not a peer of
+the formats beneath it; it is what they are projections of. Serves cyber-threat-intelligence
+tools, ATT&CK consumers, graph stores, and AI agents in graph-aware platforms.
 
-- **STIX 2.1** — the back-end representation and primary distribution format. Serves cyber-threat-intelligence tools, ATT&CK consumers, and AI agents in graph-aware platforms.
+**Projections of it**, listed by audience. None of these is authoritative, and a
+correction belongs in the source rather than in any of them:
+
 - **OSCAL** — first-class publication format for compliance and audit consumers. Serves NIST-aligned organizations, GRC tooling, and audit workflows.
 - **JSON** (plain, schema-published) — universal baseline. Serves developers and generic tooling that need a structured format without STIX or OSCAL dependencies.
 - **YAML** — a human-editable, version-control-friendly equivalent of the JSON. Useful for review in pull requests.
@@ -141,7 +225,7 @@ Additional formats worth consideration in subsequent releases include CAIQ outpu
 
 **CSA MCP server** at `https://cloudsecurityalliance.org/mcp` is planned as a complementary AI-agent channel for direct catalog queries. Until it ships, the SecID MCP server is the AI-agent path.
 
-## 6. Why the committed form is JSON, and how a person reads and corrects it
+## 7. Why the committed form is JSON, and how a person reads and corrects it
 
 The catalog's committed form is STIX 2.1 JSON. YAML was proposed for that role and
 not adopted. Both halves of that decision need stating, because "JSON is canonical"
@@ -247,7 +331,7 @@ CI checks the result against the schemas. The tooling is a convenience for contr
 not a dependency for consumers — the published catalog stays plain JSON, and nothing is
 required to consume it.
 
-## 7. Status, scope, and what this document is not
+## 8. Status, scope, and what this document is not
 
 The catalog's data model is **exploratory and research-grade**. The custom SDOs and the recommendations in this document are provisional. Implementation experience may inform revisions. Implementers who can satisfy their needs with standard STIX constructs alone are encouraged to do so and to treat the `x-*` SDOs as optional, research-grade extensions to be adopted selectively.
 

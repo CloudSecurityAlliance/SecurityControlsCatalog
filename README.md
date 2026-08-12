@@ -247,10 +247,21 @@ structured, queryable form.
 
 ## Intended publication formats
 
-STIX 2.1 (the back-end representation), OSCAL (for compliance and audit
-consumers), plain JSON, YAML, and **Excel and CSV**. Spreadsheets are a
-first-class output, not an afterthought — they are what much of the existing CCM
-audience already works in. See the design rationale for the reasoning.
+**STIX 2.1 is the source, not one of the outputs.** The catalog holds its content once,
+in a form chosen to be a superset of what any output needs, and every published format
+is generated from it. That is the design the rest of this follows from — see
+[`DESIGN-RATIONALE-STIX-EXTENSIONS.md`](DESIGN-RATIONALE-STIX-EXTENSIONS.md) § "Why a
+back-end representation at all". STIX is offered for download too, because a real
+ecosystem consumes it directly and publishing the source form costs nothing; that does
+not make it a peer of the formats below.
+
+Generated from it: **OSCAL** (compliance and audit consumers), **plain JSON**, **YAML**,
+and **Excel and CSV**. Spreadsheets are a first-class output, not an afterthought — they
+are what much of the existing CCM audience already works in.
+
+None of those is authoritative. A correction belongs in the source the generators read,
+or in the generator, never in an output — which is also why the YAML view above says so
+on every write.
 
 ## Using the catalog
 

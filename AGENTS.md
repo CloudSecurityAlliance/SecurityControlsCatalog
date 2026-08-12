@@ -85,9 +85,10 @@ Keep filenames uppercase only for top-level policy or contributor documents such
 
 Decided in [`DESIGN-RATIONALE-STIX-EXTENSIONS.md`](DESIGN-RATIONALE-STIX-EXTENSIONS.md) — read it before proposing anything about formats or publication, and reopen these only with a new technical argument:
 
+- **One canonical representation; every published format is a projection of it.** The catalog holds content once, in a form chosen as a superset of what any output needs, and each published format is generated from it. A format that *carries* the catalog is not the same kind of thing as a format it is *published in* — see [`DESIGN-RATIONALE-STIX-EXTENSIONS.md`](DESIGN-RATIONALE-STIX-EXTENSIONS.md) § "Why a back-end representation at all". Treating STIX as one candidate output among peers removes the canonical layer and puts every format back to solving the modelling questions alone.
 - **STIX 2.1 is the back-end representation.** OSCAL is a *publication* format, not the back end — domain fit, no general typed-relationship primitive equivalent to a STIX SRO, and no overlap with the CTI ecosystem the catalog must join.
-- **Rejected as back-end formats:** CSAF, OSV, CVE JSON, and CVRF (advisories and vulnerability records, not control catalogs), plus RDF, JSON-LD, and OWL (duplicate-purpose given SecID identity and STIX SROs).
-- **Publication formats:** STIX 2.1 (primary), OSCAL, plain JSON, YAML, Excel, CSV. Excel is a first-class deliverable, not an afterthought.
+- **Rejected as back-end formats:** plain JSON or YAML with a published schema (fine as *publication* formats, and listed as such below; a serialization is not a model — no relationship primitive, no identity scheme, no way to declare a type so a consumer can discover it, no versioning model), CSAF, OSV, CVE JSON, and CVRF (advisories and vulnerability records, not control catalogs), plus RDF, JSON-LD, and OWL (duplicate-purpose given SecID identity and STIX SROs).
+- **Publication formats:** STIX 2.1 is the **source** the rest are generated from, and is published too because an ecosystem consumes it directly — it is not a peer of them. Generated from it: OSCAL, plain JSON, YAML, Excel, CSV. Excel is a first-class deliverable, not an afterthought. None of the outputs is authoritative; a correction belongs in the source or the generator.
 - **Distribution channels:** this git repository (clone, raw URL, tagged releases) is primary; the SecID MCP server (`https://secid.cloudsecurityalliance.org/mcp`) is the AI-agent path until the CSA MCP server ships.
 
 ## Testing Guidelines
